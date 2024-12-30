@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="GUIDEMappingContext" load_steps=6 format=3 uid="uid://cn1f7vcwfqo3a"]
+
+[ext_resource type="Script" path="res://addons/guide/guide_action_mapping.gd" id="1_cnv5s"]
+[ext_resource type="Resource" uid="uid://b1nxck4tbdl5p" path="res://input/move.tres" id="2_l4qc0"]
+[ext_resource type="Script" path="res://addons/guide/guide_input_mapping.gd" id="2_ngedf"]
+[ext_resource type="Script" path="res://addons/guide/guide_mapping_context.gd" id="2_owi47"]
+
+[sub_resource type="Resource" id="Resource_00y8b"]
+script = ExtResource("1_cnv5s")
+action = ExtResource("2_l4qc0")
+input_mappings = Array[ExtResource("2_ngedf")]([])
+metadata/_guide_input_mappings_collapsed = true
+
+[resource]
+script = ExtResource("2_owi47")
+display_name = ""
+mappings = Array[ExtResource("1_cnv5s")]([SubResource("Resource_00y8b")])
+metadata/_guide_action_mappings_collapsed = false
