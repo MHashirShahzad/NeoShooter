@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CustomInput" load_steps=2 format=3 uid="uid://d1rtgcv253tl5"]
+
+[ext_resource type="Script" path="res://custom_stuff/input_struct.gd" id="1_fyn44"]
+
+[resource]
+script = ExtResource("1_fyn44")
+up = "p1_up"
+down = "p1_down"
+left = "p1_left"
+right = "p1_right"
+shoot = "p1_shoot"

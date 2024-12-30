@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://ytwrg3bpl7wf"]
+[gd_scene load_steps=6 format=3 uid="uid://ytwrg3bpl7wf"]
 
 [ext_resource type="Texture2D" uid="uid://br1ujx4vgibxk" path="res://assets/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Engines/PNGs/Main Ship - Engines - Big Pulse Engine.png" id="1_f7if1"]
 [ext_resource type="PackedScene" uid="uid://sxxeixb08amn" path="res://player/player.tscn" id="2_iqfvu"]
+[ext_resource type="Resource" uid="uid://bu6wkpkaqxcs3" path="res://player/player2_inputs.tres" id="3_7ae3j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3uxnu"]
 size = Vector2(22.5, 659)
@@ -13,7 +14,7 @@ size = Vector2(1165, 20)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-position = Vector2(289, 333)
+position = Vector2(573, 333)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -32,6 +33,15 @@ stretch_mode = 1
 
 [node name="Player" parent="." instance=ExtResource("2_iqfvu")]
 position = Vector2(289, 333)
+rotation = 1.5708
+
+[node name="Player2" parent="." instance=ExtResource("2_iqfvu")]
+position = Vector2(741, 333)
+rotation = -1.5708
+input = ExtResource("3_7ae3j")
+
+[node name="Sprite2D" parent="Player2" index="0"]
+modulate = Color(0, 1, 0, 1)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -50,3 +60,5 @@ shape = SubResource("RectangleShape2D_uphds")
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(7.75, 323.5)
 shape = SubResource("RectangleShape2D_3uxnu")
+
+[editable path="Player2"]
