@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://sxxeixb08amn"]
+[gd_scene load_steps=4 format=3 uid="uid://sxxeixb08amn"]
 
+[ext_resource type="Script" path="res://player/player.gd" id="1_a7y8v"]
 [ext_resource type="Texture2D" uid="uid://c0by5gpe2jkjf" path="res://icon.svg" id="1_e6aqs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y0nrd"]
 radius = 110.354
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+script = ExtResource("1_a7y8v")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_e6aqs")
