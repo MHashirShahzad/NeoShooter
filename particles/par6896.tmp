@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://6mdyot5m0ta3"]
+
+[ext_resource type="Script" path="res://particles/particles_hit.gd" id="1_475r5"]
+
+[sub_resource type="Curve" id="Curve_8k2ls"]
+_data = [Vector2(0.140449, 1), 0.0, 0.0, 0, 0, Vector2(0.994382, 0.164835), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="particles_hit" type="Node2D"]
+script = ExtResource("1_475r5")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(0, -2)
+amount = 60
+lifetime = 0.5
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+scale_amount_min = 5.0
+scale_amount_max = 5.0
+scale_amount_curve = SubResource("Curve_8k2ls")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(5, 5)

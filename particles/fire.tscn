@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjbh6liyx10ni"]
+
+[ext_resource type="Script" path="res://particles/fire.gd" id="1_u1wmj"]
+
+[sub_resource type="Curve" id="Curve_7c6xh"]
+_data = [Vector2(0.134831, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.307692), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_c7hei"]
+offsets = PackedFloat32Array(0, 0.173333, 0.353333, 0.966667, 1)
+colors = PackedColorArray(0.968627, 0.239216, 0.113725, 1, 0.972549, 0.545098, 0.0392157, 1, 0.980392, 0.623529, 0.054902, 1, 0.992157, 0.858824, 0.65098, 0, 1, 1, 1, 0)
+
+[node name="Fire" type="Node2D"]
+script = ExtResource("1_u1wmj")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 2000
+lifetime = 0.5
+emission_shape = 1
+emission_sphere_radius = 10.0
+gravity = Vector2(0, -600)
+radial_accel_min = -50.0
+radial_accel_max = -40.0
+scale_amount_min = 0.5
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_7c6xh")
+color_ramp = SubResource("Gradient_c7hei")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -1)
+zoom = Vector2(5, 5)
