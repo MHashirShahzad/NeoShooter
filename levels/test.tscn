@@ -1,3 +1,26 @@
-[gd_scene format=3 uid="uid://ytwrg3bpl7wf"]
+[gd_scene load_steps=3 format=3 uid="uid://ytwrg3bpl7wf"]
+
+[ext_resource type="Texture2D" uid="uid://br1ujx4vgibxk" path="res://assets/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Engines/PNGs/Main Ship - Engines - Big Pulse Engine.png" id="1_f7if1"]
+[ext_resource type="PackedScene" uid="uid://sxxeixb08amn" path="res://player/player.tscn" id="2_iqfvu"]
 
 [node name="TEST" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -24.0
+offset_top = -24.0
+offset_right = -24.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_f7if1")
+stretch_mode = 1
+
+[node name="Player" parent="." instance=ExtResource("2_iqfvu")]
+position = Vector2(289, 333)

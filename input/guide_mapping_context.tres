@@ -1,15 +1,42 @@
-[gd_resource type="Resource" script_class="GUIDEMappingContext" load_steps=6 format=3 uid="uid://cn1f7vcwfqo3a"]
+[gd_resource type="Resource" script_class="GUIDEMappingContext" load_steps=14 format=3 uid="uid://cn1f7vcwfqo3a"]
 
 [ext_resource type="Script" path="res://addons/guide/guide_action_mapping.gd" id="1_cnv5s"]
 [ext_resource type="Resource" uid="uid://b1nxck4tbdl5p" path="res://input/move.tres" id="2_l4qc0"]
 [ext_resource type="Script" path="res://addons/guide/guide_input_mapping.gd" id="2_ngedf"]
 [ext_resource type="Script" path="res://addons/guide/guide_mapping_context.gd" id="2_owi47"]
+[ext_resource type="Script" path="res://addons/guide/inputs/guide_input_mouse_axis_2d.gd" id="4_vmru0"]
+[ext_resource type="Script" path="res://addons/guide/modifiers/guide_modifier.gd" id="5_v6gdx"]
+[ext_resource type="Script" path="res://addons/guide/triggers/guide_trigger.gd" id="6_kqueg"]
+
+[sub_resource type="Resource" id="Resource_ndp2i"]
+script = ExtResource("4_vmru0")
+
+[sub_resource type="Resource" id="Resource_agewc"]
+script = ExtResource("2_ngedf")
+input = SubResource("Resource_ndp2i")
+modifiers = Array[ExtResource("5_v6gdx")]([])
+triggers = Array[ExtResource("6_kqueg")]([])
+
+[sub_resource type="Resource" id="Resource_mhgc3"]
+script = ExtResource("2_ngedf")
+modifiers = Array[ExtResource("5_v6gdx")]([])
+triggers = Array[ExtResource("6_kqueg")]([])
+
+[sub_resource type="Resource" id="Resource_gfkq4"]
+script = ExtResource("2_ngedf")
+modifiers = Array[ExtResource("5_v6gdx")]([])
+triggers = Array[ExtResource("6_kqueg")]([])
+
+[sub_resource type="Resource" id="Resource_450wl"]
+script = ExtResource("2_ngedf")
+modifiers = Array[ExtResource("5_v6gdx")]([])
+triggers = Array[ExtResource("6_kqueg")]([])
 
 [sub_resource type="Resource" id="Resource_00y8b"]
 script = ExtResource("1_cnv5s")
 action = ExtResource("2_l4qc0")
-input_mappings = Array[ExtResource("2_ngedf")]([])
-metadata/_guide_input_mappings_collapsed = true
+input_mappings = Array[ExtResource("2_ngedf")]([SubResource("Resource_agewc"), SubResource("Resource_mhgc3"), SubResource("Resource_gfkq4"), SubResource("Resource_450wl")])
+metadata/_guide_input_mappings_collapsed = false
 
 [resource]
 script = ExtResource("2_owi47")
