@@ -2,7 +2,6 @@ shader_type canvas_item;
 
 uniform int levels = 3;
 uniform float spread = 0.01;
-
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
 
 vec3 chromatic_slice(float t){

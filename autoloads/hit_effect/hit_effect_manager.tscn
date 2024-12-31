@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cp616ryfjwdwj"]
+[gd_scene load_steps=7 format=3 uid="uid://cp616ryfjwdwj"]
 
-[ext_resource type="Script" path="res://autoloads/hit_effect_manager.gd" id="1_muv4u"]
-[ext_resource type="Texture2D" uid="uid://br1ujx4vgibxk" path="res://assets/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Engines/PNGs/Main Ship - Engines - Big Pulse Engine.png" id="2_odbt3"]
-[ext_resource type="Shader" path="res://camera/chromatic_abberatiob.gdshader" id="3_1nuhp"]
+[ext_resource type="Script" path="res://autoloads/hit_effect/hit_effect_manager.gd" id="1_gvfv1"]
+[ext_resource type="Shader" path="res://camera/chromatic_abberatiob.gdshader" id="2_t6ung"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_08do4"]
-shader = ExtResource("3_1nuhp")
+shader = ExtResource("2_t6ung")
 shader_parameter/levels = 200
 shader_parameter/spread = 0.0
 
@@ -47,23 +46,9 @@ _data = {
 }
 
 [node name="HitEffectManager" type="Node2D"]
-script = ExtResource("1_muv4u")
+script = ExtResource("1_gvfv1")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -24.0
-offset_top = -24.0
-offset_right = -24.0
-offset_bottom = -24.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_odbt3")
-stretch_mode = 1
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_08do4")

@@ -32,3 +32,8 @@ texture = ExtResource("2_vg5kj")
 visible = false
 shape = SubResource("CircleShape2D_vsn0p")
 disabled = true
+
+[node name="KillTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true

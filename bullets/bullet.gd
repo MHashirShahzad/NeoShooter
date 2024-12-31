@@ -18,3 +18,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y = move_toward(velocity.y, 0, speed)
 
 	move_and_slide()
+
+func _ready() -> void:
+	await $KillTimer.timeout
+	self.queue_free()

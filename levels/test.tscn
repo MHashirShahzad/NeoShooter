@@ -27,7 +27,7 @@ position = Vector2(741, 333)
 rotation = -1.5708
 input = ExtResource("3_7ae3j")
 
-[node name="CPUParticles2D3" parent="Player2" index="4"]
+[node name="CPUParticles2D3" parent="Player2" index="5"]
 color_ramp = SubResource("Gradient_4rhf6")
 
 [node name="Polygon2D" parent="Player2" index="6"]

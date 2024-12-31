@@ -2,6 +2,7 @@ class_name HurtBox
 extends Area2D
 
 @export var hurtbox_owner : CharacterBody2D
+@onready var coll_shape: CollisionShape2D = $CollisionShape2D
 
 func _init() -> void:
 	collision_layer = 0
