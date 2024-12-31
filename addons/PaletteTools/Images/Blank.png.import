@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ogmsh8j8lrkx"
-path="res://.godot/imported/spaceship_red.png-7189b2e8e01eaea3f630d3b08d523980.ctex"
+uid="uid://n0pxa14plck"
+path="res://.godot/imported/Blank.png-e20d4d6a47b08c47420d456c717ca61f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://old assets/spaceship_red.png"
-dest_files=["res://.godot/imported/spaceship_red.png-7189b2e8e01eaea3f630d3b08d523980.ctex"]
+source_file="res://addons/PaletteTools/Images/Blank.png"
+dest_files=["res://.godot/imported/Blank.png-e20d4d6a47b08c47420d456c717ca61f.ctex"]
 
 [params]
 

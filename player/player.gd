@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name Player
-
+# =============================================================================================
+# Exports
 @export_group("Physics")
 @export var speed : int = 60000
 @export var friction : float = 0.1
@@ -9,15 +10,24 @@ class_name Player
 @export_group("Input")
 @export var input : CustomInput
 
+
+# =============================================================================================
+# On ready
+@onready var body: Polygon2D = $Polygon2D
 @onready var bullet_spawn_location: Marker2D = $BulletSpawnLocation
 @onready var ani_player: AnimationPlayer = $AnimationPlayer
 @onready var coll_shape: CollisionShape2D = $CollisionShape2D
 @onready var hurt_box: HurtBox = $HurtBox
+@onready var trails_vfx: CPUParticles2D = $Trails_VFX
 
+# =============================================================================================
+# variables
 var direction : Vector2
 var wish_dir : Vector2
 var health : float = 100
 var is_input_enabled : bool = true
+# =============================================================================================
+# Code
 
 func _ready() -> void:
 	# GameManager References
@@ -57,7 +67,12 @@ func on_hit(dmg: float) -> void:
 		die()
 	ani_player.play("hit_flash")
 
-func screw_state(duration : float, time_scale : float = 0.05) -> void:
+func screw_state(duration : float, str: float, time_scale : float = 0.05) -> void:
+	# Screw state
+	body.rand_str = str # random directional strength of screw
+	body.screw_state()
+	
+	# Slow down speed for some time :C
 	if self.speed == 100: # if already in screw state
 		return 
 		

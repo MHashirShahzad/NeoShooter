@@ -6,7 +6,7 @@ point_count = 3
 
 [sub_resource type="Gradient" id="Gradient_j7flh"]
 offsets = PackedFloat32Array(0, 0.507317, 1)
-colors = PackedColorArray(0.0392157, 0.545098, 0.972549, 1, 0.45098, 0.00392157, 0.992157, 1, 0, 0, 0, 0)
+colors = PackedColorArray(0.12549, 0.839216, 0.780392, 1, 0.45098, 0.00392157, 0.992157, 1, 0, 0, 0, 0)
 
 [node name="CPUParticles2D" type="CPUParticles2D"]
 texture_filter = 1

@@ -25,7 +25,7 @@ func _on_area_entered(hitbox: HitBox) -> void:
 		hit_effects(hitbox)
 		 
 	if owner.has_method("screw_state"):
-		owner.screw_state(hitbox.screw_state)
+		owner.screw_state(hitbox.screw_state, hitbox.screw_state_str)
 		
 	if owner.has_method("recieve_knockback"):
 		

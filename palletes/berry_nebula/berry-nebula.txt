@@ -1,0 +1,13 @@
+;paint.net Palette File
+;Downloaded from Lospec.com/palette-list
+;Palette Name: Berry Nebula
+;Description: An 8-color palette ranging from neon blue raspberry to a deep grape-y purple. Great for space and underground scenes where you need a little bit of otherworldly glow.
+;Colors: 8
+FF6ceded
+FF6cb9c9
+FF6d85a5
+FF6e5181
+FF6f1d5c
+FF4f1446
+FF2e0a30
+FF0d001a

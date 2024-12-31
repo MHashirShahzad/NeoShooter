@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://curif1tjd6wv4"]
+
+[ext_resource type="PackedScene" uid="uid://cclo3pqf533bv" path="res://bullets/main_bullet.tscn" id="1_83854"]
+
+[sub_resource type="Gradient" id="Gradient_cu7tv"]
+resource_local_to_scene = true
+offsets = PackedFloat32Array(0.173333, 0.633333, 0.973333, 0.993333, 1)
+colors = PackedColorArray(0.0392157, 0.545098, 0.972549, 1, 0.450578, 0.00227139, 0.992695, 1, 0.992157, 0.858824, 0.65098, 0, 0.980392, 0.623529, 0.054902, 1, 1, 1, 1, 0)
+
+[node name="Bullet" instance=ExtResource("1_83854")]
+speed = 1200.0
+
+[node name="Polygon2D" parent="." index="3"]
+polygon = PackedVector2Array(-2, -6, 2, -6, 2, 30, -2, 30)
+
+[node name="Trails" parent="." index="4"]
+amount = 40
+color_ramp = SubResource("Gradient_cu7tv")

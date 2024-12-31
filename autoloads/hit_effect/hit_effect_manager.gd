@@ -4,10 +4,7 @@ extends Node2D
 var camera : SpaceShooterCamera
 const PARTICLES_HIT : PackedScene = preload("res://particles/hit_vfx.tscn")
 
-func _ready() -> void:
-	var cameras : Array[Node] = get_tree().get_nodes_in_group("Camera")
-	if cameras[0] is SpaceShooterCamera:
-		camera = cameras[0]
+
 
 func hit_stop(duration : float, time_scale : float = 0.05) -> void:
 	

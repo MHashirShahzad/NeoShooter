@@ -5,9 +5,13 @@ class_name Bullet2D
 var direction : Vector2
 
 @onready var hit_box: ProjectileHitBox = $ProjHitBox
+@onready var body: Polygon2D = $Polygon2D
+@onready var trails_vfx: CPUParticles2D = $Trails
 
 func _init() -> void:
 	hit_box = $ProjHitBox
+	body = $Polygon2D
+	trails_vfx = $Trails
 	# print_debug(hit_box)
 
 func _physics_process(delta: float) -> void:

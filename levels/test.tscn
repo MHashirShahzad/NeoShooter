@@ -5,10 +5,7 @@
 [ext_resource type="Resource" uid="uid://bu6wkpkaqxcs3" path="res://player/player2_inputs.tres" id="3_7ae3j"]
 [ext_resource type="Shader" path="res://player/hit_flash.gdshader" id="4_aaaxr"]
 [ext_resource type="AudioStream" uid="uid://id3u6dcosmip" path="res://music/space-beat-263970.mp3" id="5_ghduu"]
-
-[sub_resource type="Gradient" id="Gradient_4rhf6"]
-offsets = PackedFloat32Array(0.121951, 0.565854, 0.912195, 1)
-colors = PackedColorArray(0, 0.533333, 0, 1, 0, 0.603922, 0, 0.670588, 0, 0, 1, 0.0588235, 1, 1, 1, 0)
+[ext_resource type="Gradient" uid="uid://weuimmf02ocv" path="res://player/player2_colorgradient.tres" id="5_ryk65"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_np1qq"]
 resource_local_to_scene = true
@@ -42,12 +39,13 @@ position = Vector2(741, 333)
 rotation = -1.5708
 input = ExtResource("3_7ae3j")
 
-[node name="CPUParticles2D3" parent="Player2" index="5"]
-color_ramp = SubResource("Gradient_4rhf6")
-
-[node name="Polygon2D" parent="Player2" index="6"]
+[node name="Polygon2D" parent="Player2" index="0"]
 material = SubResource("ShaderMaterial_np1qq")
-color = Color(0, 0.533333, 0, 1)
+color = Color(0.12549, 0.839216, 0.780392, 1)
+
+[node name="Trails_VFX" parent="Player2" index="6"]
+position = Vector2(-9.15527e-05, 29)
+color_ramp = ExtResource("5_ryk65")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
