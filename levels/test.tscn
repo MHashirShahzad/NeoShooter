@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://ytwrg3bpl7wf"]
+[gd_scene load_steps=12 format=3 uid="uid://ytwrg3bpl7wf"]
 
 [ext_resource type="PackedScene" uid="uid://bwkwpcmkypaje" path="res://camera/camera.tscn" id="1_tv80o"]
 [ext_resource type="PackedScene" uid="uid://sxxeixb08amn" path="res://player/player.tscn" id="2_iqfvu"]
 [ext_resource type="Resource" uid="uid://bu6wkpkaqxcs3" path="res://player/player2_inputs.tres" id="3_7ae3j"]
 [ext_resource type="Shader" path="res://player/hit_flash.gdshader" id="4_aaaxr"]
 [ext_resource type="AudioStream" uid="uid://id3u6dcosmip" path="res://music/space-beat-263970.mp3" id="5_ghduu"]
+[ext_resource type="PackedScene" uid="uid://xbcibvbfdvak" path="res://assets/background/node_2d.tscn" id="6_3h8x6"]
 
 [sub_resource type="Gradient" id="Gradient_4rhf6"]
 offsets = PackedFloat32Array(0.121951, 0.565854, 0.912195, 1)
@@ -74,5 +75,7 @@ environment = SubResource("Environment_hdvnr")
 stream = ExtResource("5_ghduu")
 volume_db = -5.0
 autoplay = true
+
+[node name="Node2D" parent="." instance=ExtResource("6_3h8x6")]
 
 [editable path="Player2"]

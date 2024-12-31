@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://xbcibvbfdvak"]
+
+[ext_resource type="Texture2D" uid="uid://c3k2l8fgxmf2u" path="res://assets/background/pexels-suzyhazelwood-1629236.jpg" id="1_xjjoq"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Pexels-suzyhazelwood-1629236" type="Sprite2D" parent="."]
+position = Vector2(574.5, 325.5)
+scale = Vector2(0.190833, 0.191647)
+texture = ExtResource("1_xjjoq")
