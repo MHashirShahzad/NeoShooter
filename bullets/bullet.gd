@@ -1,17 +1,15 @@
 extends CharacterBody2D
+class_name Bullet2D
 
-
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+static var speed = 300.0
 var direction : Vector2
+@onready var hit_box: HitBox = $HitBox
 
 func _physics_process(delta: float) -> void:
-
-	# Handle jump.
 	if direction:
-		velocity = direction * SPEED
+		velocity = direction * speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.y = move_toward(velocity.y, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, speed)
+		velocity.y = move_toward(velocity.y, 0, speed)
 
 	move_and_slide()

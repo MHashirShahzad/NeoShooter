@@ -14,13 +14,10 @@ radius = 2.0
 script = ExtResource("1_wawkb")
 
 [node name="HitBox" type="Area2D" parent="."]
-visible = false
 script = ExtResource("1_70s05")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-visible = false
+[node name="HitBoxShape" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("CircleShape2D_d5vtl")
-disabled = true
 debug_color = Color(1, 0, 0, 0.419608)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -28,6 +25,5 @@ modulate = Color(1, 0, 0, 1)
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("2_vg5kj")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+[node name="CollShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_vsn0p")
-disabled = true

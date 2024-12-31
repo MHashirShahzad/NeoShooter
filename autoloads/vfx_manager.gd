@@ -1,4 +1,4 @@
-extends Node3D
+extends Node2D
 
 #const LAND_VFX = preload("res://vfx/land_vfx.tscn")
 #const JUMP_VFX = preload("res://vfx/jump_vfx.tscn")
