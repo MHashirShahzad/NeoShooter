@@ -1,5 +1,6 @@
 extends Node2D
 
+@onready var ani_player: AnimationPlayer = $AnimationPlayer
 var camera : SpaceShooterCamera
 const PARTICLES_HIT : PackedScene = preload("res://particles/hit_vfx.tscn")
 
@@ -25,6 +26,7 @@ func camera_shake(shake_str : float)  -> void:
 	camera.apply_shake()
 
 func hit_vfx(hitbox: HitBox) -> void:
+	ani_player.play("hit")
 	var particle_vfx = PARTICLES_HIT.instantiate()
 	self.add_child(particle_vfx)
 	
