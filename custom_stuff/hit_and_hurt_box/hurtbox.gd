@@ -21,7 +21,8 @@ func _on_area_entered(hitbox: HitBox) -> void:
 	
 	if owner.has_method("on_hit"):
 		owner.on_hit(hitbox.damage)
-		HitStopManager.hit_stop(hitbox.hit_stop)
+		HitEffectManager.hit_stop(hitbox.hit_stop)
+		HitEffectManager.camera_shake(hitbox.cam_shake_str)
 		 
 	if owner.has_method("screw_state"):
 		owner.screw_state(hitbox.screw_state)

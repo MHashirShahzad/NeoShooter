@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://ytwrg3bpl7wf"]
+[gd_scene load_steps=9 format=3 uid="uid://ytwrg3bpl7wf"]
 
 [ext_resource type="Texture2D" uid="uid://br1ujx4vgibxk" path="res://assets/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Engines/PNGs/Main Ship - Engines - Big Pulse Engine.png" id="1_f7if1"]
+[ext_resource type="PackedScene" uid="uid://bwkwpcmkypaje" path="res://camera/camera.tscn" id="1_tv80o"]
 [ext_resource type="PackedScene" uid="uid://sxxeixb08amn" path="res://player/player.tscn" id="2_iqfvu"]
 [ext_resource type="Resource" uid="uid://bu6wkpkaqxcs3" path="res://player/player2_inputs.tres" id="3_7ae3j"]
 [ext_resource type="Shader" path="res://player/hit_flash.gdshader" id="4_1q751"]
@@ -18,10 +19,7 @@ size = Vector2(1165, 20)
 
 [node name="TEST" type="Node2D"]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-physics_interpolation_mode = 1
-position = Vector2(573, 333)
-zoom = Vector2(0.5, 0.5)
+[node name="Camera2D" parent="." instance=ExtResource("1_tv80o")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
