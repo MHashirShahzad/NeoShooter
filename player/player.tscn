@@ -26,7 +26,7 @@ _data = {
 
 [sub_resource type="Gradient" id="Gradient_k7fte"]
 offsets = PackedFloat32Array(0.131707, 0.565854, 0.912195, 1)
-colors = PackedColorArray(0.712692, 1.29953e-06, 2.88785e-07, 1, 0.605674, 5.41471e-07, 2.40654e-07, 0.670588, 0.964706, 0.909804, 0.168627, 0.0588235, 1, 1, 1, 0)
+colors = PackedColorArray(0.712692, 1.29953e-06, 2.88785e-07, 1, 0.605674, 5.41471e-07, 2.40654e-07, 0.670588, 0, 0, 1, 0.0588235, 1, 1, 1, 0)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_a7y8v")
@@ -36,7 +36,7 @@ input = ExtResource("2_maebw")
 shape = SubResource("CircleShape2D_y0nrd")
 
 [node name="BulletSpawnLocation" type="Marker2D" parent="."]
-position = Vector2(0, -135)
+position = Vector2(0, -68)
 gizmo_extents = 140.4
 
 [node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("hurtbox_owner")]
@@ -53,17 +53,17 @@ libraries = {
 "": SubResource("AnimationLibrary_6hrdo")
 }
 
+[node name="CPUParticles2D2" parent="." instance=ExtResource("6_de123")]
+position = Vector2(0, 32)
+particle_flag_align_y = true
+
 [node name="CPUParticles2D3" parent="." instance=ExtResource("6_de123")]
 position = Vector2(0, 29)
 particle_flag_align_y = true
 color_ramp = SubResource("Gradient_k7fte")
 
-[node name="CPUParticles2D2" parent="." instance=ExtResource("6_de123")]
-position = Vector2(0, 32)
-particle_flag_align_y = true
-
 [node name="Polygon2D" type="Polygon2D" parent="."]
 position = Vector2(0, 8)
-color = Color(0.533324, 3.24883e-07, 2.88785e-07, 1)
+color = Color(0.713726, 0, 0, 1)
 antialiased = true
 polygon = PackedVector2Array(-40, 0, 0, -80, 40, 0, 0, 40)

@@ -47,8 +47,11 @@ func on_hit(dmg: float) -> void:
 	ani_player.play("hit_flash")
 
 func screw_state(duration : float, time_scale : float = 0.05) -> void:
-	
+	if self.speed == 100: # if already in screw state
+		return 
+		
+	var def_speed = self.speed
 	self.speed = 100
 	await  get_tree().create_timer(duration).timeout
 	
-	self.speed = 30000
+	self.speed = def_speed
