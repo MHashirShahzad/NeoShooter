@@ -10,6 +10,7 @@ class_name Player
 @export var input : CustomInput
 
 @onready var bullet_spawn_location: Marker2D = $BulletSpawnLocation
+@onready var ani_player: AnimationPlayer = $AnimationPlayer
 
 var direction : Vector2
 var wish_dir : Vector2
@@ -43,6 +44,7 @@ func on_hit(dmg: float) -> void:
 	self.health -= dmg
 	if health <= 0:
 		self.queue_free()
+	ani_player.play("hit_flash")
 
 func screw_state(duration : float, time_scale : float = 0.05) -> void:
 	

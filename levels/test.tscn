@@ -1,8 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://ytwrg3bpl7wf"]
+[gd_scene load_steps=8 format=3 uid="uid://ytwrg3bpl7wf"]
 
 [ext_resource type="Texture2D" uid="uid://br1ujx4vgibxk" path="res://assets/Foozle_2DS0011_Void_MainShip/Main Ship/Main Ship - Engines/PNGs/Main Ship - Engines - Big Pulse Engine.png" id="1_f7if1"]
 [ext_resource type="PackedScene" uid="uid://sxxeixb08amn" path="res://player/player.tscn" id="2_iqfvu"]
 [ext_resource type="Resource" uid="uid://bu6wkpkaqxcs3" path="res://player/player2_inputs.tres" id="3_7ae3j"]
+[ext_resource type="Shader" path="res://player/hit_flash.gdshader" id="4_1q751"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rogy6"]
+resource_local_to_scene = true
+shader = ExtResource("4_1q751")
+shader_parameter/active = false
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3uxnu"]
 size = Vector2(22.5, 659)
@@ -43,6 +49,7 @@ input = ExtResource("3_7ae3j")
 
 [node name="Sprite2D" parent="Player2" index="0"]
 modulate = Color(0, 1, 0, 1)
+material = SubResource("ShaderMaterial_rogy6")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
