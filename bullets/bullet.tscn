@@ -17,6 +17,7 @@ script = ExtResource("1_wawkb")
 script = ExtResource("2_apy3x")
 damage = 10.0
 screw_state = 0.0
+cam_shake_str = 10.0
 
 [node name="HitBoxShape" type="CollisionShape2D" parent="ProjHitBox"]
 shape = SubResource("CircleShape2D_d5vtl")
