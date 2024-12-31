@@ -9,10 +9,12 @@ class_name Player
 @export_group("Input")
 @export var input : CustomInput
 
+@onready var bullet_spawn_location: Marker2D = $BulletSpawnLocation
+
 var direction : Vector2
 var wish_dir : Vector2
+var health : float = 100
 
-@onready var bullet_spawn_location: Marker2D = $BulletSpawnLocation
 
 
 
@@ -35,6 +37,16 @@ func _input(event: InputEvent) -> void:
 		shoot()
 
 func shoot() -> void:
-	
 	BulletManager.shoot_bullet(self)
 	
+func on_hit(dmg: float) -> void:
+	self.health -= dmg
+	if health <= 0:
+		self.queue_free()
+
+func screw_state(duration : float, time_scale : float = 0.05) -> void:
+	
+	self.speed = 100
+	await  get_tree().create_timer(duration).timeout
+	
+	self.speed = 30000

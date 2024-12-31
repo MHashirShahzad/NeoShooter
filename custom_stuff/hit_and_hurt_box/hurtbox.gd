@@ -24,7 +24,7 @@ func _on_area_entered(hitbox: HitBox) -> void:
 		HitStopManager.hit_stop(hitbox.hit_stop)
 		 
 	if owner.has_method("screw_state"):
-		owner.screw_state(hitbox.hit_stop)
+		owner.screw_state(hitbox.screw_state)
 		
 	if owner.has_method("recieve_knockback"):
 		

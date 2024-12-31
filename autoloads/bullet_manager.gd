@@ -11,7 +11,8 @@ func del_all_bullets():
 
 func shoot_bullet(player : Player):
 	var bullet = BULLET.instantiate()
-	# bullet.hit_box.to_ignore = player
+	bullet._init()
+	bullet.hit_box.to_ignore = player
 	BulletManager.add_child(bullet)
 	bullet.global_position = player.bullet_spawn_location.global_position
 	bullet.direction = player.global_position.direction_to(bullet.global_position)

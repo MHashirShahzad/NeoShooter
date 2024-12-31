@@ -4,7 +4,7 @@ class_name HitBox
 @export var damage : float = 30
 @export var kb_strength : float = 10
 @export var hit_stop : float = .2
-@export var self_stun : float = .1
+@export var screw_state : float = .1
 
 @export var to_ignore : CharacterBody2D
 

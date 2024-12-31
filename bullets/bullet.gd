@@ -3,7 +3,12 @@ class_name Bullet2D
 
 static var speed = 300.0
 var direction : Vector2
-@onready var hit_box: ProjectileHitBox = $HitBox
+
+@onready var hit_box: ProjectileHitBox = $ProjHitBox
+
+func _init() -> void:
+	hit_box = $ProjHitBox
+	# print_debug(hit_box)
 
 func _physics_process(delta: float) -> void:
 	if direction:
