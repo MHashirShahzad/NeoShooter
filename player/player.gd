@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 @export_group("Physics")
-@export var speed : int = 30000
+@export var speed : int = 60000
 @export var friction : float = 0.1
 @export var acceleration : float = 0.4
 

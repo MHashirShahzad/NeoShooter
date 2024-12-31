@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Bullet2D
 
-@export var speed : float = 300.0
+@export var speed : float = 900.0
 var direction : Vector2
 
 @onready var hit_box: ProjectileHitBox = $ProjHitBox

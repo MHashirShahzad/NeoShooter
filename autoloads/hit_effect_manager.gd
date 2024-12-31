@@ -9,7 +9,10 @@ func _ready() -> void:
 		camera = cameras[0]
 
 func hit_stop(duration : float, time_scale : float = 0.05) -> void:
-
+	
+	if Engine.time_scale == 0.05: # if already  started
+		return
+		
 	var engine_time_scale = Engine.time_scale
 	Engine.time_scale = time_scale
 	

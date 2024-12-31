@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://sxxeixb08amn"]
+[gd_scene load_steps=14 format=3 uid="uid://sxxeixb08amn"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_a7y8v"]
 [ext_resource type="Texture2D" uid="uid://c0by5gpe2jkjf" path="res://icon.svg" id="1_e6aqs"]
 [ext_resource type="Resource" uid="uid://d1rtgcv253tl5" path="res://player/player1_inputs.tres" id="2_maebw"]
 [ext_resource type="Shader" path="res://player/hit_flash.gdshader" id="3_js4x0"]
 [ext_resource type="Script" path="res://custom_stuff/hit_and_hurt_box/hurtbox.gd" id="4_gy0jc"]
+[ext_resource type="PackedScene" uid="uid://cbtrogwycneft" path="res://particles/trail_vfx.tscn" id="6_de123"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5ejk0"]
 resource_local_to_scene = true
@@ -16,6 +17,21 @@ radius = 70.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3x3a1"]
 radius = 80.0062
+
+[sub_resource type="Animation" id="Animation_toxoe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_3e8t2"]
 resource_name = "hit_flash"
@@ -33,26 +49,15 @@ tracks/0/keys = {
 "values": [false, true, false, true, false]
 }
 
-[sub_resource type="Animation" id="Animation_toxoe"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:material:shader_parameter/active")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6hrdo"]
 _data = {
 "RESET": SubResource("Animation_toxoe"),
 "hit_flash": SubResource("Animation_3e8t2")
 }
+
+[sub_resource type="Gradient" id="Gradient_k7fte"]
+offsets = PackedFloat32Array(0.131707, 0.565854, 0.912195, 1)
+colors = PackedColorArray(0.712692, 1.29953e-06, 2.88785e-07, 1, 0.605674, 5.41471e-07, 2.40654e-07, 0.670588, 0.964706, 0.909804, 0.168627, 0.0588235, 1, 1, 1, 0)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_a7y8v")
@@ -81,3 +86,12 @@ debug_color = Color(0.858328, 0.364151, 0, 0.42)
 libraries = {
 "": SubResource("AnimationLibrary_6hrdo")
 }
+
+[node name="CPUParticles2D3" parent="." instance=ExtResource("6_de123")]
+position = Vector2(3, 66)
+particle_flag_align_y = true
+color_ramp = SubResource("Gradient_k7fte")
+
+[node name="CPUParticles2D2" parent="." instance=ExtResource("6_de123")]
+position = Vector2(3, 66)
+particle_flag_align_y = true
