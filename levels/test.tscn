@@ -1,18 +1,32 @@
-[gd_scene load_steps=7 format=3 uid="uid://ytwrg3bpl7wf"]
+[gd_scene load_steps=10 format=3 uid="uid://ytwrg3bpl7wf"]
 
 [ext_resource type="PackedScene" uid="uid://bwkwpcmkypaje" path="res://camera/camera.tscn" id="1_tv80o"]
 [ext_resource type="PackedScene" uid="uid://sxxeixb08amn" path="res://player/player.tscn" id="2_iqfvu"]
 [ext_resource type="Resource" uid="uid://bu6wkpkaqxcs3" path="res://player/player2_inputs.tres" id="3_7ae3j"]
+[ext_resource type="Shader" path="res://player/hit_flash.gdshader" id="4_aaaxr"]
 
 [sub_resource type="Gradient" id="Gradient_4rhf6"]
 offsets = PackedFloat32Array(0.121951, 0.565854, 0.912195, 1)
 colors = PackedColorArray(0, 0.533333, 0, 1, 0, 0.603922, 0, 0.670588, 0, 0, 1, 0.0588235, 1, 1, 1, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_np1qq"]
+resource_local_to_scene = true
+shader = ExtResource("4_aaaxr")
+shader_parameter/active = false
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3uxnu"]
 size = Vector2(13, 1295)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uphds"]
 size = Vector2(2294, 9)
+
+[sub_resource type="Environment" id="Environment_hdvnr"]
+background_mode = 3
+glow_enabled = true
+glow_normalized = true
+adjustment_enabled = true
+adjustment_contrast = 1.1
+adjustment_saturation = 1.1
 
 [node name="TEST" type="Node2D"]
 
@@ -31,6 +45,7 @@ input = ExtResource("3_7ae3j")
 color_ramp = SubResource("Gradient_4rhf6")
 
 [node name="Polygon2D" parent="Player2" index="6"]
+material = SubResource("ShaderMaterial_np1qq")
 color = Color(0, 0.533333, 0, 1)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -50,5 +65,8 @@ shape = SubResource("RectangleShape2D_uphds")
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-424, 333)
 shape = SubResource("RectangleShape2D_3uxnu")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_hdvnr")
 
 [editable path="Player2"]
