@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cclo3pqf533bv"]
 
-[ext_resource type="Script" path="res://custom_stuff/hit_and_hurt_box/hitbox.gd" id="1_70s05"]
 [ext_resource type="Script" path="res://bullets/bullet.gd" id="1_wawkb"]
+[ext_resource type="Script" path="res://custom_stuff/hit_and_hurt_box/projectile_hitbox.gd" id="2_apy3x"]
 [ext_resource type="Texture2D" uid="uid://c0by5gpe2jkjf" path="res://icon.svg" id="2_vg5kj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d5vtl"]
@@ -13,10 +13,10 @@ radius = 2.0
 [node name="Bullet" type="CharacterBody2D"]
 script = ExtResource("1_wawkb")
 
-[node name="HitBox" type="Area2D" parent="."]
-script = ExtResource("1_70s05")
+[node name="ProjHitBox" type="Area2D" parent="."]
+script = ExtResource("2_apy3x")
 
-[node name="HitBoxShape" type="CollisionShape2D" parent="HitBox"]
+[node name="HitBoxShape" type="CollisionShape2D" parent="ProjHitBox"]
 shape = SubResource("CircleShape2D_d5vtl")
 debug_color = Color(1, 0, 0, 0.419608)
 
@@ -26,4 +26,6 @@ scale = Vector2(0.05, 0.05)
 texture = ExtResource("2_vg5kj")
 
 [node name="CollShape" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_vsn0p")
+disabled = true

@@ -1,11 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://sxxeixb08amn"]
+[gd_scene load_steps=7 format=3 uid="uid://sxxeixb08amn"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_a7y8v"]
 [ext_resource type="Texture2D" uid="uid://c0by5gpe2jkjf" path="res://icon.svg" id="1_e6aqs"]
 [ext_resource type="Resource" uid="uid://d1rtgcv253tl5" path="res://player/player1_inputs.tres" id="2_maebw"]
+[ext_resource type="Script" path="res://custom_stuff/hit_and_hurt_box/hurtbox.gd" id="4_gy0jc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y0nrd"]
 radius = 70.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3x3a1"]
+radius = 80.0062
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_a7y8v")
@@ -20,3 +24,11 @@ shape = SubResource("CircleShape2D_y0nrd")
 [node name="BulletSpawnLocation" type="Marker2D" parent="."]
 position = Vector2(0, -135)
 gizmo_extents = 140.4
+
+[node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("hurtbox_owner")]
+script = ExtResource("4_gy0jc")
+hurtbox_owner = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_3x3a1")
+debug_color = Color(0.858328, 0.364151, 0, 0.42)

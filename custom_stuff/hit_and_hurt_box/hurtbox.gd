@@ -41,5 +41,6 @@ func _on_area_entered(hitbox: HitBox) -> void:
 		owner.recieve_knockback(kb_dir, hitbox.kb_strength)
 		
 	if hitbox.has_method("destroy"):
+		print_debug("DESTROY BULLET")
 		hitbox.destroy()
 		
