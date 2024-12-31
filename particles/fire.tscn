@@ -7,7 +7,7 @@ _data = [Vector2(0.134831, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.307692), 0.0, 0.0, 0
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_c7hei"]
-offsets = PackedFloat32Array(0.173333, 0.633333, 0.973333, 0.993333, 1)
+offsets = PackedFloat32Array(0.173333, 0.66, 0.973333, 0.993333, 1)
 colors = PackedColorArray(0.972549, 0.545098, 0.0392157, 1, 0.968627, 0.298039, 0.113725, 1, 0.992157, 0.858824, 0.65098, 0, 0.980392, 0.623529, 0.054902, 1, 1, 1, 1, 0)
 
 [node name="Fire" type="Node2D"]

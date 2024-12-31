@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://ytwrg3bpl7wf"]
+[gd_scene load_steps=11 format=3 uid="uid://ytwrg3bpl7wf"]
 
 [ext_resource type="PackedScene" uid="uid://bwkwpcmkypaje" path="res://camera/camera.tscn" id="1_tv80o"]
 [ext_resource type="PackedScene" uid="uid://sxxeixb08amn" path="res://player/player.tscn" id="2_iqfvu"]
 [ext_resource type="Resource" uid="uid://bu6wkpkaqxcs3" path="res://player/player2_inputs.tres" id="3_7ae3j"]
 [ext_resource type="Shader" path="res://player/hit_flash.gdshader" id="4_aaaxr"]
+[ext_resource type="AudioStream" uid="uid://id3u6dcosmip" path="res://music/space-beat-263970.mp3" id="5_ghduu"]
 
 [sub_resource type="Gradient" id="Gradient_4rhf6"]
 offsets = PackedFloat32Array(0.121951, 0.565854, 0.912195, 1)
@@ -33,7 +34,7 @@ adjustment_saturation = 1.1
 [node name="Camera2D" parent="." instance=ExtResource("1_tv80o")]
 
 [node name="Player" parent="." instance=ExtResource("2_iqfvu")]
-position = Vector2(289, 333)
+position = Vector2(360, 333)
 rotation = 1.5708
 
 [node name="Player2" parent="." instance=ExtResource("2_iqfvu")]
@@ -68,5 +69,10 @@ shape = SubResource("RectangleShape2D_3uxnu")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_hdvnr")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ghduu")
+volume_db = -5.0
+autoplay = true
 
 [editable path="Player2"]
