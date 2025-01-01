@@ -1,9 +1,9 @@
 extends Node2D
 
 # VFX
-const NORMAL_HIT : PackedScene = preload("res://particles/bullet_hit/hit_normal_vfx.tscn")
-const SMALL_HIT : PackedScene = preload("res://particles/bullet_hit/hit_small_vfx.tscn")
-const BIG_HIT : PackedScene = preload("res://particles/bullet_hit/hit_big_vfx.tscn")
+const NORMAL_HIT : PackedScene = preload("res://vfx/bullet_hit/hit_normal_vfx.tscn")
+const SMALL_HIT : PackedScene = preload("res://vfx/bullet_hit/hit_small_vfx.tscn")
+const BIG_HIT : PackedScene = preload("res://vfx/bullet_hit/hit_big_vfx.tscn")
 
 
 @onready var chroma_rect: ColorRect = $CanvasLayer/ChromaticAbberation

@@ -17,7 +17,7 @@ func del_all_bullets():
 	p1_bullets = []
 	p2_bullets = []
 
-func shoot_bullet(player : Player, type : BULLET_TYPE):
+func shoot_bullet(player : Player2D, type : BULLET_TYPE):
 	var bullet : Bullet2D = get_bullet_type(type) # sets the bullet variable accr to type
 	print(get_tree().get_nodes_in_group(GameManager.p1_bullet_id))
 	bullet.assign_var()
@@ -49,11 +49,11 @@ func get_bullet_type(type : BULLET_TYPE) -> Bullet2D:
 			bullet.type = BULLET_TYPE.NORMAL
 	return bullet
 
-func apply_bullet_color(player : Player, bullet : Bullet2D):
+func apply_bullet_color(player : Player2D, bullet : Bullet2D):
 	bullet.body.color = player.body.color
 	bullet.trails_vfx.color_ramp = player.trails_vfx.color_ramp
 
-func add_bullet_group(bullet : Bullet2D, player : Player):
+func add_bullet_group(bullet : Bullet2D, player : Player2D):
 	if player == GameManager.p1:
 		bullet.add_to_group(GameManager.p1_bullet_id)
 	elif player == GameManager.p2:

@@ -31,10 +31,16 @@ position = Vector2(988, 548)
 [node name="Player" parent="." instance=ExtResource("2_iqfvu")]
 position = Vector2(360, 333)
 rotation = 1.5708
+speed = null
+friction = null
+acceleration = null
 
 [node name="Player2" parent="." instance=ExtResource("2_iqfvu")]
 position = Vector2(1756, 756)
 rotation = -1.5708
+speed = null
+friction = null
+acceleration = null
 input = ExtResource("3_7ae3j")
 
 [node name="Polygon2D" parent="Player2" index="0"]

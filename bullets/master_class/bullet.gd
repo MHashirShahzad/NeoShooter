@@ -1,4 +1,5 @@
 extends CharacterBody2D
+## Custom Class used for all bullets :C
 class_name Bullet2D
 
 @export var speed : float = 900.0
@@ -24,7 +25,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.y = move_toward(velocity.y, 0, speed)
-
+	
 	move_and_slide()
 
 func _ready() -> void:

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cbpfd5v11pp36"]
 
-[ext_resource type="Gradient" uid="uid://6bcketyqpt8s" path="res://particles/hit_gradient.tres" id="1_3cx7q"]
+[ext_resource type="Gradient" uid="uid://6bcketyqpt8s" path="res://vfx/hit_gradient.tres" id="1_3cx7q"]
 
 [sub_resource type="Curve" id="Curve_8k2ls"]
 _data = [Vector2(0, 0.615385), 0.0, 0.0, 0, 0, Vector2(0.208889, 0.736264), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -10,6 +10,7 @@ point_count = 3
 texture_filter = 1
 emitting = false
 amount = 200
+lifetime = 1.5
 one_shot = true
 speed_scale = 4.5
 explosiveness = 1.0

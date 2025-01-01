@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://bullets/master_class/bullet.gd" id="1_gct0v"]
 [ext_resource type="Script" path="res://custom_stuff/hit_and_hurt_box/projectile_hitbox.gd" id="2_w16ho"]
-[ext_resource type="PackedScene" uid="uid://cbtrogwycneft" path="res://particles/trail_vfx.tscn" id="3_fqxdx"]
+[ext_resource type="PackedScene" uid="uid://cbtrogwycneft" path="res://vfx/trail_vfx.tscn" id="3_fqxdx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d5vtl"]
 radius = 10.0499
@@ -10,7 +10,7 @@ radius = 10.0499
 [sub_resource type="CircleShape2D" id="CircleShape2D_vsn0p"]
 radius = 2.0
 
-[sub_resource type="Gradient" id="Gradient_8xbtk"]
+[sub_resource type="Gradient" id="Gradient_mb1mt"]
 resource_local_to_scene = true
 offsets = PackedFloat32Array(0.173333, 0.633333, 0.973333, 0.993333, 1)
 colors = PackedColorArray(0.0392157, 0.545098, 0.972549, 1, 0.450578, 0.00227139, 0.992695, 1, 0.992157, 0.858824, 0.65098, 0, 0.980392, 0.623529, 0.054902, 1, 1, 1, 1, 0)
@@ -59,4 +59,4 @@ initial_velocity_min = 0.0
 initial_velocity_max = 1.0
 scale_amount_min = 2.0
 scale_amount_max = 5.0
-color_ramp = SubResource("Gradient_8xbtk")
+color_ramp = SubResource("Gradient_mb1mt")

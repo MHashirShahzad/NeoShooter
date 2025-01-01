@@ -1,5 +1,5 @@
 extends CharacterBody2D
-class_name Player
+class_name Player2D
 # =============================================================================================
 # Exports
 @export_group("Physics")
