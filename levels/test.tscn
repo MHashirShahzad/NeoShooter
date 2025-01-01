@@ -1,55 +1,53 @@
-[gd_scene load_steps=9 format=3 uid="uid://ytwrg3bpl7wf"]
+[gd_scene load_steps=10 format=3 uid="uid://ytwrg3bpl7wf"]
 
 [ext_resource type="PackedScene" uid="uid://bwkwpcmkypaje" path="res://camera/camera.tscn" id="1_tv80o"]
 [ext_resource type="PackedScene" uid="uid://sxxeixb08amn" path="res://player/player.tscn" id="2_iqfvu"]
 [ext_resource type="Resource" uid="uid://bu6wkpkaqxcs3" path="res://player/player2_inputs.tres" id="3_7ae3j"]
-[ext_resource type="Shader" path="res://player/hit_flash.gdshader" id="4_aaaxr"]
+[ext_resource type="Shader" path="res://player/colorflash.gdshader" id="4_aaaxr"]
 [ext_resource type="Gradient" uid="uid://weuimmf02ocv" path="res://player/player2_colorgradient.tres" id="5_ryk65"]
 [ext_resource type="AudioStream" uid="uid://co48k5dn8dirp" path="res://audio/music/hashir/fast-paced-boss-battle-230222.mp3" id="6_37tam"]
+[ext_resource type="Script" path="res://custom_stuff/hit_and_hurt_box/hurtbox.gd" id="7_pirds"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_np1qq"]
 resource_local_to_scene = true
 shader = ExtResource("4_aaaxr")
-shader_parameter/active = false
-shader_parameter/near_death = false
+shader_parameter/white_flash = false
+shader_parameter/red_flash = false
+shader_parameter/white_color = null
+shader_parameter/red_color = null
 
 [sub_resource type="Environment" id="Environment_hdvnr"]
 background_mode = 3
 tonemap_mode = 3
 glow_enabled = true
-glow_normalized = true
-glow_intensity = 8.0
+glow_bloom = 0.43
 adjustment_enabled = true
 adjustment_contrast = 1.1
 adjustment_saturation = 1.1
 
 [node name="TEST" type="Node2D"]
 
-[node name="Camera2D" parent="." instance=ExtResource("1_tv80o")]
-position = Vector2(988, 548)
+[node name="Players" type="Node" parent="."]
 
-[node name="Player" parent="." instance=ExtResource("2_iqfvu")]
+[node name="Player1" parent="Players" instance=ExtResource("2_iqfvu")]
 position = Vector2(360, 333)
 rotation = 1.5708
-speed = null
-friction = null
-acceleration = null
 
-[node name="Player2" parent="." instance=ExtResource("2_iqfvu")]
+[node name="Player2" parent="Players" instance=ExtResource("2_iqfvu")]
 position = Vector2(1756, 756)
 rotation = -1.5708
-speed = null
-friction = null
-acceleration = null
 input = ExtResource("3_7ae3j")
 
-[node name="Polygon2D" parent="Player2" index="0"]
+[node name="Polygon2D" parent="Players/Player2" index="0"]
 material = SubResource("ShaderMaterial_np1qq")
 color = Color(0.12549, 0.839216, 0.780392, 1)
 
-[node name="Trails_VFX" parent="Player2" index="6"]
+[node name="Trails_VFX" parent="Players/Player2" index="6"]
 position = Vector2(-9.15527e-05, 29)
 color_ramp = ExtResource("5_ryk65")
+
+[node name="Camera2D" parent="." instance=ExtResource("1_tv80o")]
+position = Vector2(988, 548)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_hdvnr")
@@ -78,14 +76,14 @@ polygon = PackedVector2Array(600, -300, 500, -300, 500, 1000, 600, 1000)
 [node name="BORDER" type="Polygon2D" parent="Level"]
 z_index = -1
 position = Vector2(420, 220)
-color = Color(0.2, 0.223529, 0.254902, 1)
+color = Color(0.290196, 0.329412, 0.384314, 1)
 invert_enabled = true
 polygon = PackedVector2Array(-420, -220, 1600, -220, 1600, 890, -420, 890)
 
 [node name="BORDER2" type="Polygon2D" parent="Level"]
 z_index = -1
 position = Vector2(420, 220)
-color = Color(0.141176, 0.133333, 0.203922, 1)
+color = Color(0.427451, 0.458824, 0.552941, 1)
 invert_enabled = true
 invert_border = 502.9
 polygon = PackedVector2Array(-520, -320, 1700, -320, 1700, 990, -520, 990)
@@ -93,13 +91,21 @@ polygon = PackedVector2Array(-520, -320, 1700, -320, 1700, 990, -520, 990)
 [node name="BG" type="Polygon2D" parent="Level"]
 z_index = -4
 position = Vector2(420, 220)
-color = Color(0.290196, 0.329412, 0.384314, 1)
+color = Color(0.2, 0.223529, 0.254902, 1)
 polygon = PackedVector2Array(-420, -220, 1600, -220, 1600, 890, -420, 890)
 
 [node name="CenterBar" type="Polygon2D" parent="Level"]
 z_index = -2
 position = Vector2(469, 220)
-color = Color(0.427451, 0.458824, 0.552941, 1)
+color = Color(0.258824, 0.141176, 0.2, 1)
 polygon = PackedVector2Array(600, -300, 550.699, -300, 500, -300, 500, 1000, 600, 1000)
 
-[editable path="Player2"]
+[node name="BulletKillBox" type="Area2D" parent="Level"]
+script = ExtResource("7_pirds")
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Level/BulletKillBox"]
+position = Vector2(420, 220)
+build_mode = 1
+polygon = PackedVector2Array(-665, -471, 1785, -448, 1766, 1141, -655, 1136)
+
+[editable path="Players/Player2"]

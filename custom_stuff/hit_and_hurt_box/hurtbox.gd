@@ -16,6 +16,10 @@ func _on_area_entered(hitbox: HitBox) -> void:
 	if hitbox == null:
 		return
 		
+	if !owner:
+		destroy_bullet(hitbox)
+		return
+		
 	if owner == hitbox.to_ignore:
 		return
 	
@@ -41,12 +45,16 @@ func _on_area_entered(hitbox: HitBox) -> void:
 			
 		owner.recieve_knockback(kb_dir, hitbox.kb_strength)
 		
-	if hitbox.has_method("destroy"):
-		print_debug("DESTROY BULLET")
-		hitbox.destroy()
+	# destroys bullet if it can be destroyed
+	destroy_bullet(hitbox)
 		
 
 func hit_effects(hitbox : HitBox) -> void:
 	HitEffectManager.hit_stop(hitbox.hit_stop)
 	HitEffectManager.camera_shake(hitbox.cam_shake_str)
 	HitEffectManager.hit_vfx(hitbox)
+
+func destroy_bullet(hitbox : HitBox) -> void:
+	if hitbox.has_method("destroy"):
+		#print_debug("DESTROY BULLET")
+		hitbox.destroy()

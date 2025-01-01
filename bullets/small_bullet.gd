@@ -6,7 +6,6 @@ var time : float = 0
 func _process(delta: float) -> void:
 	time += delta
 	direction.y = get_cosine()
-	print(time)
 	
 ## frequency and amplitude
 func get_cosine(freq: float = 10, amp : float = 1) -> float:
@@ -14,5 +13,5 @@ func get_cosine(freq: float = 10, amp : float = 1) -> float:
 
 # for time = 0 sine starts at highest point while cosine starts at center so gives us
 # an overall better thing
-func get_sine(freq : float = 10, amp : float = 1) -> float:
-	return sin(time * freq) * amp 
+#func get_sine(freq : float = 10, amp : float = 1) -> float:
+	#return sin(time * freq) * amp 

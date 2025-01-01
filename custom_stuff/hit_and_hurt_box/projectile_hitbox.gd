@@ -13,5 +13,7 @@ func _ready() -> void:
 		collision_shape = child
 
 func destroy():
+	var owner : Player2D = bullet.hit_box.to_ignore
+	owner.spawned_bullets -= 1
 	bullet.queue_free()
 	#self.to_ignore.queue_free()

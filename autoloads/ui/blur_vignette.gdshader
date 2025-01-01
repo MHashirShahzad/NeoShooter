@@ -6,6 +6,7 @@ uniform float blur_amount : hint_range(0, 5) = 1.0; // Strength of the blur effe
 uniform float blur_inner : hint_range(0, 1) = 0.6; // Inner edge of the blur effect
 uniform float blur_outer : hint_range(0, 1) = 0.66; // Outer edge of the blur effect
 
+uniform float dither_strength = 0.03;
 void fragment() {
     // Original color of the pixel from the screen
     vec4 pixelColor = texture(screen_texture, UV);
@@ -17,8 +18,12 @@ void fragment() {
     float distance = length(UV - vec2(0.5, 0.5));
 
     // Apply smoothstep function to control transition between areas
-    float blur = smoothstep(blur_inner - blur_radius, blur_outer, distance);
 
+
+	// DITHER
+	float dither = fract(sin(dot(UV, vec2(12.9898, 78.233))) * 43758.5453123) * dither_strength;
+
+	float blur = smoothstep(blur_inner - blur_radius, blur_outer, distance) + dither;
     // Mix colors of the blur effect and the original color based on the smoothstep value
     pixelColor.rgb = mix(blurColor.rgb, COLOR.rgb, -blur);
 

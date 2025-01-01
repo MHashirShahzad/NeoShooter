@@ -4,12 +4,14 @@ class_name Player2D
 # Exports
 @export_group("Physics")
 @export var speed : int = 60000
-@export var friction : float = 0.1
+@export var friction : float = 0.2
 @export var acceleration : float = 0.4
 
 @export_group("Input")
 @export var input : CustomInput
 
+@export_group("Bullets")
+@export var max_bullet_count : int = 6
 
 # =============================================================================================
 # On ready
@@ -26,6 +28,7 @@ var direction : Vector2
 var wish_dir : Vector2
 var health : float = 100
 var is_input_enabled : bool = true
+var spawned_bullets : int = 0
 
 # =============================================================================================
 # Code
@@ -55,6 +58,13 @@ func move(delta : float) -> void:
 func _input(event: InputEvent) -> void:
 	if !is_input_enabled:
 		return
+	bullet_input()
+	
+func bullet_input() -> void:
+	# low ammo
+	if spawned_bullets >= max_bullet_count:
+		ani_player.play("ammo_flash")
+		return
 	if Input.is_action_just_pressed(input.shoot):
 		shoot(BulletManager.BULLET_TYPE.NORMAL)
 	if Input.is_action_just_pressed(input.small_shoot):
@@ -62,7 +72,9 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed(input.big_shoot):
 		shoot(BulletManager.BULLET_TYPE.BIG)
 
+
 func shoot(type : BulletManager.BULLET_TYPE) -> void:
+	spawned_bullets += 1
 	BulletManager.shoot_bullet(self, type)
 	
 func on_hit(dmg: float) -> void:

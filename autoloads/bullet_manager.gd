@@ -1,7 +1,5 @@
 extends Node2D
 
-var p1_bullets : Array[Bullet2D] = []
-var p2_bullets : Array[Bullet2D] = []
 
 enum BULLET_TYPE{
 	NORMAL,
@@ -13,13 +11,11 @@ const BULLET : PackedScene = preload("res://bullets/normal_bullet.tscn")
 const SMALL_BULLET : PackedScene = preload("res://bullets/small_bullet.tscn")
 const BIG_BULLET : PackedScene = preload("res://bullets/big_bullet.tscn")
 
-func del_all_bullets():
-	p1_bullets = []
-	p2_bullets = []
+
 
 func shoot_bullet(player : Player2D, type : BULLET_TYPE):
 	var bullet : Bullet2D = get_bullet_type(type) # sets the bullet variable accr to type
-	print(get_tree().get_nodes_in_group(GameManager.p1_bullet_id))
+	
 	bullet.assign_var()
 	
 	bullet.rotation = player.rotation
