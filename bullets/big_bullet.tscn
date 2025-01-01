@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://wgqm15tsa4u"]
 
-[ext_resource type="PackedScene" uid="uid://cclo3pqf533bv" path="res://bullets/main_bullet.tscn" id="1_8d4ca"]
+[ext_resource type="PackedScene" uid="uid://cclo3pqf533bv" path="res://bullets/master_class/main_bullet.tscn" id="1_8d4ca"]
 
 [sub_resource type="Gradient" id="Gradient_74cpd"]
 resource_local_to_scene = true
@@ -15,6 +15,7 @@ damage = 20.0
 hit_stop = 0.3
 screw_state = 0.1
 screw_state_str = 100.0
+chroma_str = 0.02
 cam_shake_str = 20.0
 
 [node name="HitBoxShape" parent="ProjHitBox" index="0"]

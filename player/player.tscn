@@ -12,6 +12,7 @@
 resource_local_to_scene = true
 shader = ExtResource("5_fy4w8")
 shader_parameter/active = false
+shader_parameter/near_death = false
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y0nrd"]
 radius = 51.0

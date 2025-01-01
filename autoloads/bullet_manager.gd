@@ -9,7 +9,7 @@ enum BULLET_TYPE{
 	BIG
 }
 
-const BULLET : PackedScene = preload("res://bullets/main_bullet.tscn")
+const BULLET : PackedScene = preload("res://bullets/normal_bullet.tscn")
 const SMALL_BULLET : PackedScene = preload("res://bullets/small_bullet.tscn")
 const BIG_BULLET : PackedScene = preload("res://bullets/big_bullet.tscn")
 
@@ -18,18 +18,7 @@ func del_all_bullets():
 	p2_bullets = []
 
 func shoot_bullet(player : Player, type : BULLET_TYPE):
-	var bullet : Bullet2D
-	# get the bullet type
-	match type:
-		BULLET_TYPE.NORMAL:
-			bullet = BULLET.instantiate()
-		BULLET_TYPE.BIG:
-			bullet = BIG_BULLET.instantiate()
-		BULLET_TYPE.SMALL:
-			bullet = SMALL_BULLET.instantiate()
-		_:
-			bullet = BULLET.instantiate()
-	
+	var bullet : Bullet2D = get_bullet_type(type) # sets the bullet variable accr to type
 	
 	bullet._init()
 	
@@ -42,7 +31,23 @@ func shoot_bullet(player : Player, type : BULLET_TYPE):
 	
 	# p1_bullets.append(bullet)
 
-
+func get_bullet_type(type : BULLET_TYPE) -> Bullet2D:
+	var bullet : Bullet2D
+	# get the bullet type
+	match type:
+		BULLET_TYPE.NORMAL:
+			bullet = BULLET.instantiate()
+			bullet.type = BULLET_TYPE.NORMAL
+		BULLET_TYPE.BIG:
+			bullet = BIG_BULLET.instantiate()
+			bullet.type = BULLET_TYPE.BIG
+		BULLET_TYPE.SMALL:
+			bullet = SMALL_BULLET.instantiate()
+			bullet.type = BULLET_TYPE.SMALL
+		_:
+			bullet = BULLET.instantiate()
+			bullet.type = BULLET_TYPE.NORMAL
+	return bullet
 
 func apply_bullet_color(player : Player, bullet : Bullet2D):
 	bullet.body.color = player.body.color

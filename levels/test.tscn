@@ -1,22 +1,17 @@
-[gd_scene load_steps=11 format=3 uid="uid://ytwrg3bpl7wf"]
+[gd_scene load_steps=9 format=3 uid="uid://ytwrg3bpl7wf"]
 
 [ext_resource type="PackedScene" uid="uid://bwkwpcmkypaje" path="res://camera/camera.tscn" id="1_tv80o"]
 [ext_resource type="PackedScene" uid="uid://sxxeixb08amn" path="res://player/player.tscn" id="2_iqfvu"]
 [ext_resource type="Resource" uid="uid://bu6wkpkaqxcs3" path="res://player/player2_inputs.tres" id="3_7ae3j"]
 [ext_resource type="Shader" path="res://player/hit_flash.gdshader" id="4_aaaxr"]
-[ext_resource type="AudioStream" uid="uid://id3u6dcosmip" path="res://music/space-beat-263970.mp3" id="5_ghduu"]
 [ext_resource type="Gradient" uid="uid://weuimmf02ocv" path="res://player/player2_colorgradient.tres" id="5_ryk65"]
+[ext_resource type="AudioStream" uid="uid://co48k5dn8dirp" path="res://music/hashir/fast-paced-boss-battle-230222.mp3" id="6_37tam"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_np1qq"]
 resource_local_to_scene = true
 shader = ExtResource("4_aaaxr")
 shader_parameter/active = false
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3uxnu"]
-size = Vector2(13, 1295)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uphds"]
-size = Vector2(2294, 9)
+shader_parameter/near_death = false
 
 [sub_resource type="Environment" id="Environment_hdvnr"]
 background_mode = 3
@@ -31,13 +26,14 @@ adjustment_saturation = 1.1
 [node name="TEST" type="Node2D"]
 
 [node name="Camera2D" parent="." instance=ExtResource("1_tv80o")]
+position = Vector2(988, 548)
 
 [node name="Player" parent="." instance=ExtResource("2_iqfvu")]
 position = Vector2(360, 333)
 rotation = 1.5708
 
 [node name="Player2" parent="." instance=ExtResource("2_iqfvu")]
-position = Vector2(741, 333)
+position = Vector2(1756, 756)
 rotation = -1.5708
 input = ExtResource("3_7ae3j")
 
@@ -49,29 +45,55 @@ color = Color(0.12549, 0.839216, 0.780392, 1)
 position = Vector2(-9.15527e-05, 29)
 color_ramp = ExtResource("5_ryk65")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1607, 333)
-shape = SubResource("RectangleShape2D_3uxnu")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(573, -227)
-shape = SubResource("RectangleShape2D_uphds")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(573, 882)
-shape = SubResource("RectangleShape2D_uphds")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-424, 333)
-shape = SubResource("RectangleShape2D_3uxnu")
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_hdvnr")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_ghduu")
-volume_db = -5.0
+stream = ExtResource("6_37tam")
+volume_db = -8.104
+autoplay = true
+
+[node name="Level" type="Node" parent="."]
+
+[node name="Collision Borders" type="StaticBody2D" parent="Level"]
+position = Vector2(420, 220)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level/Collision Borders"]
+build_mode = 1
+polygon = PackedVector2Array(-420, -220, 1600, -220, 1600, 890, -420, 890)
+
+[node name="Collision Center" type="StaticBody2D" parent="Level"]
+position = Vector2(420, 220)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level/Collision Center"]
+position = Vector2(48, 32)
+polygon = PackedVector2Array(600, -300, 500, -300, 500, 1000, 600, 1000)
+
+[node name="BORDER" type="Polygon2D" parent="Level"]
+z_index = -1
+position = Vector2(420, 220)
+color = Color(0.2, 0.223529, 0.254902, 1)
+invert_enabled = true
+polygon = PackedVector2Array(-420, -220, 1600, -220, 1600, 890, -420, 890)
+
+[node name="BORDER2" type="Polygon2D" parent="Level"]
+z_index = -1
+position = Vector2(420, 220)
+color = Color(0.141176, 0.133333, 0.203922, 1)
+invert_enabled = true
+invert_border = 502.9
+polygon = PackedVector2Array(-520, -320, 1700, -320, 1700, 990, -520, 990)
+
+[node name="BG" type="Polygon2D" parent="Level"]
+z_index = -4
+position = Vector2(420, 220)
+color = Color(0.290196, 0.329412, 0.384314, 1)
+polygon = PackedVector2Array(-420, -220, 1600, -220, 1600, 890, -420, 890)
+
+[node name="CenterBar" type="Polygon2D" parent="Level"]
+z_index = -2
+position = Vector2(469, 220)
+color = Color(0.427451, 0.458824, 0.552941, 1)
+polygon = PackedVector2Array(600, -300, 550.699, -300, 500, -300, 500, 1000, 600, 1000)
 
 [editable path="Player2"]
