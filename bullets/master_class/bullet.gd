@@ -4,11 +4,15 @@ class_name Bullet2D
 @export var speed : float = 900.0
 var direction : Vector2
 var type : BulletManager.BULLET_TYPE
-@onready var hit_box: ProjectileHitBox = $ProjHitBox
-@onready var body: Polygon2D = $MainBody
-@onready var trails_vfx: CPUParticles2D = $Trails
 
-func _init() -> void:
+var hit_box: ProjectileHitBox
+var body: Polygon2D 
+var trails_vfx: CPUParticles2D 
+
+## i know this is stupid but it works and for God's sake dont touch it
+## i wasted other ppl's time trynna figure out whats the issue was
+## in bullet manager i call this func MANUALLY, 
+func assign_var() -> void:
 	hit_box = $ProjHitBox
 	body = $MainBody
 	trails_vfx = $Trails

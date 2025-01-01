@@ -20,7 +20,7 @@ func del_all_bullets():
 func shoot_bullet(player : Player, type : BULLET_TYPE):
 	var bullet : Bullet2D = get_bullet_type(type) # sets the bullet variable accr to type
 	print(get_tree().get_nodes_in_group(GameManager.p1_bullet_id))
-	bullet._init()
+	bullet.assign_var()
 	
 	bullet.rotation = player.rotation
 	bullet.hit_box.to_ignore = player
