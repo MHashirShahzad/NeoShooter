@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://sxxeixb08amn"]
+[gd_scene load_steps=15 format=3 uid="uid://sxxeixb08amn"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_a7y8v"]
 [ext_resource type="Resource" uid="uid://d1rtgcv253tl5" path="res://player/player1_inputs.tres" id="2_maebw"]
@@ -7,6 +7,7 @@
 [ext_resource type="Shader" path="res://player/hit_flash.gdshader" id="5_fy4w8"]
 [ext_resource type="PackedScene" uid="uid://cbtrogwycneft" path="res://particles/trail_vfx.tscn" id="6_de123"]
 [ext_resource type="Gradient" uid="uid://ccr0bqso5icc5" path="res://player/player1_colorgradient.tres" id="6_u1ddk"]
+[ext_resource type="AudioStream" uid="uid://bwtg824lfsynt" path="res://audio/effects/low-engine-hum-72529.ogg" id="8_p3kwn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dmu1y"]
 resource_local_to_scene = true
@@ -124,3 +125,8 @@ particle_flag_align_y = true
 position = Vector2(0, 29)
 particle_flag_align_y = true
 color_ramp = ExtResource("6_u1ddk")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_p3kwn")
+volume_db = 2.438
+autoplay = true

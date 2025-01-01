@@ -26,6 +26,7 @@ var direction : Vector2
 var wish_dir : Vector2
 var health : float = 100
 var is_input_enabled : bool = true
+
 # =============================================================================================
 # Code
 

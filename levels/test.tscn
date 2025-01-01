@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://bu6wkpkaqxcs3" path="res://player/player2_inputs.tres" id="3_7ae3j"]
 [ext_resource type="Shader" path="res://player/hit_flash.gdshader" id="4_aaaxr"]
 [ext_resource type="Gradient" uid="uid://weuimmf02ocv" path="res://player/player2_colorgradient.tres" id="5_ryk65"]
-[ext_resource type="AudioStream" uid="uid://co48k5dn8dirp" path="res://music/hashir/fast-paced-boss-battle-230222.mp3" id="6_37tam"]
+[ext_resource type="AudioStream" uid="uid://co48k5dn8dirp" path="res://audio/music/hashir/fast-paced-boss-battle-230222.mp3" id="6_37tam"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_np1qq"]
 resource_local_to_scene = true

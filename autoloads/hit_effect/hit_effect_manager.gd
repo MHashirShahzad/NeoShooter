@@ -1,10 +1,14 @@
 extends Node2D
 
+# VFX
+const NORMAL_HIT : PackedScene = preload("res://particles/bullet_hit/hit_normal_vfx.tscn")
+const SMALL_HIT : PackedScene = preload("res://particles/bullet_hit/hit_small_vfx.tscn")
+const BIG_HIT : PackedScene = preload("res://particles/bullet_hit/hit_big_vfx.tscn")
+
+
+@onready var chroma_rect: ColorRect = $CanvasLayer/ChromaticAbberation
 @onready var ani_player: AnimationPlayer = $AnimationPlayer
 var camera : SpaceShooterCamera
-const PARTICLES_HIT : PackedScene = preload("res://particles/hit_vfx.tscn")
-@onready var chroma_rect: ColorRect = $CanvasLayer/ChromaticAbberation
-
 
 
 func hit_stop(duration : float, time_scale : float = 0.05) -> void:
@@ -48,12 +52,12 @@ func get_vfx_type(bullet : Bullet2D) -> CPUParticles2D:
 	# get the bullet type
 	match bullet.type:
 		BULLET_TYPE.NORMAL:
-			particle_vfx = PARTICLES_HIT.instantiate()
+			particle_vfx = NORMAL_HIT.instantiate()
 		BULLET_TYPE.BIG:
-			particle_vfx = PARTICLES_HIT.instantiate()
+			particle_vfx = BIG_HIT.instantiate()
 		BULLET_TYPE.SMALL:
-			particle_vfx = PARTICLES_HIT.instantiate()
+			particle_vfx = SMALL_HIT.instantiate()
 		_:
-			particle_vfx = PARTICLES_HIT.instantiate()
+			particle_vfx = NORMAL_HIT.instantiate()
 			
 	return particle_vfx
