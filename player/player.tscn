@@ -15,7 +15,7 @@ shader = ExtResource("5_fy4w8")
 shader_parameter/white_flash = false
 shader_parameter/red_flash = false
 shader_parameter/white_color = Color(1, 1, 1, 1)
-shader_parameter/red_color = Color(0.705882, 0.12549, 0.164706, 1)
+shader_parameter/red_color = Color(0.706, 0.125, 0.165, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y0nrd"]
 radius = 51.0

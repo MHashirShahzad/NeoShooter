@@ -13,8 +13,8 @@ resource_local_to_scene = true
 shader = ExtResource("4_aaaxr")
 shader_parameter/white_flash = false
 shader_parameter/red_flash = false
-shader_parameter/white_color = null
-shader_parameter/red_color = null
+shader_parameter/white_color = Color(1, 1, 1, 1)
+shader_parameter/red_color = Color(0.706, 0.125, 0.165, 1)
 
 [sub_resource type="Environment" id="Environment_hdvnr"]
 background_mode = 3
