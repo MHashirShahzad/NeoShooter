@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://bo2pfa1syoew"]
+[gd_scene load_steps=4 format=3 uid="uid://bo2pfa1syoew"]
 
 [ext_resource type="Script" path="res://autoloads/ui/ui_manager.gd" id="1_u1v7n"]
+[ext_resource type="Shader" path="res://autoloads/ui/blur_vignette.gdshader" id="2_26je8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ibr5y"]
+shader = ExtResource("2_26je8")
+shader_parameter/blur_radius = 0.066
+shader_parameter/blur_amount = 1.0
+shader_parameter/blur_inner = 0.636
+shader_parameter/blur_outer = 0.749
 
 [node name="UIManager" type="Control"]
 layout_mode = 3
@@ -12,6 +20,15 @@ grow_vertical = 2
 script = ExtResource("1_u1v7n")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BlurVignette" type="ColorRect" parent="CanvasLayer"]
+visible = false
+material = SubResource("ShaderMaterial_ibr5y")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 offset_right = 38.0

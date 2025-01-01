@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://curif1tjd6wv4"]
+[gd_scene load_steps=5 format=3 uid="uid://curif1tjd6wv4"]
 
 [ext_resource type="PackedScene" uid="uid://cclo3pqf533bv" path="res://bullets/main_bullet.tscn" id="1_83854"]
+[ext_resource type="PackedScene" uid="uid://cbtrogwycneft" path="res://particles/trail_vfx.tscn" id="2_msfcr"]
+[ext_resource type="Gradient" uid="uid://6bcketyqpt8s" path="res://particles/hit_gradient.tres" id="3_31mnn"]
 
 [sub_resource type="Gradient" id="Gradient_cu7tv"]
 resource_local_to_scene = true
@@ -10,9 +12,37 @@ colors = PackedColorArray(0.0392157, 0.545098, 0.972549, 1, 0.450578, 0.00227139
 [node name="Bullet" instance=ExtResource("1_83854")]
 speed = 1200.0
 
-[node name="Polygon2D" parent="." index="3"]
-polygon = PackedVector2Array(-2, -6, 2, -6, 2, 30, -2, 30)
+[node name="MainBody" parent="." index="3"]
+polygon = PackedVector2Array(-7, -6, 7, -6, 7, 10, -7, 10)
 
-[node name="Trails" parent="." index="4"]
-amount = 40
+[node name="Top" parent="." index="4"]
+polygon = PackedVector2Array(-7, -4, 7, -4, 0, -11)
+
+[node name="Bottom" parent="." index="5"]
+position = Vector2(0, 16)
+polygon = PackedVector2Array(-4, -6, 4, -6, 5, 0, -5, 0)
+
+[node name="Design" type="Polygon2D" parent="." index="6"]
+position = Vector2(-7, 6)
+polygon = PackedVector2Array(0, -8, 0, -6, 0, 0, -5, 1)
+
+[node name="Design2" type="Polygon2D" parent="." index="7"]
+position = Vector2(11, 6)
+polygon = PackedVector2Array(-4, -8, 1, 1, -4, 0)
+
+[node name="Trails" parent="." index="8"]
+position = Vector2(0, 16)
+amount = 50
+scale_amount_max = 4.0
 color_ramp = SubResource("Gradient_cu7tv")
+
+[node name="Trails2" parent="." index="9" instance=ExtResource("2_msfcr")]
+position = Vector2(0, 16)
+amount = 50
+emission_sphere_radius = 10.0
+particle_flag_align_y = true
+initial_velocity_min = 0.0
+initial_velocity_max = 1.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+color_ramp = ExtResource("3_31mnn")

@@ -7,4 +7,6 @@ class_name CustomInput
 @export var left : String  = "p1_left"
 @export var right : String  = "p1_right"
 
-@export var shoot : String  = "p1_right"
+@export var shoot : String  = "p1_shoot"
+@export var small_shoot : String  = "p1_shoot_small"
+@export var big_shoot : String  = "p1_shoot_big"

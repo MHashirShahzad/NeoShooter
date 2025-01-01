@@ -20,8 +20,10 @@ size = Vector2(2294, 9)
 
 [sub_resource type="Environment" id="Environment_hdvnr"]
 background_mode = 3
+tonemap_mode = 3
 glow_enabled = true
 glow_normalized = true
+glow_intensity = 8.0
 adjustment_enabled = true
 adjustment_contrast = 1.1
 adjustment_saturation = 1.1
@@ -71,6 +73,5 @@ environment = SubResource("Environment_hdvnr")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_ghduu")
 volume_db = -5.0
-autoplay = true
 
 [editable path="Player2"]

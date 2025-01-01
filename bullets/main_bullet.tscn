@@ -10,7 +10,7 @@ radius = 10.0499
 [sub_resource type="CircleShape2D" id="CircleShape2D_vsn0p"]
 radius = 2.0
 
-[sub_resource type="Gradient" id="Gradient_ocle4"]
+[sub_resource type="Gradient" id="Gradient_xd7e0"]
 resource_local_to_scene = true
 offsets = PackedFloat32Array(0.173333, 0.633333, 0.973333, 0.993333, 1)
 colors = PackedColorArray(0.0392157, 0.545098, 0.972549, 1, 0.450578, 0.00227139, 0.992695, 1, 0.992157, 0.858824, 0.65098, 0, 0.980392, 0.623529, 0.054902, 1, 1, 1, 1, 0)
@@ -37,12 +37,20 @@ wait_time = 5.0
 one_shot = true
 autostart = true
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
+[node name="MainBody" type="Polygon2D" parent="."]
 color = Color(0.0392157, 0.545098, 0.972549, 1)
-polygon = PackedVector2Array(-4, -6, 4, -6, 4, 30, -4, 30)
+polygon = PackedVector2Array(-4, -6, 4, -6, 4, 20, -4, 20)
+
+[node name="Top" type="Polygon2D" parent="."]
+position = Vector2(0, -2)
+polygon = PackedVector2Array(-4, -4, 4, -4, 2, -10, -2, -10)
+
+[node name="Bottom" type="Polygon2D" parent="."]
+position = Vector2(0, 26)
+polygon = PackedVector2Array(-4, -6, 4, -6, 6, 5, -6, 5)
 
 [node name="Trails" parent="." instance=ExtResource("3_fqxdx")]
-position = Vector2(0, 22)
+position = Vector2(0, 26)
 amount = 20
 emission_sphere_radius = 10.0
 particle_flag_align_y = true
@@ -50,4 +58,4 @@ initial_velocity_min = 0.0
 initial_velocity_max = 1.0
 scale_amount_min = 2.0
 scale_amount_max = 5.0
-color_ramp = SubResource("Gradient_ocle4")
+color_ramp = SubResource("Gradient_xd7e0")

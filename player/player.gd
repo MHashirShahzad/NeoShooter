@@ -55,10 +55,14 @@ func _input(event: InputEvent) -> void:
 	if !is_input_enabled:
 		return
 	if Input.is_action_just_pressed(input.shoot):
-		shoot()
+		shoot(BulletManager.BULLET_TYPE.NORMAL)
+	if Input.is_action_just_pressed(input.small_shoot):
+		shoot(BulletManager.BULLET_TYPE.SMALL)
+	if Input.is_action_just_pressed(input.big_shoot):
+		shoot(BulletManager.BULLET_TYPE.BIG)
 
-func shoot() -> void:
-	BulletManager.shoot_bullet(self)
+func shoot(type : BulletManager.BULLET_TYPE) -> void:
+	BulletManager.shoot_bullet(self, type)
 	
 func on_hit(dmg: float) -> void:
 	self.health -= dmg
