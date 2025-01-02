@@ -13,5 +13,5 @@ func get_cosine(freq: float = 10, amp : float = 1) -> float:
 
 # for time = 0 sine starts at highest point while cosine starts at center so gives us
 # an overall better thing
-#func get_sine(freq : float = 10, amp : float = 1) -> float:
+#func get_esine(freq : float = 10, amp : float = 1) -> float:
 	#return sin(time * freq) * amp 

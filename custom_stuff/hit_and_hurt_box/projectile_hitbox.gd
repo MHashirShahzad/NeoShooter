@@ -15,5 +15,10 @@ func _ready() -> void:
 func destroy():
 	var owner : Player2D = bullet.hit_box.to_ignore
 	owner.spawned_bullets -= 1
+	
+	# play the bullet refill ani
+	if owner.spawned_bullets <= 0:
+		owner.bullets_refilled()
+		
 	bullet.queue_free()
 	#self.to_ignore.queue_free()

@@ -72,7 +72,6 @@ func bullet_input() -> void:
 	if Input.is_action_just_pressed(input.big_shoot):
 		shoot(BulletManager.BULLET_TYPE.BIG)
 
-
 func shoot(type : BulletManager.BULLET_TYPE) -> void:
 	spawned_bullets += 1
 	BulletManager.shoot_bullet(self, type)
@@ -109,3 +108,6 @@ func die() -> void:
 	
 	# disable input
 	self.is_input_enabled = false
+
+func bullets_refilled() -> void:
+	ani_player.play("ammo_refill")
