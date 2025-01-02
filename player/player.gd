@@ -123,5 +123,6 @@ func bullets_refilled() -> void:
 	ani_manager.ammo_refilled_ani()
 	SFXManager.play_FX_2D(
 		SFXManager.BULLET_REFILLED,
-		self.global_position
+		self.global_position,
+		20
 	)
