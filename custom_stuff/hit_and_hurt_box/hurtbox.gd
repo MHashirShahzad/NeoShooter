@@ -50,9 +50,9 @@ func _on_area_entered(hitbox: HitBox) -> void:
 		
 
 func hit_effects(hitbox : HitBox) -> void:
-	HitEffectManager.hit_stop(hitbox.hit_stop)
-	HitEffectManager.camera_shake(hitbox.cam_shake_str)
-	HitEffectManager.hit_vfx(hitbox)
+	VFXManager.hit_stop(hitbox.hit_stop)
+	VFXManager.camera_shake(hitbox.cam_shake_str)
+	VFXManager.hit_vfx(hitbox)
 
 func destroy_bullet(hitbox : HitBox) -> void:
 	if hitbox.has_method("destroy"):

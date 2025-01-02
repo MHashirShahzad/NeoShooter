@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://6dakab5t5wfo"]
+
+[sub_resource type="Curve" id="Curve_pyhiy"]
+_data = [Vector2(0, 0.659341), 0.0, 0.0, 0, 0, Vector2(0.16, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_xgjou"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0.33)
+
+[node name="BulletShootVfx" type="CPUParticles2D"]
+emitting = false
+amount = 20
+one_shot = true
+speed_scale = 3.0
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 30.0
+scale_amount_min = 10.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_pyhiy")
+color_ramp = SubResource("Gradient_xgjou")

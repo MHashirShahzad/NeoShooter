@@ -1,13 +1,16 @@
 extends Node2D
 
-# VFX
+# VFX HIT
 const NORMAL_HIT : PackedScene = preload("res://vfx/bullet_hit/hit_normal_vfx.tscn")
 const SMALL_HIT : PackedScene = preload("res://vfx/bullet_hit/hit_small_vfx.tscn")
 const BIG_HIT : PackedScene = preload("res://vfx/bullet_hit/hit_big_vfx.tscn")
 
+# VFX SHOOT
+const BULLET_SHOOT : PackedScene = preload("res://vfx/bullet_shoot/bullet_shoot_vfx.tscn")
 
 @onready var chroma_rect: ColorRect = $CanvasLayer/ChromaticAbberation
 @onready var ani_player: AnimationPlayer = $AnimationPlayer
+
 var camera : SpaceShooterCamera
 
 
@@ -29,7 +32,7 @@ func camera_shake(shake_str : float)  -> void:
 
 func hit_vfx(hitbox: ProjectileHitBox) -> void:
 	chormatic_abberation(hitbox)
-	var particle_vfx  : CPUParticles2D = get_vfx_type(hitbox.bullet)
+	var particle_vfx  : CPUParticles2D = get_hit_vfx_type(hitbox.bullet)
 	self.add_child(particle_vfx)
 	
 	particle_vfx.global_position = hitbox.global_position
@@ -46,7 +49,7 @@ func chormatic_abberation(hitbox : HitBox):
 	chroma_rect.material.set("shader_parameter/spread", hitbox.chroma_str)
 	ani_player.play("hit")
 
-func get_vfx_type(bullet : Bullet2D) -> CPUParticles2D:
+func get_hit_vfx_type(bullet : Bullet2D) -> CPUParticles2D:
 	const BULLET_TYPE = BulletManager.BULLET_TYPE
 	var particle_vfx : CPUParticles2D
 	# get the bullet type
@@ -61,3 +64,15 @@ func get_vfx_type(bullet : Bullet2D) -> CPUParticles2D:
 			particle_vfx = NORMAL_HIT.instantiate()
 			
 	return particle_vfx
+
+func shoot_vfx(pos : Vector2) -> void:
+	var particle_vfx  : CPUParticles2D = BULLET_SHOOT.instantiate()
+	self.add_child(particle_vfx)
+	
+	particle_vfx.global_position = pos
+	particle_vfx.emitting = true
+	
+	await particle_vfx.finished
+	
+	self.remove_child(particle_vfx)
+	particle_vfx.queue_free()

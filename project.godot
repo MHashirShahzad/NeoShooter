@@ -20,9 +20,10 @@ config/icon="res://icon.png"
 [autoload]
 
 BulletManager="*res://autoloads/bullet_manager.gd"
-HitEffectManager="*res://autoloads/hit_effect/hit_effect_manager.tscn"
+VFXManager="*res://autoloads/hit_effect/vfx_manager.tscn"
 UIManager="*res://autoloads/ui/ui_manager.tscn"
 GameManager="*res://autoloads/game_manager.gd"
+SFXManager="*res://autoloads/audio/sfx_manager.tscn"
 
 [display]
 

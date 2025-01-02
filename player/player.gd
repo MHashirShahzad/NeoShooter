@@ -17,7 +17,8 @@ class_name Player2D
 # On ready
 @onready var body: Polygon2D = $Polygon2D
 @onready var bullet_spawn_location: Marker2D = $BulletSpawnLocation
-@onready var ani_player: AnimationPlayer = $AnimationPlayer
+@onready var ani_manager: PlayerAnimationManager = $AniManager
+
 @onready var coll_shape: CollisionShape2D = $CollisionShape2D
 @onready var hurt_box: HurtBox = $HurtBox
 @onready var trails_vfx: CPUParticles2D = $Trails_VFX
@@ -61,10 +62,6 @@ func _input(event: InputEvent) -> void:
 	bullet_input()
 	
 func bullet_input() -> void:
-	# low ammo
-	if spawned_bullets >= max_bullet_count:
-		ani_player.play("ammo_flash")
-		return
 	if Input.is_action_just_pressed(input.shoot):
 		shoot(BulletManager.BULLET_TYPE.NORMAL)
 	if Input.is_action_just_pressed(input.small_shoot):
@@ -73,16 +70,29 @@ func bullet_input() -> void:
 		shoot(BulletManager.BULLET_TYPE.BIG)
 
 func shoot(type : BulletManager.BULLET_TYPE) -> void:
-	spawned_bullets += 1
+	var bullet_pos : Vector2 = bullet_spawn_location.global_position
+	# low ammo
+	if spawned_bullets >= max_bullet_count:
+		ani_manager.low_ammo_ani()
+		SFXManager.play_FX_2D(SFXManager.NO_AMMO, bullet_pos, 5)
+		return
+	
+	
 	BulletManager.shoot_bullet(self, type)
+	spawned_bullets += 1
+	
+	# Effect
+	ani_manager.shoot_ani()
+	VFXManager.shoot_vfx(bullet_pos)
+	SFXManager.play_FX_2D(SFXManager.SHOOT, bullet_pos, 2)
 	
 func on_hit(dmg: float) -> void:
 	self.health -= dmg
 	if health <= 0:
 		health = 0
 		die()
-	ani_player.play("hit_flash")
-
+	ani_manager.hit_ani()
+	
 func screw_state(duration : float, str: float, time_scale : float = 0.05) -> void:
 	# Screw state
 	body.rand_str = str # random directional strength of screw
@@ -110,4 +120,4 @@ func die() -> void:
 	self.is_input_enabled = false
 
 func bullets_refilled() -> void:
-	ani_player.play("ammo_refill")
+	ani_manager.ammo_refilled_ani()

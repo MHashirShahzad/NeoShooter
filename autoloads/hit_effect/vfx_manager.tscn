@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://cp616ryfjwdwj"]
 
-[ext_resource type="Script" path="res://autoloads/hit_effect/hit_effect_manager.gd" id="1_gvfv1"]
-[ext_resource type="Shader" path="res://camera/chromatic_abberatiob.gdshader" id="2_t6ung"]
+[ext_resource type="Script" path="res://autoloads/hit_effect/vfx_manager.gd" id="1_gvhkw"]
+[ext_resource type="Shader" path="res://camera/chromatic_abberatiob.gdshader" id="2_o0rfe"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_08do4"]
-shader = ExtResource("2_t6ung")
+shader = ExtResource("2_o0rfe")
 shader_parameter/levels = 200
 shader_parameter/spread = 0.0
 
@@ -69,8 +69,8 @@ _data = {
 "hit": SubResource("Animation_wni4m")
 }
 
-[node name="HitEffectManager" type="Node2D"]
-script = ExtResource("1_gvfv1")
+[node name="VfxManager" type="Node2D"]
+script = ExtResource("1_gvhkw")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
