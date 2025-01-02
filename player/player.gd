@@ -6,6 +6,10 @@ class_name Player2D
 @export var speed : int = 60000
 @export var friction : float = 0.2
 @export var acceleration : float = 0.4
+@export var tilt_strength_x: float = 0.1  # Tilt intensity for X-axis
+@export var tilt_strength_y: float = 0.1  # Tilt intensity for Y-axis
+@export var tilt_speed: float = 10.0  # Speed of the tilt adjustment
+
 
 @export_group("Input")
 @export var input : CustomInput
@@ -30,7 +34,8 @@ var wish_dir : Vector2
 var health : float = 100
 var is_input_enabled : bool = true
 var spawned_bullets : int = 0
-
+var tilt_x: float = 0.0
+var tilt_y: float = 0.0
 # =============================================================================================
 # Code
 
@@ -49,6 +54,8 @@ func move(delta : float) -> void:
 	if !is_input_enabled:
 		return
 	wish_dir = Input.get_vector(input.left, input.right, input.up, input.down)
+	
+	skew_char()
 	direction = (Vector2(wish_dir.x, wish_dir.y)).normalized()
 	
 	if direction:
@@ -126,3 +133,10 @@ func bullets_refilled() -> void:
 		self.global_position,
 		20
 	)
+
+func skew_char() -> void:
+	if is_equal_approx(self.rotation_degrees, -90):
+		body.skew = wish_dir.y / 8
+		body.skew = -body.skew 
+		return
+	body.skew = wish_dir.y / 8
