@@ -74,7 +74,7 @@ func shoot(type : BulletManager.BULLET_TYPE) -> void:
 	# low ammo
 	if spawned_bullets >= max_bullet_count:
 		ani_manager.low_ammo_ani()
-		SFXManager.play_FX_2D(SFXManager.NO_AMMO, bullet_pos, 5)
+		SFXManager.play_FX_2D(SFXManager.NO_AMMO, bullet_pos, 10)
 		return
 	
 	
@@ -84,7 +84,7 @@ func shoot(type : BulletManager.BULLET_TYPE) -> void:
 	# Effect
 	ani_manager.shoot_ani()
 	VFXManager.shoot_vfx(bullet_pos)
-	SFXManager.play_FX_2D(SFXManager.SHOOT, bullet_pos, 2)
+	SFXManager.play_FX_2D(SFXManager.SHOOT, bullet_pos, 10)
 	
 func on_hit(dmg: float) -> void:
 	self.health -= dmg
@@ -121,3 +121,7 @@ func die() -> void:
 
 func bullets_refilled() -> void:
 	ani_manager.ammo_refilled_ani()
+	SFXManager.play_FX_2D(
+		SFXManager.BULLET_REFILLED,
+		self.global_position
+	)
