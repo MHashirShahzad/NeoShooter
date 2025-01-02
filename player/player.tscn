@@ -237,14 +237,7 @@ _data = {
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_a7y8v")
-speed = null
-friction = null
-acceleration = null
-tilt_strength_x = null
-tilt_strength_y = null
-tilt_speed = null
 input = ExtResource("2_maebw")
-max_bullet_count = null
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 z_index = 1
