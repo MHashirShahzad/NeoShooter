@@ -19,7 +19,7 @@ class_name Player2D
 
 # =============================================================================================
 # On ready
-@onready var body: Polygon2D = $Polygon2D
+@onready var body: PlayerBody = $Polygon2D
 @onready var bullet_spawn_location: Marker2D = $BulletSpawnLocation
 @onready var ani_manager: PlayerAnimationManager = $AniManager
 
@@ -117,15 +117,23 @@ func screw_state(duration : float, str: float, time_scale : float = 0.05) -> voi
 
 func die() -> void:
 	# hide visuals
-	self.hide()
-	
+	#self.hide()
+	for child in get_children():
+		if child is Node2D:
+			child.hide()
+			
+	# shatter animation
+	body.is_player_dead = true
+	body.shatter()
 	# disable colllision and hurt box
 	self.coll_shape.set_deferred("disabled", true)
 	self.hurt_box.coll_shape.set_deferred("disabled", true)
 	
 	# disable input
 	self.is_input_enabled = false
-
+	
+	body.shatter()
+	
 func bullets_refilled() -> void:
 	ani_manager.ammo_refilled_ani()
 	SFXManager.play_FX_2D(
