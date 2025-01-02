@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://ytwrg3bpl7wf"]
 
 [ext_resource type="PackedScene" uid="uid://bwkwpcmkypaje" path="res://camera/camera.tscn" id="1_tv80o"]
-[ext_resource type="PackedScene" uid="uid://sxxeixb08amn" path="res://player/player.tscn" id="2_iqfvu"]
+[ext_resource type="PackedScene" uid="uid://dth2xkw87mtwm" path="res://player/player.tscn" id="2_iqfvu"]
 [ext_resource type="Resource" uid="uid://bu6wkpkaqxcs3" path="res://player/player2_inputs.tres" id="3_7ae3j"]
 [ext_resource type="Shader" path="res://player/colorflash.gdshader" id="4_aaaxr"]
 [ext_resource type="Gradient" uid="uid://weuimmf02ocv" path="res://player/player2_colorgradient.tres" id="5_ryk65"]
