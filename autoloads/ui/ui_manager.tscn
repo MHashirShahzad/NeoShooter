@@ -69,4 +69,4 @@ grow_vertical = 2
 [node name="Label" type="Label" parent="CanvasLayer"]
 offset_right = 38.0
 offset_bottom = 23.0
-text = "POYO"
+text = "  "

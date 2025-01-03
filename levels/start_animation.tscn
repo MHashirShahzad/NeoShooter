@@ -1,0 +1,116 @@
+[gd_scene load_steps=5 format=3 uid="uid://iwuc3lh2udel"]
+
+[ext_resource type="Script" path="res://levels/start_animation.gd" id="1_f65ua"]
+
+[sub_resource type="Animation" id="Animation_mkbo3"]
+resource_name = "default"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/HomieLabel:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.366667, 2.56667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Yellow Label:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.56667, 2.9, 4.96667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_t757x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/HomieLabel:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Yellow Label:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4t4f1"]
+_data = {
+"RESET": SubResource("Animation_t757x"),
+"default": SubResource("Animation_mkbo3")
+}
+
+[node name="StartAnimation" type="Node2D"]
+script = ExtResource("1_f65ua")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HomieLabel" type="RichTextLabel" parent="CanvasLayer"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -449.0
+offset_top = -78.0
+offset_right = 449.0
+offset_bottom = 78.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.141176, 0.623529, 0.870588, 1)
+theme_override_colors/font_shadow_color = Color(0.45098, 0.0901961, 0.176471, 1)
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[center][color=#73172d]Warning[/color]
+This game is best played with
+[color=#793a80]homies[/color] and [color=#14a02e]comrades[/color][/center]"
+
+[node name="Yellow Label" type="RichTextLabel" parent="CanvasLayer"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -449.0
+offset_top = -78.0
+offset_right = 449.0
+offset_bottom = 78.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.141176, 0.623529, 0.870588, 1)
+theme_override_colors/font_shadow_color = Color(0.45098, 0.0901961, 0.176471, 1)
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[center][color=#73172d]DISCLAIMER:[/color]
+No [color=#f9a31b]yellow dudes[/color] were harmed during the development of this game[/center]"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4t4f1")
+}
+autoplay = "default"

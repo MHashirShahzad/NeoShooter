@@ -12,6 +12,7 @@ emitting = false
 amount = 300
 lifetime = 2.0
 one_shot = true
+speed_scale = 2.0
 explosiveness = 1.0
 randomness = 0.1
 spread = 180.0
