@@ -33,7 +33,7 @@ var camera : SpaceShooterCamera
 func die_effects(player : Player2D) -> void:
 
 	hit_stop(5, 0.25)
-	player_dead_shockwave(player)
+	# player_dead_shockwave(player)
 	camera_shake(200)
 	die_vfx(player)
 
@@ -67,15 +67,15 @@ func player_dead_shockwave(player : Player2D) -> void:
 	
 	#  get_viewport().get_camera_2d().unproject
 	# player.get_viewport_transform() * player.global_position
-
-	var screen_coords = player.get_viewport_transform() * player.global_position
-	var normalized_screen_coords = screen_coords / get_viewport().get_visible_rect().size
-	print("UV 2 : ",  uv(player))
-	print_debug(
-		"UV 1 : ", normalized_screen_coords
-	)
-	sprite.material.set("shader_parameter/center", normalized_screen_coords)
+	#var screen_coords = player.get_viewport_transform() * player.global_position
+	#var normalized_screen_coords = screen_coords / get_viewport().get_visible_rect().size
 	
+	var uv_coords = (player.get_global_transform_with_canvas().get_origin()/ get_viewport().get_visible_rect().size ) 
+	print_debug(
+		"UV 1 : ", uv_coords
+	)
+	#sprite.material.set("shader_parameter/center", uv_coords)
+	sprite.material.set("shader_parameter/global_position", player.global_position)
 	var tween = get_tree().create_tween()
 	tween.tween_method(sprite.set_shader_value, 0.0, 1.2, 1)
 	await  tween.finished
@@ -149,16 +149,3 @@ func shoot_vfx(pos : Vector2) -> void:
 	
 	self.remove_child(particle_vfx)
 	particle_vfx.queue_free()
-
-func uv(player : Player2D) -> Vector2:
-	var viewport_size := get_viewport_rect().size
-	var zoomed_view := viewport_size / GameManager.camera.zoom
-
-	var cam_relative_pos = (player.global_position - GameManager.camera.get_screen_center_position()) \
-	+ zoomed_view / 2.0
-	var ratio = zoomed_view.x / zoomed_view.y
-
-	var x = cam_relative_pos.x / zoomed_view.x
-	var y = cam_relative_pos.y / zoomed_view.y
-	x = (x - 0.5) * ratio + 0.5 # reversing the effect of scaling in shader
-	return Vector2(x,y)
