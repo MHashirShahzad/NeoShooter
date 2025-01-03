@@ -93,11 +93,14 @@ func shoot(type : BulletManager.BULLET_TYPE) -> void:
 	VFXManager.shoot_vfx(bullet_pos)
 	SFXManager.play_FX_2D(SFXManager.SHOOT, bullet_pos, 10)
 	
-func on_hit(dmg: float) -> void:
+func on_hit(dmg: float, hitbox : HitBox) -> void:
 	self.health -= dmg
+	# death vfx are handled in die()
 	if health <= 0:
 		health = 0
 		die()
+	else: 
+		VFXManager.hit_effects(hitbox)
 	ani_manager.hit_ani()
 	
 func screw_state(duration : float, str: float, time_scale : float = 0.05) -> void:
@@ -123,10 +126,8 @@ func die() -> void:
 		if child is Node2D:
 			child.hide()
 			
-	# shockwave
-	VFXManager.hit_stop(10, 0.5)
-	VFXManager.player_dead_vfx(self)
-	print(Engine.time_scale)
+	# shockwave particles cam shake and slow mo
+	VFXManager.die_effects(self)
 	# shatter animation
 	body.is_player_dead = true
 	body.shatter()
@@ -139,7 +140,7 @@ func die() -> void:
 	# disable input
 	self.is_input_enabled = false
 	
-	
+
 func bullets_refilled() -> void:
 	ani_manager.ammo_refilled_ani()
 	SFXManager.play_FX_2D(

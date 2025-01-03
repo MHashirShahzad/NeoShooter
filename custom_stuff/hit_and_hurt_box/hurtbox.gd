@@ -25,8 +25,8 @@ func _on_area_entered(hitbox: HitBox) -> void:
 	
 	
 	if owner.has_method("on_hit"):
-		owner.on_hit(hitbox.damage)
-		hit_effects(hitbox)
+		owner.on_hit(hitbox.damage, hitbox)
+		
 		 
 	if owner.has_method("screw_state"):
 		owner.screw_state(hitbox.screw_state, hitbox.screw_state_str)
@@ -49,10 +49,7 @@ func _on_area_entered(hitbox: HitBox) -> void:
 	destroy_bullet(hitbox)
 		
 
-func hit_effects(hitbox : HitBox) -> void:
-	VFXManager.hit_stop(hitbox.hit_stop)
-	VFXManager.camera_shake(hitbox.cam_shake_str)
-	VFXManager.hit_vfx(hitbox)
+
 
 func destroy_bullet(hitbox : HitBox) -> void:
 	if hitbox.has_method("destroy"):

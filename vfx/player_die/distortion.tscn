@@ -7,12 +7,12 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5o55l"]
 resource_local_to_scene = true
 shader = ExtResource("1_i21f7")
-shader_parameter/strength = 0.08
+shader_parameter/strength = 0.1
 shader_parameter/center = Vector2(0.5, 0.5)
 shader_parameter/radius = 0.0
 shader_parameter/aberration = 0.425
 shader_parameter/width = 0.04
-shader_parameter/feather = 0.135
+shader_parameter/feather = 0.073
 
 [node name="DistortionBubble" type="Sprite2D"]
 z_index = 3

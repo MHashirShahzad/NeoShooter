@@ -11,7 +11,7 @@ var shake_str : float = 0
 
 
 func _ready() -> void:
-	VFXManager.camera = self
+	GameManager.camera = self
 
 func apply_shake():
 	shake_str = rand_str

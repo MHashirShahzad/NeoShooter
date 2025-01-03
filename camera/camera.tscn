@@ -4,6 +4,5 @@
 
 [node name="Camera2D" type="Camera2D" groups=["Camera"]]
 physics_interpolation_mode = 1
-position = Vector2(573, 333)
 zoom = Vector2(0.5, 0.5)
 script = ExtResource("1_he1yd")

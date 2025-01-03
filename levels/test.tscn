@@ -238,7 +238,8 @@ adjustment_saturation = 1.1
 
 [node name="TEST" type="Node2D"]
 
-[node name="Players" type="Node" parent="."]
+[node name="Players" type="Node2D" parent="."]
+position = Vector2(-1036, -523)
 
 [node name="Player1" parent="Players" instance=ExtResource("2_iqfvu")]
 position = Vector2(360, 333)
@@ -278,7 +279,6 @@ libraries = {
 }
 
 [node name="Camera2D" parent="." instance=ExtResource("1_tv80o")]
-position = Vector2(988, 548)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_hdvnr")
@@ -289,7 +289,8 @@ volume_db = -20.0
 autoplay = true
 bus = &"Music"
 
-[node name="Level" type="Node" parent="."]
+[node name="Level" type="Node2D" parent="."]
+position = Vector2(-1037, -523)
 
 [node name="Collision Borders" type="StaticBody2D" parent="Level"]
 position = Vector2(420, 220)

@@ -1,5 +1,7 @@
 extends Node2D
-
+# =============================================================================================
+# CONSTANT PRELOADS
+# =============================================================================================
 # VFX HIT
 const NORMAL_HIT : PackedScene = preload("res://vfx/bullet_hit/hit_normal_vfx.tscn")
 const SMALL_HIT : PackedScene = preload("res://vfx/bullet_hit/hit_small_vfx.tscn")
@@ -7,28 +9,72 @@ const BIG_HIT : PackedScene = preload("res://vfx/bullet_hit/hit_big_vfx.tscn")
 
 # VFX DIE
 const DISTORTION : PackedScene = preload("res://vfx/player_die/distortion.tscn")
+const DIE_VFX : PackedScene = preload("res://vfx/player_die/die_vfx.tscn")
 
 # VFX SHOOT
 const BULLET_SHOOT : PackedScene = preload("res://vfx/bullet_shoot/bullet_shoot_vfx.tscn")
 
+# =============================================================================================
+# NORMAL VARIABLES
+# =============================================================================================
 @onready var chroma_rect: ColorRect = $CanvasLayer/ChromaticAbberation
 @onready var ani_player: AnimationPlayer = $AnimationPlayer
+@onready var hitstop_timer: Timer = $HitStopTimer
 
 var camera : SpaceShooterCamera
 
 
-# WORKS BUT NEEDS JUICEEEEEEEEEEEEEEEEEEEEEEEEEE
-func player_dead_vfx(player : Player2D) -> void:
-	var sprite : DistortionSprite = DISTORTION.instantiate()
-	player.add_child(sprite)
+# =============================================================================================
+# Collection Functions
+# =============================================================================================
+
+## Handles all hitstop shockwave cam shake and particles for the
+## death vfx
+func die_effects(player : Player2D) -> void:
+
+	hit_stop(5, 0.25)
+	player_dead_shockwave(player)
+	camera_shake(200)
+	die_vfx(player)
+
+## Called by the player or the object via on_hit()
+func hit_effects(hitbox : HitBox) -> void:
+	hit_stop(hitbox.hit_stop)
+	camera_shake(hitbox.cam_shake_str)
+	hit_vfx(hitbox)
+
+# =============================================================================================
+# Independent Functions
+# =============================================================================================
+
+func die_vfx(player : Player2D) -> void:
+	var particle_vfx  : CPUParticles2D = DIE_VFX.instantiate()
+	self.add_child(particle_vfx)
 	
+	particle_vfx.global_position = player.global_position
+	particle_vfx.emitting = true
+	
+	await particle_vfx.finished
+	
+	self.remove_child(particle_vfx)
+	particle_vfx.queue_free()
+
+func player_dead_shockwave(player : Player2D) -> void:
+	var sprite : DistortionSprite = DISTORTION.instantiate()
+	self.add_child(sprite)
 	sprite.scale = Vector2(100, 100)
 	sprite.z_index = 3
 	
-	var screenCoords = player.get_viewport_transform() * player.global_position
-	var normalizedScreenCoords = screenCoords / get_viewport().get_visible_rect().size
-	
-	sprite.material.set("shader_parameter/center", normalizedScreenCoords)
+	#  get_viewport().get_camera_2d().unproject
+	# player.get_viewport_transform() * player.global_position
+
+	var screen_coords = player.get_viewport_transform() * player.global_position
+	var normalized_screen_coords = screen_coords / get_viewport().get_visible_rect().size
+	print("UV 2 : ",  uv(player))
+	print_debug(
+		"UV 1 : ", normalized_screen_coords
+	)
+	sprite.material.set("shader_parameter/center", normalized_screen_coords)
 	
 	var tween = get_tree().create_tween()
 	tween.tween_method(sprite.set_shader_value, 0.0, 1.2, 1)
@@ -37,22 +83,25 @@ func player_dead_vfx(player : Player2D) -> void:
 	player.remove_child(sprite)
 	sprite.queue_free()
 
-
 func hit_stop(duration : float, time_scale : float = 0.05) -> void:
-	
-	if Engine.time_scale == 0.05: # if already  started
-		return
-		
-	var engine_time_scale = Engine.time_scale
+	## reset the previous hit_stop :C
+	#Engine.time_scale = 1
+	#var engine_time_scale = Engine.time_scale
+	#Engine.time_scale = time_scale
+	#await  get_tree().create_timer(duration * time_scale).timeout
+	#Engine.time_scale = engine_time_scale
+	var engine_time_scale : float = 1 # = Engine.time_scale
 	Engine.time_scale = time_scale
-	
-	await  get_tree().create_timer(duration * time_scale).timeout
-	
+	hitstop_timer.wait_time  = duration * time_scale
+	hitstop_timer.start()
+	await hitstop_timer.timeout
+	# might be stacking as multiple bullets will call multiple awaits
+	# but idk
 	Engine.time_scale = engine_time_scale
-
+	
 func camera_shake(shake_str : float)  -> void:
-	camera.rand_str = shake_str
-	camera.apply_shake()
+	GameManager.camera.rand_str = shake_str
+	GameManager.camera.apply_shake()
 
 func hit_vfx(hitbox: ProjectileHitBox) -> void:
 	chormatic_abberation(hitbox)
@@ -100,3 +149,16 @@ func shoot_vfx(pos : Vector2) -> void:
 	
 	self.remove_child(particle_vfx)
 	particle_vfx.queue_free()
+
+func uv(player : Player2D) -> Vector2:
+	var viewport_size := get_viewport_rect().size
+	var zoomed_view := viewport_size / GameManager.camera.zoom
+
+	var cam_relative_pos = (player.global_position - GameManager.camera.get_screen_center_position()) \
+	+ zoomed_view / 2.0
+	var ratio = zoomed_view.x / zoomed_view.y
+
+	var x = cam_relative_pos.x / zoomed_view.x
+	var y = cam_relative_pos.y / zoomed_view.y
+	x = (x - 0.5) * ratio + 0.5 # reversing the effect of scaling in shader
+	return Vector2(x,y)
