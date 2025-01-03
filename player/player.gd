@@ -116,15 +116,22 @@ func screw_state(duration : float, str: float, time_scale : float = 0.05) -> voi
 	self.speed = def_speed
 
 func die() -> void:
+	
 	# hide visuals
 	#self.hide()
 	for child in get_children():
 		if child is Node2D:
 			child.hide()
 			
+	# shockwave
+	VFXManager.hit_stop(10, 0.5)
+	VFXManager.player_dead_vfx(self)
+	print(Engine.time_scale)
 	# shatter animation
 	body.is_player_dead = true
 	body.shatter()
+	
+	
 	# disable colllision and hurt box
 	self.coll_shape.set_deferred("disabled", true)
 	self.hurt_box.coll_shape.set_deferred("disabled", true)
@@ -132,7 +139,6 @@ func die() -> void:
 	# disable input
 	self.is_input_enabled = false
 	
-	body.shatter()
 	
 func bullets_refilled() -> void:
 	ani_manager.ammo_refilled_ani()

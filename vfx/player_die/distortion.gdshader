@@ -12,6 +12,7 @@ uniform float feather: hint_range(0.0, 1.0, 0.001) = 0.135;
 uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
 
 void fragment() {
+	// COLOR = texture(TEXTURE, UV);
 	vec2 st = SCREEN_UV;
 	float aspect_ratio = SCREEN_PIXEL_SIZE.y/SCREEN_PIXEL_SIZE.x;
 	vec2 scaled_st = (st -vec2(0.0, 0.5)) / vec2(1.0, aspect_ratio) + vec2(0,0.5);

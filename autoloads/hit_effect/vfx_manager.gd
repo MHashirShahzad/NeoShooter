@@ -5,6 +5,9 @@ const NORMAL_HIT : PackedScene = preload("res://vfx/bullet_hit/hit_normal_vfx.ts
 const SMALL_HIT : PackedScene = preload("res://vfx/bullet_hit/hit_small_vfx.tscn")
 const BIG_HIT : PackedScene = preload("res://vfx/bullet_hit/hit_big_vfx.tscn")
 
+# VFX DIE
+const DISTORTION : PackedScene = preload("res://vfx/player_die/distortion.tscn")
+
 # VFX SHOOT
 const BULLET_SHOOT : PackedScene = preload("res://vfx/bullet_shoot/bullet_shoot_vfx.tscn")
 
@@ -12,6 +15,27 @@ const BULLET_SHOOT : PackedScene = preload("res://vfx/bullet_shoot/bullet_shoot_
 @onready var ani_player: AnimationPlayer = $AnimationPlayer
 
 var camera : SpaceShooterCamera
+
+
+# WORKS BUT NEEDS JUICEEEEEEEEEEEEEEEEEEEEEEEEEE
+func player_dead_vfx(player : Player2D) -> void:
+	var sprite : DistortionSprite = DISTORTION.instantiate()
+	player.add_child(sprite)
+	
+	sprite.scale = Vector2(100, 100)
+	sprite.z_index = 3
+	
+	var screenCoords = player.get_viewport_transform() * player.global_position
+	var normalizedScreenCoords = screenCoords / get_viewport().get_visible_rect().size
+	
+	sprite.material.set("shader_parameter/center", normalizedScreenCoords)
+	
+	var tween = get_tree().create_tween()
+	tween.tween_method(sprite.set_shader_value, 0.0, 1.2, 1)
+	await  tween.finished
+	tween.kill()
+	player.remove_child(sprite)
+	sprite.queue_free()
 
 
 func hit_stop(duration : float, time_scale : float = 0.05) -> void:

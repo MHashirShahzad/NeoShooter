@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7heyydi0hseb"]
+
+[ext_resource type="Shader" path="res://vfx/player_die/distortion.gdshader" id="1_i21f7"]
+[ext_resource type="Texture2D" uid="uid://b830mfhylsqkk" path="res://assets/vfx_assets/circle128x128.svg" id="2_k3x8h"]
+[ext_resource type="Script" path="res://vfx/player_die/distortion.gd" id="3_hdqv8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5o55l"]
+resource_local_to_scene = true
+shader = ExtResource("1_i21f7")
+shader_parameter/strength = 0.08
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/radius = 0.0
+shader_parameter/aberration = 0.425
+shader_parameter/width = 0.04
+shader_parameter/feather = 0.135
+
+[node name="DistortionBubble" type="Sprite2D"]
+z_index = 3
+material = SubResource("ShaderMaterial_5o55l")
+scale = Vector2(100, 100)
+texture = ExtResource("2_k3x8h")
+script = ExtResource("3_hdqv8")
