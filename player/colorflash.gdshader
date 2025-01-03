@@ -10,15 +10,15 @@ void fragment() {
 	vec4 previous_color = COLOR; // texture(TEXTURE, UV) for sprite
 
 	vec4 new_color = previous_color;
-	
+
 	if (white_flash == true){
 		new_color = white_color;
 	}
-	
+
 	else if (red_flash == true){
 		new_color = red_color;
 	}
-	
+
 	else if (gold_flash == true){
 		new_color = gold_color;
 	}
