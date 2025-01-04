@@ -24,6 +24,7 @@ VFXManager="*res://autoloads/hit_effect/vfx_manager.tscn"
 UIManager="*res://autoloads/ui/ui_manager.tscn"
 GameManager="*res://autoloads/game_manager.gd"
 SFXManager="*res://autoloads/audio/sfx_manager.tscn"
+TransitionManager="*res://autoloads/transition/transition_manager.tscn"
 
 [display]
 
