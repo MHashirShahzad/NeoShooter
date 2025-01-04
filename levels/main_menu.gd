@@ -1,4 +1,5 @@
 extends Control
+class_name MainMenu
 
 @onready var main: Panel = $CanvasLayer/MainBtn
 @onready var option: Panel = $CanvasLayer/OptionBtn

@@ -53,6 +53,7 @@ offset_bottom = 23.0
 text = "  "
 
 [node name="Pause" type="CanvasLayer" parent="."]
+layer = 5
 
 [node name="Blur" type="ColorRect" parent="Pause"]
 material = SubResource("ShaderMaterial_5e38o")
@@ -105,5 +106,5 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_1782s")
 
-[connection signal="pressed" from="Pause/Blur/VBoxContainer/Resume" to="." method="_on_main_menu_btn_pressed"]
+[connection signal="pressed" from="Pause/Blur/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Pause/Blur/VBoxContainer/MainMenuBtn" to="." method="_on_main_menu_btn_pressed"]

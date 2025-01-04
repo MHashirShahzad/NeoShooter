@@ -45,3 +45,11 @@ func _on_main_menu_btn_pressed() -> void:
 	GameManager.p2 = null
 	TransitionManager.transition_scene_packed(MAIN_MENU)
 	SFXManager.play_music(MAIN_MENU_MUSIC, -20)
+	
+	#await  TransitionManager.transition_fully_finished
+	#var control : MainMenu = get_tree().get_first_node_in_group("MainMenu")
+	#control._on_play_button_pressed()
+
+
+func _on_resume_pressed() -> void:
+	pause()

@@ -103,6 +103,24 @@ text = "[center][color=#73172d]Warning[/color]
 This game is best played with
 [color=#793a80]homies[/color] and [color=#14a02e]comrades[/color][/center]"
 
+[node name="Input Teller" type="RichTextLabel" parent="BootUpScreen"]
+self_modulate = Color(1, 1, 1, 0.535)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -449.0
+offset_top = -28.0
+offset_right = 449.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/default_color = Color(0.854902, 0.878431, 0.917647, 1)
+theme_override_colors/font_shadow_color = Color(0.0235294, 0.0235294, 0.0313726, 1)
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "[center]----- Press any key to skip ------[/center]"
+
 [node name="Yellow Label" type="RichTextLabel" parent="BootUpScreen"]
 self_modulate = Color(1, 1, 1, 0)
 anchors_preset = 8
@@ -127,7 +145,6 @@ No [color=#f9a31b]yellow dudes[/color] were harmed during the development of thi
 libraries = {
 "": SubResource("AnimationLibrary_4t4f1")
 }
-autoplay = "default"
 
 [node name="VfxToLoad" type="Node" parent="."]
 
