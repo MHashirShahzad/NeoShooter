@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://b6esgdmciuv7n"]
+[gd_scene load_steps=16 format=3 uid="uid://b6esgdmciuv7n"]
 
 [ext_resource type="Texture2D" uid="uid://b0xltc2iphdel" path="res://assets/NeoShooterLogo.svg" id="1_clxpc"]
 [ext_resource type="Script" path="res://levels/main_menu.gd" id="1_f6xqg"]
 [ext_resource type="Script" path="res://custom_stuff/tweened_button.gd" id="2_2ycbh"]
 [ext_resource type="Theme" uid="uid://dbukeuyrs33sq" path="res://custom_stuff/default_theme.tres" id="2_b7fev"]
+[ext_resource type="Script" path="res://custom_stuff/remappable_button.gd" id="5_rlanf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kjvgm"]
 bg_color = Color(0.231373, 0.0901961, 0.145098, 1)
@@ -24,6 +25,8 @@ corner_radius_bottom_left = 10
 corner_detail = 20
 shadow_size = 10
 shadow_offset = Vector2(10, 10)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1wdqi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p1245"]
 bg_color = Color(0.0705882, 0.12549, 0.12549, 1)
@@ -73,6 +76,42 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(-1300, 148), Vector2(-1300, 148)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/OptionBtn:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/LevelSelect:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/MainBtn:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_126t0"]
 resource_name = "main_to_option"
@@ -100,6 +139,42 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(-2, -2),
 "update": 0,
 "values": [Vector2(1300, 148), Vector2(76, 148)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/LevelSelect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/OptionBtn:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/MainBtn:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.433333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
 }
 
 [sub_resource type="Animation" id="Animation_c7wx0"]
@@ -129,6 +204,42 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(76, 148), Vector2(1300, 148)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/MainBtn:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/OptionBtn:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.433333, 0.466667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/LevelSelect:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_mwems"]
 resource_name = "main_to_level"
@@ -157,6 +268,30 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(-1300, 148), Vector2(76, 148)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/MainBtn:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.433333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/LevelSelect:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="Animation" id="Animation_ckx62"]
 resource_name = "level_to_main"
@@ -184,6 +319,42 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(-2, -2),
 "update": 0,
 "values": [Vector2(76, 148), Vector2(-1300, 148)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/LevelSelect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/MainBtn:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/OptionBtn:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ok511"]
@@ -299,6 +470,7 @@ text = "Quit
 script = ExtResource("2_2ycbh")
 
 [node name="OptionBtn" type="Panel" parent="CanvasLayer"]
+visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -311,38 +483,469 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_lxtfj")
 
-[node name="VBOX" type="VBoxContainer" parent="CanvasLayer/OptionBtn"]
+[node name="TabContainer" type="TabContainer" parent="CanvasLayer/OptionBtn"]
 layout_mode = 1
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -156.0
-offset_right = 161.0
+offset_bottom = -72.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_b7fev")
+current_tab = 0
+
+[node name="Controls" type="ScrollContainer" parent="CanvasLayer/OptionBtn/TabContainer"]
+layout_mode = 2
+theme = ExtResource("2_b7fev")
+metadata/_tab_index = 0
+
+[node name="Controls" type="VBoxContainer" parent="CanvasLayer/OptionBtn/TabContainer/Controls"]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="PlayButton" type="Button" parent="CanvasLayer/OptionBtn/VBOX"]
+[node name="Player1" type="HBoxContainer" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls"]
 layout_mode = 2
-theme = ExtResource("2_b7fev")
-text = "Play"
-script = ExtResource("2_2ycbh")
+alignment = 1
 
-[node name="TweenedButton2" type="Button" parent="CanvasLayer/OptionBtn/VBOX"]
+[node name="Label" type="Label" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls/Player1"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-text = "Options
+theme_override_font_sizes/font_size = 30
+text = "----------------- Player 1 -----------------"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls/HBoxContainer3"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "P1 Up"
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls/HBoxContainer3"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_1wdqi")
+
+[node name="Remap_Button" type="Button" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls/HBoxContainer3"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+text = "p1_up"
+script = ExtResource("5_rlanf")
+action = "p1_up"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls/HBoxContainer4"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "P1 Down"
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls/HBoxContainer4"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_1wdqi")
+
+[node name="Remap_Button" type="Button" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls/HBoxContainer4"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+text = "p1_down
 "
-script = ExtResource("2_2ycbh")
+script = ExtResource("5_rlanf")
+action = "p1_down"
 
-[node name="Back" type="Button" parent="CanvasLayer/OptionBtn/VBOX"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls"]
 layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls/HBoxContainer2"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "P1 Left"
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls/HBoxContainer2"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_1wdqi")
+
+[node name="Remap_Button" type="Button" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls/HBoxContainer2"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+text = "p1_left
+"
+script = ExtResource("5_rlanf")
+action = "p1_left"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "P1 Right   "
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_1wdqi")
+
+[node name="Remap_Button" type="Button" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls/HBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+text = "p1_right
+"
+script = ExtResource("5_rlanf")
+action = "p1_right"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls/HBoxContainer5"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "P1 Shoot Normal"
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls/HBoxContainer5"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_1wdqi")
+
+[node name="Remap_Button" type="Button" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls/HBoxContainer5"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+text = "p1_shoot
+"
+script = ExtResource("5_rlanf")
+action = "p1_shoot"
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls/HBoxContainer6"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "P1 Shoot Small"
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls/HBoxContainer6"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_1wdqi")
+
+[node name="Remap_Button" type="Button" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls/HBoxContainer6"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+text = "p1_shoot_small"
+script = ExtResource("5_rlanf")
+action = "p1_shoot_small"
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls/HBoxContainer7"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "P1 Shoot Big"
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls/HBoxContainer7"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_1wdqi")
+
+[node name="Remap_Button" type="Button" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls/HBoxContainer7"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+text = "p1_shoot_big
+"
+script = ExtResource("5_rlanf")
+action = "p1_shoot_big"
+
+[node name="Player2" type="HBoxContainer" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls/Player2"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "----------------- Player 2 -----------------"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer8" type="HBoxContainer" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls/HBoxContainer8"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "P2 Up"
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls/HBoxContainer8"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_1wdqi")
+
+[node name="Remap_Button" type="Button" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls/HBoxContainer8"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+text = "p2_up"
+script = ExtResource("5_rlanf")
+action = "p2_up"
+
+[node name="HBoxContainer9" type="HBoxContainer" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls/HBoxContainer9"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "P2 Down"
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls/HBoxContainer9"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_1wdqi")
+
+[node name="Remap_Button" type="Button" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls/HBoxContainer9"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+text = "p2_down
+"
+script = ExtResource("5_rlanf")
+action = "p2_down"
+
+[node name="HBoxContainer10" type="HBoxContainer" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls/HBoxContainer10"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "P2 Left"
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls/HBoxContainer10"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_1wdqi")
+
+[node name="Remap_Button" type="Button" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls/HBoxContainer10"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+text = "p2_left
+"
+script = ExtResource("5_rlanf")
+action = "p2_left"
+
+[node name="HBoxContainer11" type="HBoxContainer" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls/HBoxContainer11"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "P2 Right   "
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls/HBoxContainer11"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_1wdqi")
+
+[node name="Remap_Button" type="Button" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls/HBoxContainer11"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+text = "p2_right
+"
+script = ExtResource("5_rlanf")
+action = "p2_right"
+
+[node name="HBoxContainer12" type="HBoxContainer" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls/HBoxContainer12"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "P2 Shoot Normal"
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls/HBoxContainer12"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_1wdqi")
+
+[node name="Remap_Button" type="Button" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls/HBoxContainer12"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+text = "p2_shoot
+"
+script = ExtResource("5_rlanf")
+action = "p2_shoot"
+
+[node name="HBoxContainer13" type="HBoxContainer" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls/HBoxContainer13"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "P2 Shoot Small"
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls/HBoxContainer13"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_1wdqi")
+
+[node name="Remap_Button" type="Button" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls/HBoxContainer13"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+text = "p2_shoot_small"
+script = ExtResource("5_rlanf")
+action = "p2_shoot_small"
+
+[node name="HBoxContainer14" type="HBoxContainer" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls/HBoxContainer14"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "P2 Shoot Big"
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls/HBoxContainer14"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_1wdqi")
+
+[node name="Remap_Button" type="Button" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls/HBoxContainer14"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+text = "p2_shoot_big
+"
+script = ExtResource("5_rlanf")
+action = "p2_shoot_big"
+
+[node name="Display" type="ScrollContainer" parent="CanvasLayer/OptionBtn/TabContainer"]
+visible = false
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Controls" type="VBoxContainer" parent="CanvasLayer/OptionBtn/TabContainer/Display"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Remap_Button" type="Button" parent="CanvasLayer/OptionBtn/TabContainer/Display/Controls"]
+layout_mode = 2
+text = "p1_right
+"
+script = ExtResource("5_rlanf")
+action = "p1_right"
+
+[node name="Remap_Button2" type="Button" parent="CanvasLayer/OptionBtn/TabContainer/Display/Controls"]
+layout_mode = 2
+text = "p1_right
+"
+script = ExtResource("5_rlanf")
+action = "p1_right"
+
+[node name="Remap_Button3" type="Button" parent="CanvasLayer/OptionBtn/TabContainer/Display/Controls"]
+layout_mode = 2
+text = "p1_right
+"
+script = ExtResource("5_rlanf")
+action = "p1_right"
+
+[node name="Remap_Button4" type="Button" parent="CanvasLayer/OptionBtn/TabContainer/Display/Controls"]
+layout_mode = 2
+text = "p1_right
+"
+script = ExtResource("5_rlanf")
+action = "p1_right"
+
+[node name="Remap_Button5" type="Button" parent="CanvasLayer/OptionBtn/TabContainer/Display/Controls"]
+layout_mode = 2
+text = "p1_right
+"
+script = ExtResource("5_rlanf")
+action = "p1_right"
+
+[node name="Remap_Button6" type="Button" parent="CanvasLayer/OptionBtn/TabContainer/Display/Controls"]
+layout_mode = 2
+text = "p1_right
+"
+script = ExtResource("5_rlanf")
+action = "p1_right"
+
+[node name="Remap_Button7" type="Button" parent="CanvasLayer/OptionBtn/TabContainer/Display/Controls"]
+layout_mode = 2
+text = "p1_right
+"
+script = ExtResource("5_rlanf")
+action = "p1_right"
+
+[node name="Remap_Button8" type="Button" parent="CanvasLayer/OptionBtn/TabContainer/Display/Controls"]
+layout_mode = 2
+text = "p1_right
+"
+script = ExtResource("5_rlanf")
+action = "p1_right"
+
+[node name="Remap_Button9" type="Button" parent="CanvasLayer/OptionBtn/TabContainer/Display/Controls"]
+layout_mode = 2
+text = "p1_right
+"
+script = ExtResource("5_rlanf")
+action = "p1_right"
+
+[node name="Back" type="Button" parent="CanvasLayer/OptionBtn"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -37.0
+offset_top = -37.0
+offset_right = 37.0
+grow_horizontal = 2
+grow_vertical = 0
 text = "Back
 "
 script = ExtResource("2_2ycbh")
 
 [node name="LevelSelect" type="Panel" parent="CanvasLayer"]
+visible = false
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -393,7 +996,7 @@ libraries = {
 [connection signal="pressed" from="CanvasLayer/MainBtn/VBOX/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainBtn/VBOX/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainBtn/VBOX/QuitButton" to="." method="_on_quit_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/OptionBtn/VBOX/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="CanvasLayer/OptionBtn/Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="CanvasLayer/LevelSelect/VBOX/LevelA" to="." method="_on_level_a_pressed"]
 [connection signal="pressed" from="CanvasLayer/LevelSelect/VBOX/LevelB" to="." method="_on_level_b_pressed"]
 [connection signal="pressed" from="CanvasLayer/LevelSelect/VBOX/BackLevel" to="." method="_on_back_level_pressed"]

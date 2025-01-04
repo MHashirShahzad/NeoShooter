@@ -1,17 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bo2pfa1syoew"]
+[gd_scene load_steps=4 format=3 uid="uid://bo2pfa1syoew"]
 
 [ext_resource type="Script" path="res://autoloads/ui/ui_manager.gd" id="1_u1v7n"]
-[ext_resource type="Shader" path="res://autoloads/ui/blur_vignette.gdshader" id="2_26je8"]
 [ext_resource type="Shader" path="res://autoloads/ui/vignette.gdshader" id="3_les54"]
-[ext_resource type="Shader" path="res://autoloads/ui/outline.gdshader" id="3_ot02v"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ibr5y"]
-shader = ExtResource("2_26je8")
-shader_parameter/blur_radius = 0.2
-shader_parameter/blur_amount = 1.0
-shader_parameter/blur_inner = 0.6
-shader_parameter/blur_outer = 0.66
-shader_parameter/dither_strength = 0.03
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5e38o"]
 shader = ExtResource("3_les54")
@@ -20,14 +10,6 @@ shader_parameter/outer_radius = 1.0
 shader_parameter/vignette_strength = 1.0
 shader_parameter/dither_strength = 0.03
 shader_parameter/vignette_color = null
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_m3nrk"]
-shader = ExtResource("3_ot02v")
-shader_parameter/color = Color(1, 1, 1, 1)
-shader_parameter/width = 1.0
-shader_parameter/pattern = 0
-shader_parameter/inside = false
-shader_parameter/add_margins = true
 
 [node name="UIManager" type="Control"]
 layout_mode = 3
@@ -40,26 +22,8 @@ script = ExtResource("1_u1v7n")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="BlurVignette" type="ColorRect" parent="CanvasLayer"]
-visible = false
-material = SubResource("ShaderMaterial_ibr5y")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="Vignette" type="ColorRect" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_5e38o")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-visible = false
-material = SubResource("ShaderMaterial_m3nrk")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

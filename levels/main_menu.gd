@@ -1,8 +1,20 @@
 extends Control
 
+@onready var main: Panel = $CanvasLayer/MainBtn
+@onready var option: Panel = $CanvasLayer/OptionBtn
+@onready var level: Panel = $CanvasLayer/LevelSelect
+
 @onready var ani_player: AnimationPlayer = $AniPlayer
 const LEVEL_A = preload("res://levels/level_a.tscn")
 const LEVEL_B = preload("res://levels/level_b.tscn")
+
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("back"):
+		if option.visible:
+			ani_player.play_backwards("main_to_option")
+		elif level.visible:
+			ani_player.play_backwards("main_to_level")
+
 func _on_play_button_pressed() -> void:
 	ani_player.play("main_to_level")
 
@@ -17,11 +29,11 @@ func _on_options_button_pressed() -> void:
 
 
 func _on_back_pressed() -> void:
-	ani_player.play("option_to_main")
+		ani_player.play_backwards("main_to_option")
 
 
 func _on_back_level_pressed() -> void:
-	ani_player.play("level_to_main")
+	ani_player.play_backwards("main_to_level")
 
 
 func _on_level_a_pressed() -> void:

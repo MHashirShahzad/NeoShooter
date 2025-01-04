@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://dbukeuyrs33sq"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://dbukeuyrs33sq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jryc2"]
 
@@ -36,6 +36,10 @@ corner_radius_bottom_left = 10
 shadow_size = 2
 shadow_offset = Vector2(-1, -1)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q2tey"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jyb17"]
+
 [resource]
 Button/colors/font_color = Color(0.737255, 0.290196, 0.607843, 1)
 Button/colors/font_pressed_color = Color(0.737255, 0.290196, 0.607843, 1)
@@ -45,3 +49,5 @@ Button/styles/focus = SubResource("StyleBoxEmpty_jryc2")
 Button/styles/hover = SubResource("StyleBoxFlat_4l4fj")
 Button/styles/normal = SubResource("StyleBoxFlat_ag6rd")
 Button/styles/pressed = SubResource("StyleBoxFlat_3hvvq")
+ScrollContainer/styles/panel = SubResource("StyleBoxEmpty_q2tey")
+TabContainer/styles/panel = SubResource("StyleBoxEmpty_jyb17")
