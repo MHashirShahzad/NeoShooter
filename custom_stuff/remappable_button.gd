@@ -18,6 +18,9 @@ func _ready():
 	set_process_unhandled_input(false)
 	load_user_input()
 	update_key_text()
+	self.pressed.connect(_on_pressed)
+	self.mouse_entered.connect(_on_hovered)
+	self.mouse_exited.connect(_on_unhovered)
 
 # On clicked
 func _toggled(button_pressed):

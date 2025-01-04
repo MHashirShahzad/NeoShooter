@@ -583,6 +583,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_1wdqi")
 [node name="Remap_Button" type="Button" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls/HBoxContainer2"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
+theme = ExtResource("2_b7fev")
 text = "p1_left
 "
 script = ExtResource("5_rlanf")
@@ -853,79 +854,65 @@ text = "p2_shoot_big
 script = ExtResource("5_rlanf")
 action = "p2_shoot_big"
 
+[node name="The End" type="HBoxContainer" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/OptionBtn/TabContainer/Controls/Controls/The End"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "----------------- The End -----------------"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Display" type="ScrollContainer" parent="CanvasLayer/OptionBtn/TabContainer"]
 visible = false
-custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
+theme = ExtResource("2_b7fev")
 metadata/_tab_index = 1
 
 [node name="Controls" type="VBoxContainer" parent="CanvasLayer/OptionBtn/TabContainer/Display"]
+custom_minimum_size = Vector2(1000, 0)
 layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Remap_Button" type="Button" parent="CanvasLayer/OptionBtn/TabContainer/Display/Controls"]
+[node name="Player1" type="HBoxContainer" parent="CanvasLayer/OptionBtn/TabContainer/Display/Controls"]
 layout_mode = 2
-text = "p1_right
-"
-script = ExtResource("5_rlanf")
-action = "p1_right"
+alignment = 1
 
-[node name="Remap_Button2" type="Button" parent="CanvasLayer/OptionBtn/TabContainer/Display/Controls"]
+[node name="Label" type="Label" parent="CanvasLayer/OptionBtn/TabContainer/Display/Controls/Player1"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-text = "p1_right
-"
-script = ExtResource("5_rlanf")
-action = "p1_right"
+theme_override_font_sizes/font_size = 30
+text = "-----------------  More To Come -----------------"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Remap_Button3" type="Button" parent="CanvasLayer/OptionBtn/TabContainer/Display/Controls"]
+[node name="Audio" type="ScrollContainer" parent="CanvasLayer/OptionBtn/TabContainer"]
+visible = false
 layout_mode = 2
-text = "p1_right
-"
-script = ExtResource("5_rlanf")
-action = "p1_right"
+theme = ExtResource("2_b7fev")
+metadata/_tab_index = 2
 
-[node name="Remap_Button4" type="Button" parent="CanvasLayer/OptionBtn/TabContainer/Display/Controls"]
+[node name="Controls" type="VBoxContainer" parent="CanvasLayer/OptionBtn/TabContainer/Audio"]
+custom_minimum_size = Vector2(1000, 0)
 layout_mode = 2
-text = "p1_right
-"
-script = ExtResource("5_rlanf")
-action = "p1_right"
+theme_override_constants/separation = 20
+alignment = 1
 
-[node name="Remap_Button5" type="Button" parent="CanvasLayer/OptionBtn/TabContainer/Display/Controls"]
+[node name="Player1" type="HBoxContainer" parent="CanvasLayer/OptionBtn/TabContainer/Audio/Controls"]
 layout_mode = 2
-text = "p1_right
-"
-script = ExtResource("5_rlanf")
-action = "p1_right"
+alignment = 1
 
-[node name="Remap_Button6" type="Button" parent="CanvasLayer/OptionBtn/TabContainer/Display/Controls"]
+[node name="Label" type="Label" parent="CanvasLayer/OptionBtn/TabContainer/Audio/Controls/Player1"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-text = "p1_right
-"
-script = ExtResource("5_rlanf")
-action = "p1_right"
-
-[node name="Remap_Button7" type="Button" parent="CanvasLayer/OptionBtn/TabContainer/Display/Controls"]
-layout_mode = 2
-text = "p1_right
-"
-script = ExtResource("5_rlanf")
-action = "p1_right"
-
-[node name="Remap_Button8" type="Button" parent="CanvasLayer/OptionBtn/TabContainer/Display/Controls"]
-layout_mode = 2
-text = "p1_right
-"
-script = ExtResource("5_rlanf")
-action = "p1_right"
-
-[node name="Remap_Button9" type="Button" parent="CanvasLayer/OptionBtn/TabContainer/Display/Controls"]
-layout_mode = 2
-text = "p1_right
-"
-script = ExtResource("5_rlanf")
-action = "p1_right"
+theme_override_font_sizes/font_size = 30
+text = "-----------------  More To Come -----------------"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Back" type="Button" parent="CanvasLayer/OptionBtn"]
 custom_minimum_size = Vector2(200, 0)

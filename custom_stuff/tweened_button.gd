@@ -15,7 +15,7 @@ func _ready() -> void:
 	self.mouse_exited.connect(_on_unhovered)
 	
 func _on_pressed() -> void:
-	SFXManager.play_FX(press, -5)
+	SFXManager.play_FX(press, -8)
 
 	#var tween : Tween = get_tree().create_tween()
 	#tween.tween_property(self, "rotation", 1, 1)
@@ -23,7 +23,7 @@ func _on_pressed() -> void:
 	
 	
 func _on_hovered() -> void:
-	SFXManager.play_FX(hover, -5)
+	SFXManager.play_FX(hover, -8)
 	#var tween : Tween = get_tree().create_tween()
 	#tween.tween_property(self, "scale", Vector2(1.2, 1.2), .2)
 	#await  tween.finished
