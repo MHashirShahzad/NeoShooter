@@ -11,11 +11,16 @@ config_version=5
 [application]
 
 config/name="NeoShooter"
-config/description="Space shooter revamped."
+config/description="Space shooter revamped.s"
+config/version="s"
 run/main_scene="res://levels/start_animation.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
-config/icon="res://NeoShooterLogo.svg"
+config/icon="res://assets/NeoShooterLogo.svg"
+
+[audio]
+
+buses/default_bus_layout="res://custom_stuff/default_bus_layout.tres"
 
 [autoload]
 
@@ -43,6 +48,7 @@ Bullet=""
 
 [gui]
 
+theme/custom="res://custom_stuff/default_theme.tres"
 theme/custom_font="res://assets/font/Sono/Sono-VariableFont_MONO,wght.ttf"
 
 [input]

@@ -1,4 +1,119 @@
-[gd_scene format=3 uid="uid://b6esgdmciuv7n"]
+[gd_scene load_steps=11 format=3 uid="uid://b6esgdmciuv7n"]
+
+[ext_resource type="Texture2D" uid="uid://b0xltc2iphdel" path="res://assets/NeoShooterLogo.svg" id="1_clxpc"]
+[ext_resource type="Script" path="res://levels/main_menu.gd" id="1_f6xqg"]
+[ext_resource type="Script" path="res://custom_stuff/tweened_button.gd" id="2_2ycbh"]
+[ext_resource type="Theme" uid="uid://dbukeuyrs33sq" path="res://custom_stuff/default_theme.tres" id="2_b7fev"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kjvgm"]
+bg_color = Color(0.231373, 0.0901961, 0.145098, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
+shadow_size = 10
+shadow_offset = Vector2(10, 10)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lxtfj"]
+bg_color = Color(0.141176, 0.133333, 0.203922, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
+shadow_size = 10
+shadow_offset = Vector2(10, 10)
+
+[sub_resource type="Animation" id="Animation_7fjac"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/MainBtn:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(386, 389)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/OptionBtn:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1300, 148)]
+}
+
+[sub_resource type="Animation" id="Animation_126t0"]
+resource_name = "main_to_option"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/MainBtn:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.466667),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(386, 389), Vector2(377, 814)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/OptionBtn:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.466667),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(1300, 148), Vector2(76, 148)]
+}
+
+[sub_resource type="Animation" id="Animation_c7wx0"]
+resource_name = "option_to_main"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/MainBtn:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.466667),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(377, 814), Vector2(386, 389)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/OptionBtn:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.466667),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(76, 148), Vector2(1300, 148)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ok511"]
+_data = {
+"RESET": SubResource("Animation_7fjac"),
+"main_to_option": SubResource("Animation_126t0"),
+"option_to_main": SubResource("Animation_c7wx0")
+}
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -11,6 +126,7 @@ offset_right = -1.0
 offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_f6xqg")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -20,39 +136,138 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.0705882, 0.12549, 0.12549, 1)
+color = Color(0.0784314, 0.0627451, 0.0745098, 1)
 
-[node name="GameName" type="Label" parent="CanvasLayer"]
+[node name="Logo" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="BG2" type="ColorRect" parent="CanvasLayer/Logo"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 142.0
+grow_horizontal = 2
+color = Color(0.0235294, 0.0235294, 0.0313726, 1)
+
+[node name="HBOX" type="HBoxContainer" parent="CanvasLayer/Logo"]
+layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -464.0
-offset_right = 464.0
-offset_bottom = 181.0
+offset_left = -423.5
+offset_right = 423.5
+offset_bottom = 128.0
 grow_horizontal = 2
+theme_override_constants/separation = 100
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Logo/HBOX"]
+layout_mode = 2
+texture = ExtResource("1_clxpc")
+
+[node name="GameName" type="Label" parent="CanvasLayer/Logo/HBOX"]
+layout_mode = 2
 theme_override_colors/font_color = Color(0.47451, 0.227451, 0.501961, 1)
 theme_override_colors/font_shadow_color = Color(0.0235294, 0.0235294, 0.0313726, 1)
-theme_override_font_sizes/font_size = 150
+theme_override_font_sizes/font_size = 100
 text = "NeoShooter"
 
-[node name="BG2" type="ColorRect" parent="CanvasLayer"]
-custom_minimum_size = Vector2(500, 300)
+[node name="MainBtn" type="Panel" parent="CanvasLayer"]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -250.0
-offset_top = -300.0
-offset_right = 250.0
+offset_left = -190.0
+offset_top = -259.0
+offset_right = 190.0
 grow_horizontal = 2
 grow_vertical = 0
-color = Color(0.141176, 0.321569, 0.231373, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_kjvgm")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/BG2"]
+[node name="VBOX" type="VBoxContainer" parent="CanvasLayer/MainBtn"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
 anchor_bottom = 1.0
+offset_left = -156.0
+offset_right = 161.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="PlayButton" type="Button" parent="CanvasLayer/MainBtn/VBOX"]
+layout_mode = 2
+theme = ExtResource("2_b7fev")
+text = "Play"
+script = ExtResource("2_2ycbh")
+
+[node name="OptionsButton" type="Button" parent="CanvasLayer/MainBtn/VBOX"]
+layout_mode = 2
+text = "Options
+"
+script = ExtResource("2_2ycbh")
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/MainBtn/VBOX"]
+layout_mode = 2
+text = "Quit
+"
+script = ExtResource("2_2ycbh")
+
+[node name="OptionBtn" type="Panel" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 724.0
+offset_top = -500.0
+offset_right = 1724.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_lxtfj")
+
+[node name="VBOX" type="VBoxContainer" parent="CanvasLayer/OptionBtn"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -156.0
+offset_right = 161.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="PlayButton" type="Button" parent="CanvasLayer/OptionBtn/VBOX"]
+layout_mode = 2
+theme = ExtResource("2_b7fev")
+text = "Play"
+script = ExtResource("2_2ycbh")
+
+[node name="TweenedButton2" type="Button" parent="CanvasLayer/OptionBtn/VBOX"]
+layout_mode = 2
+text = "Options
+"
+script = ExtResource("2_2ycbh")
+
+[node name="Back" type="Button" parent="CanvasLayer/OptionBtn/VBOX"]
+layout_mode = 2
+text = "Back
+"
+script = ExtResource("2_2ycbh")
+
+[node name="AniPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ok511")
+}
+
+[connection signal="pressed" from="CanvasLayer/MainBtn/VBOX/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainBtn/VBOX/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainBtn/VBOX/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/OptionBtn/VBOX/Back" to="." method="_on_back_pressed"]

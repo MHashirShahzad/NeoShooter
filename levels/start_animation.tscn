@@ -37,7 +37,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_mkbo3"]
 resource_name = "default"
-length = 5.0
+length = 4.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -57,7 +57,7 @@ tracks/1/path = NodePath("BootUpScreen/Yellow Label:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(2.03333, 3.5, 4.9),
+"times": PackedFloat32Array(2.36667, 2.8, 4),
 "transitions": PackedFloat32Array(-2, -2, -2),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]

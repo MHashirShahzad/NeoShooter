@@ -31,7 +31,7 @@ var camera : SpaceShooterCamera
 ## Handles all hitstop shockwave cam shake and particles for the
 ## death vfx
 func die_effects(player : Player2D) -> void:
-
+	
 	hit_stop(5, 0.25)
 	# player_dead_shockwave(player)
 	camera_shake(200)
@@ -53,7 +53,7 @@ func die_vfx(player : Player2D) -> void:
 	
 	particle_vfx.global_position = player.global_position
 	particle_vfx.emitting = true
-	
+	particle_vfx.color_ramp = player.trails_vfx.color_ramp
 	await particle_vfx.finished
 	
 	self.remove_child(particle_vfx)

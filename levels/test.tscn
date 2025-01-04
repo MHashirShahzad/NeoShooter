@@ -1,11 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://ytwrg3bpl7wf"]
+[gd_scene load_steps=16 format=3 uid="uid://6of0h4ui84tw"]
 
+[ext_resource type="Script" path="res://levels/test.gd" id="1_pnthq"]
 [ext_resource type="PackedScene" uid="uid://bwkwpcmkypaje" path="res://camera/camera.tscn" id="1_tv80o"]
 [ext_resource type="PackedScene" uid="uid://dth2xkw87mtwm" path="res://player/player.tscn" id="2_iqfvu"]
 [ext_resource type="Resource" uid="uid://bu6wkpkaqxcs3" path="res://player/resources/player2_inputs.tres" id="3_7ae3j"]
 [ext_resource type="Shader" path="res://player/colorflash.gdshader" id="4_aaaxr"]
 [ext_resource type="Gradient" uid="uid://weuimmf02ocv" path="res://player/resources/player2_colorgradient.tres" id="5_ryk65"]
-[ext_resource type="AudioStream" uid="uid://co48k5dn8dirp" path="res://audio/music/hashir/fast-paced-boss-battle-230222.mp3" id="6_37tam"]
 [ext_resource type="Script" path="res://custom_stuff/hit_and_hurt_box/hurtbox.gd" id="7_pirds"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_np1qq"]
@@ -236,7 +236,8 @@ adjustment_enabled = true
 adjustment_contrast = 1.1
 adjustment_saturation = 1.1
 
-[node name="TEST" type="Node2D"]
+[node name="LevelA" type="Node2D"]
+script = ExtResource("1_pnthq")
 
 [node name="Players" type="Node2D" parent="."]
 position = Vector2(-1036, -523)
@@ -282,12 +283,6 @@ libraries = {
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_hdvnr")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_37tam")
-volume_db = -20.0
-autoplay = true
-bus = &"Music"
 
 [node name="Level" type="Node2D" parent="."]
 position = Vector2(-1037, -523)

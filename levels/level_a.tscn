@@ -1,30 +1,23 @@
-[gd_scene load_steps=19 format=3 uid="uid://dth2xkw87mtwm"]
+[gd_scene load_steps=16 format=3 uid="uid://dqj5xod7n2hbu"]
 
-[ext_resource type="Script" path="res://player/player.gd" id="1_a7y8v"]
-[ext_resource type="Resource" uid="uid://d1rtgcv253tl5" path="res://player/resources/player1_inputs.tres" id="2_maebw"]
-[ext_resource type="Script" path="res://custom_stuff/hit_and_hurt_box/hurtbox.gd" id="4_gy0jc"]
-[ext_resource type="Script" path="res://player/body.gd" id="4_pbvd6"]
-[ext_resource type="Shader" path="res://player/colorflash.gdshader" id="5_fy4w8"]
-[ext_resource type="PackedScene" uid="uid://cbtrogwycneft" path="res://vfx/trail_vfx.tscn" id="6_de123"]
-[ext_resource type="Gradient" uid="uid://ccr0bqso5icc5" path="res://player/resources/player1_colorgradient.tres" id="6_u1ddk"]
-[ext_resource type="AudioStream" uid="uid://bwtg824lfsynt" path="res://assets/audio/effects/low-engine-hum-72529.ogg" id="8_p3kwn"]
-[ext_resource type="Script" path="res://player/ani_manager.gd" id="9_oh3ug"]
+[ext_resource type="Script" path="res://levels/test.gd" id="1_o6py8"]
+[ext_resource type="PackedScene" uid="uid://dth2xkw87mtwm" path="res://player/player.tscn" id="2_3p0ub"]
+[ext_resource type="Resource" uid="uid://bu6wkpkaqxcs3" path="res://player/resources/player2_inputs.tres" id="3_o12wp"]
+[ext_resource type="Shader" path="res://player/colorflash.gdshader" id="4_wwqhx"]
+[ext_resource type="Gradient" uid="uid://weuimmf02ocv" path="res://player/resources/player2_colorgradient.tres" id="5_rylxb"]
+[ext_resource type="PackedScene" uid="uid://bwkwpcmkypaje" path="res://camera/camera.tscn" id="6_07jnl"]
+[ext_resource type="PackedScene" uid="uid://cwwadqi8vlbq0" path="res://custom_stuff/world_environment.tscn" id="7_jpd43"]
+[ext_resource type="Script" path="res://custom_stuff/hit_and_hurt_box/hurtbox.gd" id="8_ggkxk"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dmu1y"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_np1qq"]
 resource_local_to_scene = true
-shader = ExtResource("5_fy4w8")
+shader = ExtResource("4_wwqhx")
 shader_parameter/white_flash = false
 shader_parameter/red_flash = false
 shader_parameter/gold_flash = false
 shader_parameter/white_color = Color(1, 1, 1, 1)
 shader_parameter/red_color = Color(0.706, 0.125, 0.165, 1)
 shader_parameter/gold_color = Color(0.976, 0.639, 0.106, 1)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_y0nrd"]
-radius = 51.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_m0rva"]
-size = Vector2(80, 112)
 
 [sub_resource type="Animation" id="Animation_toxoe"]
 length = 0.001
@@ -225,7 +218,7 @@ tracks/1/keys = {
 "values": [Vector2(1, 1)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_6hrdo"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_va7aq"]
 resource_local_to_scene = true
 _data = {
 "RESET": SubResource("Animation_toxoe"),
@@ -235,75 +228,95 @@ _data = {
 "shoot": SubResource("Animation_0wqxx")
 }
 
-[node name="Player" type="CharacterBody2D" groups=["Player"]]
-script = ExtResource("1_a7y8v")
-input = ExtResource("2_maebw")
+[node name="LevelA" type="Node2D"]
+script = ExtResource("1_o6py8")
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-z_index = 1
-material = SubResource("ShaderMaterial_dmu1y")
-position = Vector2(0, 8)
-color = Color(0.909804, 0.415686, 0.45098, 1)
-antialiased = true
-polygon = PackedVector2Array(-40, 0, 0, -80, 40, 0, 0, 40)
-script = ExtResource("4_pbvd6")
+[node name="Players" type="Node2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_y0nrd")
+[node name="Player1" parent="Players" instance=ExtResource("2_3p0ub")]
+position = Vector2(360, 333)
+rotation = 1.5708
 
-[node name="BulletSpawnLocation" type="Marker2D" parent="."]
-position = Vector2(0, -68)
-gizmo_extents = 140.4
+[node name="Player2" parent="Players" instance=ExtResource("2_3p0ub")]
+position = Vector2(1756, 756)
+rotation = -1.5708
+input = ExtResource("3_o12wp")
 
-[node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("hurtbox_owner")]
-script = ExtResource("4_gy0jc")
-hurtbox_owner = NodePath("..")
+[node name="Polygon2D" parent="Players/Player2" index="0"]
+material = SubResource("ShaderMaterial_np1qq")
+color = Color(0.12549, 0.839216, 0.780392, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(1, -11)
-shape = SubResource("RectangleShape2D_m0rva")
-debug_color = Color(0.858328, 0.364151, 0, 0.42)
+[node name="Trails_VFX" parent="Players/Player2" index="5"]
+position = Vector2(-9.15527e-05, 29)
+color_ramp = ExtResource("5_rylxb")
 
-[node name="CPUParticles2D2" parent="." instance=ExtResource("6_de123")]
-visible = false
-position = Vector2(0, 32)
-particle_flag_align_y = true
-
-[node name="Trails_VFX" parent="." instance=ExtResource("6_de123")]
-position = Vector2(0, 29)
-particle_flag_align_y = true
-color_ramp = ExtResource("6_u1ddk")
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("8_p3kwn")
-volume_db = 2.438
-autoplay = true
-bus = &"SFX"
-
-[node name="AniManager" type="Node" parent="."]
-script = ExtResource("9_oh3ug")
-
-[node name="Shoot" type="AnimationPlayer" parent="AniManager"]
-root_node = NodePath("../..")
+[node name="Shoot" parent="Players/Player2/AniManager" index="0"]
 libraries = {
-"": SubResource("AnimationLibrary_6hrdo")
+"": SubResource("AnimationLibrary_va7aq")
 }
 
-[node name="AmmoFlash" type="AnimationPlayer" parent="AniManager"]
-root_node = NodePath("../..")
+[node name="AmmoFlash" parent="Players/Player2/AniManager" index="1"]
 libraries = {
-"": SubResource("AnimationLibrary_6hrdo")
-}
-playback_default_blend_time = 0.01
-
-[node name="AmmoRefill" type="AnimationPlayer" parent="AniManager"]
-root_node = NodePath("../..")
-libraries = {
-"": SubResource("AnimationLibrary_6hrdo")
+"": SubResource("AnimationLibrary_va7aq")
 }
 
-[node name="Hit" type="AnimationPlayer" parent="AniManager"]
-root_node = NodePath("../..")
+[node name="AmmoRefill" parent="Players/Player2/AniManager" index="2"]
 libraries = {
-"": SubResource("AnimationLibrary_6hrdo")
+"": SubResource("AnimationLibrary_va7aq")
 }
+
+[node name="Hit" parent="Players/Player2/AniManager" index="3"]
+libraries = {
+"": SubResource("AnimationLibrary_va7aq")
+}
+
+[node name="Camera2D" parent="." instance=ExtResource("6_07jnl")]
+position = Vector2(1000, 500)
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("7_jpd43")]
+
+[node name="Level" type="Node2D" parent="."]
+
+[node name="Collision Borders" type="StaticBody2D" parent="Level"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level/Collision Borders"]
+build_mode = 1
+polygon = PackedVector2Array(0, 0, 2000, 0, 2000, 1000, 0, 1000)
+
+[node name="Collision Center" type="StaticBody2D" parent="Level"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level/Collision Center"]
+polygon = PackedVector2Array(950, 0, 1050, 0, 1050, 1000, 950, 1000)
+
+[node name="BORDER" type="Polygon2D" parent="Level"]
+z_index = -1
+color = Color(0.290196, 0.329412, 0.384314, 1)
+invert_enabled = true
+polygon = PackedVector2Array(0, 0, 2000, 0, 2000, 1000, 0, 1000)
+
+[node name="BORDER2" type="Polygon2D" parent="Level"]
+z_index = -1
+color = Color(0.427451, 0.458824, 0.552941, 1)
+invert_enabled = true
+invert_border = 502.9
+polygon = PackedVector2Array(-100, -100, 2100, -100, 2100, 1100, -100, 1100)
+
+[node name="BG" type="Polygon2D" parent="Level"]
+z_index = -4
+color = Color(0.2, 0.223529, 0.254902, 1)
+polygon = PackedVector2Array(0, 0, 2000, 0, 2000, 1000, 0, 1000)
+
+[node name="CenterBar" type="Polygon2D" parent="Level"]
+z_index = -2
+color = Color(0.258824, 0.141176, 0.2, 1)
+polygon = PackedVector2Array(950, 0, 1050, 0, 1050, 1050, 950, 1050)
+
+[node name="BulletKillBox" type="Area2D" parent="Level"]
+script = ExtResource("8_ggkxk")
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Level/BulletKillBox"]
+position = Vector2(420, 220)
+build_mode = 1
+polygon = PackedVector2Array(-665, -471, 1785, -448, 1766, 1141, -655, 1136)
+
+[editable path="Players/Player2"]
