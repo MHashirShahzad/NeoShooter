@@ -321,12 +321,16 @@ position = Vector2(420, 220)
 build_mode = 1
 polygon = PackedVector2Array(-665, -471, 2288, -503, 2284, 1457, -656, 1457)
 
-[node name="Wall" parent="." node_paths=PackedStringArray("player") instance=ExtResource("9_1gurt")]
-position = Vector2(918, 616)
-player = NodePath("../Players/Player1")
+[node name="Player1Walls" type="Node" parent="."]
 
-[node name="Wall2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("9_1gurt")]
-position = Vector2(1547, 622)
-player = NodePath("../Players/Player2")
+[node name="Wall" parent="Player1Walls" node_paths=PackedStringArray("player") instance=ExtResource("9_1gurt")]
+position = Vector2(600, 1200)
+player = NodePath("../../Players/Player1")
+
+[node name="Player2Walls" type="Node" parent="."]
+
+[node name="Wall2" parent="Player2Walls" node_paths=PackedStringArray("player") instance=ExtResource("9_1gurt")]
+position = Vector2(1900, 300)
+player = NodePath("../../Players/Player2")
 
 [editable path="Players/Player2"]

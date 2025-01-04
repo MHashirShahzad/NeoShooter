@@ -6,10 +6,11 @@
 
 [node name="Wall" type="CharacterBody2D"]
 script = ExtResource("2_thm7x")
+near_death_color = Color(0.45098, 0.0901961, 0.176471, 1)
 
 [node name="BreakableWall" type="Polygon2D" parent="."]
 color = Color(0.0784314, 0.203922, 0.392157, 1)
-polygon = PackedVector2Array(0, 0, 30, 0, 30, 300, 0, 300)
+polygon = PackedVector2Array(-15, -150, 15, -150, 15, 150, -15, 150)
 script = ExtResource("2_2qbrc")
 shard_count = 4
 
