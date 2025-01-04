@@ -3,10 +3,19 @@ extends Control
 @onready var main: Panel = $CanvasLayer/MainBtn
 @onready var option: Panel = $CanvasLayer/OptionBtn
 @onready var level: Panel = $CanvasLayer/LevelSelect
+@onready var game_name: Label = $CanvasLayer/Logo/HBOX/GameName
 
 @onready var ani_player: AnimationPlayer = $AniPlayer
 const LEVEL_A = preload("res://levels/level_a.tscn")
 const LEVEL_B = preload("res://levels/level_b.tscn")
+
+func _ready() -> void:
+	var rand_no = randi_range(0,10000)
+	if rand_no == 9999:
+		game_name.text = "☭NeoShooter"
+	
+
+
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("back"):
