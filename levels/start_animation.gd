@@ -19,7 +19,7 @@ func _input(event: InputEvent) -> void:
 	if !event.is_pressed:
 		return
 
-	if !event is InputEventKey or event is InputEventJoypadButton:
+	if ! (event is InputEventKey or event is InputEventJoypadButton):
 		return
 		
 	match current_state:

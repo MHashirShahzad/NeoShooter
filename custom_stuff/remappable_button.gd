@@ -45,16 +45,16 @@ func _unhandled_input(event):
 # Set text of button
 func update_key_text():
 	text = "%s" % InputMap.action_get_events(action)[0].as_text()
-	#if text.length() > 16:
-		#text = text.left(text.length() - (text.length() - 16))
-		#text = text.right(text.length() - (text.length() - 2))
-		#text = "🎮" + text
-	#elif text.length() > 5:
-		#text = text.left(text.length() - (text.length() - 5))
-		#text = "⌨️" + text
-	#else:
-		#text = "⌨️" + text
-	#text = text.replace(" ", "") # Replace space with nothing
+	if text.length() > 16:
+		text = text.left(text.length() - (text.length() - 16))
+		text = text.right(text.length() - (text.length() - 2))
+		# text = "🎮" + text
+	elif text.length() > 5:
+		text = text.left(text.length() - (text.length() - 5))
+		# text = "⌨️" + text
+	# else:
+		# text = "⌨️" + text
+	text = text.replace(" ", "") # Replace space with nothing
 	
 	
 func action_remapped(action:String , event: InputEvent) -> void:

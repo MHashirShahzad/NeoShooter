@@ -8,8 +8,10 @@ offsets = PackedFloat32Array(0.173333, 0.633333, 0.973333, 0.993333, 1)
 colors = PackedColorArray(0.0392157, 0.545098, 0.972549, 1, 0.450578, 0.00227139, 0.992695, 1, 0.992157, 0.858824, 0.65098, 0, 0.980392, 0.623529, 0.054902, 1, 1, 1, 1, 0)
 
 [node name="Bullet" instance=ExtResource("1_sno52")]
+speed = 1000.0
 
 [node name="ProjHitBox" parent="." index="0"]
+damage = 15.0
 chroma_str = 2.0
 
 [node name="Trails" parent="." index="6"]
