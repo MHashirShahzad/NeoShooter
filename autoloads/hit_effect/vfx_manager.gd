@@ -119,7 +119,7 @@ func hit_vfx(hitbox: ProjectileHitBox) -> void:
 func chormatic_abberation(hitbox : HitBox):
 	#chroma_rect.material.shader_parameter.spread = hitbox.chroma_str
 	# set chroma str
-	chroma_rect.material.set("shader_parameter/spread", hitbox.chroma_str)
+	chroma_rect.material.set("shader_parameter/chroma_strength", hitbox.chroma_str)
 	ani_player.play("hit")
 
 func get_hit_vfx_type(bullet : Bullet2D) -> CPUParticles2D:

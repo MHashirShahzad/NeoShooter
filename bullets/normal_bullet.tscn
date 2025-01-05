@@ -9,5 +9,8 @@ colors = PackedColorArray(0.0392157, 0.545098, 0.972549, 1, 0.450578, 0.00227139
 
 [node name="Bullet" instance=ExtResource("1_sno52")]
 
+[node name="ProjHitBox" parent="." index="0"]
+chroma_str = 2.0
+
 [node name="Trails" parent="." index="6"]
 color_ramp = SubResource("Gradient_lugyp")

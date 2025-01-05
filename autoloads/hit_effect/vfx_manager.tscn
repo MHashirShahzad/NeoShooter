@@ -5,8 +5,10 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_08do4"]
 shader = ExtResource("2_o0rfe")
-shader_parameter/levels = 200
-shader_parameter/spread = 0.0
+shader_parameter/chroma_strength = 0.0
+shader_parameter/r_displacement = Vector2(3, 0)
+shader_parameter/g_displacement = Vector2(0, 0)
+shader_parameter/b_displacement = Vector2(-3, 0)
 
 [sub_resource type="Animation" id="Animation_opiid"]
 length = 0.001
