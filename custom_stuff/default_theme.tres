@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=10 format=3 uid="uid://dbukeuyrs33sq"]
+[gd_resource type="Theme" load_steps=15 format=3 uid="uid://dbukeuyrs33sq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jryc2"]
 
@@ -40,6 +40,8 @@ shadow_offset = Vector2(-1, -1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jyb17"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ae68x"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_al7fs"]
 content_margin_left = 10.0
 content_margin_top = 4.0
@@ -72,6 +74,39 @@ border_width_right = 1
 border_color = Color(0.0784314, 0.0627451, 0.0745098, 1)
 corner_detail = 1
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_51aqq"]
+bg_color = Color(0.25098, 0.2, 0.32549, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_akwhb"]
+bg_color = Color(0.737255, 0.290196, 0.607843, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cxlb5"]
+bg_color = Color(0.737255, 0.290196, 0.607843, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gyb28"]
+content_margin_left = 4.0
+content_margin_top = 0.0
+content_margin_right = 4.0
+content_margin_bottom = 0.0
+bg_color = Color(0.0235294, 0.0235294, 0.0313726, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 6
+
 [resource]
 Button/colors/font_color = Color(0.737255, 0.290196, 0.607843, 1)
 Button/colors/font_pressed_color = Color(0.737255, 0.290196, 0.607843, 1)
@@ -84,6 +119,11 @@ Button/styles/pressed = SubResource("StyleBoxFlat_3hvvq")
 ScrollContainer/styles/panel = SubResource("StyleBoxEmpty_q2tey")
 TabContainer/constants/side_margin = 8
 TabContainer/styles/panel = SubResource("StyleBoxEmpty_jyb17")
+TabContainer/styles/tab_focus = SubResource("StyleBoxEmpty_ae68x")
 TabContainer/styles/tab_hovered = SubResource("StyleBoxFlat_al7fs")
 TabContainer/styles/tab_selected = SubResource("StyleBoxFlat_rj0cm")
 TabContainer/styles/tab_unselected = SubResource("StyleBoxFlat_1dxmw")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_51aqq")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_akwhb")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_cxlb5")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_gyb28")

@@ -3,7 +3,9 @@ extends Control
 @onready var label: Label = $CanvasLayer/Label
 @onready var pause_menu : CanvasLayer = $Pause
 
-const MAIN_MENU : PackedScene = preload("res://levels/main_menu.tscn")
+const LEVEL_SELECT :  PackedScene = preload("res://levels/level_select.tscn")
+const MAIN_MENU = preload("res://levels/main_menu.tscn")
+
 const MAIN_MENU_MUSIC : AudioStream = preload("res://assets/audio/music/hashir/neon-gaming-128925.mp3")
 
 func _ready() -> void:
@@ -38,12 +40,13 @@ func pause() -> void:
 		pause_menu.show()
 
 
-func _on_main_menu_btn_pressed() -> void:
+
+func _on_level_select_btn_pressed() -> void:
 	pause()
 	# delete references to p1 & p2
 	GameManager.p1 = null
 	GameManager.p2 = null
-	TransitionManager.transition_scene_packed(MAIN_MENU)
+	TransitionManager.transition_scene_packed(LEVEL_SELECT)
 	SFXManager.play_music(MAIN_MENU_MUSIC, -20)
 	
 	#await  TransitionManager.transition_fully_finished
@@ -53,3 +56,13 @@ func _on_main_menu_btn_pressed() -> void:
 
 func _on_resume_pressed() -> void:
 	pause()
+
+
+func _on_main_menu_btn_pressed() -> void:
+	pause()
+	
+	# delete references to p1 & p2
+	GameManager.p1 = null
+	GameManager.p2 = null
+	TransitionManager.transition_scene_packed(MAIN_MENU)
+	SFXManager.play_music(MAIN_MENU_MUSIC, -20)

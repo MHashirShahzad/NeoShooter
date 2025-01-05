@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b6esgdmciuv7n"]
+[gd_scene load_steps=13 format=3 uid="uid://b6esgdmciuv7n"]
 
 [ext_resource type="Texture2D" uid="uid://b0xltc2iphdel" path="res://assets/NeoShooterLogo.svg" id="1_clxpc"]
 [ext_resource type="Script" path="res://levels/main_menu.gd" id="1_f6xqg"]
@@ -27,16 +27,6 @@ shadow_size = 10
 shadow_offset = Vector2(10, 10)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1wdqi"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p1245"]
-bg_color = Color(0.0705882, 0.12549, 0.12549, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-corner_detail = 20
-shadow_size = 10
-shadow_offset = Vector2(10, 10)
 
 [sub_resource type="Animation" id="Animation_7fjac"]
 length = 0.001
@@ -67,166 +57,50 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = false
-tracks/2/path = NodePath("CanvasLayer/LevelSelect:position")
+tracks/2/path = NodePath("CanvasLayer/OptionBtn:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.001),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-1300, 148), Vector2(-1300, 148)]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = false
-tracks/3/path = NodePath("CanvasLayer/OptionBtn:visible")
+tracks/3/path = NodePath("CanvasLayer/MainBtn:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = false
-tracks/4/path = NodePath("CanvasLayer/LevelSelect:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = false
-tracks/5/path = NodePath("CanvasLayer/MainBtn:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
 }
-
-[sub_resource type="Animation" id="Animation_ckx62"]
-resource_name = "level_to_main"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/MainBtn:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.466667),
-"transitions": PackedFloat32Array(-2, -2),
-"update": 0,
-"values": [Vector2(377, 814), Vector2(386, 389)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/LevelSelect:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.433333),
-"transitions": PackedFloat32Array(-2, -2),
-"update": 0,
-"values": [Vector2(76, 148), Vector2(-1300, 148)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/LevelSelect:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CanvasLayer/MainBtn:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.0666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CanvasLayer/OptionBtn:visible")
+tracks/4/path = NodePath("CanvasLayer/LogoMainMenu:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_mwems"]
-resource_name = "main_to_level"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CanvasLayer/MainBtn:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.466667),
-"transitions": PackedFloat32Array(-2, -2),
 "update": 0,
-"values": [Vector2(386, 389), Vector2(377, 814)]
+"values": [Vector2(0, 0)]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CanvasLayer/LevelSelect:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(-2, -2),
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/Options Label:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-1300, 148), Vector2(76, 148)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/MainBtn:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.433333, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, true, false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CanvasLayer/LevelSelect:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.0333333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
+"values": [Vector2(-1168, 3)]
 }
 
 [sub_resource type="Animation" id="Animation_126t0"]
@@ -254,43 +128,55 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.466667),
 "transitions": PackedFloat32Array(-2, -2),
 "update": 0,
-"values": [Vector2(1300, 148), Vector2(76, 148)]
+"values": [Vector2(1300, 59), Vector2(76, 59)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CanvasLayer/LevelSelect:visible")
+tracks/2/path = NodePath("CanvasLayer/OptionBtn:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("CanvasLayer/OptionBtn:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.0333333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("CanvasLayer/MainBtn:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/MainBtn:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.433333, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/LogoMainMenu:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -456)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/Options Label:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1265, 0), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_c7wx0"]
@@ -344,29 +230,15 @@ tracks/3/keys = {
 "update": 1,
 "values": [true, true, false]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("CanvasLayer/LevelSelect:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ok511"]
 _data = {
 "RESET": SubResource("Animation_7fjac"),
-"level_to_main": SubResource("Animation_ckx62"),
-"main_to_level": SubResource("Animation_mwems"),
 "main_to_option": SubResource("Animation_126t0"),
 "option_to_main": SubResource("Animation_c7wx0")
 }
 
-[node name="Control" type="Control" groups=["MainMenu"]]
+[node name="MainMenu" type="Control" groups=["MainMenu"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -389,13 +261,13 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0784314, 0.0627451, 0.0745098, 1)
 
-[node name="Logo" type="Control" parent="CanvasLayer"]
+[node name="LogoMainMenu" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
 
-[node name="BG2" type="ColorRect" parent="CanvasLayer/Logo"]
+[node name="BG2" type="ColorRect" parent="CanvasLayer/LogoMainMenu"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -403,7 +275,7 @@ offset_bottom = 142.0
 grow_horizontal = 2
 color = Color(0.0235294, 0.0235294, 0.0313726, 1)
 
-[node name="HBOX" type="HBoxContainer" parent="CanvasLayer/Logo"]
+[node name="HBOX" type="HBoxContainer" parent="CanvasLayer/LogoMainMenu"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -414,16 +286,28 @@ offset_bottom = 128.0
 grow_horizontal = 2
 theme_override_constants/separation = 100
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Logo/HBOX"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/LogoMainMenu/HBOX"]
 layout_mode = 2
 texture = ExtResource("1_clxpc")
 
-[node name="GameName" type="Label" parent="CanvasLayer/Logo/HBOX"]
+[node name="GameName" type="Label" parent="CanvasLayer/LogoMainMenu/HBOX"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.47451, 0.227451, 0.501961, 1)
 theme_override_colors/font_shadow_color = Color(0.0235294, 0.0235294, 0.0313726, 1)
 theme_override_font_sizes/font_size = 100
 text = "NeoShooter"
+
+[node name="Options Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -1168.0
+offset_top = 3.0
+offset_right = -1168.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "--------- Settings ---------"
+horizontal_alignment = 1
 
 [node name="MainBtn" type="Panel" parent="CanvasLayer"]
 anchors_preset = 7
@@ -477,7 +361,7 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = 724.0
-offset_top = -500.0
+offset_top = -589.0
 offset_right = 1724.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -497,6 +381,7 @@ current_tab = 0
 [node name="Controls" type="ScrollContainer" parent="CanvasLayer/OptionBtn/TabContainer"]
 layout_mode = 2
 theme = ExtResource("2_b7fev")
+horizontal_scroll_mode = 0
 metadata/_tab_index = 0
 
 [node name="Controls" type="VBoxContainer" parent="CanvasLayer/OptionBtn/TabContainer/Controls"]
@@ -886,7 +771,7 @@ alignment = 1
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "-----------------  More To Come -----------------"
+text = "----------------- More To Come -----------------"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -910,7 +795,7 @@ alignment = 1
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "-----------------  More To Come -----------------"
+text = "--------- This is just a test build ---------"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -922,57 +807,14 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -37.0
-offset_top = -37.0
-offset_right = 37.0
+offset_left = -101.0
+offset_top = -48.0
+offset_right = 99.0
+offset_bottom = -11.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "Back
 "
-script = ExtResource("2_2ycbh")
-
-[node name="LevelSelect" type="Panel" parent="CanvasLayer"]
-visible = false
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -1876.0
-offset_top = -500.0
-offset_right = -876.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_p1245")
-
-[node name="VBOX" type="VBoxContainer" parent="CanvasLayer/LevelSelect"]
-layout_mode = 1
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -156.0
-offset_right = 161.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 20
-alignment = 1
-
-[node name="LevelA" type="Button" parent="CanvasLayer/LevelSelect/VBOX"]
-layout_mode = 2
-theme = ExtResource("2_b7fev")
-text = "Level A"
-script = ExtResource("2_2ycbh")
-
-[node name="LevelB" type="Button" parent="CanvasLayer/LevelSelect/VBOX"]
-layout_mode = 2
-text = "Level B
-"
-script = ExtResource("2_2ycbh")
-
-[node name="BackLevel" type="Button" parent="CanvasLayer/LevelSelect/VBOX"]
-layout_mode = 2
-text = "Back"
 script = ExtResource("2_2ycbh")
 
 [node name="AniPlayer" type="AnimationPlayer" parent="."]
@@ -984,6 +826,3 @@ libraries = {
 [connection signal="pressed" from="CanvasLayer/MainBtn/VBOX/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainBtn/VBOX/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/OptionBtn/Back" to="." method="_on_back_pressed"]
-[connection signal="pressed" from="CanvasLayer/LevelSelect/VBOX/LevelA" to="." method="_on_level_a_pressed"]
-[connection signal="pressed" from="CanvasLayer/LevelSelect/VBOX/LevelB" to="." method="_on_level_b_pressed"]
-[connection signal="pressed" from="CanvasLayer/LevelSelect/VBOX/BackLevel" to="." method="_on_back_level_pressed"]

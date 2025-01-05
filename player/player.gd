@@ -36,6 +36,7 @@ var is_input_enabled : bool = true
 var spawned_bullets : int = 0
 var tilt_x: float = 0.0
 var tilt_y: float = 0.0
+var is_dead : bool = false
 # =============================================================================================
 # Code
 
@@ -119,13 +120,16 @@ func screw_state(duration : float, str: float, time_scale : float = 0.05) -> voi
 	self.speed = def_speed
 
 func die() -> void:
-	
+	is_dead = true
 	# hide visuals
 	#self.hide()
 	for child in get_children():
 		if child is Node2D:
 			child.hide()
-			
+	
+	# notify game manager about death :C
+	GameManager.player_dead(self)
+	
 	# shockwave particles cam shake and slow mo
 	VFXManager.die_effects(self)
 	# shatter animation

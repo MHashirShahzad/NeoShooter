@@ -85,10 +85,25 @@ text = "Resume
 "
 script = ExtResource("4_as521")
 
+[node name="LevelSelectBtn" type="Button" parent="Pause/Blur/VBoxContainer"]
+layout_mode = 2
+text = "Level Select"
+script = ExtResource("4_as521")
+
 [node name="MainMenuBtn" type="Button" parent="Pause/Blur/VBoxContainer"]
 layout_mode = 2
 text = "Main Menu"
 script = ExtResource("4_as521")
+
+[node name="Label" type="Label" parent="Pause/Blur"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 20.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "--------- Game Paused ---------"
+horizontal_alignment = 1
 
 [node name="Control" type="Panel" parent="Pause"]
 visible = false
@@ -107,4 +122,5 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_1782s")
 
 [connection signal="pressed" from="Pause/Blur/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Pause/Blur/VBoxContainer/LevelSelectBtn" to="." method="_on_level_select_btn_pressed"]
 [connection signal="pressed" from="Pause/Blur/VBoxContainer/MainMenuBtn" to="." method="_on_main_menu_btn_pressed"]

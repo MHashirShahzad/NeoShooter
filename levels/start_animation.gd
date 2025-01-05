@@ -9,7 +9,8 @@ const MAIN_MENU : PackedScene = preload("res://levels/main_menu.tscn")
 
 enum STATES {
 	HOMIE,
-	YELLOW
+	YELLOW,
+	NONE
 }
 
 var current_state : STATES 
@@ -26,6 +27,8 @@ func _input(event: InputEvent) -> void:
 			homie_despawn_ani()
 		STATES.YELLOW:
 			yellow_despawn_ani()
+		_:
+			return
 
 
 # Called when the node enters the scene tree for the first time.
@@ -56,7 +59,7 @@ func yellow_spawn_ani():
 	tween.kill()
 	
 func yellow_despawn_ani():
-	current_state = STATES.YELLOW
+	current_state = STATES.NONE
 	var tween = get_tree().create_tween()
 	tween.tween_property(yellow_label, "self_modulate", Color.TRANSPARENT, .5)
 	await tween.finished

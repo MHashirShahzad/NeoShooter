@@ -1,0 +1,91 @@
+[gd_scene load_steps=5 format=3 uid="uid://0eqvmy2w55dl"]
+
+[ext_resource type="Theme" uid="uid://dbukeuyrs33sq" path="res://custom_stuff/default_theme.tres" id="1_mu73s"]
+[ext_resource type="Script" path="res://levels/level_select.gd" id="1_rk7ao"]
+[ext_resource type="Script" path="res://custom_stuff/tweened_button.gd" id="2_7e4rf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_81v0s"]
+bg_color = Color(0.0705882, 0.12549, 0.12549, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
+shadow_size = 10
+shadow_offset = Vector2(10, 10)
+
+[node name="Level-select" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rk7ao")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BG1" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.231373, 0.0901961, 0.145098, 1)
+
+[node name="LevelSelect" type="Panel" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -250.0
+offset_right = 500.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_81v0s")
+
+[node name="VBOX" type="VBoxContainer" parent="CanvasLayer/LevelSelect"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -156.0
+offset_right = 161.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="LevelA" type="Button" parent="CanvasLayer/LevelSelect/VBOX"]
+layout_mode = 2
+theme = ExtResource("1_mu73s")
+text = "Level A"
+script = ExtResource("2_7e4rf")
+
+[node name="LevelB" type="Button" parent="CanvasLayer/LevelSelect/VBOX"]
+layout_mode = 2
+text = "Level B
+"
+script = ExtResource("2_7e4rf")
+
+[node name="BackLevel" type="Button" parent="CanvasLayer/LevelSelect/VBOX"]
+layout_mode = 2
+text = "Back"
+script = ExtResource("2_7e4rf")
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 20.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "--------- Level Select ---------"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="CanvasLayer/LevelSelect/VBOX/LevelA" to="." method="_on_level_a_pressed"]
+[connection signal="pressed" from="CanvasLayer/LevelSelect/VBOX/LevelB" to="." method="_on_level_b_pressed"]
+[connection signal="pressed" from="CanvasLayer/LevelSelect/VBOX/BackLevel" to="." method="_on_back_level_pressed"]
