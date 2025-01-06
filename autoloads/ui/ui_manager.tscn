@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://bo2pfa1syoew"]
+[gd_scene load_steps=14 format=3 uid="uid://bo2pfa1syoew"]
 
 [ext_resource type="Script" path="res://autoloads/ui/ui_manager.gd" id="1_u1v7n"]
 [ext_resource type="Shader" path="res://autoloads/ui/darkened_blur.gdshader" id="3_i1qqd"]
 [ext_resource type="Shader" path="res://autoloads/ui/vignette.gdshader" id="3_les54"]
 [ext_resource type="Script" path="res://custom_stuff/tweened_button.gd" id="4_as521"]
 [ext_resource type="Shader" path="res://autoloads/ui/diamond_transtition.gdshader" id="5_3m8md"]
+[ext_resource type="Script" path="res://autoloads/ui/victory_screen.gd" id="5_4rf70"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_03obt"]
 shader = ExtResource("3_les54")
@@ -33,33 +34,6 @@ shader = ExtResource("5_3m8md")
 shader_parameter/progress = 0.0
 shader_parameter/diamondPixelSize = 20.0
 
-[sub_resource type="Animation" id="Animation_jj8i6"]
-resource_name = "transition"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Transition:material:shader_parameter/progress")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Transition/VBoxContainer:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_yxrk1"]
 length = 0.001
 tracks/0/type = "value"
@@ -85,6 +59,33 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jj8i6"]
+resource_name = "transition"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Transition:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Transition/VBoxContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qc7ym"]
@@ -190,6 +191,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_1782s")
 
 [node name="VictoryScreen" type="CanvasLayer" parent="."]
 layer = 5
+script = ExtResource("5_4rf70")
 
 [node name="Transition" type="ColorRect" parent="VictoryScreen"]
 material = SubResource("ShaderMaterial_5e38o")
@@ -232,12 +234,12 @@ layout_mode = 2
 text = "Restart"
 script = ExtResource("4_as521")
 
-[node name="LevelSelectBtn" type="Button" parent="VictoryScreen/Transition/VBoxContainer"]
+[node name="BackToLevelSelect" type="Button" parent="VictoryScreen/Transition/VBoxContainer"]
 layout_mode = 2
 text = "Level Select"
 script = ExtResource("4_as521")
 
-[node name="MainMenuBtn" type="Button" parent="VictoryScreen/Transition/VBoxContainer"]
+[node name="BackToMainMenu" type="Button" parent="VictoryScreen/Transition/VBoxContainer"]
 layout_mode = 2
 text = "Main Menu"
 script = ExtResource("4_as521")
@@ -266,4 +268,6 @@ libraries = {
 [connection signal="pressed" from="Pause/Blur/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Pause/Blur/VBoxContainer/LevelSelectBtn" to="." method="_on_level_select_btn_pressed"]
 [connection signal="pressed" from="Pause/Blur/VBoxContainer/MainMenuBtn" to="." method="_on_main_menu_btn_pressed"]
-[connection signal="pressed" from="VictoryScreen/Transition/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="VictoryScreen/Transition/VBoxContainer/Restart" to="VictoryScreen" method="_on_restart_pressed"]
+[connection signal="pressed" from="VictoryScreen/Transition/VBoxContainer/BackToLevelSelect" to="VictoryScreen" method="_on_back_to_level_select_pressed"]
+[connection signal="pressed" from="VictoryScreen/Transition/VBoxContainer/BackToMainMenu" to="VictoryScreen" method="_on_back_to_main_menu_pressed"]
