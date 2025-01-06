@@ -117,7 +117,7 @@ _data = {
 }
 
 [node name="TransitionManager" type="CanvasLayer"]
-layer = 3
+layer = 6
 script = ExtResource("1_e51kp")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

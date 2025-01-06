@@ -27,9 +27,9 @@ buses/default_bus_layout="res://custom_stuff/default_bus_layout.tres"
 BulletManager="*res://autoloads/bullet_manager.gd"
 VFXManager="*res://autoloads/hit_effect/vfx_manager.tscn"
 UIManager="*res://autoloads/ui/ui_manager.tscn"
-GameManager="*res://autoloads/game_manager.gd"
 SFXManager="*res://autoloads/audio/sfx_manager.tscn"
 TransitionManager="*res://autoloads/transition/transition_manager.tscn"
+GameManager="*res://autoloads/game_manager.gd"
 
 [display]
 

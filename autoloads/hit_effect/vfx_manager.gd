@@ -31,11 +31,14 @@ var camera : SpaceShooterCamera
 ## Handles all hitstop shockwave cam shake and particles for the
 ## death vfx
 func die_effects(player : Player2D) -> void:
-	
-	hit_stop(5, 0.25)
+	hit_stop(3, 0.25)
 	# player_dead_shockwave(player)
 	camera_shake(200)
 	die_vfx(player)
+	await hitstop_timer.timeout
+	UIManager.show_death_screen(player)
+	GameManager.match_end()
+	
 
 ## Called by the player or the object via on_hit()
 func hit_effects(hitbox : HitBox) -> void:

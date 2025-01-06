@@ -13,12 +13,21 @@ func _ready() -> void:
 		collision_shape = child
 
 func destroy():
+	# i know poor code :C 
+	if !bullet.hit_box:
+		return
+	if !bullet:
+		return
+	if !bullet.hit_box.to_ignore:
+		return
+		
+		
 	var owner : Player2D = bullet.hit_box.to_ignore
 	owner.spawned_bullets -= 1
 	
 	# play the bullet refill ani
 	if owner.spawned_bullets <= 0:
 		owner.bullets_refilled()
-		
+	
 	bullet.queue_free()
 	#self.to_ignore.queue_free()

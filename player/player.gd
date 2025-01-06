@@ -53,6 +53,10 @@ func _physics_process(delta: float) -> void:
 
 func move(delta : float) -> void:
 	if !is_input_enabled:
+		# lerp velocity to 0 still even if input is disabled :C
+		velocity = velocity.lerp(Vector2.ZERO, friction)
+		wish_dir = Vector2(0, 0)
+		skew_char() # skews to default when wish dir is 0 0
 		return
 	wish_dir = Input.get_vector(input.left, input.right, input.up, input.down)
 	
@@ -127,10 +131,8 @@ func die() -> void:
 		if child is Node2D:
 			child.hide()
 	
-	# notify game manager about death :C
-	GameManager.player_dead(self)
-	
 	# shockwave particles cam shake and slow mo
+	# also manages the victory screen 
 	VFXManager.die_effects(self)
 	# shatter animation
 	body.is_player_dead = true

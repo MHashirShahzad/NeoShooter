@@ -30,3 +30,8 @@ func transition_scene_packed(scene : PackedScene) -> void:
 	start_transition()
 	await transiton_finsihed
 	get_tree().change_scene_to_packed(scene)
+
+func transition_scene_file(scene_path : String) -> void:
+	start_transition()
+	await transiton_finsihed
+	get_tree().change_scene_to_file(scene_path)

@@ -146,7 +146,7 @@ libraries = {
 "": SubResource("AnimationLibrary_4t4f1")
 }
 
-[node name="VfxToLoad" type="Node" parent="."]
+[node name="VfxToLoad" type="Node2D" parent="."]
 
 [node name="BigCPU" parent="VfxToLoad" instance=ExtResource("2_n85xd")]
 position = Vector2(543, 246)

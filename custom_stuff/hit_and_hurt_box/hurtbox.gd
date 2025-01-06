@@ -15,7 +15,8 @@ func _ready() -> void:
 func _on_area_entered(hitbox: HitBox) -> void:
 	if hitbox == null:
 		return
-		
+	
+	# if owner is invalid
 	if !owner:
 		destroy_bullet(hitbox)
 		return

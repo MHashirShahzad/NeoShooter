@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bo2pfa1syoew"]
+[gd_scene load_steps=13 format=3 uid="uid://bo2pfa1syoew"]
 
 [ext_resource type="Script" path="res://autoloads/ui/ui_manager.gd" id="1_u1v7n"]
-[ext_resource type="Shader" path="res://autoloads/ui/darkened_blur.gdshader" id="2_a4l50"]
+[ext_resource type="Shader" path="res://autoloads/ui/darkened_blur.gdshader" id="3_i1qqd"]
 [ext_resource type="Shader" path="res://autoloads/ui/vignette.gdshader" id="3_les54"]
 [ext_resource type="Script" path="res://custom_stuff/tweened_button.gd" id="4_as521"]
+[ext_resource type="Shader" path="res://autoloads/ui/diamond_transtition.gdshader" id="5_3m8md"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_03obt"]
 shader = ExtResource("3_les54")
@@ -13,10 +14,10 @@ shader_parameter/vignette_strength = 1.0
 shader_parameter/dither_strength = 0.03
 shader_parameter/vignette_color = null
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5e38o"]
-shader = ExtResource("2_a4l50")
-shader_parameter/lod = 0.376
-shader_parameter/mix_percentage = 0.637
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8oxbi"]
+shader = ExtResource("3_i1qqd")
+shader_parameter/lod = 0.43
+shader_parameter/mix_percentage = 0.71
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1782s"]
 bg_color = Color(0.0235294, 0.0235294, 0.0313726, 1)
@@ -26,6 +27,71 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 corner_detail = 20
 shadow_offset = Vector2(20, 20)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5e38o"]
+shader = ExtResource("5_3m8md")
+shader_parameter/progress = 0.0
+shader_parameter/diamondPixelSize = 20.0
+
+[sub_resource type="Animation" id="Animation_jj8i6"]
+resource_name = "transition"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Transition:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Transition/VBoxContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_yxrk1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Transition:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Transition/VBoxContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qc7ym"]
+_data = {
+"RESET": SubResource("Animation_yxrk1"),
+"transition": SubResource("Animation_jj8i6")
+}
 
 [node name="UIManager" type="Control"]
 process_mode = 3
@@ -57,7 +123,7 @@ layer = 5
 visible = false
 
 [node name="Blur" type="ColorRect" parent="Pause"]
-material = SubResource("ShaderMaterial_5e38o")
+material = SubResource("ShaderMaterial_8oxbi")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -124,17 +190,28 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_1782s")
 
 [node name="VictoryScreen" type="CanvasLayer" parent="."]
 layer = 5
-visible = false
 
-[node name="Blur" type="ColorRect" parent="VictoryScreen"]
+[node name="Transition" type="ColorRect" parent="VictoryScreen"]
 material = SubResource("ShaderMaterial_5e38o")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0.0235294, 0.0235294, 0.0313726, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VictoryScreen/Blur"]
+[node name="Label" type="Label" parent="VictoryScreen/Transition"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 37.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "--------- Player 1 Wins ---------"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VictoryScreen/Transition"]
+modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -150,31 +227,20 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
 
-[node name="Resume" type="Button" parent="VictoryScreen/Blur/VBoxContainer"]
+[node name="Restart" type="Button" parent="VictoryScreen/Transition/VBoxContainer"]
 layout_mode = 2
-text = "Resume
-"
+text = "Restart"
 script = ExtResource("4_as521")
 
-[node name="LevelSelectBtn" type="Button" parent="VictoryScreen/Blur/VBoxContainer"]
+[node name="LevelSelectBtn" type="Button" parent="VictoryScreen/Transition/VBoxContainer"]
 layout_mode = 2
 text = "Level Select"
 script = ExtResource("4_as521")
 
-[node name="MainMenuBtn" type="Button" parent="VictoryScreen/Blur/VBoxContainer"]
+[node name="MainMenuBtn" type="Button" parent="VictoryScreen/Transition/VBoxContainer"]
 layout_mode = 2
 text = "Main Menu"
 script = ExtResource("4_as521")
-
-[node name="Label" type="Label" parent="VictoryScreen/Blur"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 20.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 30
-text = "--------- Player 1 Wins ---------"
-horizontal_alignment = 1
 
 [node name="Control" type="Panel" parent="VictoryScreen"]
 visible = false
@@ -192,9 +258,12 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_1782s")
 
+[node name="VicAniPlayer" type="AnimationPlayer" parent="VictoryScreen"]
+libraries = {
+"": SubResource("AnimationLibrary_qc7ym")
+}
+
 [connection signal="pressed" from="Pause/Blur/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Pause/Blur/VBoxContainer/LevelSelectBtn" to="." method="_on_level_select_btn_pressed"]
 [connection signal="pressed" from="Pause/Blur/VBoxContainer/MainMenuBtn" to="." method="_on_main_menu_btn_pressed"]
-[connection signal="pressed" from="VictoryScreen/Blur/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="VictoryScreen/Blur/VBoxContainer/LevelSelectBtn" to="." method="_on_level_select_btn_pressed"]
-[connection signal="pressed" from="VictoryScreen/Blur/VBoxContainer/MainMenuBtn" to="." method="_on_main_menu_btn_pressed"]
+[connection signal="pressed" from="VictoryScreen/Transition/VBoxContainer/Restart" to="." method="_on_restart_pressed"]

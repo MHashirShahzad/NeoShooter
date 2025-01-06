@@ -54,3 +54,9 @@ func add_bullet_group(bullet : Bullet2D, player : Player2D):
 		bullet.add_to_group(GameManager.p1_bullet_id)
 	elif player == GameManager.p2:
 		bullet.add_to_group(GameManager.p2_bullet_id)
+
+func destroy_all_bullets() -> void:
+	var nodes = get_tree().get_nodes_in_group("Bullet")
+	for node in nodes:
+		if node is Bullet2D:
+			node.hit_box.destroy()
