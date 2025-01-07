@@ -1,8 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://0eqvmy2w55dl"]
+[gd_scene load_steps=12 format=3 uid="uid://0eqvmy2w55dl"]
 
-[ext_resource type="Theme" uid="uid://dbukeuyrs33sq" path="res://custom_stuff/default_theme.tres" id="1_mu73s"]
 [ext_resource type="Script" path="res://levels/level_select.gd" id="1_rk7ao"]
+[ext_resource type="Texture2D" uid="uid://cn4v3jncpfmej" path="res://levels/images/level_a.png" id="2_2iaos"]
 [ext_resource type="Script" path="res://custom_stuff/tweened_button.gd" id="2_7e4rf"]
+[ext_resource type="PackedScene" uid="uid://dqj5xod7n2hbu" path="res://levels/level_a.tscn" id="3_4vyuc"]
+[ext_resource type="PackedScene" uid="uid://ckwc2dcjfn1mq" path="res://levels/level_b.tscn" id="3_pv4rg"]
+[ext_resource type="Texture2D" uid="uid://clal4bq2nv062" path="res://levels/images/level_b.png" id="4_71e5x"]
+[ext_resource type="Script" path="res://custom_stuff/custom_resources/level_struct.gd" id="4_thvsq"]
+
+[sub_resource type="Resource" id="Resource_ykq1v"]
+script = ExtResource("4_thvsq")
+path = ExtResource("3_4vyuc")
+image = ExtResource("2_2iaos")
+
+[sub_resource type="Resource" id="Resource_o1pq8"]
+script = ExtResource("4_thvsq")
+path = ExtResource("3_pv4rg")
+image = ExtResource("4_71e5x")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_81v0s"]
 bg_color = Color(0.0705882, 0.12549, 0.12549, 1)
@@ -14,6 +28,8 @@ corner_detail = 20
 shadow_size = 10
 shadow_offset = Vector2(10, 10)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_plb2m"]
+
 [node name="Level-select" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -22,6 +38,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_rk7ao")
+level_array = Array[ExtResource("4_thvsq")]([SubResource("Resource_ykq1v"), SubResource("Resource_o1pq8")])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -47,34 +64,77 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_81v0s")
 
-[node name="VBOX" type="VBoxContainer" parent="CanvasLayer/LevelSelect"]
+[node name="HBOX" type="HBoxContainer" parent="CanvasLayer/LevelSelect"]
 layout_mode = 1
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -156.0
-offset_right = 161.0
+offset_top = -60.0
+offset_bottom = -23.0
 grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="LevelA" type="Button" parent="CanvasLayer/LevelSelect/VBOX"]
+[node name="BackLevel" type="Button" parent="CanvasLayer/LevelSelect/HBOX"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-theme = ExtResource("1_mu73s")
-text = "Level A"
+text = "Back"
 script = ExtResource("2_7e4rf")
 
-[node name="LevelB" type="Button" parent="CanvasLayer/LevelSelect/VBOX"]
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/LevelSelect/HBOX"]
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
-text = "Level B
+theme_override_styles/separator = SubResource("StyleBoxEmpty_plb2m")
+
+[node name="PlayLevel" type="Button" parent="CanvasLayer/LevelSelect/HBOX"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Play
 "
 script = ExtResource("2_7e4rf")
 
-[node name="BackLevel" type="Button" parent="CanvasLayer/LevelSelect/VBOX"]
+[node name="BoxContainer" type="BoxContainer" parent="CanvasLayer/LevelSelect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -64.0
+offset_right = 96.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+vertical = true
+
+[node name="LevelRect" type="TextureRect" parent="CanvasLayer/LevelSelect/BoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(192, 128)
 layout_mode = 2
-text = "Back"
+texture = ExtResource("4_71e5x")
+expand_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/LevelSelect/BoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="PrevLevel" type="Button" parent="CanvasLayer/LevelSelect/BoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "<-"
+script = ExtResource("2_7e4rf")
+
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/LevelSelect/BoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_plb2m")
+
+[node name="NextLevel" type="Button" parent="CanvasLayer/LevelSelect/BoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "->"
 script = ExtResource("2_7e4rf")
 
 [node name="Label" type="Label" parent="CanvasLayer"]
@@ -86,6 +146,7 @@ theme_override_font_sizes/font_size = 30
 text = "--------- Level Select ---------"
 horizontal_alignment = 1
 
-[connection signal="pressed" from="CanvasLayer/LevelSelect/VBOX/LevelA" to="." method="_on_level_a_pressed"]
-[connection signal="pressed" from="CanvasLayer/LevelSelect/VBOX/LevelB" to="." method="_on_level_b_pressed"]
-[connection signal="pressed" from="CanvasLayer/LevelSelect/VBOX/BackLevel" to="." method="_on_back_level_pressed"]
+[connection signal="pressed" from="CanvasLayer/LevelSelect/HBOX/BackLevel" to="." method="_on_back_level_pressed"]
+[connection signal="pressed" from="CanvasLayer/LevelSelect/HBOX/PlayLevel" to="." method="_on_play_level_pressed"]
+[connection signal="pressed" from="CanvasLayer/LevelSelect/BoxContainer/HBoxContainer/PrevLevel" to="." method="_on_prev_level_pressed"]
+[connection signal="pressed" from="CanvasLayer/LevelSelect/BoxContainer/HBoxContainer/NextLevel" to="." method="_on_next_level_pressed"]

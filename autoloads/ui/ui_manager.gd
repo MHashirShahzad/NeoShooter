@@ -1,6 +1,6 @@
 extends Control
 
-@onready var label: Label = $CanvasLayer/Label
+@onready var label: Label = $UILayer/Label
 @onready var pause_menu : CanvasLayer = $Pause
 @onready var vic_screen: CanvasLayer = $VictoryScreen
 @onready var vic_screen_label: Label = $VictoryScreen/Transition/Label

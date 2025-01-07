@@ -6,6 +6,10 @@ var p2 : Player2D
 
 
 func match_end():
+	if !p1:
+		return
+	if !p2:
+		return
 	# disable all input 
 	p1.is_input_enabled = false
 	p2.is_input_enabled = false

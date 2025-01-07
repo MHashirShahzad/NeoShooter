@@ -104,9 +104,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u1v7n")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="UILayer" type="CanvasLayer" parent="."]
 
-[node name="Vignette" type="ColorRect" parent="CanvasLayer"]
+[node name="Vignette" type="ColorRect" parent="UILayer"]
 material = SubResource("ShaderMaterial_03obt")
 anchors_preset = 15
 anchor_right = 1.0
@@ -114,7 +114,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="CanvasLayer"]
+[node name="Label" type="Label" parent="UILayer"]
 offset_right = 38.0
 offset_bottom = 23.0
 text = "  "
@@ -191,6 +191,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_1782s")
 
 [node name="VictoryScreen" type="CanvasLayer" parent="."]
 layer = 5
+visible = false
 script = ExtResource("5_4rf70")
 
 [node name="Transition" type="ColorRect" parent="VictoryScreen"]

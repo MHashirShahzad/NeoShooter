@@ -1,6 +1,5 @@
-[gd_scene load_steps=16 format=3 uid="uid://dqj5xod7n2hbu"]
+[gd_scene load_steps=15 format=3 uid="uid://dqj5xod7n2hbu"]
 
-[ext_resource type="Script" path="res://levels/test.gd" id="1_o6py8"]
 [ext_resource type="PackedScene" uid="uid://dth2xkw87mtwm" path="res://player/player.tscn" id="2_3p0ub"]
 [ext_resource type="Resource" uid="uid://bu6wkpkaqxcs3" path="res://player/resources/player2_inputs.tres" id="3_o12wp"]
 [ext_resource type="Shader" path="res://player/colorflash.gdshader" id="4_wwqhx"]
@@ -229,7 +228,6 @@ _data = {
 }
 
 [node name="LevelA" type="Node2D"]
-script = ExtResource("1_o6py8")
 
 [node name="Players" type="Node2D" parent="."]
 

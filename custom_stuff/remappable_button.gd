@@ -3,7 +3,7 @@ class_name Remap_Button
 
 # Variables <=====================================================================================>
 @export var action : String
-var user_prefs: User_Preferences
+var user_prefs: UserPreferences
 
 # Actual Code <=====================================================================================>
 
@@ -14,7 +14,7 @@ func _init():
 
 # On ready
 func _ready():
-	user_prefs = User_Preferences.load_or_create()
+	user_prefs = UserPreferences.load_or_create()
 	set_process_unhandled_input(false)
 	load_user_input()
 	update_key_text()
