@@ -46,3 +46,11 @@ func _on_prev_level_pressed() -> void:
 func _on_next_level_pressed() -> void:
 	level_prefs.level_index += 1
 	refresh_image()
+
+
+func _on_random_level_pressed() -> void:
+	level_prefs.save()
+	var level : LevelStruct = level_array.pick_random()
+	TransitionManager.transition_scene_packed(level.path)
+	var music : AudioStream = music_array.pick_random()
+	SFXManager.play_music(music, -10)

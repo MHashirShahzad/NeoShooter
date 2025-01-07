@@ -127,8 +127,18 @@ layout_mode = 2
 text = "<-"
 script = ExtResource("2_7e4rf")
 
+[node name="HSeparator2" type="HSeparator" parent="CanvasLayer/LevelSelect/BoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_plb2m")
+
+[node name="RandomLevel" type="Button" parent="CanvasLayer/LevelSelect/BoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Rand"
+script = ExtResource("2_7e4rf")
+
 [node name="HSeparator" type="HSeparator" parent="CanvasLayer/LevelSelect/BoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_plb2m")
 
@@ -149,4 +159,5 @@ horizontal_alignment = 1
 [connection signal="pressed" from="CanvasLayer/LevelSelect/HBOX/BackLevel" to="." method="_on_back_level_pressed"]
 [connection signal="pressed" from="CanvasLayer/LevelSelect/HBOX/PlayLevel" to="." method="_on_play_level_pressed"]
 [connection signal="pressed" from="CanvasLayer/LevelSelect/BoxContainer/HBoxContainer/PrevLevel" to="." method="_on_prev_level_pressed"]
+[connection signal="pressed" from="CanvasLayer/LevelSelect/BoxContainer/HBoxContainer/RandomLevel" to="." method="_on_random_level_pressed"]
 [connection signal="pressed" from="CanvasLayer/LevelSelect/BoxContainer/HBoxContainer/NextLevel" to="." method="_on_next_level_pressed"]
