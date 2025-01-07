@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://0eqvmy2w55dl"]
+[gd_scene load_steps=13 format=3 uid="uid://0eqvmy2w55dl"]
 
 [ext_resource type="Script" path="res://levels/level_select.gd" id="1_rk7ao"]
 [ext_resource type="Texture2D" uid="uid://cn4v3jncpfmej" path="res://levels/images/level_a.png" id="2_2iaos"]
@@ -29,6 +29,22 @@ shadow_size = 10
 shadow_offset = Vector2(10, 10)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_plb2m"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_38b8h"]
+bg_color = Color(0.0235294, 0.0235294, 0.0313726, 1)
+draw_center = false
+border_width_left = 40
+border_width_top = 40
+border_width_right = 40
+border_width_bottom = 40
+border_color = Color(0.0235294, 0.0235294, 0.0313726, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
+shadow_offset = Vector2(2, 2)
 
 [node name="Level-select" type="Control"]
 layout_mode = 3
@@ -111,10 +127,27 @@ grow_vertical = 2
 alignment = 1
 vertical = true
 
-[node name="LevelRect" type="TextureRect" parent="CanvasLayer/LevelSelect/BoxContainer"]
+[node name="Panel" type="Panel" parent="CanvasLayer/LevelSelect/BoxContainer"]
+custom_minimum_size = Vector2(220, 150)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_38b8h")
+
+[node name="LevelRect" type="TextureRect" parent="CanvasLayer/LevelSelect/BoxContainer/Panel"]
+show_behind_parent = true
 clip_contents = true
 custom_minimum_size = Vector2(192, 128)
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -64.0
+offset_right = 96.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("4_71e5x")
 expand_mode = 2
 

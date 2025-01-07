@@ -11,7 +11,7 @@ const MAIN_MENU = preload("res://levels/main_menu.tscn")
 	preload("res://assets/audio/music/hashir/space-station-247790.mp3"),
 	preload("res://assets/audio/music/hashir/stranger-things-124008.mp3")
 ]
-@onready var level_rect: TextureRect = $CanvasLayer/LevelSelect/BoxContainer/LevelRect
+@onready var level_rect: TextureRect = $CanvasLayer/LevelSelect/BoxContainer/Panel/LevelRect
 var level_prefs : LevelSelectPreferences
 
 func _ready() -> void:
