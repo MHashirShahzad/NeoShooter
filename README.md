@@ -8,7 +8,7 @@
 
 - **2-Player Local Multiplayer**: Battle it out with a friend on the same screen.
 - **Neon Aesthetic**: Enjoy a vibrant, abstract world with glowing visuals and fluid animations.
-- **Dynamic Gameplay**: Dodge, aim, and shoot in a fast-paced, skill-based arena.
+- **Dynamic Gameplay**: Dodge and shoot in a fast-paced, skill-based arena.
 - **Customizable Settings**: Adjust game speed, control sensitivity, and visual effects to your liking.
 - **Cross-Platform**: Designed for PC and compatible with multiple operating systems.
 
