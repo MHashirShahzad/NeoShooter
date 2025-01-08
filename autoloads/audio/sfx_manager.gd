@@ -1,7 +1,7 @@
 extends Node2D
 
 
-const SHOOT : AudioStream = preload("res://assets/audio/shoot.ogg")
+const SHOOT : AudioStream = preload("res://assets/audio/effects/yellow_dude/Shoot_v1.wav")
 const NO_AMMO : AudioStream = preload("res://assets/audio/no_ammo.ogg")
 const BULLET_REFILLED : AudioStream = preload("res://assets/audio/bullet_refilled3.ogg")
 

@@ -125,6 +125,7 @@ func screw_state(duration : float, str: float, time_scale : float = 0.05) -> voi
 
 func die() -> void:
 	is_dead = true
+	
 	# hide visuals
 	#self.hide()
 	for child in get_children():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d1v5k03sf3rhq"]
+[gd_scene load_steps=20 format=3 uid="uid://d1v5k03sf3rhq"]
 
 [ext_resource type="Script" path="res://levels/level_c.gd" id="1_kpn56"]
 [ext_resource type="PackedScene" uid="uid://dclvmmffyl7cf" path="res://player/both_players.tscn" id="1_np6qv"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bwkwpcmkypaje" path="res://camera/camera.tscn" id="5_8hd6s"]
 [ext_resource type="PackedScene" uid="uid://cwwadqi8vlbq0" path="res://custom_stuff/world_environment.tscn" id="6_e06h8"]
 [ext_resource type="Script" path="res://custom_stuff/hit_and_hurt_box/hurtbox.gd" id="7_7s84o"]
+[ext_resource type="PackedScene" uid="uid://mi7ywnppxaxb" path="res://breakable_wall/wall.tscn" id="8_repht"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iqv0p"]
 resource_local_to_scene = true
@@ -269,9 +270,11 @@ script = ExtResource("1_kpn56")
 [node name="BothPlayers" parent="." instance=ExtResource("1_np6qv")]
 
 [node name="Player1" parent="BothPlayers" index="0"]
+position = Vector2(340, 753)
 max_bullet_count = 7
 
 [node name="Player2" parent="BothPlayers" index="1"]
+position = Vector2(2200, 750)
 max_bullet_count = 7
 
 [node name="Polygon2D" parent="BothPlayers/Player2" index="0"]
@@ -351,12 +354,26 @@ polygon = PackedVector2Array(-665, -471, 2288, -503, 2284, 1457, -656, 1457)
 curve = SubResource("Curve2D_lq6k8")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(1200, 100)
+position = Vector2(1200, 100.001)
 rotation = -1.5708
 progress = 2800.0
 rotates = false
 
 [node name="PlasmaShooter" parent="Path2D/PathFollow2D" instance=ExtResource("5_7r1rq")]
+
+[node name="Player1Walls" type="Node" parent="."]
+
+[node name="Wall" parent="Player1Walls" node_paths=PackedStringArray("player") instance=ExtResource("8_repht")]
+position = Vector2(600, 750)
+health = 250.0
+player = NodePath("../../BothPlayers/Player1")
+
+[node name="Player2Walls" type="Node" parent="."]
+
+[node name="Wall2" parent="Player2Walls" node_paths=PackedStringArray("player") instance=ExtResource("8_repht")]
+position = Vector2(1900, 750)
+health = 250.0
+player = NodePath("../../BothPlayers/Player2")
 
 [editable path="BothPlayers"]
 [editable path="BothPlayers/Player2"]

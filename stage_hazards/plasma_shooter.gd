@@ -6,7 +6,7 @@ class_name PlasmaShooter2D
 var bullet_spawn_locations : Array[Marker2D]
 const PLASMA_BULLET = preload("res://bullets/plasma_bullet.tscn")
 
-@onready var body: Polygon2D = $MainBody
+@onready var body: Polygon2D = $Polygon2D
 
 func _ready() -> void:
 	for child in $BulletSpawnLocations.get_children():
@@ -27,8 +27,13 @@ func shoot_bullet(spawn_location : Marker2D) -> void:
 	VFXManager.shoot_vfx(spawn_location.global_position)
 	SFXManager.play_FX_2D(SFXManager.SHOOT, spawn_location.global_position, -20)
 	
+	# ignore no player :C
 	# bullet.hit_box.to_ignore = self
 	# apply_bullet_color(player, bullet)
 	BulletManager.add_child(bullet)
 	bullet.global_position = spawn_location.global_position
 	bullet.direction = self.global_position.direction_to(bullet.global_position)
+
+
+func disable():
+	self.queue_free()

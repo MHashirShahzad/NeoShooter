@@ -1,6 +1,34 @@
-[gd_scene load_steps=5 format=3 uid="uid://dkoyylw64k6j3"]
+[gd_scene load_steps=6 format=3 uid="uid://dkoyylw64k6j3"]
 
 [ext_resource type="Script" path="res://stage_hazards/plasma_shooter.gd" id="1_pxaqf"]
+[ext_resource type="Script" path="res://player/body.gd" id="2_a5n3u"]
+
+[sub_resource type="Animation" id="Animation_sjlwc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:speed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.2]
+}
 
 [sub_resource type="Animation" id="Animation_cq5g2"]
 resource_name = "shoot"
@@ -44,47 +72,23 @@ tracks/2/keys = {
 "values": [0.2, 0.2, 0.0, 0.2, 0.2]
 }
 
-[sub_resource type="Animation" id="Animation_sjlwc"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:speed")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.2]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bci5i"]
 _data = {
 "RESET": SubResource("Animation_sjlwc"),
 "shoot": SubResource("Animation_cq5g2")
 }
 
-[node name="PlasmaShooter" type="Node2D"]
+[node name="PlasmaShooter" type="Node2D" groups=["StageHazard"]]
 rotation = 3.14159
 script = ExtResource("1_pxaqf")
 
-[node name="MainBody" type="Polygon2D" parent="."]
+[node name="Polygon2D" type="Polygon2D" parent="."]
+z_index = -1
 rotation = -0.00101242
+scale = Vector2(1, 1)
 color = Color(0.705882, 0.12549, 0.164706, 1)
 polygon = PackedVector2Array(0, -40, 34.64, -20, 34.64, 20, 0, 40, -34.64, 20, -34.64, -20)
+script = ExtResource("2_a5n3u")
 
 [node name="BulletSpawnLocations" type="Node2D" parent="."]
 

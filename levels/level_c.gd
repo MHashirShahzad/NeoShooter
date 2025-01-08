@@ -5,4 +5,6 @@ extends Node2D
 
 
 func _process(delta: float) -> void:
+	if !plasma_shooter:
+		return
 	path_follow_2d.progress_ratio += delta * plasma_shooter.speed

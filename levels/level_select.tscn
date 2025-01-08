@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://0eqvmy2w55dl"]
+[gd_scene load_steps=18 format=3 uid="uid://0eqvmy2w55dl"]
 
 [ext_resource type="Script" path="res://levels/level_select.gd" id="1_rk7ao"]
 [ext_resource type="Texture2D" uid="uid://cn4v3jncpfmej" path="res://levels/images/level_a.png" id="2_2iaos"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://ckwc2dcjfn1mq" path="res://levels/level_b.tscn" id="3_pv4rg"]
 [ext_resource type="Texture2D" uid="uid://clal4bq2nv062" path="res://levels/images/level_b.png" id="4_71e5x"]
 [ext_resource type="Script" path="res://custom_stuff/custom_resources/level_struct.gd" id="4_thvsq"]
+[ext_resource type="PackedScene" uid="uid://d1v5k03sf3rhq" path="res://levels/level_c.tscn" id="7_0lr11"]
+[ext_resource type="Texture2D" uid="uid://dmoosw1vww87q" path="res://levels/images/level_c.png" id="7_k25oj"]
 [ext_resource type="Script" path="res://addons/TextureRectRounded/TextureRectRounded.gd" id="8_j3dk8"]
 
 [sub_resource type="Resource" id="Resource_ykq1v"]
@@ -18,6 +20,11 @@ image = ExtResource("2_2iaos")
 script = ExtResource("4_thvsq")
 path = ExtResource("3_pv4rg")
 image = ExtResource("4_71e5x")
+
+[sub_resource type="Resource" id="Resource_i0jky"]
+script = ExtResource("4_thvsq")
+path = ExtResource("7_0lr11")
+image = ExtResource("7_k25oj")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_81v0s"]
 bg_color = Color(0.0705882, 0.12549, 0.12549, 1)
@@ -46,7 +53,7 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 corner_detail = 20
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nxw8p"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_isfg0"]
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -55,7 +62,7 @@ anti_aliasing = false
 
 [node name="Level-select" type="Node2D"]
 script = ExtResource("1_rk7ao")
-level_array = Array[ExtResource("4_thvsq")]([SubResource("Resource_ykq1v"), SubResource("Resource_o1pq8")])
+level_array = Array[ExtResource("4_thvsq")]([SubResource("Resource_ykq1v"), SubResource("Resource_o1pq8"), SubResource("Resource_i0jky")])
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -150,7 +157,7 @@ offset_right = 96.0
 offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_nxw8p")
+theme_override_styles/panel = SubResource("StyleBoxFlat_isfg0")
 script = ExtResource("8_j3dk8")
 texture = ExtResource("4_71e5x")
 expand_mode = 2

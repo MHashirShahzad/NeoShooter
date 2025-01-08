@@ -19,6 +19,7 @@ func destroy():
 	if !bullet:
 		return
 	if !bullet.hit_box.to_ignore:
+		bullet.queue_free()
 		return
 		
 		
