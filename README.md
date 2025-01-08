@@ -19,6 +19,7 @@ There are three different types of bullets
 - Small
 - Normal
 - Big
+
 Use your brain and switch between bullets to confuse your oponent and beat the life out of them.
 
 ## ⚙️ Requirements
