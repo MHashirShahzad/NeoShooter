@@ -11,7 +11,7 @@ colors = PackedColorArray(0.0392157, 0.545098, 0.972549, 1, 0.450578, 0.00227139
 speed = 600.0
 
 [node name="ProjHitBox" parent="." index="0"]
-damage = 20.0
+damage = 30.0
 hit_stop = 0.3
 screw_state = 0.3
 screw_state_str = 100.0

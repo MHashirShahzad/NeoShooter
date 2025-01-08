@@ -15,7 +15,7 @@ func _ready() -> void:
 	var rand_no = randi_range(0,10000)
 	if rand_no == 9999:
 		game_name.text = "☭NeoShooter"
-	
+		# add soviet union music
 
 
 

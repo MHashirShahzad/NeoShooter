@@ -85,8 +85,7 @@ script = ExtResource("1_pxaqf")
 [node name="Polygon2D" type="Polygon2D" parent="."]
 z_index = -1
 rotation = -0.00101242
-scale = Vector2(1, 1)
-color = Color(0.705882, 0.12549, 0.164706, 1)
+color = Color(0.0235294, 0.0235294, 0.0313726, 1)
 polygon = PackedVector2Array(0, -40, 34.64, -20, 34.64, 20, 0, 40, -34.64, 20, -34.64, -20)
 script = ExtResource("2_a5n3u")
 

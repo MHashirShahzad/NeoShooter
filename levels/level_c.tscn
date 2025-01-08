@@ -339,7 +339,7 @@ polygon = PackedVector2Array(0, 0, 2500, 0, 2500, 1500, 0, 1500)
 
 [node name="CenterBar" type="Polygon2D" parent="Level"]
 z_index = -2
-color = Color(0.133333, 0.109804, 0.101961, 1)
+color = Color(0.231373, 0.0901961, 0.145098, 1)
 polygon = PackedVector2Array(1150, 0, 1350, 0, 1350, 1500, 1150, 1500)
 
 [node name="BulletKillBox" type="Area2D" parent="Level"]

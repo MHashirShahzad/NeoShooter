@@ -11,7 +11,7 @@ const MAIN_MENU :  PackedScene = preload("res://levels/main_menu.tscn")
 const MAIN_MENU_MUSIC : AudioStream = preload("res://assets/audio/music/hashir/neon-gaming-128925.mp3")
 
 var is_pause_disabled : bool = false
-
+var can_update_health : bool = false
 func _ready() -> void:
 	pause_menu.hide()
 	vic_screen.hide()
@@ -22,9 +22,9 @@ func _process(delta: float) -> void:
 func update_health():
 	if get_tree().paused:
 		return
-	
-	if not (GameManager.p1 or GameManager.p2):
+	if !can_update_health:
 		return
+	
 	var p1_health : float =  GameManager.p1.health
 	var p2_health : float = GameManager.p2.health
 	label.text = "P1: " + str(p1_health) + " P2: " + str(p2_health)
@@ -65,9 +65,8 @@ func _on_resume_pressed() -> void:
 
 func _on_main_menu_btn_pressed() -> void:
 	pause()
-	# delete references to p1 & p2
-	GameManager.p1 = null
-	GameManager.p2 = null
+	can_update_health = false
+	GameManager.match_end()
 	TransitionManager.transition_scene_packed(MAIN_MENU)
 	SFXManager.play_music(MAIN_MENU_MUSIC, -20)
 

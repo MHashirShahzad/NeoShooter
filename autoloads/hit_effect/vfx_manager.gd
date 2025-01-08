@@ -106,7 +106,7 @@ func camera_shake(shake_str : float)  -> void:
 	GameManager.camera.apply_shake()
 
 func hit_vfx(hitbox: ProjectileHitBox) -> void:
-	chormatic_abberation(hitbox)
+	chromatic_abberation(hitbox)
 	var particle_vfx  : CPUParticles2D = get_hit_vfx_type(hitbox.bullet)
 	self.add_child(particle_vfx)
 	
@@ -118,7 +118,7 @@ func hit_vfx(hitbox: ProjectileHitBox) -> void:
 	self.remove_child(particle_vfx)
 	particle_vfx.queue_free()
 
-func chormatic_abberation(hitbox : HitBox):
+func chromatic_abberation(hitbox : HitBox):
 	#chroma_rect.material.shader_parameter.spread = hitbox.chroma_str
 	# set chroma str
 	chroma_rect.material.set("shader_parameter/chroma_strength", hitbox.chroma_str)

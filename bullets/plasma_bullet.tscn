@@ -10,7 +10,7 @@ colors = PackedColorArray(0.0392157, 0.545098, 0.972549, 1, 0.450578, 0.00227139
 
 [sub_resource type="Gradient" id="Gradient_gw1de"]
 offsets = PackedFloat32Array(0, 0.390863, 0.791878)
-colors = PackedColorArray(0.45098, 0.0901961, 0.176471, 1, 0.705882, 0.12549, 0.164706, 1, 0.0235294, 0.0235294, 0.0313726, 1)
+colors = PackedColorArray(0.0235294, 0.0235294, 0.0313726, 1, 0.0784314, 0.0627451, 0.0745098, 1, 1, 1, 1, 1)
 
 [node name="Bullet" instance=ExtResource("1_fdgoc")]
 speed = 1200.0

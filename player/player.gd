@@ -46,6 +46,8 @@ func _ready() -> void:
 		GameManager.p2 = self
 	else:
 		GameManager.p1 = self
+	
+	UIManager.can_update_health = true
 
 func _physics_process(delta: float) -> void:
 	move(delta)
@@ -134,6 +136,8 @@ func die() -> void:
 			
 	# disable pause cuz it would cause issues
 	UIManager.is_pause_disabled = true
+	# set next frame -_-
+	UIManager.set_deferred("can_update_health", false)
 	
 	# shockwave particles cam shake and slow mo
 	# also manages the victory screen 
