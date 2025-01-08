@@ -1,15 +1,16 @@
-[gd_scene load_steps=17 format=3 uid="uid://ckwc2dcjfn1mq"]
+[gd_scene load_steps=19 format=3 uid="uid://d1v5k03sf3rhq"]
 
-[ext_resource type="PackedScene" uid="uid://dclvmmffyl7cf" path="res://player/both_players.tscn" id="1_gildk"]
-[ext_resource type="Shader" path="res://player/colorflash.gdshader" id="4_vwoqp"]
-[ext_resource type="PackedScene" uid="uid://bwkwpcmkypaje" path="res://camera/camera.tscn" id="6_ol1wp"]
-[ext_resource type="PackedScene" uid="uid://cwwadqi8vlbq0" path="res://custom_stuff/world_environment.tscn" id="7_1wgqk"]
-[ext_resource type="Script" path="res://custom_stuff/hit_and_hurt_box/hurtbox.gd" id="8_q81gk"]
-[ext_resource type="PackedScene" uid="uid://mi7ywnppxaxb" path="res://breakable_wall/wall.tscn" id="9_1gurt"]
+[ext_resource type="Script" path="res://levels/level_c.gd" id="1_kpn56"]
+[ext_resource type="PackedScene" uid="uid://dclvmmffyl7cf" path="res://player/both_players.tscn" id="1_np6qv"]
+[ext_resource type="Shader" path="res://player/colorflash.gdshader" id="3_xac6t"]
+[ext_resource type="PackedScene" uid="uid://dkoyylw64k6j3" path="res://stage_hazards/plasma_shooter.tscn" id="5_7r1rq"]
+[ext_resource type="PackedScene" uid="uid://bwkwpcmkypaje" path="res://camera/camera.tscn" id="5_8hd6s"]
+[ext_resource type="PackedScene" uid="uid://cwwadqi8vlbq0" path="res://custom_stuff/world_environment.tscn" id="6_e06h8"]
+[ext_resource type="Script" path="res://custom_stuff/hit_and_hurt_box/hurtbox.gd" id="7_7s84o"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7eq61"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iqv0p"]
 resource_local_to_scene = true
-shader = ExtResource("4_vwoqp")
+shader = ExtResource("3_xac6t")
 shader_parameter/white_flash = false
 shader_parameter/red_flash = false
 shader_parameter/gold_flash = false
@@ -216,7 +217,7 @@ tracks/1/keys = {
 "values": [Vector2(1, 1)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_3otyt"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7c7bb"]
 resource_local_to_scene = true
 _data = {
 "RESET": SubResource("Animation_toxoe"),
@@ -226,7 +227,7 @@ _data = {
 "shoot": SubResource("Animation_0wqxx")
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_1ebxm"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ik003"]
 resource_local_to_scene = true
 _data = {
 "RESET": SubResource("Animation_toxoe"),
@@ -236,7 +237,7 @@ _data = {
 "shoot": SubResource("Animation_0wqxx")
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_5xrnl"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s2t2y"]
 resource_local_to_scene = true
 _data = {
 "RESET": SubResource("Animation_toxoe"),
@@ -246,7 +247,7 @@ _data = {
 "shoot": SubResource("Animation_0wqxx")
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_3nter"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v6v2l"]
 resource_local_to_scene = true
 _data = {
 "RESET": SubResource("Animation_toxoe"),
@@ -256,44 +257,51 @@ _data = {
 "shoot": SubResource("Animation_0wqxx")
 }
 
-[node name="LevelA" type="Node2D"]
+[sub_resource type="Curve2D" id="Curve2D_lq6k8"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1200, 100, 0, 0, 0, 0, 1300, 100, 0, 0, 0, 0, 1300, 1400, 0, 0, 0, 0, 1200, 1400, 0, 0, 0, 0, 1200, 100)
+}
+point_count = 5
 
-[node name="BothPlayers" parent="." instance=ExtResource("1_gildk")]
+[node name="LevelC" type="Node2D"]
+script = ExtResource("1_kpn56")
+
+[node name="BothPlayers" parent="." instance=ExtResource("1_np6qv")]
 
 [node name="Player1" parent="BothPlayers" index="0"]
-max_bullet_count = 8
+max_bullet_count = 7
 
 [node name="Player2" parent="BothPlayers" index="1"]
-max_bullet_count = 8
+max_bullet_count = 7
 
 [node name="Polygon2D" parent="BothPlayers/Player2" index="0"]
-material = SubResource("ShaderMaterial_7eq61")
+material = SubResource("ShaderMaterial_iqv0p")
 
 [node name="Shoot" parent="BothPlayers/Player2/AniManager" index="0"]
 libraries = {
-"": SubResource("AnimationLibrary_3otyt")
+"": SubResource("AnimationLibrary_7c7bb")
 }
 
 [node name="AmmoFlash" parent="BothPlayers/Player2/AniManager" index="1"]
 libraries = {
-"": SubResource("AnimationLibrary_1ebxm")
+"": SubResource("AnimationLibrary_ik003")
 }
 
 [node name="AmmoRefill" parent="BothPlayers/Player2/AniManager" index="2"]
 libraries = {
-"": SubResource("AnimationLibrary_5xrnl")
+"": SubResource("AnimationLibrary_s2t2y")
 }
 
 [node name="Hit" parent="BothPlayers/Player2/AniManager" index="3"]
 libraries = {
-"": SubResource("AnimationLibrary_3nter")
+"": SubResource("AnimationLibrary_v6v2l")
 }
 
-[node name="Camera2D" parent="." instance=ExtResource("6_ol1wp")]
+[node name="Camera2D" parent="." instance=ExtResource("5_8hd6s")]
 position = Vector2(1250, 750)
 zoom = Vector2(0.4, 0.4)
 
-[node name="WorldEnvironment" parent="." instance=ExtResource("7_1wgqk")]
+[node name="WorldEnvironment" parent="." instance=ExtResource("6_e06h8")]
 
 [node name="Level" type="Node2D" parent="."]
 
@@ -306,50 +314,49 @@ polygon = PackedVector2Array(0, 0, 2500, 0, 2500, 1500, 0, 1500)
 [node name="Collision Center" type="StaticBody2D" parent="Level"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level/Collision Center"]
-polygon = PackedVector2Array(1200, 0, 1300, 0, 1300, 1500, 1200, 1500)
+polygon = PackedVector2Array(1150, 0, 1350, 0, 1350, 1500, 1150, 1500)
 
 [node name="BORDER" type="Polygon2D" parent="Level"]
 z_index = -1
-color = Color(0.141176, 0.321569, 0.231373, 1)
+color = Color(0.443137, 0.254902, 0.231373, 1)
 invert_enabled = true
 polygon = PackedVector2Array(0, 0, 2500, 0, 2500, 1500, 0, 1500)
 
 [node name="BORDER2" type="Polygon2D" parent="Level"]
 z_index = -1
-color = Color(0.101961, 0.478431, 0.243137, 1)
+color = Color(0.733333, 0.458824, 0.278431, 1)
 invert_enabled = true
 invert_border = 502.9
 polygon = PackedVector2Array(-100, -100, 2600, -100, 2600, 1600, -100, 1600)
 
 [node name="BG" type="Polygon2D" parent="Level"]
 z_index = -4
-color = Color(0.0705882, 0.12549, 0.12549, 1)
+color = Color(0.196078, 0.168627, 0.156863, 1)
 polygon = PackedVector2Array(0, 0, 2500, 0, 2500, 1500, 0, 1500)
 
 [node name="CenterBar" type="Polygon2D" parent="Level"]
 z_index = -2
-color = Color(0.0784314, 0.203922, 0.392157, 1)
-polygon = PackedVector2Array(1200, 0, 1300, 0, 1300, 1500, 1200, 1500)
+color = Color(0.133333, 0.109804, 0.101961, 1)
+polygon = PackedVector2Array(1150, 0, 1350, 0, 1350, 1500, 1150, 1500)
 
 [node name="BulletKillBox" type="Area2D" parent="Level"]
-script = ExtResource("8_q81gk")
+script = ExtResource("7_7s84o")
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Level/BulletKillBox"]
 position = Vector2(420, 220)
 build_mode = 1
 polygon = PackedVector2Array(-665, -471, 2288, -503, 2284, 1457, -656, 1457)
 
-[node name="Player1Walls" type="Node" parent="."]
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_lq6k8")
 
-[node name="Wall" parent="Player1Walls" node_paths=PackedStringArray("player") instance=ExtResource("9_1gurt")]
-position = Vector2(600, 1200)
-player = NodePath("../../BothPlayers/Player1")
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(1200, 100)
+rotation = -1.5708
+progress = 2800.0
+rotates = false
 
-[node name="Player2Walls" type="Node" parent="."]
-
-[node name="Wall2" parent="Player2Walls" node_paths=PackedStringArray("player") instance=ExtResource("9_1gurt")]
-position = Vector2(1900, 300)
-player = NodePath("../../BothPlayers/Player2")
+[node name="PlasmaShooter" parent="Path2D/PathFollow2D" instance=ExtResource("5_7r1rq")]
 
 [editable path="BothPlayers"]
 [editable path="BothPlayers/Player2"]

@@ -1,4 +1,5 @@
-extends Control
+extends Node2D
+
 const MAIN_MENU = preload("res://levels/main_menu.tscn")
 
 @export var level_array : Array[LevelStruct] = []
@@ -7,11 +8,10 @@ const MAIN_MENU = preload("res://levels/main_menu.tscn")
 	preload("res://assets/audio/music/hashir/fast-paced-boss-battle-230222.mp3"),
 	preload("res://assets/audio/music/hashir/game-music-teste-1-204326.mp3"),
 	preload("res://assets/audio/music/hashir/intense-electro-trailer-music-243987.mp3"),
-	preload("res://assets/audio/music/hashir/neon-gaming-128925.mp3"),
 	preload("res://assets/audio/music/hashir/space-station-247790.mp3"),
 	preload("res://assets/audio/music/hashir/stranger-things-124008.mp3")
 ]
-@onready var level_rect: TextureRect = $CanvasLayer/LevelSelect/BoxContainer/Panel/LevelRect
+@onready var level_rect: TextureRectRounded = $CanvasLayer/LevelSelect/BoxContainer/Panel/LevelRect
 var level_prefs : LevelSelectPreferences
 
 func _ready() -> void:
@@ -32,12 +32,12 @@ func _on_back_level_pressed() -> void:
 
 
 func _on_play_level_pressed() -> void:
-	level_prefs.save()
 	var level : LevelStruct = level_array[level_prefs.level_index]
+	level_prefs.prev_level_index = level_prefs.level_index
+	
 	TransitionManager.transition_scene_packed(level.path)
-	var music : AudioStream = music_array.pick_random()
-	SFXManager.play_music(music, -10)
-
+	play_bg_music()
+	level_prefs.save()
 
 func _on_prev_level_pressed() -> void:
 	level_prefs.level_index -= 1
@@ -49,8 +49,27 @@ func _on_next_level_pressed() -> void:
 
 
 func _on_random_level_pressed() -> void:
-	level_prefs.save()
-	var level : LevelStruct = level_array.pick_random()
+	var level : LevelStruct =  level_array.pick_random()
+	var index : int = level_array.find(level)
+	
+	if index == level_prefs.prev_level_index:
+		level = level_array.pick_random()
+		index = level_array.find(level)
+	
 	TransitionManager.transition_scene_packed(level.path)
+	level_prefs.prev_level_index = index
+	
+	play_bg_music()
+	level_prefs.save()
+
+func play_bg_music() -> void:
 	var music : AudioStream = music_array.pick_random()
+	var index : int = music_array.find(music)
+	
+	if index == level_prefs.prev_music_index:
+		music = music_array.pick_random()
+		index = music_array.find(music)
+	
+	level_prefs.prev_music_index = index
+	
 	SFXManager.play_music(music, -10)

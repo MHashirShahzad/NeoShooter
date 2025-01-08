@@ -87,6 +87,20 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.966667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"delete_all_bullets"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qc7ym"]
 _data = {
@@ -191,7 +205,6 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_1782s")
 
 [node name="VictoryScreen" type="CanvasLayer" parent="."]
 layer = 5
-visible = false
 script = ExtResource("5_4rf70")
 
 [node name="Transition" type="ColorRect" parent="VictoryScreen"]

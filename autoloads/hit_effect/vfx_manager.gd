@@ -37,7 +37,6 @@ func die_effects(player : Player2D) -> void:
 	die_vfx(player)
 	await hitstop_timer.timeout
 	UIManager.show_death_screen(player)
-	GameManager.match_end()
 	
 
 ## Called by the player or the object via on_hit()

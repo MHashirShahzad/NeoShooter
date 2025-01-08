@@ -1,0 +1,122 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkoyylw64k6j3"]
+
+[ext_resource type="Script" path="res://stage_hazards/plasma_shooter.gd" id="1_pxaqf"]
+
+[sub_resource type="Animation" id="Animation_cq5g2"]
+resource_name = "shoot"
+loop_mode = 1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"shoot_in_all_dir"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.433333, 0.5, 1),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(0.8, 0.8), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:speed")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.5, 0.966667, 1),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2),
+"update": 0,
+"values": [0.2, 0.2, 0.0, 0.2, 0.2]
+}
+
+[sub_resource type="Animation" id="Animation_sjlwc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:speed")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bci5i"]
+_data = {
+"RESET": SubResource("Animation_sjlwc"),
+"shoot": SubResource("Animation_cq5g2")
+}
+
+[node name="PlasmaShooter" type="Node2D"]
+rotation = 3.14159
+script = ExtResource("1_pxaqf")
+
+[node name="MainBody" type="Polygon2D" parent="."]
+rotation = -0.00101242
+color = Color(0.705882, 0.12549, 0.164706, 1)
+polygon = PackedVector2Array(0, -40, 34.64, -20, 34.64, 20, 0, 40, -34.64, 20, -34.64, -20)
+
+[node name="BulletSpawnLocations" type="Node2D" parent="."]
+
+[node name="BulletSpawnLocation3" type="Marker2D" parent="BulletSpawnLocations"]
+position = Vector2(1.90735e-06, 39.5633)
+rotation = -1.5708
+
+[node name="BulletSpawnLocation4" type="Marker2D" parent="BulletSpawnLocations"]
+position = Vector2(-1.90735e-06, -39.5633)
+rotation = 1.5708
+
+[node name="BulletSpawnLocation5" type="Marker2D" parent="BulletSpawnLocations"]
+position = Vector2(-34.7678, 20.3811)
+rotation = -0.785398
+
+[node name="BulletSpawnLocation6" type="Marker2D" parent="BulletSpawnLocations"]
+position = Vector2(-34.7678, -20.3811)
+rotation = 0.785398
+
+[node name="BulletSpawnLocation7" type="Marker2D" parent="BulletSpawnLocations"]
+position = Vector2(34.7678, 20.3811)
+rotation = -2.35619
+
+[node name="BulletSpawnLocation8" type="Marker2D" parent="BulletSpawnLocations"]
+position = Vector2(34.7678, -20.3811)
+rotation = 2.35619
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bci5i")
+}
+autoplay = "shoot"
+
+[node name="Marker2D" type="Marker2D" parent="."]
+gizmo_extents = 117.7

@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfp6vptd7gpdv"]
+
+[ext_resource type="PackedScene" uid="uid://cclo3pqf533bv" path="res://bullets/master_class/main_bullet.tscn" id="1_fdgoc"]
+[ext_resource type="PackedScene" uid="uid://cbtrogwycneft" path="res://vfx/trail_vfx.tscn" id="3_8aksi"]
+
+[sub_resource type="Gradient" id="Gradient_cu7tv"]
+resource_local_to_scene = true
+offsets = PackedFloat32Array(0.173333, 0.633333, 0.973333, 0.993333, 1)
+colors = PackedColorArray(0.0392157, 0.545098, 0.972549, 1, 0.450578, 0.00227139, 0.992695, 1, 0.992157, 0.858824, 0.65098, 0, 0.980392, 0.623529, 0.054902, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_gw1de"]
+offsets = PackedFloat32Array(0, 0.390863, 0.791878)
+colors = PackedColorArray(0.737255, 0.290196, 0.607843, 1, 0.156863, 0.360784, 0.768627, 1, 1, 0.988235, 0.25098, 1)
+
+[node name="Bullet" instance=ExtResource("1_fdgoc")]
+speed = 1200.0
+
+[node name="ProjHitBox" parent="." index="0"]
+damage = 7.0
+screw_state = 0.1
+screw_state_str = 25.0
+chroma_str = 1.5
+cam_shake_str = 15.0
+
+[node name="MainBody" parent="." index="3"]
+color = Color(0.0784314, 0.0627451, 0.0745098, 1)
+polygon = PackedVector2Array(-7, -6, 7, -6, 7, 10, -7, 10)
+
+[node name="Top" parent="." index="4"]
+polygon = PackedVector2Array(-7, -4, 7, -4, 0, -11)
+
+[node name="Bottom" parent="." index="5"]
+position = Vector2(0, 16)
+polygon = PackedVector2Array(-4, -6, 4, -6, 5, 0, -5, 0)
+
+[node name="Design" type="Polygon2D" parent="." index="6"]
+position = Vector2(-7, 6)
+polygon = PackedVector2Array(0, -8, 0, -6, 0, 0, -5, 1)
+
+[node name="Design2" type="Polygon2D" parent="." index="7"]
+position = Vector2(11, 6)
+polygon = PackedVector2Array(-4, -8, 1, 1, -4, 0)
+
+[node name="Trails" parent="." index="8"]
+position = Vector2(0, 16)
+amount = 50
+scale_amount_max = 4.0
+color_ramp = SubResource("Gradient_cu7tv")
+
+[node name="Trails2" parent="." index="9" instance=ExtResource("3_8aksi")]
+position = Vector2(0, 16)
+amount = 50
+emission_sphere_radius = 10.0
+particle_flag_align_y = true
+initial_velocity_min = 0.0
+initial_velocity_max = 1.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+color_ramp = SubResource("Gradient_gw1de")

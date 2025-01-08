@@ -133,6 +133,7 @@ func die() -> void:
 			
 	# disable pause cuz it would cause issues
 	UIManager.is_pause_disabled = true
+	
 	# shockwave particles cam shake and slow mo
 	# also manages the victory screen 
 	VFXManager.die_effects(self)

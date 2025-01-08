@@ -35,3 +35,7 @@ func _on_back_to_main_menu_pressed() -> void:
 	SFXManager.play_music(MAIN_MENU_MUSIC, -20)
 	await TransitionManager.transiton_finsihed
 	self.hide()
+
+## also deletes player references
+func delete_all_bullets():
+	GameManager.match_end()
