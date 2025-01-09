@@ -23,6 +23,7 @@ func shoot_bullet(spawn_location : Marker2D) -> void:
 	bullet.assign_var()
 	bullet.body.color = body.color
 	bullet.rotation = spawn_location.rotation
+	bullet.type = BulletManager.BULLET_TYPE.PLASMA
 	
 	VFXManager.shoot_vfx(spawn_location.global_position)
 	SFXManager.play_FX_2D(SFXManager.SHOOT, spawn_location.global_position, -20)

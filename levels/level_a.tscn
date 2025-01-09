@@ -1,13 +1,284 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqj5xod7n2hbu"]
+[gd_scene load_steps=15 format=3 uid="uid://dqj5xod7n2hbu"]
 
 [ext_resource type="PackedScene" uid="uid://dclvmmffyl7cf" path="res://player/both_players.tscn" id="1_ysmlu"]
+[ext_resource type="Shader" path="res://player/colorflash.gdshader" id="2_ctbxr"]
 [ext_resource type="PackedScene" uid="uid://bwkwpcmkypaje" path="res://camera/camera.tscn" id="6_07jnl"]
 [ext_resource type="PackedScene" uid="uid://cwwadqi8vlbq0" path="res://custom_stuff/world_environment.tscn" id="7_jpd43"]
+[ext_resource type="Shader" path="res://levels/glitch.gdshader" id="7_votxy"]
 [ext_resource type="Script" path="res://custom_stuff/hit_and_hurt_box/hurtbox.gd" id="8_ggkxk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_541jc"]
+resource_local_to_scene = true
+shader = ExtResource("2_ctbxr")
+shader_parameter/white_flash = false
+shader_parameter/red_flash = false
+shader_parameter/gold_flash = false
+shader_parameter/white_color = Color(1, 1, 1, 1)
+shader_parameter/red_color = Color(0.706, 0.125, 0.165, 1)
+shader_parameter/gold_color = Color(0.976, 0.639, 0.106, 1)
+
+[sub_resource type="Animation" id="Animation_toxoe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Polygon2D:material:shader_parameter/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Polygon2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 8)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Polygon2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Polygon2D:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Polygon2D:material:shader_parameter/white_flash")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Polygon2D:material:shader_parameter/red_flash")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_a8ex1"]
+resource_name = "ammo_flash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Polygon2D:material:shader_parameter/red_flash")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.19),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("Polygon2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.19),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 8), Vector2(-18, -8), Vector2(22, 36), Vector2(42, -38), Vector2(-27, 40), Vector2(0, 0), Vector2(0, 8)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Polygon2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.1, 0.133333, 0.19),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0718174, -0.135661, 0.0810147, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_duop2"]
+resource_name = "ammo_refill"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Polygon2D:material:shader_parameter/gold_flash")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.19),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Polygon2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.19),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.3, 0.7), Vector2(0.7, 1.3), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3e8t2"]
+resource_name = "hit_flash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Polygon2D:material:shader_parameter/white_flash")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.19),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("Polygon2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.19),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 8), Vector2(-18, -8), Vector2(22, 36), Vector2(42, -38), Vector2(-27, 40), Vector2(0, 0), Vector2(0, 8)]
+}
+
+[sub_resource type="Animation" id="Animation_0wqxx"]
+resource_name = "shoot"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Polygon2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 8), Vector2(0, 12), Vector2(0, 8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Polygon2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kx2sh"]
+resource_local_to_scene = true
+_data = {
+"RESET": SubResource("Animation_toxoe"),
+"ammo_flash": SubResource("Animation_a8ex1"),
+"ammo_refill": SubResource("Animation_duop2"),
+"hit_flash": SubResource("Animation_3e8t2"),
+"shoot": SubResource("Animation_0wqxx")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nsh80"]
+shader = ExtResource("7_votxy")
+shader_parameter/shake_power = 0.0
+shader_parameter/shake_rate = 0.2
+shader_parameter/shake_speed = 5.0
+shader_parameter/shake_block_size = 30.5
+shader_parameter/shake_color_rate = 0.0
 
 [node name="LevelA" type="Node2D"]
 
 [node name="Players" parent="." instance=ExtResource("1_ysmlu")]
+
+[node name="Player1" parent="Players" index="0"]
+position = Vector2(380, 333)
+speed = 60000
+friction = 0.2
+acceleration = 0.4
+tilt_strength_x = 0.1
+tilt_strength_y = 0.1
+tilt_speed = 10.0
+max_bullet_count = 6
+
+[node name="Player2" parent="Players" index="1"]
+speed = 60000
+friction = 0.2
+acceleration = 0.4
+tilt_strength_x = 0.1
+tilt_strength_y = 0.1
+tilt_speed = 10.0
+max_bullet_count = 6
+
+[node name="Polygon2D" parent="Players/Player2" index="0"]
+material = SubResource("ShaderMaterial_541jc")
+
+[node name="Shoot" parent="Players/Player2/AniManager" index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_kx2sh")
+}
+
+[node name="AmmoFlash" parent="Players/Player2/AniManager" index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_kx2sh")
+}
+
+[node name="AmmoRefill" parent="Players/Player2/AniManager" index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_kx2sh")
+}
+
+[node name="Hit" parent="Players/Player2/AniManager" index="3"]
+libraries = {
+"": SubResource("AnimationLibrary_kx2sh")
+}
 
 [node name="Camera2D" parent="." instance=ExtResource("6_07jnl")]
 position = Vector2(1000, 500)
@@ -57,3 +328,50 @@ script = ExtResource("8_ggkxk")
 position = Vector2(420, 220)
 build_mode = 1
 polygon = PackedVector2Array(-665, -471, 1785, -448, 1766, 1141, -655, 1136)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Label" type="RichTextLabel" parent="CanvasLayer"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(400, 100)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -180.5
+offset_right = 200.0
+offset_bottom = 180.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(1, 0.988235, 0.25098, 1)
+theme_override_colors/font_shadow_color = Color(0.0235294, 0.0235294, 0.0313726, 1)
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/shadow_offset_x = 5
+theme_override_font_sizes/bold_italics_font_size = 300
+theme_override_font_sizes/italics_font_size = 300
+theme_override_font_sizes/mono_font_size = 300
+theme_override_font_sizes/normal_font_size = 300
+theme_override_font_sizes/bold_font_size = 300
+bbcode_enabled = true
+text = "[center][i]GO[/i][/center]"
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_nsh80")
+custom_minimum_size = Vector2(200, 300)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[editable path="Players"]
+[editable path="Players/Player2"]

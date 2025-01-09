@@ -6,7 +6,7 @@ extends Node2D
 const NORMAL_HIT : PackedScene = preload("res://vfx/bullet_hit/hit_normal_vfx.tscn")
 const SMALL_HIT : PackedScene = preload("res://vfx/bullet_hit/hit_small_vfx.tscn")
 const BIG_HIT : PackedScene = preload("res://vfx/bullet_hit/hit_big_vfx.tscn")
-
+const PLASMA_HIT : PackedScene = preload("res://vfx/bullet_hit/hit_plasma_vfx.tscn")
 # VFX DIE
 const DISTORTION : PackedScene = preload("res://vfx/player_die/distortion.tscn")
 const DIE_VFX : PackedScene = preload("res://vfx/player_die/die_vfx.tscn")
@@ -121,8 +121,21 @@ func hit_vfx(hitbox: ProjectileHitBox) -> void:
 func chromatic_abberation(hitbox : HitBox):
 	#chroma_rect.material.shader_parameter.spread = hitbox.chroma_str
 	# set chroma str
-	chroma_rect.material.set("shader_parameter/chroma_strength", hitbox.chroma_str)
-	ani_player.play("hit")
+	# set_chroma_rect_value(hitbox.chroma_str)
+	chroma_rect.visible
+	
+	var tween : Tween = get_tree().create_tween()
+	# tween to 0
+	tween.set_ease(Tween.EASE_IN_OUT)
+	tween.tween_method(set_chroma_rect_value, hitbox.chroma_str, 0.0, hitbox.screw_state)
+	await tween.finished
+	tween.kill()
+	# chroma_rect.hide()
+	# ani_player.play("hit")
+
+func set_chroma_rect_value(value : float):
+	chroma_rect.material.set("shader_parameter/chroma_strength", value)
+
 
 func get_hit_vfx_type(bullet : Bullet2D) -> CPUParticles2D:
 	const BULLET_TYPE = BulletManager.BULLET_TYPE
@@ -135,6 +148,8 @@ func get_hit_vfx_type(bullet : Bullet2D) -> CPUParticles2D:
 			particle_vfx = BIG_HIT.instantiate()
 		BULLET_TYPE.SMALL:
 			particle_vfx = SMALL_HIT.instantiate()
+		BULLET_TYPE.PLASMA:
+			particle_vfx = PLASMA_HIT.instantiate()
 		_:
 			particle_vfx = NORMAL_HIT.instantiate()
 			

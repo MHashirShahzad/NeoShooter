@@ -178,6 +178,23 @@ tracks/5/keys = {
 "update": 0,
 "values": [Vector2(-1265, 0), Vector2(0, 0)]
 }
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [true],
+"method": &"main_menu_grab_focus"
+}, {
+"args": [],
+"method": &"option_menu_grab_focus"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_c7wx0"]
 resource_name = "option_to_main"
@@ -381,6 +398,7 @@ current_tab = 0
 [node name="Controls" type="ScrollContainer" parent="CanvasLayer/OptionBtn/TabContainer"]
 layout_mode = 2
 theme = ExtResource("2_b7fev")
+follow_focus = true
 horizontal_scroll_mode = 0
 metadata/_tab_index = 0
 
@@ -755,6 +773,7 @@ vertical_alignment = 1
 visible = false
 layout_mode = 2
 theme = ExtResource("2_b7fev")
+follow_focus = true
 metadata/_tab_index = 1
 
 [node name="Controls" type="VBoxContainer" parent="CanvasLayer/OptionBtn/TabContainer/Display"]
@@ -779,6 +798,7 @@ vertical_alignment = 1
 visible = false
 layout_mode = 2
 theme = ExtResource("2_b7fev")
+follow_focus = true
 metadata/_tab_index = 2
 
 [node name="Controls" type="VBoxContainer" parent="CanvasLayer/OptionBtn/TabContainer/Audio"]

@@ -2,6 +2,8 @@ extends CharacterBody2D
 class_name Player2D
 # =============================================================================================
 # Exports
+
+@export var is_input_enabled : bool = true
 @export_group("Physics")
 @export var speed : int = 60000
 @export var friction : float = 0.2
@@ -16,6 +18,7 @@ class_name Player2D
 
 @export_group("Bullets")
 @export var max_bullet_count : int = 6
+
 
 # =============================================================================================
 # On ready
@@ -32,7 +35,6 @@ class_name Player2D
 var direction : Vector2
 var wish_dir : Vector2
 var health : float = 100
-var is_input_enabled : bool = true
 var spawned_bullets : int = 0
 var tilt_x: float = 0.0
 var tilt_y: float = 0.0
@@ -40,14 +42,7 @@ var is_dead : bool = false
 # =============================================================================================
 # Code
 
-func _ready() -> void:
-	# GameManager References
-	if self.name == "Player2":
-		GameManager.p2 = self
-	else:
-		GameManager.p1 = self
-	
-	UIManager.can_update_health = true
+
 
 func _physics_process(delta: float) -> void:
 	move(delta)

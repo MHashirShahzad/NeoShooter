@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://0eqvmy2w55dl"]
+[gd_scene load_steps=42 format=3 uid="uid://0eqvmy2w55dl"]
 
 [ext_resource type="Script" path="res://levels/level_select.gd" id="1_rk7ao"]
 [ext_resource type="Texture2D" uid="uid://cn4v3jncpfmej" path="res://levels/images/level_a.png" id="2_2iaos"]
@@ -10,6 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://d1v5k03sf3rhq" path="res://levels/level_c.tscn" id="7_0lr11"]
 [ext_resource type="Texture2D" uid="uid://dmoosw1vww87q" path="res://levels/images/level_c.png" id="7_k25oj"]
 [ext_resource type="Script" path="res://addons/TextureRectRounded/TextureRectRounded.gd" id="8_j3dk8"]
+[ext_resource type="Shader" path="res://player/colorflash.gdshader" id="12_ail4r"]
+[ext_resource type="Resource" uid="uid://bu6wkpkaqxcs3" path="res://player/resources/player2_inputs.tres" id="12_o5qkk"]
+[ext_resource type="PackedScene" uid="uid://dth2xkw87mtwm" path="res://player/player.tscn" id="13_lcqh3"]
+[ext_resource type="Gradient" uid="uid://weuimmf02ocv" path="res://player/resources/player2_colorgradient.tres" id="14_lrqjp"]
 
 [sub_resource type="Resource" id="Resource_ykq1v"]
 script = ExtResource("4_thvsq")
@@ -53,12 +57,496 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 corner_detail = 20
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aneqf"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vu0mq"]
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_djnws"]
+bg_color = Color(0.0784314, 0.0627451, 0.0745098, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
+shadow_size = 10
+shadow_offset = Vector2(10, 10)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_mgodc"]
+viewport_path = NodePath("P2")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_w31h2"]
+viewport_path = NodePath("P1")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cpt27"]
+resource_local_to_scene = true
+shader = ExtResource("12_ail4r")
+shader_parameter/white_flash = false
+shader_parameter/red_flash = false
+shader_parameter/gold_flash = false
+shader_parameter/white_color = Color(1, 1, 1, 1)
+shader_parameter/red_color = Color(0.706, 0.125, 0.165, 1)
+shader_parameter/gold_color = Color(0.976, 0.639, 0.106, 1)
+
+[sub_resource type="Animation" id="Animation_toxoe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Polygon2D:material:shader_parameter/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Polygon2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 8)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Polygon2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Polygon2D:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Polygon2D:material:shader_parameter/white_flash")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Polygon2D:material:shader_parameter/red_flash")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_a8ex1"]
+resource_name = "ammo_flash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Polygon2D:material:shader_parameter/red_flash")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.19),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("Polygon2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.19),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 8), Vector2(-18, -8), Vector2(22, 36), Vector2(42, -38), Vector2(-27, 40), Vector2(0, 0), Vector2(0, 8)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Polygon2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.1, 0.133333, 0.19),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0718174, -0.135661, 0.0810147, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_duop2"]
+resource_name = "ammo_refill"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Polygon2D:material:shader_parameter/gold_flash")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.19),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Polygon2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.19),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.3, 0.7), Vector2(0.7, 1.3), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3e8t2"]
+resource_name = "hit_flash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Polygon2D:material:shader_parameter/white_flash")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.19),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("Polygon2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.19),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 8), Vector2(-18, -8), Vector2(22, 36), Vector2(42, -38), Vector2(-27, 40), Vector2(0, 0), Vector2(0, 8)]
+}
+
+[sub_resource type="Animation" id="Animation_0wqxx"]
+resource_name = "shoot"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Polygon2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 8), Vector2(0, 12), Vector2(0, 8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Polygon2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nv3f4"]
+resource_local_to_scene = true
+_data = {
+"RESET": SubResource("Animation_toxoe"),
+"ammo_flash": SubResource("Animation_a8ex1"),
+"ammo_refill": SubResource("Animation_duop2"),
+"hit_flash": SubResource("Animation_3e8t2"),
+"shoot": SubResource("Animation_0wqxx")
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bxgtm"]
+resource_local_to_scene = true
+_data = {
+"RESET": SubResource("Animation_toxoe"),
+"ammo_flash": SubResource("Animation_a8ex1"),
+"ammo_refill": SubResource("Animation_duop2"),
+"hit_flash": SubResource("Animation_3e8t2"),
+"shoot": SubResource("Animation_0wqxx")
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ojthk"]
+resource_local_to_scene = true
+_data = {
+"RESET": SubResource("Animation_toxoe"),
+"ammo_flash": SubResource("Animation_a8ex1"),
+"ammo_refill": SubResource("Animation_duop2"),
+"hit_flash": SubResource("Animation_3e8t2"),
+"shoot": SubResource("Animation_0wqxx")
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kgsxq"]
+resource_local_to_scene = true
+_data = {
+"RESET": SubResource("Animation_toxoe"),
+"ammo_flash": SubResource("Animation_a8ex1"),
+"ammo_refill": SubResource("Animation_duop2"),
+"hit_flash": SubResource("Animation_3e8t2"),
+"shoot": SubResource("Animation_0wqxx")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0qomo"]
+resource_local_to_scene = true
+shader = ExtResource("12_ail4r")
+shader_parameter/white_flash = false
+shader_parameter/red_flash = false
+shader_parameter/gold_flash = false
+shader_parameter/white_color = Color(1, 1, 1, 1)
+shader_parameter/red_color = Color(0.706, 0.125, 0.165, 1)
+shader_parameter/gold_color = Color(0.976, 0.639, 0.106, 1)
+
+[sub_resource type="Animation" id="Animation_oqq33"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Polygon2D:material:shader_parameter/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Polygon2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 8)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Polygon2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Polygon2D:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Polygon2D:material:shader_parameter/white_flash")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Polygon2D:material:shader_parameter/red_flash")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_t2vmc"]
+resource_name = "ammo_flash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Polygon2D:material:shader_parameter/red_flash")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.19),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("Polygon2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.19),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 8), Vector2(-18, -8), Vector2(22, 36), Vector2(42, -38), Vector2(-27, 40), Vector2(0, 0), Vector2(0, 8)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Polygon2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.1, 0.133333, 0.19),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0718174, -0.135661, 0.0810147, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_0x48k"]
+resource_name = "ammo_refill"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Polygon2D:material:shader_parameter/gold_flash")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.19),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Polygon2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.19),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.3, 0.7), Vector2(0.7, 1.3), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_o1a32"]
+resource_name = "hit_flash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Polygon2D:material:shader_parameter/white_flash")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.19),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("Polygon2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.19),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 8), Vector2(-18, -8), Vector2(22, 36), Vector2(42, -38), Vector2(-27, 40), Vector2(0, 0), Vector2(0, 8)]
+}
+
+[sub_resource type="Animation" id="Animation_v2bk1"]
+resource_name = "shoot"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Polygon2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 8), Vector2(0, 12), Vector2(0, 8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Polygon2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6o02l"]
+resource_local_to_scene = true
+_data = {
+"RESET": SubResource("Animation_oqq33"),
+"ammo_flash": SubResource("Animation_t2vmc"),
+"ammo_refill": SubResource("Animation_0x48k"),
+"hit_flash": SubResource("Animation_o1a32"),
+"shoot": SubResource("Animation_v2bk1")
+}
 
 [node name="Level-select" type="Node2D"]
 script = ExtResource("1_rk7ao")
@@ -119,7 +607,7 @@ text = "Play
 "
 script = ExtResource("2_7e4rf")
 
-[node name="BoxContainer" type="BoxContainer" parent="CanvasLayer/LevelSelect"]
+[node name="LevelContainer" type="BoxContainer" parent="CanvasLayer/LevelSelect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -135,12 +623,12 @@ grow_vertical = 2
 alignment = 1
 vertical = true
 
-[node name="Panel" type="Panel" parent="CanvasLayer/LevelSelect/BoxContainer"]
+[node name="Panel" type="Panel" parent="CanvasLayer/LevelSelect/LevelContainer"]
 custom_minimum_size = Vector2(220, 150)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_38b8h")
 
-[node name="LevelRect" type="Panel" parent="CanvasLayer/LevelSelect/BoxContainer/Panel"]
+[node name="LevelRect" type="Panel" parent="CanvasLayer/LevelSelect/LevelContainer/Panel"]
 show_behind_parent = true
 clip_children = 1
 clip_contents = true
@@ -157,39 +645,113 @@ offset_right = 96.0
 offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_aneqf")
+theme_override_styles/panel = SubResource("StyleBoxFlat_vu0mq")
 script = ExtResource("8_j3dk8")
 texture = ExtResource("4_71e5x")
 expand_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/LevelSelect/BoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/LevelSelect/LevelContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="PrevLevel" type="Button" parent="CanvasLayer/LevelSelect/BoxContainer/HBoxContainer"]
+[node name="PrevLevel" type="Button" parent="CanvasLayer/LevelSelect/LevelContainer/HBoxContainer"]
 layout_mode = 2
 text = "<-"
 script = ExtResource("2_7e4rf")
 
-[node name="HSeparator2" type="HSeparator" parent="CanvasLayer/LevelSelect/BoxContainer/HBoxContainer"]
+[node name="HSeparator2" type="HSeparator" parent="CanvasLayer/LevelSelect/LevelContainer/HBoxContainer"]
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_plb2m")
 
-[node name="RandomLevel" type="Button" parent="CanvasLayer/LevelSelect/BoxContainer/HBoxContainer"]
+[node name="RandomLevel" type="Button" parent="CanvasLayer/LevelSelect/LevelContainer/HBoxContainer"]
 layout_mode = 2
 text = "Rand"
 script = ExtResource("2_7e4rf")
 
-[node name="HSeparator" type="HSeparator" parent="CanvasLayer/LevelSelect/BoxContainer/HBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/LevelSelect/LevelContainer/HBoxContainer"]
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_plb2m")
 
-[node name="NextLevel" type="Button" parent="CanvasLayer/LevelSelect/BoxContainer/HBoxContainer"]
+[node name="NextLevel" type="Button" parent="CanvasLayer/LevelSelect/LevelContainer/HBoxContainer"]
 layout_mode = 2
 text = "->"
 script = ExtResource("2_7e4rf")
+
+[node name="BoxContainer4" type="BoxContainer" parent="CanvasLayer/LevelSelect"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -312.0
+offset_top = -128.0
+offset_right = -56.0
+offset_bottom = 128.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/LevelSelect/BoxContainer4"]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_djnws")
+
+[node name="P1" type="TextureRect" parent="CanvasLayer/LevelSelect/BoxContainer4/Panel"]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -128.0
+offset_right = 128.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("ViewportTexture_mgodc")
+expand_mode = 1
+
+[node name="BoxContainer2" type="BoxContainer" parent="CanvasLayer/LevelSelect"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 52.0
+offset_top = -128.0
+offset_right = 308.0
+offset_bottom = 128.0
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/LevelSelect/BoxContainer2"]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_djnws")
+
+[node name="P1" type="TextureRect" parent="CanvasLayer/LevelSelect/BoxContainer2/Panel"]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -128.0
+offset_right = 128.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_w31h2")
+expand_mode = 1
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 anchors_preset = 10
@@ -201,8 +763,90 @@ theme_override_font_sizes/font_size = 30
 text = "--------- Level Select ---------"
 horizontal_alignment = 1
 
+[node name="P1" type="SubViewport" parent="."]
+transparent_bg = true
+msaa_2d = 3
+screen_space_aa = 1
+size = Vector2i(256, 256)
+
+[node name="Player1" parent="P1" instance=ExtResource("13_lcqh3")]
+position = Vector2(120, 128)
+rotation = 1.5708
+is_input_enabled = false
+
+[node name="Polygon2D" parent="P1/Player1" index="0"]
+material = SubResource("ShaderMaterial_cpt27")
+
+[node name="Trails_VFX" parent="P1/Player1" index="5"]
+visible = false
+
+[node name="Shoot" parent="P1/Player1/AniManager" index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_nv3f4")
+}
+
+[node name="AmmoFlash" parent="P1/Player1/AniManager" index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_bxgtm")
+}
+
+[node name="AmmoRefill" parent="P1/Player1/AniManager" index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_ojthk")
+}
+
+[node name="Hit" parent="P1/Player1/AniManager" index="3"]
+libraries = {
+"": SubResource("AnimationLibrary_kgsxq")
+}
+
+[node name="P2" type="SubViewport" parent="."]
+transparent_bg = true
+handle_input_locally = false
+msaa_2d = 3
+size = Vector2i(256, 256)
+render_target_update_mode = 4
+
+[node name="Player2" parent="P2" instance=ExtResource("13_lcqh3")]
+position = Vector2(136, 128)
+rotation = -1.5708
+is_input_enabled = false
+input = ExtResource("12_o5qkk")
+
+[node name="Polygon2D" parent="P2/Player2" index="0"]
+material = SubResource("ShaderMaterial_0qomo")
+color = Color(0.12549, 0.839216, 0.780392, 1)
+
+[node name="Trails_VFX" parent="P2/Player2" index="5"]
+visible = false
+position = Vector2(-9.15527e-05, 29)
+color_ramp = ExtResource("14_lrqjp")
+
+[node name="Shoot" parent="P2/Player2/AniManager" index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_6o02l")
+}
+
+[node name="AmmoFlash" parent="P2/Player2/AniManager" index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_6o02l")
+}
+
+[node name="AmmoRefill" parent="P2/Player2/AniManager" index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_6o02l")
+}
+
+[node name="Hit" parent="P2/Player2/AniManager" index="3"]
+libraries = {
+"": SubResource("AnimationLibrary_6o02l")
+}
+
 [connection signal="pressed" from="CanvasLayer/LevelSelect/HBOX/BackLevel" to="." method="_on_back_level_pressed"]
 [connection signal="pressed" from="CanvasLayer/LevelSelect/HBOX/PlayLevel" to="." method="_on_play_level_pressed"]
-[connection signal="pressed" from="CanvasLayer/LevelSelect/BoxContainer/HBoxContainer/PrevLevel" to="." method="_on_prev_level_pressed"]
-[connection signal="pressed" from="CanvasLayer/LevelSelect/BoxContainer/HBoxContainer/RandomLevel" to="." method="_on_random_level_pressed"]
-[connection signal="pressed" from="CanvasLayer/LevelSelect/BoxContainer/HBoxContainer/NextLevel" to="." method="_on_next_level_pressed"]
+[connection signal="pressed" from="CanvasLayer/LevelSelect/LevelContainer/HBoxContainer/PrevLevel" to="." method="_on_prev_level_pressed"]
+[connection signal="pressed" from="CanvasLayer/LevelSelect/LevelContainer/HBoxContainer/RandomLevel" to="." method="_on_random_level_pressed"]
+[connection signal="pressed" from="CanvasLayer/LevelSelect/LevelContainer/HBoxContainer/NextLevel" to="." method="_on_next_level_pressed"]
+
+[editable path="P1/Player1"]
+[editable path="P2/Player2"]

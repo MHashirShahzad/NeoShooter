@@ -40,7 +40,15 @@ shadow_offset = Vector2(-1, -1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jyb17"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ae68x"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0i6dt"]
+content_margin_left = 10.0
+content_margin_top = 4.0
+content_margin_right = 10.0
+content_margin_bottom = 4.0
+bg_color = Color(0.141176, 0.133333, 0.203922, 1)
+border_width_top = 2
+border_color = Color(0.737255, 0.290196, 0.607843, 1)
+corner_detail = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_al7fs"]
 content_margin_left = 10.0
@@ -117,9 +125,10 @@ Button/styles/hover = SubResource("StyleBoxFlat_4l4fj")
 Button/styles/normal = SubResource("StyleBoxFlat_ag6rd")
 Button/styles/pressed = SubResource("StyleBoxFlat_3hvvq")
 ScrollContainer/styles/panel = SubResource("StyleBoxEmpty_q2tey")
+TabContainer/colors/font_hovered_color = Color(0.737255, 0.290196, 0.607843, 1)
 TabContainer/constants/side_margin = 8
 TabContainer/styles/panel = SubResource("StyleBoxEmpty_jyb17")
-TabContainer/styles/tab_focus = SubResource("StyleBoxEmpty_ae68x")
+TabContainer/styles/tab_focus = SubResource("StyleBoxFlat_0i6dt")
 TabContainer/styles/tab_hovered = SubResource("StyleBoxFlat_al7fs")
 TabContainer/styles/tab_selected = SubResource("StyleBoxFlat_rj0cm")
 TabContainer/styles/tab_unselected = SubResource("StyleBoxFlat_1dxmw")

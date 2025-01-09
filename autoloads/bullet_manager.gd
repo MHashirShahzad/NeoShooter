@@ -4,7 +4,8 @@ extends Node2D
 enum BULLET_TYPE{
 	NORMAL,
 	SMALL,
-	BIG
+	BIG,
+	PLASMA
 }
 
 const BULLET : PackedScene = preload("res://bullets/normal_bullet.tscn")

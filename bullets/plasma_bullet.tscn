@@ -18,7 +18,7 @@ speed = 1200.0
 [node name="ProjHitBox" parent="." index="0"]
 screw_state = 0.1
 screw_state_str = 25.0
-chroma_str = 1.5
+chroma_str = 2.0
 cam_shake_str = 15.0
 
 [node name="MainBody" parent="." index="3"]

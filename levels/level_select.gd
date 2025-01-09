@@ -11,10 +11,12 @@ const MAIN_MENU = preload("res://levels/main_menu.tscn")
 	preload("res://assets/audio/music/hashir/space-station-247790.mp3"),
 	preload("res://assets/audio/music/hashir/stranger-things-124008.mp3")
 ]
-@onready var level_rect: TextureRectRounded = $CanvasLayer/LevelSelect/BoxContainer/Panel/LevelRect
+@onready var level_rect: TextureRectRounded = $CanvasLayer/LevelSelect/LevelContainer/Panel/LevelRect
 var level_prefs : LevelSelectPreferences
 
 func _ready() -> void:
+	
+	$CanvasLayer/LevelSelect/LevelContainer/HBoxContainer/RandomLevel.grab_focus()
 	level_prefs = LevelSelectPreferences.load_or_create()
 	refresh_image()
 

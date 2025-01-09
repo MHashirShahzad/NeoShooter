@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://dceju1dk1qtml"]
+
+[sub_resource type="Curve" id="Curve_8k2ls"]
+_data = [Vector2(0, 0.747253), 0.0, 1.34865, 0, 0, Vector2(0.195556, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_t3di0"]
+offsets = PackedFloat32Array(0, 0.146245, 1)
+colors = PackedColorArray(0.0235294, 0.0235294, 0.0313726, 1, 0.0784314, 0.0627451, 0.0745098, 1, 1, 1, 1, 1)
+
+[node name="SmallCPU" type="CPUParticles2D"]
+texture_filter = 1
+emitting = false
+amount = 100
+lifetime = 0.8
+one_shot = true
+speed_scale = 4.0
+explosiveness = 1.0
+randomness = 0.1
+fixed_fps = 30
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 180.0
+angle_max = 90.0
+scale_amount_min = 5.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_8k2ls")
+color_ramp = SubResource("Gradient_t3di0")

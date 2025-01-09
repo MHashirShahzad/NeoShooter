@@ -12,6 +12,7 @@ const MAIN_MENU_MUSIC : AudioStream = preload("res://assets/audio/music/hashir/n
 
 var is_pause_disabled : bool = false
 var can_update_health : bool = false
+
 func _ready() -> void:
 	pause_menu.hide()
 	vic_screen.hide()
@@ -43,7 +44,7 @@ func pause() -> void:
 	else:
 		get_tree().paused = true
 		pause_menu.show()
-
+		$Pause/Blur/VBoxContainer/Resume.grab_focus()
 
 
 func _on_level_select_btn_pressed() -> void:
@@ -51,6 +52,8 @@ func _on_level_select_btn_pressed() -> void:
 	# delete references to p1 & p2
 	GameManager.p1 = null
 	GameManager.p2 = null
+	can_update_health = false
+	
 	TransitionManager.transition_scene_packed(LEVEL_SELECT)
 	SFXManager.play_music(MAIN_MENU_MUSIC, -20)
 	
@@ -75,6 +78,7 @@ func show_death_screen(player: Player2D) -> void:
 	is_pause_disabled = true
 	vic_screen.show()
 	$VictoryScreen/VicAniPlayer.play("transition")
+	$VictoryScreen/Transition/VBoxContainer/Restart.grab_focus()
 	if player == GameManager.p1:
 		vic_screen_label.text = "--------- Player 2 Wins ---------"
 		# set the color to the won player's body

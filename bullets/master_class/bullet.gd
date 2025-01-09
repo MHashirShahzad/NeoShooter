@@ -4,7 +4,7 @@ class_name Bullet2D
 
 @export var speed : float = 900.0
 var direction : Vector2
-var type : BulletManager.BULLET_TYPE
+@export var type : BulletManager.BULLET_TYPE
 
 var hit_box: ProjectileHitBox
 var body: Polygon2D 
