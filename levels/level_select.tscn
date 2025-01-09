@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://0eqvmy2w55dl"]
+[gd_scene load_steps=44 format=3 uid="uid://0eqvmy2w55dl"]
 
 [ext_resource type="Script" path="res://levels/level_select.gd" id="1_rk7ao"]
 [ext_resource type="Texture2D" uid="uid://cn4v3jncpfmej" path="res://levels/images/level_a.png" id="2_2iaos"]
@@ -40,6 +40,13 @@ corner_detail = 20
 shadow_size = 10
 shadow_offset = Vector2(10, 10)
 
+[sub_resource type="InputEventKey" id="InputEventKey_6grrr"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_3per2"]
+events = [SubResource("InputEventKey_6grrr")]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_plb2m"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_38b8h"]
@@ -57,7 +64,7 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 corner_detail = 20
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vu0mq"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v5lrv"]
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -592,6 +599,7 @@ alignment = 1
 [node name="BackLevel" type="Button" parent="CanvasLayer/LevelSelect/HBOX"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+shortcut = SubResource("Shortcut_3per2")
 text = "Back"
 script = ExtResource("2_7e4rf")
 
@@ -645,7 +653,7 @@ offset_right = 96.0
 offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_vu0mq")
+theme_override_styles/panel = SubResource("StyleBoxFlat_v5lrv")
 script = ExtResource("8_j3dk8")
 texture = ExtResource("4_71e5x")
 expand_mode = 2

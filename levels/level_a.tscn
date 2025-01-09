@@ -240,22 +240,6 @@ shader_parameter/shake_color_rate = 0.0
 
 [node name="Player1" parent="Players" index="0"]
 position = Vector2(380, 333)
-speed = 60000
-friction = 0.2
-acceleration = 0.4
-tilt_strength_x = 0.1
-tilt_strength_y = 0.1
-tilt_speed = 10.0
-max_bullet_count = 6
-
-[node name="Player2" parent="Players" index="1"]
-speed = 60000
-friction = 0.2
-acceleration = 0.4
-tilt_strength_x = 0.1
-tilt_strength_y = 0.1
-tilt_speed = 10.0
-max_bullet_count = 6
 
 [node name="Polygon2D" parent="Players/Player2" index="0"]
 material = SubResource("ShaderMaterial_541jc")
