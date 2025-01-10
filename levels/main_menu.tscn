@@ -291,7 +291,8 @@ text = "[Up] or [W]
 [Left] or [A]
 [Right] or [D]
 [Enter] or [E]
-[Esc] for back"
+[Esc] for back
+Vim also works"
 
 [node name="LogoMainMenu" type="Control" parent="CanvasLayer"]
 layout_mode = 3
