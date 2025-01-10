@@ -1,10 +1,22 @@
-[gd_scene load_steps=13 format=3 uid="uid://b6esgdmciuv7n"]
+[gd_scene load_steps=18 format=3 uid="uid://b6esgdmciuv7n"]
 
 [ext_resource type="Texture2D" uid="uid://b0xltc2iphdel" path="res://assets/NeoShooterLogo.svg" id="1_clxpc"]
 [ext_resource type="Script" path="res://levels/main_menu.gd" id="1_f6xqg"]
 [ext_resource type="Script" path="res://custom_stuff/tweened_button.gd" id="2_2ycbh"]
 [ext_resource type="Theme" uid="uid://dbukeuyrs33sq" path="res://custom_stuff/default_theme.tres" id="2_b7fev"]
 [ext_resource type="Script" path="res://custom_stuff/remappable_button.gd" id="5_rlanf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v23gp"]
+bg_color = Color(0.352941, 0.305882, 0.266667, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hg5yq"]
+bg_color = Color(0.2, 0.223529, 0.254902, 1)
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kjvgm"]
 bg_color = Color(0.231373, 0.0901961, 0.145098, 1)
@@ -116,7 +128,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.466667),
 "transitions": PackedFloat32Array(-2, -2),
 "update": 0,
-"values": [Vector2(386, 389), Vector2(377, 814)]
+"values": [Vector2(381, 249), Vector2(377, 814)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -255,6 +267,44 @@ _data = {
 "option_to_main": SubResource("Animation_c7wx0")
 }
 
+[sub_resource type="Animation" id="Animation_7v2o3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/BGPink:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_qp3rm"]
+resource_name = "loop"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/BGPink:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pvkws"]
+_data = {
+"RESET": SubResource("Animation_7v2o3"),
+"loop": SubResource("Animation_qp3rm")
+}
+
 [node name="MainMenu" type="Control" groups=["MainMenu"]]
 layout_mode = 3
 anchors_preset = 15
@@ -270,7 +320,7 @@ script = ExtResource("1_f6xqg")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="BG1" type="ColorRect" parent="CanvasLayer"]
+[node name="BGGray" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -278,13 +328,83 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0784314, 0.0627451, 0.0745098, 1)
 
-[node name="Label" type="Label" parent="CanvasLayer"]
+[node name="BGGray2" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 812.306
+offset_top = -331.313
+offset_right = 360.306
+offset_bottom = 320.687
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.785398
+color = Color(0.258824, 0.223529, 0.203922, 1)
+
+[node name="Stick" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 560.876
+offset_top = -104.085
+offset_right = -541.124
+offset_bottom = 247.915
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.785398
+color = Color(0.196078, 0.168627, 0.156863, 1)
+
+[node name="Stick2" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1368.0
+offset_top = 55.0001
+offset_right = 266.0
+offset_bottom = 407.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.785398
+color = Color(0.196078, 0.168627, 0.156863, 1)
+
+[node name="BGPink" type="Panel" parent="CanvasLayer"]
+custom_minimum_size = Vector2(400, 400)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -143.0
+offset_right = 200.0
+offset_bottom = 257.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(200, 200)
+theme_override_styles/panel = SubResource("StyleBoxFlat_v23gp")
+
+[node name="Text" type="Panel" parent="CanvasLayer"]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -81.0
-offset_right = 70.0
+offset_top = -118.0
+offset_right = 76.0
 grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hg5yq")
+
+[node name="KeyBindsLabel" type="Label" parent="CanvasLayer/Text"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -47.5
+offset_right = 35.0
+offset_bottom = 47.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_font_sizes/font_size = 8
 text = "[Up] or [W]
 [Down] or [S]
@@ -343,16 +463,17 @@ text = "--------- Settings ---------"
 horizontal_alignment = 1
 
 [node name="MainBtn" type="Panel" parent="CanvasLayer"]
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -190.0
-offset_top = -259.0
-offset_right = 190.0
+anchor_bottom = 0.5
+offset_left = -195.0
+offset_top = -74.9994
+offset_right = 185.0
+offset_bottom = 184.001
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_kjvgm")
 
 [node name="VBOX" type="VBoxContainer" parent="CanvasLayer/MainBtn"]
@@ -393,7 +514,7 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 724.0
+offset_left = 723.999
 offset_top = -589.0
 offset_right = 1724.0
 grow_horizontal = 2
@@ -857,6 +978,12 @@ script = ExtResource("2_2ycbh")
 libraries = {
 "": SubResource("AnimationLibrary_ok511")
 }
+
+[node name="BGAniPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pvkws")
+}
+autoplay = "loop"
 
 [connection signal="pressed" from="CanvasLayer/MainBtn/VBOX/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainBtn/VBOX/OptionsButton" to="." method="_on_options_button_pressed"]

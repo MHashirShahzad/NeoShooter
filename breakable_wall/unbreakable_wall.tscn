@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://c32oe6ngb7enl"]
+
+[ext_resource type="Script" path="res://breakable_wall/breakable_wall.gd" id="1_un0b5"]
+[ext_resource type="Script" path="res://player/body.gd" id="2_rybqx"]
+[ext_resource type="Script" path="res://custom_stuff/hit_and_hurt_box/hurtbox.gd" id="3_ksd6g"]
+
+[node name="Wall" type="CharacterBody2D"]
+script = ExtResource("1_un0b5")
+near_death_color = Color(0.45098, 0.0901961, 0.176471, 1)
+is_unbreakable = true
+
+[node name="BreakableWall" type="Polygon2D" parent="."]
+position = Vector2(-2, 0)
+color = Color(0.87451, 0.243137, 0.137255, 1)
+polygon = PackedVector2Array(-60, -60, 60, -60, 60, 60, -60, 60)
+script = ExtResource("2_rybqx")
+shard_count = 4
+
+[node name="Coll" type="CollisionPolygon2D" parent="."]
+
+[node name="HurtBox" type="Area2D" parent="." node_paths=PackedStringArray("hurtbox_owner")]
+script = ExtResource("3_ksd6g")
+hurtbox_owner = NodePath("..")
+
+[node name="Coll" type="CollisionPolygon2D" parent="HurtBox"]
