@@ -1,19 +1,19 @@
 extends Node2D
 
-
+# WONT BE USED
 enum BULLET_TYPE{
 	NORMAL,
 	SMALL,
 	BIG,
 	PLASMA
 }
-
-const BULLET : PackedScene = preload("res://bullets/normal_bullet.tscn")
+const BULLET : PackedScene = preload("res://bullets/missile_bullet.tscn")
 const SMALL_BULLET : PackedScene = preload("res://bullets/small_bullet.tscn")
 const BIG_BULLET : PackedScene = preload("res://bullets/big_bullet.tscn")
 
 
 
+## deprecated dont use with_scene one
 func shoot_bullet(player : Player2D, type : BULLET_TYPE):
 	var bullet : Bullet2D = get_bullet_type(type) # sets the bullet variable accr to type
 	
@@ -25,8 +25,18 @@ func shoot_bullet(player : Player2D, type : BULLET_TYPE):
 	BulletManager.add_child(bullet)
 	bullet.global_position = player.bullet_spawn_location.global_position
 	bullet.direction = player.global_position.direction_to(bullet.global_position)
-	
-	# p1_bullets.append(bullet)
+
+## called by player only :C
+func shoot_bullet_with_scene(player : Player2D, scene : PackedScene):
+	var bullet : Bullet2D = scene.instantiate()
+	bullet.assign_var()
+	bullet.rotation = player.rotation
+	bullet.hit_box.to_ignore = player
+	apply_bullet_color(player, bullet)
+	BulletManager.add_child(bullet)
+	bullet.global_position = player.bullet_spawn_location.global_position
+	bullet.direction = player.global_position.direction_to(bullet.global_position)
+
 
 func get_bullet_type(type : BULLET_TYPE) -> Bullet2D:
 	var bullet : Bullet2D

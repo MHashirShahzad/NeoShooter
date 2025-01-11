@@ -54,5 +54,4 @@ func _on_area_entered(hitbox: HitBox) -> void:
 
 func destroy_bullet(hitbox : HitBox) -> void:
 	if hitbox.has_method("destroy"):
-		#print_debug("DESTROY BULLET")
 		hitbox.destroy()

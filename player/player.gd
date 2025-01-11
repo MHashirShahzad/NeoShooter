@@ -39,6 +39,7 @@ var spawned_bullets : int = 0
 var tilt_x: float = 0.0
 var tilt_y: float = 0.0
 var is_dead : bool = false
+var bullet_struct : BulletStruct = null
 # =============================================================================================
 # Code
 
@@ -71,13 +72,39 @@ func _input(event: InputEvent) -> void:
 	bullet_input()
 	
 func bullet_input() -> void:
+	if bullet_struct == null:
+		return
+	
+	
 	if Input.is_action_just_pressed(input.shoot):
-		shoot(BulletManager.BULLET_TYPE.NORMAL)
+		shoot_with_scene(bullet_struct.normal)
+		#shoot(BulletManager.BULLET_TYPE.NORMAL)
 	if Input.is_action_just_pressed(input.small_shoot):
-		shoot(BulletManager.BULLET_TYPE.SMALL)
+		shoot_with_scene(bullet_struct.small)
+		#shoot(BulletManager.BULLET_TYPE.SMALL)
 	if Input.is_action_just_pressed(input.big_shoot):
-		shoot(BulletManager.BULLET_TYPE.BIG)
+		shoot_with_scene(bullet_struct.big)
+		#shoot(BulletManager.BULLET_TYPE.BIG)
 
+func shoot_with_scene(bullet_scene : PackedScene) -> void:
+	var bullet_pos : Vector2 = bullet_spawn_location.global_position
+	# low ammo
+	if spawned_bullets >= max_bullet_count:
+		ani_manager.low_ammo_ani()
+		SFXManager.play_FX_2D(SFXManager.NO_AMMO, bullet_pos, 10)
+		return
+	
+	
+	BulletManager.shoot_bullet_with_scene(self, bullet_scene)
+	spawned_bullets += 1
+	
+	# Effect
+	ani_manager.shoot_ani()
+	VFXManager.shoot_vfx(bullet_pos)
+	SFXManager.play_FX_2D(SFXManager.SHOOT, bullet_pos, 10)
+	
+
+## deprecated dont use
 func shoot(type : BulletManager.BULLET_TYPE) -> void:
 	var bullet_pos : Vector2 = bullet_spawn_location.global_position
 	# low ammo
@@ -96,7 +123,8 @@ func shoot(type : BulletManager.BULLET_TYPE) -> void:
 	SFXManager.play_FX_2D(SFXManager.SHOOT, bullet_pos, 10)
 	
 func on_hit(dmg: float, hitbox : HitBox) -> void:
-	self.health -= dmg
+	# rounds of damage
+	self.health -= round(dmg)
 	# death vfx are handled in die()
 	if health <= 0:
 		health = 0

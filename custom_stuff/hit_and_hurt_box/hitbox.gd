@@ -10,6 +10,8 @@ class_name HitBox
 @export var chroma_str : float = 1
 @export var cam_shake_str : float = 20
 @export var to_ignore : CharacterBody2D
+@export var vfx = preload("res://vfx/bullet_hit/hit_normal_vfx.tscn")
+
 
 var collision_shape : CollisionShape2D
 

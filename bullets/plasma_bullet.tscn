@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dfp6vptd7gpdv"]
+[gd_scene load_steps=6 format=3 uid="uid://dfp6vptd7gpdv"]
 
 [ext_resource type="PackedScene" uid="uid://cclo3pqf533bv" path="res://bullets/master_class/main_bullet.tscn" id="1_fdgoc"]
+[ext_resource type="PackedScene" uid="uid://dceju1dk1qtml" path="res://vfx/bullet_hit/hit_plasma_vfx.tscn" id="2_yy2tg"]
 [ext_resource type="PackedScene" uid="uid://cbtrogwycneft" path="res://vfx/trail_vfx.tscn" id="3_8aksi"]
 
 [sub_resource type="Gradient" id="Gradient_cu7tv"]
@@ -20,6 +21,7 @@ screw_state = 0.1
 screw_state_str = 25.0
 chroma_str = 2.0
 cam_shake_str = 15.0
+vfx = ExtResource("2_yy2tg")
 
 [node name="MainBody" parent="." index="3"]
 color = Color(0.0784314, 0.0627451, 0.0745098, 1)

@@ -107,7 +107,7 @@ func camera_shake(shake_str : float)  -> void:
 
 func hit_vfx(hitbox: ProjectileHitBox) -> void:
 	chromatic_abberation(hitbox)
-	var particle_vfx  : CPUParticles2D = get_hit_vfx_type(hitbox.bullet)
+	var particle_vfx  : CPUParticles2D = hitbox.vfx.instantiate()
 	self.add_child(particle_vfx)
 	
 	particle_vfx.global_position = hitbox.global_position
@@ -144,6 +144,7 @@ func set_chroma_rect_value(value : float):
 	chroma_rect.material.set("shader_parameter/chroma_strength", value)
 
 
+## deprecated dont use now :C
 func get_hit_vfx_type(bullet : Bullet2D) -> CPUParticles2D:
 	const BULLET_TYPE = BulletManager.BULLET_TYPE
 	var particle_vfx : CPUParticles2D

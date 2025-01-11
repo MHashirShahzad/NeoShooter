@@ -9,6 +9,8 @@ var direction : Vector2
 var hit_box: ProjectileHitBox
 var body: Polygon2D 
 var trails_vfx: CPUParticles2D 
+var visible_onscreen : VisibleOnScreenNotifier2D
+
 
 ## i know this is stupid but it works and for God's sake dont touch it
 ## i wasted other ppl's time trynna figure out whats the issue was
@@ -17,6 +19,7 @@ func assign_var() -> void:
 	hit_box = $ProjHitBox
 	body = $MainBody
 	trails_vfx = $Trails
+	visible_onscreen = $VisibleOnScreenNotifier2D
 	# print_debug(hit_box)
 
 func _physics_process(delta: float) -> void:
@@ -30,4 +33,12 @@ func _physics_process(delta: float) -> void:
 
 func _ready() -> void:
 	await $KillTimer.timeout
-	self.queue_free()
+	
+	if hit_box:
+		hit_box.destroy()
+
+
+# if not in screen
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	if hit_box:
+		hit_box.destroy()

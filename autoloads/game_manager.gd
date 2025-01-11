@@ -3,7 +3,12 @@ extends Node
 var camera : SpaceShooterCamera
 var p1 : Player2D
 var p2 : Player2D
+var player_bullets : PlayerBullets
 
+func assign_bullets_to_players() -> void:
+	player_bullets = PlayerBullets.load_or_create()
+	p1.bullet_struct = player_bullets.p1_bullets
+	p2.bullet_struct = player_bullets.p2_bullets
 
 func match_end():
 	if !p1:

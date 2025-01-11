@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://wgqm15tsa4u"]
+[gd_scene load_steps=4 format=3 uid="uid://wgqm15tsa4u"]
 
 [ext_resource type="PackedScene" uid="uid://cclo3pqf533bv" path="res://bullets/master_class/main_bullet.tscn" id="1_8d4ca"]
+[ext_resource type="PackedScene" uid="uid://cbpfd5v11pp36" path="res://vfx/bullet_hit/hit_big_vfx.tscn" id="2_bktuu"]
 
 [sub_resource type="Gradient" id="Gradient_74cpd"]
 resource_local_to_scene = true
@@ -17,6 +18,7 @@ screw_state = 0.3
 screw_state_str = 100.0
 chroma_str = 5.0
 cam_shake_str = 20.0
+vfx = ExtResource("2_bktuu")
 
 [node name="HitBoxShape" parent="ProjHitBox" index="0"]
 position = Vector2(0, 7)
@@ -44,3 +46,7 @@ position = Vector2(0, 43)
 amount = 100
 emission_sphere_radius = 20.0
 color_ramp = SubResource("Gradient_74cpd")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="8"]
+position = Vector2(0, 22)
+scale = Vector2(1, 4.4)

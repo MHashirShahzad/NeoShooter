@@ -10,7 +10,7 @@ radius = 10.0499
 [sub_resource type="CircleShape2D" id="CircleShape2D_vsn0p"]
 radius = 2.0
 
-[sub_resource type="Gradient" id="Gradient_unj8y"]
+[sub_resource type="Gradient" id="Gradient_v8jf1"]
 resource_local_to_scene = true
 offsets = PackedFloat32Array(0.173333, 0.633333, 0.973333, 0.993333, 1)
 colors = PackedColorArray(0.0392157, 0.545098, 0.972549, 1, 0.450578, 0.00227139, 0.992695, 1, 0.992157, 0.858824, 0.65098, 0, 0.980392, 0.623529, 0.054902, 1, 1, 1, 1, 0)
@@ -59,4 +59,10 @@ initial_velocity_min = 0.0
 initial_velocity_max = 1.0
 scale_amount_min = 2.0
 scale_amount_max = 5.0
-color_ramp = SubResource("Gradient_unj8y")
+color_ramp = SubResource("Gradient_v8jf1")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, 47.5)
+scale = Vector2(1, 6.95)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
