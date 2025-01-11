@@ -125,9 +125,16 @@ func chromatic_abberation(hitbox : HitBox):
 	chroma_rect.visible
 	
 	var tween : Tween = get_tree().create_tween()
+	
+	var rand_no = randi_range(-1, 1)
+	if rand_no < 0:
+		rand_no = -1
+	else:
+		rand_no = 1
 	# tween to 0
 	tween.set_ease(Tween.EASE_IN_OUT)
-	tween.tween_method(set_chroma_rect_value, hitbox.chroma_str, 0.0, hitbox.screw_state)
+	tween.tween_method(set_chroma_rect_value, hitbox.chroma_str * rand_no, 0.0, hitbox.screw_state)
+	
 	await tween.finished
 	tween.kill()
 	# chroma_rect.hide()

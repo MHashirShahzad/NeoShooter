@@ -334,6 +334,12 @@ z_index = -4
 color = Color(0.25098, 0.2, 0.32549, 1)
 polygon = PackedVector2Array(0, 0, 2700, 0, 2700, 1500, 0, 1500)
 
+[node name="BG2" type="Polygon2D" parent="Level"]
+visible = false
+z_index = -4
+color = Color(0.141176, 0.133333, 0.203922, 1)
+polygon = PackedVector2Array(1350, 0, 2700, 750, 1350, 1500, 0, 750)
+
 [node name="CenterBar" type="Polygon2D" parent="Level"]
 z_index = -2
 color = Color(0.45098, 0.0901961, 0.176471, 1)

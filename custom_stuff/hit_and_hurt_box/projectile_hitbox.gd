@@ -24,6 +24,11 @@ func destroy():
 		
 		
 	var owner : Player2D = bullet.hit_box.to_ignore
+	
+	# bro is dead what will he do with bullets :C
+	if owner.is_dead:
+		return
+		
 	owner.spawned_bullets -= 1
 	
 	# play the bullet refill ani
