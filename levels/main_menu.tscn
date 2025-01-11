@@ -412,7 +412,8 @@ text = "[Up] or [W]
 [Right] or [D]
 [Enter] or [E]
 [Esc] for back
-Vim also works"
+Vim bindings
+work too!"
 
 [node name="LogoMainMenu" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -489,10 +490,17 @@ grow_vertical = 2
 theme_override_constants/separation = 20
 alignment = 1
 
+[node name="TutorialButton" type="Button" parent="CanvasLayer/MainBtn/VBOX"]
+visible = false
+layout_mode = 2
+theme = ExtResource("2_b7fev")
+text = "Tutorial"
+script = ExtResource("2_2ycbh")
+
 [node name="PlayButton" type="Button" parent="CanvasLayer/MainBtn/VBOX"]
 layout_mode = 2
 theme = ExtResource("2_b7fev")
-text = "Play"
+text = "Play Local"
 script = ExtResource("2_2ycbh")
 
 [node name="OptionsButton" type="Button" parent="CanvasLayer/MainBtn/VBOX"]
@@ -985,6 +993,7 @@ libraries = {
 }
 autoplay = "loop"
 
+[connection signal="pressed" from="CanvasLayer/MainBtn/VBOX/TutorialButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainBtn/VBOX/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainBtn/VBOX/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainBtn/VBOX/QuitButton" to="." method="_on_quit_button_pressed"]

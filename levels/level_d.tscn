@@ -269,10 +269,10 @@ script = ExtResource("1_udpej")
 [node name="BothPlayers" parent="." instance=ExtResource("1_82ofg")]
 
 [node name="Player1" parent="BothPlayers" index="0"]
-max_bullet_count = 8
+max_bullet_count = 9
 
 [node name="Player2" parent="BothPlayers" index="1"]
-max_bullet_count = 8
+max_bullet_count = 9
 
 [node name="Polygon2D" parent="BothPlayers/Player2" index="0"]
 material = SubResource("ShaderMaterial_7eq61")

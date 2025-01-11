@@ -76,7 +76,7 @@ func _on_random_level_pressed() -> void:
 		level = level_array.pick_random()
 		index = level_array.find(level)
 	
-	var tween := get_tree().create_tween()
+	var tween : Tween = get_tree().create_tween()
 	tween.tween_method(random_ani, 0, 0, .3)
 	await tween.finished
 	tween.kill()
