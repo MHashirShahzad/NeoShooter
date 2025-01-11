@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://0eqvmy2w55dl"]
+[gd_scene load_steps=52 format=3 uid="uid://0eqvmy2w55dl"]
 
 [ext_resource type="Script" path="res://levels/level_select.gd" id="1_rk7ao"]
 [ext_resource type="Texture2D" uid="uid://cn4v3jncpfmej" path="res://levels/images/level_a.png" id="2_2iaos"]
@@ -37,6 +37,15 @@ script = ExtResource("4_thvsq")
 path = ExtResource("9_h400u")
 image = ExtResource("9_48yfr")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b6j8s"]
+bg_color = Color(0.45098, 0.0901961, 0.176471, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_detail = 20
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_81v0s"]
 bg_color = Color(0.0705882, 0.12549, 0.12549, 1)
 corner_radius_top_left = 10
@@ -71,12 +80,32 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 corner_detail = 20
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_svwd0"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r5ixb"]
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 anti_aliasing = false
+
+[sub_resource type="InputEventMouseButton" id="InputEventMouseButton_tw4yt"]
+device = -1
+position = Vector2(204, 21)
+global_position = Vector2(213, 67)
+button_index = 8
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_jpdh0"]
+events = [SubResource("InputEventMouseButton_tw4yt")]
+
+[sub_resource type="InputEventMouseButton" id="InputEventMouseButton_yllys"]
+device = -1
+position = Vector2(185, 21)
+global_position = Vector2(194, 67)
+button_index = 8
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_lpuwx"]
+events = [SubResource("InputEventMouseButton_yllys")]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_djnws"]
 bg_color = Color(0.0784314, 0.0627451, 0.0745098, 1)
@@ -576,6 +605,21 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.231373, 0.0901961, 0.145098, 1)
 
+[node name="BG2" type="Panel" parent="CanvasLayer"]
+custom_minimum_size = Vector2(1050, 550)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -525.0
+offset_top = -275.0
+offset_right = 525.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_b6j8s")
+
 [node name="LevelSelect" type="Panel" parent="CanvasLayer"]
 anchors_preset = 8
 anchor_left = 0.5
@@ -604,6 +648,7 @@ theme_override_constants/separation = 20
 alignment = 1
 
 [node name="BackLevel" type="Button" parent="CanvasLayer/LevelSelect/HBOX"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 shortcut = SubResource("Shortcut_3per2")
@@ -616,6 +661,7 @@ layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_plb2m")
 
 [node name="PlayLevel" type="Button" parent="CanvasLayer/LevelSelect/HBOX"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 text = "Play
@@ -660,7 +706,7 @@ offset_right = 96.0
 offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_svwd0")
+theme_override_styles/panel = SubResource("StyleBoxFlat_r5ixb")
 script = ExtResource("8_j3dk8")
 texture = ExtResource("4_71e5x")
 expand_mode = 2
@@ -670,7 +716,9 @@ layout_mode = 2
 alignment = 1
 
 [node name="PrevLevel" type="Button" parent="CanvasLayer/LevelSelect/LevelContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
+shortcut = SubResource("Shortcut_jpdh0")
 text = "<-"
 script = ExtResource("2_7e4rf")
 
@@ -680,6 +728,7 @@ layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_plb2m")
 
 [node name="RandomLevel" type="Button" parent="CanvasLayer/LevelSelect/LevelContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Rand"
 script = ExtResource("2_7e4rf")
@@ -690,7 +739,9 @@ layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_plb2m")
 
 [node name="NextLevel" type="Button" parent="CanvasLayer/LevelSelect/LevelContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
+shortcut = SubResource("Shortcut_lpuwx")
 text = "->"
 script = ExtResource("2_7e4rf")
 
@@ -770,6 +821,19 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 20.0
 grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "--------- Level Select ---------"
+horizontal_alignment = 1
+
+[node name="ToolTipLabel" type="Label" parent="CanvasLayer"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -37.0
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "--------- Level Select ---------"

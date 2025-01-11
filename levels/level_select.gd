@@ -12,7 +12,25 @@ const MAIN_MENU = preload("res://levels/main_menu.tscn")
 	preload("res://assets/audio/music/hashir/stranger-things-124008.mp3")
 ]
 @onready var level_rect: TextureRectRounded = $CanvasLayer/LevelSelect/LevelContainer/Panel/LevelRect
+@onready var tooltip_label: Label = $CanvasLayer/ToolTipLabel
 var level_prefs : LevelSelectPreferences
+
+
+# i know un optimized but :C
+func _process(delta: float) -> void:
+	if %PrevLevel.has_focus():
+		tooltip_label.text = "Previous level"
+	elif %RandomLevel.has_focus():
+		tooltip_label.text = "Pick a random level"
+	elif %NextLevel.has_focus():
+		tooltip_label.text = "Next level"
+	elif %BackLevel.has_focus():
+		tooltip_label.text = "Back to main-menu"
+	elif %PlayLevel.has_focus():
+		tooltip_label.text = "Start the match"
+	# somewhat nice lookin
+	tooltip_label.text = "- " + tooltip_label.text + " -"
+
 
 func _ready() -> void:
 	
@@ -58,11 +76,23 @@ func _on_random_level_pressed() -> void:
 		level = level_array.pick_random()
 		index = level_array.find(level)
 	
-	TransitionManager.transition_scene_packed(level.path)
-	level_prefs.prev_level_index = index
+	var tween := get_tree().create_tween()
+	tween.tween_method(random_ani, 0, 0, .3)
+	await tween.finished
+	tween.kill()
 	
-	play_bg_music()
+	level_prefs.prev_level_index = index
+	level_prefs.level_index = index
+	refresh_image()
+	# TransitionManager.transition_scene_packed(level.path)
+	
+	
+	# play_bg_music()
 	level_prefs.save()
+
+func random_ani(value: int):
+	level_prefs.level_index = randi_range(0, level_array.size() - 1)
+	refresh_image()
 
 func play_bg_music() -> void:
 	var music : AudioStream = music_array.pick_random()
