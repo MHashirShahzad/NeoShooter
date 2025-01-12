@@ -25,14 +25,20 @@ func _ready() -> void:
 	$CanvasLayer/LevelSelect/LevelContainer/HBoxContainer/RandomLevel.grab_focus()
 	level_prefs = LevelSelectPreferences.load_or_create()
 	refresh_image()
-
-func refresh_image() -> void:
-	level_prefs.level_index = abs(level_prefs.level_index)
 	
-	# dont let it exceed
+	
+func refresh_image() -> void:
+	# level_prefs.level_index = abs(level_prefs.level_index)
+	
+	# dont let it exceed the size set to first
 	if level_prefs.level_index >= level_array.size():
 		level_prefs.level_index = 0
-
+	
+	# going below 0 set to max
+	if level_prefs.level_index <= -1:
+		level_prefs.level_index = level_array.size() - 1
+	
+	
 	level_rect.texture = level_array[level_prefs.level_index].image
 	
 func _on_back_level_pressed() -> void:

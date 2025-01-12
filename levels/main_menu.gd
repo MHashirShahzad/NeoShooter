@@ -50,4 +50,8 @@ func main_menu_grab_focus(option_btn : bool = false) -> void:
 		$CanvasLayer/MainBtn/VBOX/PlayButton.grab_focus()
 
 func option_menu_grab_focus() -> void:
+	# cuz when option is visible it already has focus
+	# and re calling it causes the focus to instantly go to a diff thing
+	if option.visible:
+		return
 	$CanvasLayer/OptionBtn/TabContainer/Controls/Controls/HBoxContainer3/Remap_Button.grab_focus()

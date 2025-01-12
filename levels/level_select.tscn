@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://0eqvmy2w55dl"]
+[gd_scene load_steps=55 format=3 uid="uid://0eqvmy2w55dl"]
 
 [ext_resource type="Script" path="res://levels/level_select.gd" id="1_rk7ao"]
 [ext_resource type="Texture2D" uid="uid://cn4v3jncpfmej" path="res://levels/images/level_a.png" id="2_2iaos"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://8gpd8wpdb0gp" path="res://levels/level_d.tscn" id="9_h400u"]
 [ext_resource type="Shader" path="res://player/colorflash.gdshader" id="12_ail4r"]
 [ext_resource type="Resource" uid="uid://bu6wkpkaqxcs3" path="res://player/resources/player2_inputs.tres" id="12_o5qkk"]
+[ext_resource type="Theme" uid="uid://dbukeuyrs33sq" path="res://custom_stuff/default_theme.tres" id="13_6gk1s"]
 [ext_resource type="Script" path="res://custom_stuff/bullet_button.gd" id="13_ih6s1"]
 [ext_resource type="PackedScene" uid="uid://dth2xkw87mtwm" path="res://player/player.tscn" id="13_lcqh3"]
 [ext_resource type="Gradient" uid="uid://weuimmf02ocv" path="res://player/resources/player2_colorgradient.tres" id="14_lrqjp"]
@@ -728,6 +729,7 @@ alignment = 1
 [node name="PrevLevel" type="Button" parent="CanvasLayer/LevelSelect/LevelContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme = ExtResource("13_6gk1s")
 shortcut = SubResource("Shortcut_jpdh0")
 text = "<-"
 script = ExtResource("2_7e4rf")
