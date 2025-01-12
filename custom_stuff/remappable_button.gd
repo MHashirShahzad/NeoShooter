@@ -126,25 +126,25 @@ func controller_joy_name(event : InputEventJoypadMotion):
 	match event.axis:
 		0: # X axis left stick
 			if event.axis_value > 0:
-				text = "[L_Right]"
+				text = "[LJoy-Right]"
 			else:
-				text = "[L_Left]"
+				text = "[LJoy-Left]"
 		1: # Y axis left stick
 			if event.axis_value < 0:
-				text = "[L_Up]"
+				text = "[LJoy-Up]"
 			else:
-				text = "[L_Down]"
+				text = "[LJoy-Down]"
 		
 		2: # X Axis right stick
 			if event.axis_value > 0:
-				text = "[R_Right]"
+				text = "[RJoy-Right]"
 			else:
-				text = "[R_Left]"
+				text = "[RJoy-Left]"
 		3: # Y axis right stick
 			if event.axis_value < 0:
-				text = "[R_Up]"
+				text = "[RJoy-Up]"
 			else:
-				text = "[R_Down]"
+				text = "[RJoy-Down]"
 		
 		4: # LT & LEFT
 			if event.axis_value > 0:
