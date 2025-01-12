@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=15 format=3 uid="uid://dbukeuyrs33sq"]
+[gd_resource type="Theme" load_steps=17 format=3 uid="uid://dbukeuyrs33sq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jryc2"]
 
@@ -35,6 +35,27 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 shadow_size = 2
 shadow_offset = Vector2(-1, -1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_alerg"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.25098, 0.2, 0.32549, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6rmwr"]
+bg_color = Color(0.0784314, 0.0627451, 0.0745098, 1)
+border_color = Color(0.737255, 0.290196, 0.607843, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q2tey"]
 
@@ -124,6 +145,8 @@ Button/styles/focus = SubResource("StyleBoxEmpty_jryc2")
 Button/styles/hover = SubResource("StyleBoxFlat_4l4fj")
 Button/styles/normal = SubResource("StyleBoxFlat_ag6rd")
 Button/styles/pressed = SubResource("StyleBoxFlat_3hvvq")
+PopupMenu/styles/hover = SubResource("StyleBoxFlat_alerg")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_6rmwr")
 ScrollContainer/styles/panel = SubResource("StyleBoxEmpty_q2tey")
 TabContainer/colors/font_hovered_color = Color(0.737255, 0.290196, 0.607843, 1)
 TabContainer/constants/side_margin = 8

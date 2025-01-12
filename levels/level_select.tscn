@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://0eqvmy2w55dl"]
+[gd_scene load_steps=53 format=3 uid="uid://0eqvmy2w55dl"]
 
 [ext_resource type="Script" path="res://levels/level_select.gd" id="1_rk7ao"]
 [ext_resource type="Texture2D" uid="uid://cn4v3jncpfmej" path="res://levels/images/level_a.png" id="2_2iaos"]
@@ -16,6 +16,7 @@
 [ext_resource type="Resource" uid="uid://bu6wkpkaqxcs3" path="res://player/resources/player2_inputs.tres" id="12_o5qkk"]
 [ext_resource type="PackedScene" uid="uid://dth2xkw87mtwm" path="res://player/player.tscn" id="13_lcqh3"]
 [ext_resource type="Gradient" uid="uid://weuimmf02ocv" path="res://player/resources/player2_colorgradient.tres" id="14_lrqjp"]
+[ext_resource type="PackedScene" uid="uid://cwwadqi8vlbq0" path="res://custom_stuff/world_environment.tscn" id="17_fs3tn"]
 
 [sub_resource type="Resource" id="Resource_ykq1v"]
 script = ExtResource("4_thvsq")
@@ -80,7 +81,7 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 corner_detail = 20
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a5lbm"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_erqe2"]
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -706,7 +707,7 @@ offset_right = 96.0
 offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_a5lbm")
+theme_override_styles/panel = SubResource("StyleBoxFlat_erqe2")
 script = ExtResource("8_j3dk8")
 texture = ExtResource("4_71e5x")
 expand_mode = 2
@@ -758,6 +759,7 @@ offset_right = -43.0
 offset_bottom = 128.0
 grow_horizontal = 0
 grow_vertical = 2
+vertical = true
 
 [node name="Panel" type="Panel" parent="CanvasLayer/LevelSelect/P2Container"]
 custom_minimum_size = Vector2(256, 256)
@@ -783,6 +785,29 @@ grow_vertical = 2
 mouse_filter = 2
 texture = SubResource("ViewportTexture_mgodc")
 expand_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/LevelSelect/P2Container/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -37.0
+offset_right = 128.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Button2" type="Button" parent="CanvasLayer/LevelSelect/P2Container/Panel/HBoxContainer"]
+layout_mode = 2
+text = "py"
+
+[node name="Button3" type="Button" parent="CanvasLayer/LevelSelect/P2Container/Panel/HBoxContainer"]
+layout_mode = 2
+text = "cd"
 
 [node name="P1Container" type="BoxContainer" parent="CanvasLayer/LevelSelect"]
 layout_mode = 1
@@ -915,6 +940,12 @@ libraries = {
 libraries = {
 "": SubResource("AnimationLibrary_6o02l")
 }
+
+[node name="Marker2D" type="Marker2D" parent="P2"]
+position = Vector2(30, 450)
+gizmo_extents = 213.7
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("17_fs3tn")]
 
 [connection signal="pressed" from="CanvasLayer/LevelSelect/HBOX/BackLevel" to="." method="_on_back_level_pressed"]
 [connection signal="pressed" from="CanvasLayer/LevelSelect/HBOX/PlayLevel" to="." method="_on_play_level_pressed"]

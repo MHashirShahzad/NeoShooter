@@ -413,7 +413,7 @@ text = "[Up] or [W]
 [Enter] or [E]
 [Esc] for back
 Vim bindings
-work too!"
+work too"
 
 [node name="LogoMainMenu" type="Control" parent="CanvasLayer"]
 layout_mode = 3

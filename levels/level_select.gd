@@ -28,6 +28,9 @@ func _process(delta: float) -> void:
 		tooltip_label.text = "Back to main-menu"
 	elif %PlayLevel.has_focus():
 		tooltip_label.text = "Start the match"
+	else:
+		tooltip_label.text = ""
+		return
 	# somewhat nice lookin
 	tooltip_label.text = "- " + tooltip_label.text + " -"
 
