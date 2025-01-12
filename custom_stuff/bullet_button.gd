@@ -20,9 +20,14 @@ var bullet_prefs : PlayerBullets
 func _ready() -> void:
 	bullet_prefs = PlayerBullets.load_or_create()
 	self.pressed.connect(_on_pressed)
+	# self.focus_entered.connect(_on_hovered)
+	self.mouse_entered.connect(_on_hovered)
 	load_variables()
 
+
+
 func _on_pressed() -> void:
+	SFXManager.play_FX(press, -8)
 	if is_p2:
 		bullet_prefs.p2_bullets = equip_bullet(bullet_prefs.p2_bullets)
 	else:

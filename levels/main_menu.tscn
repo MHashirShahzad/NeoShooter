@@ -510,6 +510,7 @@ script = ExtResource("2_2ycbh")
 
 [node name="QuitButton" type="Button" parent="CanvasLayer/MainBtn/VBOX"]
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../PlayButton")
 text = "Quit
 "
 script = ExtResource("2_2ycbh")

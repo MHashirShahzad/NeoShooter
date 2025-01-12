@@ -660,6 +660,7 @@ alignment = 1
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+focus_neighbor_left = NodePath("../PlayLevel")
 shortcut = SubResource("Shortcut_3per2")
 text = "Back"
 script = ExtResource("2_7e4rf")
@@ -674,6 +675,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_plb2m")
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+focus_neighbor_right = NodePath("../BackLevel")
 text = "Play
 "
 script = ExtResource("2_7e4rf")
@@ -800,44 +802,100 @@ mouse_filter = 2
 texture = SubResource("ViewportTexture_mgodc")
 expand_mode = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/LevelSelect/P2Container/Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/LevelSelect/P2Container/Panel"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -128.0
-offset_top = -37.0
-offset_right = 128.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
 grow_horizontal = 2
 grow_vertical = 0
+
+[node name="InvLabel" type="Label" parent="CanvasLayer/LevelSelect/P2Container/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "- Equipped Bullets -
+"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/LevelSelect/P2Container/Panel/VBoxContainer"]
+layout_mode = 2
 theme_override_constants/separation = 30
 alignment = 1
 
-[node name="NormalBullet" type="Button" parent="CanvasLayer/LevelSelect/P2Container/Panel/HBoxContainer" node_paths=PackedStringArray("level_select")]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/LevelSelect/P2Container/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="NormalBullet" type="Button" parent="CanvasLayer/LevelSelect/P2Container/Panel/VBoxContainer/HBoxContainer/VBoxContainer" node_paths=PackedStringArray("level_select")]
 layout_mode = 2
 text = "[N]"
 script = ExtResource("13_ih6s1")
-level_select = NodePath("../../../../../..")
+level_select = NodePath("../../../../../../../..")
 is_p2 = true
 description = "Normal Bullet"
 
-[node name="SmallBullet" type="Button" parent="CanvasLayer/LevelSelect/P2Container/Panel/HBoxContainer" node_paths=PackedStringArray("level_select")]
+[node name="Label" type="Label" parent="CanvasLayer/LevelSelect/P2Container/Panel/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 15
+text = "Normal"
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/LevelSelect/P2Container/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="SmallBullet" type="Button" parent="CanvasLayer/LevelSelect/P2Container/Panel/VBoxContainer/HBoxContainer/VBoxContainer2" node_paths=PackedStringArray("level_select")]
 layout_mode = 2
 text = "[S]"
 script = ExtResource("13_ih6s1")
-level_select = NodePath("../../../../../..")
+level_select = NodePath("../../../../../../../..")
 is_p2 = true
 bullet_type = 1
 
-[node name="BigBullet" type="Button" parent="CanvasLayer/LevelSelect/P2Container/Panel/HBoxContainer" node_paths=PackedStringArray("level_select")]
+[node name="Label" type="Label" parent="CanvasLayer/LevelSelect/P2Container/Panel/VBoxContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 15
+text = "Small"
+horizontal_alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="CanvasLayer/LevelSelect/P2Container/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="BigBullet" type="Button" parent="CanvasLayer/LevelSelect/P2Container/Panel/VBoxContainer/HBoxContainer/VBoxContainer3" node_paths=PackedStringArray("level_select")]
+layout_mode = 2
+focus_neighbor_right = NodePath("../../../../../../BottomHBOX/PlayLevel")
 text = "[B]"
 script = ExtResource("13_ih6s1")
-level_select = NodePath("../../../../../..")
+level_select = NodePath("../../../../../../../..")
 is_p2 = true
 bullet_type = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/LevelSelect/P2Container/Panel/VBoxContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 15
+text = "Big"
+horizontal_alignment = 1
+
+[node name="PlayerLabel" type="Label" parent="CanvasLayer/LevelSelect/P2Container/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -124.0
+offset_right = 124.0
+offset_bottom = 25.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Player 2"
+horizontal_alignment = 1
 
 [node name="P1Container" type="BoxContainer" parent="CanvasLayer/LevelSelect"]
 layout_mode = 1
@@ -857,6 +915,20 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_djnws")
 
+[node name="PlayerLabel" type="Label" parent="CanvasLayer/LevelSelect/P1Container/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -124.0
+offset_right = 124.0
+offset_bottom = 25.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Player 1"
+horizontal_alignment = 1
+
 [node name="P1" type="TextureRect" parent="CanvasLayer/LevelSelect/P1Container/Panel"]
 texture_filter = 6
 custom_minimum_size = Vector2(256, 256)
@@ -871,41 +943,82 @@ grow_vertical = 2
 texture = SubResource("ViewportTexture_w31h2")
 expand_mode = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/LevelSelect/P1Container/Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/LevelSelect/P1Container/Panel"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -128.0
-offset_top = -37.0
-offset_right = 128.0
+offset_left = -114.0
+offset_top = -40.0
+offset_right = 114.0
 grow_horizontal = 2
 grow_vertical = 0
+
+[node name="InvLabel" type="Label" parent="CanvasLayer/LevelSelect/P1Container/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "- Equipped Bullets -"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/LevelSelect/P1Container/Panel/VBoxContainer"]
+layout_mode = 2
 theme_override_constants/separation = 30
 alignment = 1
 
-[node name="NormalBullet" type="Button" parent="CanvasLayer/LevelSelect/P1Container/Panel/HBoxContainer" node_paths=PackedStringArray("level_select")]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/LevelSelect/P1Container/Panel/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+
+[node name="NormalBullet" type="Button" parent="CanvasLayer/LevelSelect/P1Container/Panel/VBoxContainer/HBoxContainer/VBoxContainer" node_paths=PackedStringArray("level_select")]
+layout_mode = 2
+focus_neighbor_left = NodePath("../../../../../../BottomHBOX/BackLevel")
 text = "[N]"
 script = ExtResource("13_ih6s1")
-level_select = NodePath("../../../../../..")
+level_select = NodePath("../../../../../../../..")
 description = "Normal Bullet"
 
-[node name="SmallBullet" type="Button" parent="CanvasLayer/LevelSelect/P1Container/Panel/HBoxContainer" node_paths=PackedStringArray("level_select")]
+[node name="Label" type="Label" parent="CanvasLayer/LevelSelect/P1Container/Panel/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 15
+text = "Normal"
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/LevelSelect/P1Container/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="SmallBullet" type="Button" parent="CanvasLayer/LevelSelect/P1Container/Panel/VBoxContainer/HBoxContainer/VBoxContainer2" node_paths=PackedStringArray("level_select")]
 layout_mode = 2
 text = "[S]"
 script = ExtResource("13_ih6s1")
-level_select = NodePath("../../../../../..")
+level_select = NodePath("../../../../../../../..")
 bullet_type = 1
 
-[node name="BigBullet" type="Button" parent="CanvasLayer/LevelSelect/P1Container/Panel/HBoxContainer" node_paths=PackedStringArray("level_select")]
+[node name="Label" type="Label" parent="CanvasLayer/LevelSelect/P1Container/Panel/VBoxContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 15
+text = "Small"
+horizontal_alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="CanvasLayer/LevelSelect/P1Container/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="BigBullet" type="Button" parent="CanvasLayer/LevelSelect/P1Container/Panel/VBoxContainer/HBoxContainer/VBoxContainer3" node_paths=PackedStringArray("level_select")]
 layout_mode = 2
 text = "[B]"
 script = ExtResource("13_ih6s1")
-level_select = NodePath("../../../../../..")
+level_select = NodePath("../../../../../../../..")
 bullet_type = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/LevelSelect/P1Container/Panel/VBoxContainer/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 15
+text = "Big"
+horizontal_alignment = 1
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 anchors_preset = 10
