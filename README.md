@@ -15,12 +15,11 @@
 ---
 
 ## 🎮 Controls
-There are three different types of bullets
-- Small
-- Normal
-- Big
 
-Use your brain and switch between bullets to confuse your oponent and beat the life out of them.
+- **No Controller No Worry**: Local CO-OP is supported on a single keyboard also. 
+- **Controller Support**: Give each player a different controller or do one controller one keyboard.
+- **Changeable Controls**: Don't like default controls, re-map all of your keys.
+
 
 ## ⚙️ Requirements
 
@@ -51,3 +50,5 @@ Want to tweak the neon glow or gameplay? You can fork the project and modify the
 1. Clone the repository:
    ```bash
    git clone https://github.com/MHashirShahzad/NeoShooter.git
+   ```
+- **Requirements:** Godot-v4.2
