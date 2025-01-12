@@ -9,6 +9,7 @@ colors = PackedColorArray(0.0392157, 0.545098, 0.972549, 1, 0.450578, 0.00227139
 
 [node name="Bullet" instance=ExtResource("1_sno52")]
 speed = 1100.0
+description = "Normal Bullet"
 
 [node name="ProjHitBox" parent="." index="0"]
 damage = 15.0

@@ -3,14 +3,15 @@ extends CharacterBody2D
 class_name Bullet2D
 
 @export var speed : float = 900.0
-var direction : Vector2
+@export var description : String 
+@export var label : String = "[N]"
 @export var type : BulletManager.BULLET_TYPE
 
 var hit_box: ProjectileHitBox
 var body: Polygon2D 
 var trails_vfx: CPUParticles2D 
 var visible_onscreen : VisibleOnScreenNotifier2D
-
+var direction : Vector2
 
 ## i know this is stupid but it works and for God's sake dont touch it
 ## i wasted other ppl's time trynna figure out whats the issue was

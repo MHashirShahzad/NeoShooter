@@ -14,6 +14,8 @@ colors = PackedColorArray(0.0392157, 0.545098, 0.972549, 1, 0.450578, 0.00227139
 [node name="Bullet" instance=ExtResource("1_83854")]
 script = ExtResource("2_nu7qu")
 speed = 800.0
+description = "Curvy Bullet"
+label = "[C]"
 
 [node name="ProjHitBox" parent="." index="0"]
 damage = 7.0

@@ -1,9 +1,13 @@
 extends Button
 class_name TweenedButton
 
+@export var description : String
+
 @export_group("Sounds")
 @export var hover : AudioStream = preload("res://assets/audio/effects/btn_hover.mp3")
 @export var press : AudioStream = preload("res://assets/audio/effects/btn_press.mp3")
+
+
 
 var shake_str : float 
 var rng = RandomNumberGenerator.new()
@@ -20,7 +24,6 @@ func _on_pressed() -> void:
 	#var tween : Tween = get_tree().create_tween()
 	#tween.tween_property(self, "rotation", 1, 1)
 	#await  tween.finished
-	
 	
 func _on_hovered() -> void:
 	SFXManager.play_FX(hover, -8)

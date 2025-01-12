@@ -31,7 +31,7 @@ func _toggled(button_pressed):
 	else:
 		update_key_text()
 		grab_focus()
-		
+
 # Input
 func _unhandled_input(event):
 	# pressable both keyboard and controller OWO
@@ -59,7 +59,6 @@ func update_key_text():
 	if event is InputEventJoypadMotion:
 		controller_joy_name(event)
 	
-	
 func action_remapped(action:String , event: InputEvent) -> void:
 	if user_prefs:
 		user_prefs.action_events[action] = event
@@ -72,7 +71,7 @@ func load_user_input():
 			InputMap.action_erase_events(action)
 			InputMap.action_add_event(action, event)
 
-## sets text based on controller btn name
+## sets text based on controller button name
 func controller_btn_name(event : InputEventJoypadButton):
 	# gets btn name based on index
 	match event.button_index:
@@ -120,7 +119,8 @@ func controller_btn_name(event : InputEventJoypadButton):
 			text = "[Touchpad]" # PS4/PS5 Touchpad
 	# add device id
 	text = str(event.device) + text
-	
+
+## sets text based on controller axis name and value
 func controller_joy_name(event : InputEventJoypadMotion):
 	# match based on AXIS
 	match event.axis:

@@ -1,8 +1,8 @@
 extends Resource
 class_name PlayerBullets
 
-@export var p1_bullets := BulletStruct.new()
-@export var p2_bullets := BulletStruct.new()
+@export var p1_bullets := EquippedBullets.new()
+@export var p2_bullets := EquippedBullets.new()
 
 
 # Saves as file

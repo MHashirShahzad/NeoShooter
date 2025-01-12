@@ -1,5 +1,5 @@
 extends Node2D
-
+class_name LevelSelect
 const MAIN_MENU = preload("res://levels/main_menu.tscn")
 
 @export var level_array : Array[LevelStruct] = []
@@ -16,26 +16,11 @@ const MAIN_MENU = preload("res://levels/main_menu.tscn")
 var level_prefs : LevelSelectPreferences
 
 
-# i know un optimized but :C
-func _process(delta: float) -> void:
-	if %PrevLevel.has_focus():
-		tooltip_label.text = "Previous level"
-	elif %RandomLevel.has_focus():
-		tooltip_label.text = "Pick a random level"
-	elif %NextLevel.has_focus():
-		tooltip_label.text = "Next level"
-	elif %BackLevel.has_focus():
-		tooltip_label.text = "Back to main-menu"
-	elif %PlayLevel.has_focus():
-		tooltip_label.text = "Start the match"
-	else:
-		tooltip_label.text = ""
-		return
-	# somewhat nice lookin
-	tooltip_label.text = "- " + tooltip_label.text + " -"
 
 
 func _ready() -> void:
+	# whenever gui focus changes refresh tool tip text
+	get_viewport().gui_focus_changed.connect(update_tooltip_text)
 	
 	$CanvasLayer/LevelSelect/LevelContainer/HBoxContainer/RandomLevel.grab_focus()
 	level_prefs = LevelSelectPreferences.load_or_create()
@@ -53,7 +38,6 @@ func refresh_image() -> void:
 func _on_back_level_pressed() -> void:
 	TransitionManager.transition_scene_packed(MAIN_MENU)
 
-
 func _on_play_level_pressed() -> void:
 	var level : LevelStruct = level_array[level_prefs.level_index]
 	level_prefs.prev_level_index = level_prefs.level_index
@@ -69,7 +53,6 @@ func _on_prev_level_pressed() -> void:
 func _on_next_level_pressed() -> void:
 	level_prefs.level_index += 1
 	refresh_image()
-
 
 func _on_random_level_pressed() -> void:
 	var level : LevelStruct =  level_array.pick_random()
@@ -108,3 +91,14 @@ func play_bg_music() -> void:
 	level_prefs.prev_music_index = index
 	
 	SFXManager.play_music(music, -10)
+
+## updates the tooltip text
+func update_tooltip_text(focused_node : Control) -> void:
+	if !focused_node is TweenedButton:
+		return
+	if focused_node.description == "":
+		tooltip_label.text = ""
+		return
+	tooltip_label.text = focused_node.description
+	tooltip_label.text = "- " + tooltip_label.text + " -"
+	

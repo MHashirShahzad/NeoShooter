@@ -39,7 +39,7 @@ var spawned_bullets : int = 0
 var tilt_x: float = 0.0
 var tilt_y: float = 0.0
 var is_dead : bool = false
-var bullet_struct : BulletStruct = null
+var equiped_bullets : EquippedBullets = null
 # =============================================================================================
 # Code
 
@@ -72,18 +72,18 @@ func _input(event: InputEvent) -> void:
 	bullet_input()
 	
 func bullet_input() -> void:
-	if bullet_struct == null:
+	if equiped_bullets == null:
 		return
 	
 	
 	if Input.is_action_just_pressed(input.shoot):
-		shoot_with_scene(bullet_struct.normal)
+		shoot_with_scene(equiped_bullets.normal)
 		#shoot(BulletManager.BULLET_TYPE.NORMAL)
 	if Input.is_action_just_pressed(input.small_shoot):
-		shoot_with_scene(bullet_struct.small)
+		shoot_with_scene(equiped_bullets.small)
 		#shoot(BulletManager.BULLET_TYPE.SMALL)
 	if Input.is_action_just_pressed(input.big_shoot):
-		shoot_with_scene(bullet_struct.big)
+		shoot_with_scene(equiped_bullets.big)
 		#shoot(BulletManager.BULLET_TYPE.BIG)
 
 func shoot_with_scene(bullet_scene : PackedScene) -> void:

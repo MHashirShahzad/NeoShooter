@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://0eqvmy2w55dl"]
+[gd_scene load_steps=54 format=3 uid="uid://0eqvmy2w55dl"]
 
 [ext_resource type="Script" path="res://levels/level_select.gd" id="1_rk7ao"]
 [ext_resource type="Texture2D" uid="uid://cn4v3jncpfmej" path="res://levels/images/level_a.png" id="2_2iaos"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://8gpd8wpdb0gp" path="res://levels/level_d.tscn" id="9_h400u"]
 [ext_resource type="Shader" path="res://player/colorflash.gdshader" id="12_ail4r"]
 [ext_resource type="Resource" uid="uid://bu6wkpkaqxcs3" path="res://player/resources/player2_inputs.tres" id="12_o5qkk"]
+[ext_resource type="Script" path="res://custom_stuff/bullet_button.gd" id="13_ih6s1"]
 [ext_resource type="PackedScene" uid="uid://dth2xkw87mtwm" path="res://player/player.tscn" id="13_lcqh3"]
 [ext_resource type="Gradient" uid="uid://weuimmf02ocv" path="res://player/resources/player2_colorgradient.tres" id="14_lrqjp"]
 [ext_resource type="PackedScene" uid="uid://cwwadqi8vlbq0" path="res://custom_stuff/world_environment.tscn" id="17_fs3tn"]
@@ -596,6 +597,12 @@ _data = {
 script = ExtResource("1_rk7ao")
 level_array = Array[ExtResource("4_thvsq")]([SubResource("Resource_ykq1v"), SubResource("Resource_o1pq8"), SubResource("Resource_i0jky"), SubResource("Resource_od4f8")])
 
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="BG1" type="ColorRect" parent="CanvasLayer"]
@@ -635,7 +642,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_81v0s")
 
-[node name="HBOX" type="HBoxContainer" parent="CanvasLayer/LevelSelect"]
+[node name="BottomHBOX" type="HBoxContainer" parent="CanvasLayer/LevelSelect"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -648,26 +655,28 @@ grow_vertical = 0
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="BackLevel" type="Button" parent="CanvasLayer/LevelSelect/HBOX"]
+[node name="BackLevel" type="Button" parent="CanvasLayer/LevelSelect/BottomHBOX"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 shortcut = SubResource("Shortcut_3per2")
 text = "Back"
 script = ExtResource("2_7e4rf")
+description = "Back to main-menu"
 
-[node name="HSeparator" type="HSeparator" parent="CanvasLayer/LevelSelect/HBOX"]
+[node name="HSeparator" type="HSeparator" parent="CanvasLayer/LevelSelect/BottomHBOX"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_plb2m")
 
-[node name="PlayLevel" type="Button" parent="CanvasLayer/LevelSelect/HBOX"]
+[node name="PlayLevel" type="Button" parent="CanvasLayer/LevelSelect/BottomHBOX"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 text = "Play
 "
 script = ExtResource("2_7e4rf")
+description = "Start the match"
 
 [node name="LevelContainer" type="BoxContainer" parent="CanvasLayer/LevelSelect"]
 layout_mode = 1
@@ -722,6 +731,7 @@ layout_mode = 2
 shortcut = SubResource("Shortcut_jpdh0")
 text = "<-"
 script = ExtResource("2_7e4rf")
+description = "Previous level"
 
 [node name="HSeparator2" type="HSeparator" parent="CanvasLayer/LevelSelect/LevelContainer/HBoxContainer"]
 custom_minimum_size = Vector2(10, 0)
@@ -733,6 +743,7 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Rand"
 script = ExtResource("2_7e4rf")
+description = "Pick a random level"
 
 [node name="HSeparator" type="HSeparator" parent="CanvasLayer/LevelSelect/LevelContainer/HBoxContainer"]
 custom_minimum_size = Vector2(10, 0)
@@ -745,6 +756,7 @@ layout_mode = 2
 shortcut = SubResource("Shortcut_lpuwx")
 text = "->"
 script = ExtResource("2_7e4rf")
+description = "Next level"
 
 [node name="P2Container" type="BoxContainer" parent="CanvasLayer/LevelSelect"]
 layout_mode = 1
@@ -768,7 +780,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_djnws")
 
-[node name="P1" type="TextureRect" parent="CanvasLayer/LevelSelect/P2Container/Panel"]
+[node name="P2" type="TextureRect" parent="CanvasLayer/LevelSelect/P2Container/Panel"]
 custom_minimum_size = Vector2(256, 256)
 layout_mode = 1
 anchors_preset = 8
@@ -801,13 +813,29 @@ grow_vertical = 0
 theme_override_constants/separation = 30
 alignment = 1
 
-[node name="Button2" type="Button" parent="CanvasLayer/LevelSelect/P2Container/Panel/HBoxContainer"]
+[node name="NormalBullet" type="Button" parent="CanvasLayer/LevelSelect/P2Container/Panel/HBoxContainer" node_paths=PackedStringArray("level_select")]
 layout_mode = 2
-text = "py"
+text = "[N]"
+script = ExtResource("13_ih6s1")
+level_select = NodePath("../../../../../..")
+is_p2 = true
+description = "Normal Bullet"
 
-[node name="Button3" type="Button" parent="CanvasLayer/LevelSelect/P2Container/Panel/HBoxContainer"]
+[node name="SmallBullet" type="Button" parent="CanvasLayer/LevelSelect/P2Container/Panel/HBoxContainer" node_paths=PackedStringArray("level_select")]
 layout_mode = 2
-text = "cd"
+text = "[S]"
+script = ExtResource("13_ih6s1")
+level_select = NodePath("../../../../../..")
+is_p2 = true
+bullet_type = 1
+
+[node name="BigBullet" type="Button" parent="CanvasLayer/LevelSelect/P2Container/Panel/HBoxContainer" node_paths=PackedStringArray("level_select")]
+layout_mode = 2
+text = "[B]"
+script = ExtResource("13_ih6s1")
+level_select = NodePath("../../../../../..")
+is_p2 = true
+bullet_type = 2
 
 [node name="P1Container" type="BoxContainer" parent="CanvasLayer/LevelSelect"]
 layout_mode = 1
@@ -841,6 +869,42 @@ grow_vertical = 2
 texture = SubResource("ViewportTexture_w31h2")
 expand_mode = 1
 
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/LevelSelect/P1Container/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -37.0
+offset_right = 128.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="NormalBullet" type="Button" parent="CanvasLayer/LevelSelect/P1Container/Panel/HBoxContainer" node_paths=PackedStringArray("level_select")]
+layout_mode = 2
+text = "[N]"
+script = ExtResource("13_ih6s1")
+level_select = NodePath("../../../../../..")
+description = "Normal Bullet"
+
+[node name="SmallBullet" type="Button" parent="CanvasLayer/LevelSelect/P1Container/Panel/HBoxContainer" node_paths=PackedStringArray("level_select")]
+layout_mode = 2
+text = "[S]"
+script = ExtResource("13_ih6s1")
+level_select = NodePath("../../../../../..")
+bullet_type = 1
+
+[node name="BigBullet" type="Button" parent="CanvasLayer/LevelSelect/P1Container/Panel/HBoxContainer" node_paths=PackedStringArray("level_select")]
+layout_mode = 2
+text = "[B]"
+script = ExtResource("13_ih6s1")
+level_select = NodePath("../../../../../..")
+bullet_type = 2
+
 [node name="Label" type="Label" parent="CanvasLayer"]
 anchors_preset = 10
 anchor_right = 1.0
@@ -873,6 +937,13 @@ screen_space_aa = 1
 position = Vector2(250, 250)
 rotation = 1.5708
 is_input_enabled = false
+speed = null
+friction = null
+acceleration = null
+tilt_strength_x = null
+tilt_strength_y = null
+tilt_speed = null
+max_bullet_count = null
 
 [node name="Polygon2D" parent="P1/Player1" index="0"]
 material = SubResource("ShaderMaterial_cpt27")
@@ -910,7 +981,14 @@ render_target_update_mode = 4
 position = Vector2(270, 256)
 rotation = -1.5708
 is_input_enabled = false
+speed = null
+friction = null
+acceleration = null
+tilt_strength_x = null
+tilt_strength_y = null
+tilt_speed = null
 input = ExtResource("12_o5qkk")
+max_bullet_count = null
 
 [node name="Polygon2D" parent="P2/Player2" index="0"]
 material = SubResource("ShaderMaterial_0qomo")
@@ -941,14 +1019,10 @@ libraries = {
 "": SubResource("AnimationLibrary_6o02l")
 }
 
-[node name="Marker2D" type="Marker2D" parent="P2"]
-position = Vector2(30, 450)
-gizmo_extents = 213.7
-
 [node name="WorldEnvironment" parent="." instance=ExtResource("17_fs3tn")]
 
-[connection signal="pressed" from="CanvasLayer/LevelSelect/HBOX/BackLevel" to="." method="_on_back_level_pressed"]
-[connection signal="pressed" from="CanvasLayer/LevelSelect/HBOX/PlayLevel" to="." method="_on_play_level_pressed"]
+[connection signal="pressed" from="CanvasLayer/LevelSelect/BottomHBOX/BackLevel" to="." method="_on_back_level_pressed"]
+[connection signal="pressed" from="CanvasLayer/LevelSelect/BottomHBOX/PlayLevel" to="." method="_on_play_level_pressed"]
 [connection signal="pressed" from="CanvasLayer/LevelSelect/LevelContainer/HBoxContainer/PrevLevel" to="." method="_on_prev_level_pressed"]
 [connection signal="pressed" from="CanvasLayer/LevelSelect/LevelContainer/HBoxContainer/RandomLevel" to="." method="_on_random_level_pressed"]
 [connection signal="pressed" from="CanvasLayer/LevelSelect/LevelContainer/HBoxContainer/NextLevel" to="." method="_on_next_level_pressed"]
