@@ -13,7 +13,7 @@ script = ExtResource("2_rp75i")
 acceleration = 2000.0
 dmg_increase = 20.0
 speed = -600.0
-description = "Missile Bullet"
+description = "An accelerating bullet whose damage increases over time"
 label = "[M]"
 
 [node name="ProjHitBox" parent="." index="0"]

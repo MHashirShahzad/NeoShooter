@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=18 format=3 uid="uid://dbukeuyrs33sq"]
+[gd_resource type="Theme" load_steps=19 format=3 uid="uid://dbukeuyrs33sq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vqkbl"]
 bg_color = Color(0.0784314, 0.0627451, 0.0745098, 1)
@@ -70,6 +70,8 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q2tey"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_ebknd"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jyb17"]
 
@@ -162,6 +164,7 @@ Button/styles/pressed = SubResource("StyleBoxFlat_3hvvq")
 PopupMenu/styles/hover = SubResource("StyleBoxFlat_alerg")
 PopupMenu/styles/panel = SubResource("StyleBoxFlat_6rmwr")
 ScrollContainer/styles/panel = SubResource("StyleBoxEmpty_q2tey")
+SpinBox/icons/updown = SubResource("ImageTexture_ebknd")
 TabContainer/colors/font_hovered_color = Color(0.737255, 0.290196, 0.607843, 1)
 TabContainer/constants/side_margin = 8
 TabContainer/styles/panel = SubResource("StyleBoxEmpty_jyb17")

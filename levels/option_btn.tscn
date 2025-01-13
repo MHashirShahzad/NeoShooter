@@ -1,0 +1,660 @@
+[gd_scene load_steps=13 format=3 uid="uid://df7t4mmry7iih"]
+
+[ext_resource type="Theme" uid="uid://dbukeuyrs33sq" path="res://custom_stuff/default_theme.tres" id="1_mlf24"]
+[ext_resource type="Script" path="res://levels/option_btn.gd" id="1_wy7p7"]
+[ext_resource type="Script" path="res://custom_stuff/remappable_button.gd" id="2_tg2nt"]
+[ext_resource type="Script" path="res://custom_stuff/tweened_button.gd" id="3_h8iu6"]
+[ext_resource type="Shader" path="res://camera/chromatic_abberatiob.gdshader" id="4_k3vsp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lxtfj"]
+bg_color = Color(0.141176, 0.133333, 0.203922, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+corner_detail = 20
+shadow_size = 10
+shadow_offset = Vector2(10, 10)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1wdqi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3anv4"]
+shader = ExtResource("4_k3vsp")
+shader_parameter/chroma_strength = 1.0
+shader_parameter/r_displacement = Vector2(3, 0)
+shader_parameter/g_displacement = Vector2(0, 0)
+shader_parameter/b_displacement = Vector2(-3, 0)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3kxak"]
+
+[sub_resource type="Animation" id="Animation_0y1xu"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_rij5t"]
+resource_name = "cam_shake"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"shake_ani"
+}, {
+"args": [],
+"method": &"shake_ani"
+}, {
+"args": [],
+"method": &"shake_ani"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1w1h8"]
+_data = {
+"RESET": SubResource("Animation_0y1xu"),
+"cam_shake": SubResource("Animation_rij5t")
+}
+
+[node name="OptionBtn" type="Panel"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -294.5
+offset_right = 500.0
+offset_bottom = 294.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lxtfj")
+script = ExtResource("1_wy7p7")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_mlf24")
+current_tab = 3
+
+[node name="Controls" type="ScrollContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("1_mlf24")
+follow_focus = true
+horizontal_scroll_mode = 0
+metadata/_tab_index = 0
+
+[node name="Controls" type="VBoxContainer" parent="TabContainer/Controls"]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Player1" type="HBoxContainer" parent="TabContainer/Controls/Controls"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Controls/Controls/Player1"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "----------------- Player 1 -----------------"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="TabContainer/Controls/Controls"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Controls/Controls/HBoxContainer3"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "P1 Up"
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Controls/Controls/HBoxContainer3"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_1wdqi")
+
+[node name="Remap_Button" type="Button" parent="TabContainer/Controls/Controls/HBoxContainer3"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+text = "p1_up"
+script = ExtResource("2_tg2nt")
+action = "p1_up"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="TabContainer/Controls/Controls"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Controls/Controls/HBoxContainer4"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "P1 Down"
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Controls/Controls/HBoxContainer4"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_1wdqi")
+
+[node name="Remap_Button" type="Button" parent="TabContainer/Controls/Controls/HBoxContainer4"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+text = "p1_down
+"
+script = ExtResource("2_tg2nt")
+action = "p1_down"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/Controls/Controls"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Controls/Controls/HBoxContainer2"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "P1 Left"
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Controls/Controls/HBoxContainer2"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_1wdqi")
+
+[node name="Remap_Button" type="Button" parent="TabContainer/Controls/Controls/HBoxContainer2"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme = ExtResource("1_mlf24")
+text = "p1_left
+"
+script = ExtResource("2_tg2nt")
+action = "p1_left"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Controls/Controls"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Controls/Controls/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "P1 Right   "
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Controls/Controls/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_1wdqi")
+
+[node name="Remap_Button" type="Button" parent="TabContainer/Controls/Controls/HBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+text = "p1_right
+"
+script = ExtResource("2_tg2nt")
+action = "p1_right"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="TabContainer/Controls/Controls"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Controls/Controls/HBoxContainer5"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "P1 Shoot Normal"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Controls/Controls/HBoxContainer5"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_1wdqi")
+
+[node name="Remap_Button" type="Button" parent="TabContainer/Controls/Controls/HBoxContainer5"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+text = "p1_shoot
+"
+script = ExtResource("2_tg2nt")
+action = "p1_shoot"
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="TabContainer/Controls/Controls"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Controls/Controls/HBoxContainer6"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "P1 Shoot Small"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Controls/Controls/HBoxContainer6"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_1wdqi")
+
+[node name="Remap_Button" type="Button" parent="TabContainer/Controls/Controls/HBoxContainer6"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+text = "p1_shoot_small"
+script = ExtResource("2_tg2nt")
+action = "p1_shoot_small"
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="TabContainer/Controls/Controls"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Controls/Controls/HBoxContainer7"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "P1 Shoot Big"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Controls/Controls/HBoxContainer7"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_1wdqi")
+
+[node name="Remap_Button" type="Button" parent="TabContainer/Controls/Controls/HBoxContainer7"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+text = "p1_shoot_big
+"
+script = ExtResource("2_tg2nt")
+action = "p1_shoot_big"
+
+[node name="Player2" type="HBoxContainer" parent="TabContainer/Controls/Controls"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Controls/Controls/Player2"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "----------------- Player 2 -----------------"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer8" type="HBoxContainer" parent="TabContainer/Controls/Controls"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Controls/Controls/HBoxContainer8"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "P2 Up"
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Controls/Controls/HBoxContainer8"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_1wdqi")
+
+[node name="Remap_Button" type="Button" parent="TabContainer/Controls/Controls/HBoxContainer8"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+text = "p2_up"
+script = ExtResource("2_tg2nt")
+action = "p2_up"
+
+[node name="HBoxContainer9" type="HBoxContainer" parent="TabContainer/Controls/Controls"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Controls/Controls/HBoxContainer9"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "P2 Down"
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Controls/Controls/HBoxContainer9"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_1wdqi")
+
+[node name="Remap_Button" type="Button" parent="TabContainer/Controls/Controls/HBoxContainer9"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+text = "p2_down
+"
+script = ExtResource("2_tg2nt")
+action = "p2_down"
+
+[node name="HBoxContainer10" type="HBoxContainer" parent="TabContainer/Controls/Controls"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Controls/Controls/HBoxContainer10"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "P2 Left"
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Controls/Controls/HBoxContainer10"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_1wdqi")
+
+[node name="Remap_Button" type="Button" parent="TabContainer/Controls/Controls/HBoxContainer10"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+text = "p2_left
+"
+script = ExtResource("2_tg2nt")
+action = "p2_left"
+
+[node name="HBoxContainer11" type="HBoxContainer" parent="TabContainer/Controls/Controls"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Controls/Controls/HBoxContainer11"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "P2 Right   "
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Controls/Controls/HBoxContainer11"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_1wdqi")
+
+[node name="Remap_Button" type="Button" parent="TabContainer/Controls/Controls/HBoxContainer11"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+text = "p2_right
+"
+script = ExtResource("2_tg2nt")
+action = "p2_right"
+
+[node name="HBoxContainer12" type="HBoxContainer" parent="TabContainer/Controls/Controls"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Controls/Controls/HBoxContainer12"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "P2 Shoot Normal"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Controls/Controls/HBoxContainer12"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_1wdqi")
+
+[node name="Remap_Button" type="Button" parent="TabContainer/Controls/Controls/HBoxContainer12"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+text = "p2_shoot
+"
+script = ExtResource("2_tg2nt")
+action = "p2_shoot"
+
+[node name="HBoxContainer13" type="HBoxContainer" parent="TabContainer/Controls/Controls"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Controls/Controls/HBoxContainer13"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "P2 Shoot Small"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Controls/Controls/HBoxContainer13"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_1wdqi")
+
+[node name="Remap_Button" type="Button" parent="TabContainer/Controls/Controls/HBoxContainer13"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+text = "p2_shoot_small"
+script = ExtResource("2_tg2nt")
+action = "p2_shoot_small"
+
+[node name="HBoxContainer14" type="HBoxContainer" parent="TabContainer/Controls/Controls"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Controls/Controls/HBoxContainer14"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "P2 Shoot Big"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Controls/Controls/HBoxContainer14"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_1wdqi")
+
+[node name="Remap_Button" type="Button" parent="TabContainer/Controls/Controls/HBoxContainer14"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+text = "p2_shoot_big
+"
+script = ExtResource("2_tg2nt")
+action = "p2_shoot_big"
+
+[node name="The End" type="HBoxContainer" parent="TabContainer/Controls/Controls"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Controls/Controls/The End"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "----------------- The End -----------------"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Display" type="ScrollContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("1_mlf24")
+follow_focus = true
+metadata/_tab_index = 1
+
+[node name="Controls" type="VBoxContainer" parent="TabContainer/Display"]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Player1" type="HBoxContainer" parent="TabContainer/Display/Controls"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Display/Controls/Player1"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "----------------- More To Come -----------------"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Audio" type="ScrollContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("1_mlf24")
+follow_focus = true
+metadata/_tab_index = 2
+
+[node name="Controls" type="VBoxContainer" parent="TabContainer/Audio"]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Player1" type="HBoxContainer" parent="TabContainer/Audio/Controls"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Audio/Controls/Player1"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "--------- This is just a test build ---------"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Effects" type="ScrollContainer" parent="TabContainer"]
+layout_mode = 2
+theme = ExtResource("1_mlf24")
+follow_focus = true
+metadata/_tab_index = 3
+
+[node name="Settings" type="VBoxContainer" parent="TabContainer/Effects"]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Label" type="HBoxContainer" parent="TabContainer/Effects/Settings"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Effects/Settings/Label"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "-- Dont change the values if you are not sure -- "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Chroma" type="HBoxContainer" parent="TabContainer/Effects/Settings"]
+layout_mode = 2
+alignment = 1
+
+[node name="ChromaticAbberation" type="ColorRect" parent="TabContainer/Effects/Settings/Chroma"]
+material = SubResource("ShaderMaterial_3anv4")
+custom_minimum_size = Vector2(400, 40)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/Effects/Settings/Chroma/ChromaticAbberation"]
+show_behind_parent = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+offset_right = 371.0
+offset_bottom = 37.0
+theme_override_font_sizes/font_size = 30
+text = "Chormatic Abberation"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Effects/Settings/Chroma"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
+
+[node name="Edit" type="SpinBox" parent="TabContainer/Effects/Settings/Chroma"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme = ExtResource("1_mlf24")
+max_value = 10.0
+step = 0.1
+alignment = 1
+select_all_on_focus = true
+
+[node name="Camera" type="HBoxContainer" parent="TabContainer/Effects/Settings"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Effects/Settings/Camera"]
+custom_minimum_size = Vector2(400, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Camera Shake "
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Effects/Settings/Camera"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
+
+[node name="Edit" type="SpinBox" parent="TabContainer/Effects/Settings/Camera"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+max_value = 10.0
+step = 0.1
+alignment = 1
+select_all_on_focus = true
+
+[node name="Glow" type="HBoxContainer" parent="TabContainer/Effects/Settings"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Effects/Settings/Glow"]
+modulate = Color(0, 1, 1, 1)
+show_behind_parent = true
+z_index = 6
+custom_minimum_size = Vector2(400, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Glow"
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="TabContainer/Effects/Settings/Glow"]
+visible = false
+custom_minimum_size = Vector2(400, 40)
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="TabContainer/Effects/Settings/Glow/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(400, 40)
+render_target_update_mode = 0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="TabContainer/Effects/Settings/Glow/SubViewportContainer/SubViewport"]
+layer = -1
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Effects/Settings/Glow"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
+
+[node name="Edit" type="SpinBox" parent="TabContainer/Effects/Settings/Glow"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+step = 0.1
+value = 0.8
+alignment = 1
+select_all_on_focus = true
+
+[node name="Back" type="Button" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -101.0
+offset_top = -48.0
+offset_right = 99.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Back
+"
+script = ExtResource("3_h8iu6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1w1h8")
+}
+autoplay = "cam_shake"
+
+[connection signal="value_changed" from="TabContainer/Effects/Settings/Chroma/Edit" to="." method="_on_chroma_edit_value_changed"]
+[connection signal="value_changed" from="TabContainer/Effects/Settings/Camera/Edit" to="." method="_on_cam_shake_edit_value_changed"]
+[connection signal="value_changed" from="TabContainer/Effects/Settings/Glow/Edit" to="." method="_on_glow_edit_value_changed"]

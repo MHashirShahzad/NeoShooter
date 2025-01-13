@@ -10,7 +10,7 @@ colors = PackedColorArray(0.0392157, 0.545098, 0.972549, 1, 0.450578, 0.00227139
 
 [node name="BigBullet" instance=ExtResource("1_8d4ca")]
 speed = 600.0
-description = "Big Bullet"
+description = "A big slow bullet useful for breaking walls or dealing huge damage  "
 label = "[B]"
 
 [node name="ProjHitBox" parent="." index="0"]

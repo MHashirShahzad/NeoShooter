@@ -9,7 +9,6 @@ class_name SpaceShooterCamera
 var rng = RandomNumberGenerator.new()
 var shake_str : float = 0
 
-
 func _ready() -> void:
 	GameManager.camera = self
 

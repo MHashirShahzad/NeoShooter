@@ -3,7 +3,6 @@ class_name Remap_Button
 
 # Variables <=====================================================================================>
 @export var action : String
-var user_prefs: UserPreferences
 
 # Actual Code <=====================================================================================>
 
@@ -14,7 +13,6 @@ func _init():
 
 # On ready
 func _ready():
-	user_prefs = UserPreferences.load_or_create()
 	set_process_unhandled_input(false)
 	load_user_input()
 	update_key_text()
@@ -60,14 +58,14 @@ func update_key_text():
 		controller_joy_name(event)
 	
 func action_remapped(action:String , event: InputEvent) -> void:
-	if user_prefs:
-		user_prefs.action_events[action] = event
-		user_prefs.save()
+	if GameManager.user_prefs:
+		GameManager.user_prefs.action_events[action] = event
+		GameManager.user_prefs.save()
 
 func load_user_input():
-	if user_prefs:
-		if user_prefs.action_events.has(action):
-			var event = user_prefs.action_events[action]
+	if GameManager.user_prefs:
+		if GameManager.user_prefs.action_events.has(action):
+			var event = GameManager.user_prefs.action_events[action]
 			InputMap.action_erase_events(action)
 			InputMap.action_add_event(action, event)
 
@@ -118,7 +116,8 @@ func controller_btn_name(event : InputEventJoypadButton):
 		20:
 			text = "[Touchpad]" # PS4/PS5 Touchpad
 	# add device id
-	text = str(event.device) + text
+	# Gamepad<id> [key]
+	text = "Gampad" + str(event.device) + " " + text
 
 ## sets text based on controller axis name and value
 func controller_joy_name(event : InputEventJoypadMotion):
@@ -181,4 +180,5 @@ func controller_joy_name(event : InputEventJoypadMotion):
 				text = "[J4_Up]"
 	
 	# add device id
-	text = str(event.device) + text
+	# Gamepad<id> [key]
+	text = "Gampad" + str(event.device) + " " + text

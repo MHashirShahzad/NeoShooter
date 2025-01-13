@@ -102,9 +102,13 @@ func play_bg_music() -> void:
 func update_tooltip_text(focused_node : Control) -> void:
 	if !focused_node is TweenedButton:
 		return
+	
+	# its here causeit avoids - <empty-space> - 
+	# the decorative lines
 	if focused_node.description == "":
 		tooltip_label.text = ""
 		return
+	
 	tooltip_label.text = focused_node.description
 	tooltip_label.text = "- " + tooltip_label.text + " -"
 	

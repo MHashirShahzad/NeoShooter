@@ -2,18 +2,13 @@ extends Node2D
 # =============================================================================================
 # CONSTANT PRELOADS
 # =============================================================================================
-# VFX HIT
-const NORMAL_HIT : PackedScene = preload("res://vfx/bullet_hit/hit_normal_vfx.tscn")
-const SMALL_HIT : PackedScene = preload("res://vfx/bullet_hit/hit_small_vfx.tscn")
-const BIG_HIT : PackedScene = preload("res://vfx/bullet_hit/hit_big_vfx.tscn")
-const PLASMA_HIT : PackedScene = preload("res://vfx/bullet_hit/hit_plasma_vfx.tscn")
+# DEPRECATED I THINK SO
 # VFX DIE
 const DISTORTION : PackedScene = preload("res://vfx/player_die/distortion.tscn")
 const DIE_VFX : PackedScene = preload("res://vfx/player_die/die_vfx.tscn")
 
 # VFX SHOOT
 const BULLET_SHOOT : PackedScene = preload("res://vfx/bullet_shoot/bullet_shoot_vfx.tscn")
-
 # =============================================================================================
 # NORMAL VARIABLES
 # =============================================================================================
@@ -38,7 +33,6 @@ func die_effects(player : Player2D) -> void:
 	await hitstop_timer.timeout
 	UIManager.show_death_screen(player)
 	
-
 ## Called by the player or the object via on_hit()
 func hit_effects(hitbox : HitBox) -> void:
 	hit_stop(hitbox.hit_stop)
@@ -102,7 +96,7 @@ func hit_stop(duration : float, time_scale : float = 0.05) -> void:
 	Engine.time_scale = engine_time_scale
 	
 func camera_shake(shake_str : float)  -> void:
-	GameManager.camera.rand_str = shake_str
+	GameManager.camera.rand_str = shake_str * GameManager.user_prefs.screen_shake_multiplier
 	GameManager.camera.apply_shake()
 
 func hit_vfx(hitbox: ProjectileHitBox) -> void:
@@ -133,7 +127,10 @@ func chromatic_abberation(hitbox : HitBox):
 		rand_no = 1
 	# tween to 0
 	tween.set_ease(Tween.EASE_IN_OUT)
-	tween.tween_method(set_chroma_rect_value, hitbox.chroma_str * rand_no, 0.0, hitbox.screw_state)
+	
+	# chroma multiplier can be zero
+	var chroma_val : float = hitbox.chroma_str * rand_no * GameManager.user_prefs.chroma_multiplier
+	tween.tween_method(set_chroma_rect_value, chroma_val, 0.0, hitbox.screw_state)
 	
 	await tween.finished
 	tween.kill()
@@ -142,26 +139,6 @@ func chromatic_abberation(hitbox : HitBox):
 
 func set_chroma_rect_value(value : float):
 	chroma_rect.material.set("shader_parameter/chroma_strength", value)
-
-
-## deprecated dont use now :C
-func get_hit_vfx_type(bullet : Bullet2D) -> CPUParticles2D:
-	const BULLET_TYPE = BulletManager.BULLET_TYPE
-	var particle_vfx : CPUParticles2D
-	# get the bullet type
-	match bullet.type:
-		BULLET_TYPE.NORMAL:
-			particle_vfx = NORMAL_HIT.instantiate()
-		BULLET_TYPE.BIG:
-			particle_vfx = BIG_HIT.instantiate()
-		BULLET_TYPE.SMALL:
-			particle_vfx = SMALL_HIT.instantiate()
-		BULLET_TYPE.PLASMA:
-			particle_vfx = PLASMA_HIT.instantiate()
-		_:
-			particle_vfx = NORMAL_HIT.instantiate()
-			
-	return particle_vfx
 
 func shoot_vfx(pos : Vector2) -> void:
 	var particle_vfx  : CPUParticles2D = BULLET_SHOOT.instantiate()

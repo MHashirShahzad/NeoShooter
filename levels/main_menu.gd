@@ -20,8 +20,6 @@ func _ready() -> void:
 		game_name.text = "☭NeoShooter"
 		# add soviet union music
 
-
-
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("back"):
 		if option.visible:

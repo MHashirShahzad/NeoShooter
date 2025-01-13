@@ -6,16 +6,16 @@ class_name UserPreferences
 ## Stored keys and events of both players. Saves controls of p1 and p2.
 @export var action_events: Dictionary = {
 }
-# Levels
 
-## Last loaded level.
-@export var saved_level:String
+# visual effects :Poyo:
+@export var chroma_multiplier : float = 1
+@export var glow_intensity : float = .8
+@export var screen_shake_multiplier : float = 1
 
-## Points
-@export var points:int
+
+
 
 # Sounds
-
 ## Master volume.
 @export var master_value:float
 
