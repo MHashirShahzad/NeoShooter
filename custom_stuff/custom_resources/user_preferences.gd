@@ -17,13 +17,13 @@ class_name UserPreferences
 
 # Sounds
 ## Master volume.
-@export var master_value:float
+@export var master_volume : float = 1.0
 
 ## Music volume.
-@export var music_value:float
+@export var music_volume : float = 1
 
 ## Sound effects volume.
-@export var sfx_value:float
+@export var sfx_volume : float = 1
 
 
 # Resolution stuff 

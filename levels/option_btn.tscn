@@ -18,14 +18,14 @@ shadow_offset = Vector2(10, 10)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1wdqi"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3kxak"]
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3anv4"]
 shader = ExtResource("4_k3vsp")
 shader_parameter/chroma_strength = 1.0
 shader_parameter/r_displacement = Vector2(3, 0)
 shader_parameter/g_displacement = Vector2(0, 0)
 shader_parameter/b_displacement = Vector2(-3, 0)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3kxak"]
 
 [sub_resource type="Animation" id="Animation_0y1xu"]
 length = 0.001
@@ -500,17 +500,96 @@ layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Player1" type="HBoxContainer" parent="TabContainer/Audio/Controls"]
+[node name="MainLabel" type="HBoxContainer" parent="TabContainer/Audio/Controls"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="TabContainer/Audio/Controls/Player1"]
+[node name="Label" type="Label" parent="TabContainer/Audio/Controls/MainLabel"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "--------- This is just a test build ---------"
+text = "--------- Sound settings ---------"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Music" type="HBoxContainer" parent="TabContainer/Audio/Controls"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Audio/Controls/Music"]
+show_behind_parent = true
+custom_minimum_size = Vector2(400, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Music Volume"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Audio/Controls/Music"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
+
+[node name="MusicEdit" type="SpinBox" parent="TabContainer/Audio/Controls/Music"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+focus_neighbor_top = NodePath("../../..")
+focus_neighbor_bottom = NodePath("../../SFX/SFXEdit")
+theme = ExtResource("1_mlf24")
+max_value = 10.0
+step = 0.1
+alignment = 1
+select_all_on_focus = true
+
+[node name="SFX" type="HBoxContainer" parent="TabContainer/Audio/Controls"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Audio/Controls/SFX"]
+show_behind_parent = true
+custom_minimum_size = Vector2(400, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Sound Effects Volume"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Audio/Controls/SFX"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
+
+[node name="SFXEdit" type="SpinBox" parent="TabContainer/Audio/Controls/SFX"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../../Master/MasterEdit")
+theme = ExtResource("1_mlf24")
+max_value = 10.0
+step = 0.1
+alignment = 1
+select_all_on_focus = true
+
+[node name="Master" type="HBoxContainer" parent="TabContainer/Audio/Controls"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Audio/Controls/Master"]
+show_behind_parent = true
+custom_minimum_size = Vector2(400, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Master Volume"
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Audio/Controls/Master"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
+
+[node name="MasterEdit" type="SpinBox" parent="TabContainer/Audio/Controls/Master"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../../../../../Back")
+theme = ExtResource("1_mlf24")
+max_value = 10.0
+step = 0.1
+alignment = 1
+select_all_on_focus = true
 
 [node name="Effects" type="ScrollContainer" parent="TabContainer"]
 layout_mode = 2
@@ -596,27 +675,11 @@ layout_mode = 2
 alignment = 1
 
 [node name="Label" type="Label" parent="TabContainer/Effects/Settings/Glow"]
-modulate = Color(0, 1, 1, 1)
-show_behind_parent = true
-z_index = 6
+modulate = Color(0, 31, 27, 1)
 custom_minimum_size = Vector2(400, 40)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Glow"
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="TabContainer/Effects/Settings/Glow"]
-visible = false
-custom_minimum_size = Vector2(400, 40)
-layout_mode = 2
-
-[node name="SubViewport" type="SubViewport" parent="TabContainer/Effects/Settings/Glow/SubViewportContainer"]
-transparent_bg = true
-handle_input_locally = false
-size = Vector2i(400, 40)
-render_target_update_mode = 0
-
-[node name="CanvasLayer" type="CanvasLayer" parent="TabContainer/Effects/Settings/Glow/SubViewportContainer/SubViewport"]
-layer = -1
 
 [node name="HSeparator" type="HSeparator" parent="TabContainer/Effects/Settings/Glow"]
 custom_minimum_size = Vector2(300, 0)
@@ -655,6 +718,9 @@ libraries = {
 }
 autoplay = "cam_shake"
 
+[connection signal="value_changed" from="TabContainer/Audio/Controls/Music/MusicEdit" to="." method="_on_music_edit_value_changed"]
+[connection signal="value_changed" from="TabContainer/Audio/Controls/SFX/SFXEdit" to="." method="_on_sfx_edit_value_changed"]
+[connection signal="value_changed" from="TabContainer/Audio/Controls/Master/MasterEdit" to="." method="_on_master_edit_value_changed"]
 [connection signal="value_changed" from="TabContainer/Effects/Settings/Chroma/Edit" to="." method="_on_chroma_edit_value_changed"]
 [connection signal="value_changed" from="TabContainer/Effects/Settings/Camera/Edit" to="." method="_on_cam_shake_edit_value_changed"]
 [connection signal="value_changed" from="TabContainer/Effects/Settings/Glow/Edit" to="." method="_on_glow_edit_value_changed"]

@@ -120,12 +120,8 @@ func chromatic_abberation(hitbox : HitBox):
 	
 	var tween : Tween = get_tree().create_tween()
 	
-	var rand_no = randi_range(-1, 1)
-	if rand_no < 0:
-		rand_no = -1
-	else:
-		rand_no = 1
-	# tween to 0
+	# picks random -ve or positive
+	var rand_no : int = [-1, 1].pick_random()
 	tween.set_ease(Tween.EASE_IN_OUT)
 	
 	# chroma multiplier can be zero
