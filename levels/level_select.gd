@@ -9,8 +9,15 @@ const MAIN_MENU = preload("res://levels/main_menu.tscn")
 	preload("res://assets/audio/music/hashir/game-music-teste-1-204326.mp3"),
 	preload("res://assets/audio/music/hashir/intense-electro-trailer-music-243987.mp3"),
 	preload("res://assets/audio/music/hashir/space-station-247790.mp3"),
-	preload("res://assets/audio/music/hashir/stranger-things-124008.mp3")
+	preload("res://assets/audio/music/hashir/stranger-things-124008.mp3"),
+	preload("res://assets/audio/music/hashir/electric-horizons-239006.mp3"),
+	preload("res://assets/audio/music/hashir/galactic-overture-241181.mp3"),
+	# didnt like this one :C
+	# preload("res://assets/audio/music/hashir/let-the-games-begin-21858.mp3"),
+	preload("res://assets/audio/music/hashir/synth-city-80x27s-loop-167222.mp3"),
+	preload("res://assets/audio/music/hashir/to-the-death-159171.mp3")
 ]
+
 @onready var level_rect: TextureRectRounded = $CanvasLayer/LevelSelect/LevelContainer/Panel/LevelRect
 @onready var tooltip_label: Label = $CanvasLayer/ToolTipLabel
 var level_prefs : LevelSelectPreferences

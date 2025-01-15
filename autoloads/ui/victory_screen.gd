@@ -3,7 +3,7 @@ extends CanvasLayer
 const  LEVEL_SELECT :  PackedScene = preload("res://levels/level_select.tscn")
 const MAIN_MENU :  PackedScene = preload("res://levels/main_menu.tscn")
 
-const MAIN_MENU_MUSIC : AudioStream = preload("res://assets/audio/music/hashir/neon-gaming-128925.mp3")
+const MAIN_MENU_MUSIC : AudioStream = preload("res://assets/audio/music/hashir/main_menu.mp3")
 
 func _on_restart_pressed() -> void:
 	var current_level : String = get_tree().current_scene.scene_file_path
