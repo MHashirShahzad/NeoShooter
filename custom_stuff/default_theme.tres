@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=21 format=3 uid="uid://dbukeuyrs33sq"]
+[gd_resource type="Theme" load_steps=24 format=3 uid="uid://dbukeuyrs33sq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vqkbl"]
 bg_color = Color(0.0784314, 0.0627451, 0.0745098, 1)
@@ -47,6 +47,42 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 shadow_size = 2
 shadow_offset = Vector2(-1, -1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6tew3"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.45098, 0.0901961, 0.176471, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ycke"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.705882, 0.12549, 0.164706, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qbbsn"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.0784314, 0.0627451, 0.0745098, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+corner_detail = 6
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e17ed"]
 content_margin_left = 4.0
@@ -197,6 +233,9 @@ Button/styles/focus = SubResource("StyleBoxEmpty_jryc2")
 Button/styles/hover = SubResource("StyleBoxFlat_4l4fj")
 Button/styles/normal = SubResource("StyleBoxFlat_ag6rd")
 Button/styles/pressed = SubResource("StyleBoxFlat_3hvvq")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_6tew3")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_8ycke")
+HSlider/styles/slider = SubResource("StyleBoxFlat_qbbsn")
 LineEdit/styles/focus = SubResource("StyleBoxFlat_e17ed")
 LineEdit/styles/normal = SubResource("StyleBoxFlat_i4hsy")
 PopupMenu/styles/hover = SubResource("StyleBoxFlat_alerg")

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfwqgosyvdf7v"]
+
+[ext_resource type="PackedScene" uid="uid://df7t4mmry7iih" path="res://levels/option_btn.tscn" id="1_v3vpu"]
+[ext_resource type="PackedScene" uid="uid://cwwadqi8vlbq0" path="res://custom_stuff/world_environment.tscn" id="2_a6b0l"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+layer = 2
+
+[node name="OptionBtn" parent="." instance=ExtResource("1_v3vpu")]
+
+[node name="WorldEnvironment" parent="OptionBtn/TabContainer/Effects/Settings/Glow" index="0" instance=ExtResource("2_a6b0l")]
+
+[node name="SubViewportContainer" parent="OptionBtn/TabContainer/Effects/Settings/Glow" index="2"]
+custom_minimum_size = Vector2(400, 50)
+
+[node name="SubViewport" parent="OptionBtn/TabContainer/Effects/Settings/Glow/SubViewportContainer" index="0"]
+size = Vector2i(400, 100)
+
+[editable path="OptionBtn"]

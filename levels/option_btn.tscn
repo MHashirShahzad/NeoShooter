@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://df7t4mmry7iih"]
+[gd_scene load_steps=14 format=3 uid="uid://df7t4mmry7iih"]
 
 [ext_resource type="Theme" uid="uid://dbukeuyrs33sq" path="res://custom_stuff/default_theme.tres" id="1_mlf24"]
 [ext_resource type="Script" path="res://levels/option_btn.gd" id="1_wy7p7"]
 [ext_resource type="Script" path="res://custom_stuff/remappable_button.gd" id="2_tg2nt"]
 [ext_resource type="Script" path="res://custom_stuff/tweened_button.gd" id="3_h8iu6"]
 [ext_resource type="Shader" path="res://camera/chromatic_abberatiob.gdshader" id="4_k3vsp"]
+[ext_resource type="Script" path="res://custom_stuff/tweened_slider.gd" id="5_hkxlp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lxtfj"]
 bg_color = Color(0.141176, 0.133333, 0.203922, 1)
@@ -22,7 +23,7 @@ shadow_offset = Vector2(10, 10)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3anv4"]
 shader = ExtResource("4_k3vsp")
-shader_parameter/chroma_strength = 1.0
+shader_parameter/chroma_strength = 10.0
 shader_parameter/r_displacement = Vector2(3, 0)
 shader_parameter/g_displacement = Vector2(0, 0)
 shader_parameter/b_displacement = Vector2(-3, 0)
@@ -85,10 +86,9 @@ offset_bottom = -72.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_mlf24")
-current_tab = 3
+current_tab = 0
 
 [node name="Controls" type="ScrollContainer" parent="TabContainer"]
-visible = false
 layout_mode = 2
 theme = ExtResource("1_mlf24")
 follow_focus = true
@@ -523,8 +523,20 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Music Volume"
 
-[node name="HSeparator" type="HSeparator" parent="TabContainer/Audio/Controls/Music"]
-custom_minimum_size = Vector2(300, 0)
+[node name="HSeparator2" type="HSeparator" parent="TabContainer/Audio/Controls/Music"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
+
+[node name="MusicSlider" type="HSlider" parent="TabContainer/Audio/Controls/Music"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+max_value = 10.0
+step = 0.5
+script = ExtResource("5_hkxlp")
+
+[node name="HSeparator3" type="HSeparator" parent="TabContainer/Audio/Controls/Music"]
+custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
 
@@ -550,8 +562,20 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Sound Effects Volume"
 
-[node name="HSeparator" type="HSeparator" parent="TabContainer/Audio/Controls/SFX"]
-custom_minimum_size = Vector2(300, 0)
+[node name="HSeparator2" type="HSeparator" parent="TabContainer/Audio/Controls/SFX"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
+
+[node name="SFXSlider" type="HSlider" parent="TabContainer/Audio/Controls/SFX"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+max_value = 10.0
+step = 0.5
+script = ExtResource("5_hkxlp")
+
+[node name="HSeparator3" type="HSeparator" parent="TabContainer/Audio/Controls/SFX"]
+custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
 
@@ -576,8 +600,20 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Master Volume"
 
-[node name="HSeparator" type="HSeparator" parent="TabContainer/Audio/Controls/Master"]
-custom_minimum_size = Vector2(300, 0)
+[node name="HSeparator2" type="HSeparator" parent="TabContainer/Audio/Controls/Master"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
+
+[node name="MasterSlider" type="HSlider" parent="TabContainer/Audio/Controls/Master"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+max_value = 10.0
+step = 0.5
+script = ExtResource("5_hkxlp")
+
+[node name="HSeparator3" type="HSeparator" parent="TabContainer/Audio/Controls/Master"]
+custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
 
@@ -592,6 +628,7 @@ alignment = 1
 select_all_on_focus = true
 
 [node name="Effects" type="ScrollContainer" parent="TabContainer"]
+visible = false
 layout_mode = 2
 theme = ExtResource("1_mlf24")
 follow_focus = true
@@ -615,6 +652,18 @@ text = "-- Dont change the values if you are not sure -- "
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Label2" type="HBoxContainer" parent="TabContainer/Effects/Settings"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Effects/Settings/Label2"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "- Setting something to 0 will cause it to be disabled -"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Chroma" type="HBoxContainer" parent="TabContainer/Effects/Settings"]
 layout_mode = 2
 alignment = 1
@@ -627,14 +676,26 @@ layout_mode = 2
 [node name="Label" type="Label" parent="TabContainer/Effects/Settings/Chroma/ChromaticAbberation"]
 show_behind_parent = true
 custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
+layout_mode = 1
 offset_right = 371.0
 offset_bottom = 37.0
 theme_override_font_sizes/font_size = 30
-text = "Chormatic Abberation"
+text = "Chromatic Abberation"
 
 [node name="HSeparator" type="HSeparator" parent="TabContainer/Effects/Settings/Chroma"]
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
+
+[node name="ChromaticAbberationSlider" type="HSlider" parent="TabContainer/Effects/Settings/Chroma"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+max_value = 10.0
+step = 0.5
+script = ExtResource("5_hkxlp")
+
+[node name="HSeparator2" type="HSeparator" parent="TabContainer/Effects/Settings/Chroma"]
+custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
 
@@ -658,7 +719,19 @@ theme_override_font_sizes/font_size = 30
 text = "Camera Shake "
 
 [node name="HSeparator" type="HSeparator" parent="TabContainer/Effects/Settings/Camera"]
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
+
+[node name="CameraShakeSlider" type="HSlider" parent="TabContainer/Effects/Settings/Camera"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+max_value = 10.0
+step = 0.5
+script = ExtResource("5_hkxlp")
+
+[node name="HSeparator2" type="HSeparator" parent="TabContainer/Effects/Settings/Camera"]
+custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
 
@@ -681,8 +754,34 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Glow"
 
-[node name="HSeparator" type="HSeparator" parent="TabContainer/Effects/Settings/Glow"]
-custom_minimum_size = Vector2(300, 0)
+[node name="SubViewportContainer" type="SubViewportContainer" parent="TabContainer/Effects/Settings/Glow"]
+visible = false
+custom_minimum_size = Vector2(400, 30)
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="TabContainer/Effects/Settings/Glow/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(400, 30)
+render_target_update_mode = 0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="TabContainer/Effects/Settings/Glow/SubViewportContainer/SubViewport"]
+layer = -1
+
+[node name="HSeparator2" type="HSeparator" parent="TabContainer/Effects/Settings/Glow"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
+
+[node name="GlowSlider" type="HSlider" parent="TabContainer/Effects/Settings/Glow"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+max_value = 10.0
+step = 0.2
+script = ExtResource("5_hkxlp")
+
+[node name="HSeparator3" type="HSeparator" parent="TabContainer/Effects/Settings/Glow"]
+custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
 
@@ -718,9 +817,15 @@ libraries = {
 }
 autoplay = "cam_shake"
 
+[connection signal="value_changed" from="TabContainer/Audio/Controls/Music/MusicSlider" to="." method="_on_music_slider_value_changed"]
 [connection signal="value_changed" from="TabContainer/Audio/Controls/Music/MusicEdit" to="." method="_on_music_edit_value_changed"]
+[connection signal="value_changed" from="TabContainer/Audio/Controls/SFX/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
 [connection signal="value_changed" from="TabContainer/Audio/Controls/SFX/SFXEdit" to="." method="_on_sfx_edit_value_changed"]
+[connection signal="value_changed" from="TabContainer/Audio/Controls/Master/MasterSlider" to="." method="_on_master_slider_value_changed"]
 [connection signal="value_changed" from="TabContainer/Audio/Controls/Master/MasterEdit" to="." method="_on_master_edit_value_changed"]
+[connection signal="value_changed" from="TabContainer/Effects/Settings/Chroma/ChromaticAbberationSlider" to="." method="_on_chromatic_abberation_slider_value_changed"]
 [connection signal="value_changed" from="TabContainer/Effects/Settings/Chroma/Edit" to="." method="_on_chroma_edit_value_changed"]
+[connection signal="value_changed" from="TabContainer/Effects/Settings/Camera/CameraShakeSlider" to="." method="_on_camera_shake_slider_value_changed"]
 [connection signal="value_changed" from="TabContainer/Effects/Settings/Camera/Edit" to="." method="_on_cam_shake_edit_value_changed"]
+[connection signal="value_changed" from="TabContainer/Effects/Settings/Glow/GlowSlider" to="." method="_on_glow_slider_value_changed"]
 [connection signal="value_changed" from="TabContainer/Effects/Settings/Glow/Edit" to="." method="_on_glow_edit_value_changed"]

@@ -105,6 +105,7 @@ func shoot_with_scene(bullet_scene : PackedScene) -> void:
 	
 
 ## deprecated dont use
+## @deprecated: Use shoot_with_scene instead
 func shoot(type : BulletManager.BULLET_TYPE) -> void:
 	var bullet_pos : Vector2 = bullet_spawn_location.global_position
 	# low ammo

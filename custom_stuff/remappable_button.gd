@@ -17,11 +17,16 @@ func _ready():
 	load_user_input()
 	update_key_text()
 	self.pressed.connect(_on_pressed)
+	
 	self.mouse_entered.connect(_on_hovered)
+	self.focus_entered.connect(_on_hovered)
+	
 	self.mouse_exited.connect(_on_unhovered)
+	self.focus_exited.connect(_on_hovered)
 
 # On clicked
 func _toggled(button_pressed):
+	SFXManager.play_FX(press, -8)
 	set_process_unhandled_input(button_pressed)
 	if button_pressed:
 		text = "..."

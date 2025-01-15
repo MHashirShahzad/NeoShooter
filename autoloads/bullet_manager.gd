@@ -14,6 +14,7 @@ const BIG_BULLET : PackedScene = preload("res://bullets/big_bullet.tscn")
 
 
 ## deprecated dont use with_scene one
+## @deprecated: Use bullet_with_scene instead
 func shoot_bullet(player : Player2D, type : BULLET_TYPE):
 	var bullet : Bullet2D = get_bullet_type(type) # sets the bullet variable accr to type
 	

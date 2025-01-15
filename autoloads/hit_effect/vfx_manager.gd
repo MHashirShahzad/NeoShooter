@@ -2,6 +2,7 @@ extends Node2D
 # =============================================================================================
 # CONSTANT PRELOADS
 # =============================================================================================
+## @deprecated: Use [AnotherClass] instead
 # DEPRECATED I THINK SO
 # VFX DIE
 const DISTORTION : PackedScene = preload("res://vfx/player_die/distortion.tscn")

@@ -15,8 +15,13 @@ var rng = RandomNumberGenerator.new()
 func _ready() -> void:
 	self.pivot_offset = Vector2(.5, .5)
 	self.pressed.connect(_on_pressed)
+	
 	self.mouse_entered.connect(_on_hovered)
+	self.focus_entered.connect(_on_hovered)
+	
 	self.mouse_exited.connect(_on_unhovered)
+	self.focus_exited.connect(_on_hovered)
+	
 	
 func _on_pressed() -> void:
 	SFXManager.play_FX(press, -8)
