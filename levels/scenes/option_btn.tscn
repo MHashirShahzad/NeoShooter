@@ -106,6 +106,7 @@ offset_bottom = -72.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_a6mdd")
+tab_alignment = 1
 current_tab = 0
 
 [node name="Controls" type="ScrollContainer" parent="TabContainer"]
