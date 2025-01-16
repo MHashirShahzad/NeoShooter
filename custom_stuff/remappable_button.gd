@@ -51,6 +51,9 @@ func _unhandled_input(event):
 		button_pressed = false
 		action_remapped(action, event)
 		
+	# doesnt let others use the input :P
+	get_viewport().set_input_as_handled()
+
 # Set text of button
 func update_key_text():
 	var event : InputEvent = InputMap.action_get_events(action)[0]

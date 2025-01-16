@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://df7t4mmry7iih"]
+[gd_scene load_steps=17 format=3 uid="uid://df7t4mmry7iih"]
 
 [ext_resource type="Script" path="res://levels/option_btn.gd" id="1_u3d61"]
 [ext_resource type="Theme" uid="uid://dbukeuyrs33sq" path="res://custom_stuff/default_theme.tres" id="2_a6mdd"]
@@ -71,6 +71,14 @@ _data = {
 "cam_shake": SubResource("Animation_rij5t")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ycp5m"]
+bg_color = Color(0.0784314, 0.0627451, 0.0745098, 1)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+
 [node name="OptionBtn" type="Panel"]
 anchors_preset = 8
 anchor_left = 0.5
@@ -91,6 +99,9 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = 1.0
+offset_right = 4.0
 offset_bottom = -72.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -212,6 +223,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_1wdqi")
 [node name="Remap_Button" type="Button" parent="TabContainer/Controls/Controls/HBoxContainer"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
+focus_neighbor_top = NodePath("../../HBoxContainer2/Remap_Button")
 text = "p1_right
 "
 script = ExtResource("3_esqf1")
@@ -827,6 +839,40 @@ libraries = {
 "": SubResource("AnimationLibrary_1w1h8")
 }
 autoplay = "cam_shake"
+
+[node name="Text" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -238.0
+offset_top = -66.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ycp5m")
+
+[node name="Label" type="Label" parent="Text"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -115.0
+offset_top = -30.5
+offset_right = 115.0
+offset_bottom = 30.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 10
+text = "[Shift+Right][RB] to go to right Tab
+[Shift+Left][LB]  to go to left Tab
+(WASD Also Works with shift)
+[MouseWheel] to scroll"
+horizontal_alignment = 1
 
 [connection signal="value_changed" from="TabContainer/Audio/Controls/Music/MusicSlider" to="." method="_on_music_slider_value_changed"]
 [connection signal="value_changed" from="TabContainer/Audio/Controls/Music/MusicEdit" to="." method="_on_music_edit_value_changed"]

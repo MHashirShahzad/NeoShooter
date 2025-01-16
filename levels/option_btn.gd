@@ -31,11 +31,54 @@ extends Panel
 @onready var master_slider: HTweendSlider = $TabContainer/Audio/Controls/Master/MasterSlider
 
 
+
 func _ready() -> void:
 	set_effects_label_values()
 	set_audio_label_values()
-	
+	set_correct_neighbors_remappable_buttons()
 
+## I KNOW ITS BAD but i dont want to set focus mannually :C
+func set_correct_neighbors_remappable_buttons():
+	var controls :VBoxContainer = $TabContainer/Controls/Controls
+	var prev_button : Remap_Button
+	
+	for i in controls.get_children():
+		for j in i.get_children():
+			
+			if j is Remap_Button:
+				
+				if prev_button:
+					j.focus_neighbor_top = prev_button.get_path()
+					print("SELF: ",j.action, " Neighbor TOP : ", prev_button.action)
+				
+				prev_button = j
+				
+func _unhandled_input(event: InputEvent) -> void:
+	if !self.visible:
+		return
+	
+	var tab_bar : TabBar = $TabContainer.get_tab_bar()
+	if Input.is_action_just_pressed("ui_tab_left"):
+		tab_bar.grab_focus()
+		# if the player decides to go behind tab#0 he will be redirected to the last tab
+		if tab_bar.current_tab == 0:
+			tab_bar.current_tab = tab_bar.tab_count - 1
+			return
+		# or else minus one
+		tab_bar.current_tab -= 1
+		
+	if Input.is_action_just_pressed("ui_tab_right"):
+		tab_bar.grab_focus()
+		# if tab count is greater than or equal to the total tabs + 1
+		# as total tabs are 4 when the player reaches tab#5 he should 
+		# be redirected to tab#0
+		if tab_bar.current_tab == tab_bar.tab_count - 1:
+			tab_bar.current_tab = 0
+			return
+		
+		tab_bar.current_tab += 1
+	
+	
 # Effects <===========================================================================================>
 
 func set_effects_label_values() -> void:
