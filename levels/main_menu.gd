@@ -11,7 +11,7 @@ class_name MainMenu
 @onready var ani_player: AnimationPlayer = $AniPlayer
 
 
-var LEVEL_SELECT = load("res://levels/level_select.tscn")
+var LEVEL_SELECT = load("res://levels/scenes/level_select.tscn")
 
 func _ready() -> void:
 	main_menu_grab_focus()

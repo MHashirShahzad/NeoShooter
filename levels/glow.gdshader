@@ -1,13 +1,37 @@
 shader_type canvas_item;
 
-uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
+uniform vec4 glow_color : source_color;
+
+uniform float glow_power: hint_range(0.0, 10.0, 0.1) = 2.0;
+
+uniform float glow_shift: hint_range(0.0, 10.0, 0.1) = 1.0;
+
+uniform float glow_radius: hint_range(1.0, 10.0, 1.0) = 1.0;
+
 
 
 void fragment() {
-	vec2 ps = SCREEN_PIXEL_SIZE;
-	vec4 col0 = texture(SCREEN_TEXTURE, SCREEN_UV + vec2(-ps.x, 0));
-	vec4 col1 = texture(SCREEN_TEXTURE, SCREEN_UV + vec2(ps.x, 0));
-	vec4 col2 = texture(SCREEN_TEXTURE, SCREEN_UV + vec2(0, -ps.y));
-	vec4 col3 = texture(SCREEN_TEXTURE, SCREEN_UV + vec2(0, ps.y));
-	COLOR = 0.25 * (col0 + col1 + col2 + col3);
+
+    vec4 glow = vec4(0.0);
+
+    float count = 0.0;
+
+    for (float x = -glow_radius; x <= glow_radius; x += 1.0) {
+
+        for (float y = -glow_radius; y <= glow_radius; y += 1.0) {
+
+            vec2 offset = vec2(x, y) * glow_shift * TEXTURE_PIXEL_SIZE;
+
+            glow += texture(TEXTURE, UV + offset) * glow_color;
+
+            count += 1.0;
+
+        }
+
+    }
+
+    glow *= glow_power / count;
+
+    COLOR = mix(texture(TEXTURE, UV), glow, glow.a);
+
 }

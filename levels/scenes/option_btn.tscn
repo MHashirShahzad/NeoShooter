@@ -1,11 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://df7t4mmry7iih"]
+[gd_scene load_steps=16 format=3 uid="uid://df7t4mmry7iih"]
 
-[ext_resource type="Theme" uid="uid://dbukeuyrs33sq" path="res://custom_stuff/default_theme.tres" id="1_mlf24"]
-[ext_resource type="Script" path="res://levels/option_btn.gd" id="1_wy7p7"]
-[ext_resource type="Script" path="res://custom_stuff/remappable_button.gd" id="2_tg2nt"]
-[ext_resource type="Script" path="res://custom_stuff/tweened_button.gd" id="3_h8iu6"]
-[ext_resource type="Shader" path="res://camera/chromatic_abberatiob.gdshader" id="4_k3vsp"]
-[ext_resource type="Script" path="res://custom_stuff/tweened_slider.gd" id="5_hkxlp"]
+[ext_resource type="Script" path="res://levels/option_btn.gd" id="1_u3d61"]
+[ext_resource type="Theme" uid="uid://dbukeuyrs33sq" path="res://custom_stuff/default_theme.tres" id="2_a6mdd"]
+[ext_resource type="Script" path="res://custom_stuff/remappable_button.gd" id="3_esqf1"]
+[ext_resource type="Script" path="res://custom_stuff/tweened_slider.gd" id="4_2vuxb"]
+[ext_resource type="Shader" path="res://camera/chromatic_abberatiob.gdshader" id="5_41fe5"]
+[ext_resource type="Script" path="res://custom_stuff/tweened_button.gd" id="6_4eoqf"]
+[ext_resource type="Shader" path="res://levels/glow.gdshader" id="6_lsnb0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lxtfj"]
 bg_color = Color(0.141176, 0.133333, 0.203922, 1)
@@ -22,11 +23,19 @@ shadow_offset = Vector2(10, 10)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3kxak"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3anv4"]
-shader = ExtResource("4_k3vsp")
+shader = ExtResource("5_41fe5")
 shader_parameter/chroma_strength = 10.0
 shader_parameter/r_displacement = Vector2(3, 0)
 shader_parameter/g_displacement = Vector2(0, 0)
 shader_parameter/b_displacement = Vector2(-3, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qxhae"]
+resource_local_to_scene = true
+shader = ExtResource("6_lsnb0")
+shader_parameter/glow_color = Color(0.12549, 0.839216, 0.780392, 1)
+shader_parameter/glow_power = 2.0
+shader_parameter/glow_shift = 1.0
+shader_parameter/glow_radius = 1.0
 
 [sub_resource type="Animation" id="Animation_0y1xu"]
 length = 0.001
@@ -75,7 +84,7 @@ offset_bottom = 294.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_lxtfj")
-script = ExtResource("1_wy7p7")
+script = ExtResource("1_u3d61")
 
 [node name="TabContainer" type="TabContainer" parent="."]
 layout_mode = 1
@@ -85,12 +94,12 @@ anchor_bottom = 1.0
 offset_bottom = -72.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_mlf24")
+theme = ExtResource("2_a6mdd")
 current_tab = 0
 
 [node name="Controls" type="ScrollContainer" parent="TabContainer"]
 layout_mode = 2
-theme = ExtResource("1_mlf24")
+theme = ExtResource("2_a6mdd")
 follow_focus = true
 horizontal_scroll_mode = 0
 metadata/_tab_index = 0
@@ -133,7 +142,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_1wdqi")
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 text = "p1_up"
-script = ExtResource("2_tg2nt")
+script = ExtResource("3_esqf1")
 action = "p1_up"
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="TabContainer/Controls/Controls"]
@@ -157,7 +166,7 @@ custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 text = "p1_down
 "
-script = ExtResource("2_tg2nt")
+script = ExtResource("3_esqf1")
 action = "p1_down"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/Controls/Controls"]
@@ -179,10 +188,10 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_1wdqi")
 [node name="Remap_Button" type="Button" parent="TabContainer/Controls/Controls/HBoxContainer2"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
-theme = ExtResource("1_mlf24")
+theme = ExtResource("2_a6mdd")
 text = "p1_left
 "
-script = ExtResource("2_tg2nt")
+script = ExtResource("3_esqf1")
 action = "p1_left"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Controls/Controls"]
@@ -205,7 +214,7 @@ custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 text = "p1_right
 "
-script = ExtResource("2_tg2nt")
+script = ExtResource("3_esqf1")
 action = "p1_right"
 
 [node name="HBoxContainer5" type="HBoxContainer" parent="TabContainer/Controls/Controls"]
@@ -228,7 +237,7 @@ custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 text = "p1_shoot
 "
-script = ExtResource("2_tg2nt")
+script = ExtResource("3_esqf1")
 action = "p1_shoot"
 
 [node name="HBoxContainer6" type="HBoxContainer" parent="TabContainer/Controls/Controls"]
@@ -250,7 +259,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_1wdqi")
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 text = "p1_shoot_small"
-script = ExtResource("2_tg2nt")
+script = ExtResource("3_esqf1")
 action = "p1_shoot_small"
 
 [node name="HBoxContainer7" type="HBoxContainer" parent="TabContainer/Controls/Controls"]
@@ -273,7 +282,7 @@ custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 text = "p1_shoot_big
 "
-script = ExtResource("2_tg2nt")
+script = ExtResource("3_esqf1")
 action = "p1_shoot_big"
 
 [node name="Player2" type="HBoxContainer" parent="TabContainer/Controls/Controls"]
@@ -308,7 +317,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_1wdqi")
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 text = "p2_up"
-script = ExtResource("2_tg2nt")
+script = ExtResource("3_esqf1")
 action = "p2_up"
 
 [node name="HBoxContainer9" type="HBoxContainer" parent="TabContainer/Controls/Controls"]
@@ -332,7 +341,7 @@ custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 text = "p2_down
 "
-script = ExtResource("2_tg2nt")
+script = ExtResource("3_esqf1")
 action = "p2_down"
 
 [node name="HBoxContainer10" type="HBoxContainer" parent="TabContainer/Controls/Controls"]
@@ -356,7 +365,7 @@ custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 text = "p2_left
 "
-script = ExtResource("2_tg2nt")
+script = ExtResource("3_esqf1")
 action = "p2_left"
 
 [node name="HBoxContainer11" type="HBoxContainer" parent="TabContainer/Controls/Controls"]
@@ -379,7 +388,7 @@ custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 text = "p2_right
 "
-script = ExtResource("2_tg2nt")
+script = ExtResource("3_esqf1")
 action = "p2_right"
 
 [node name="HBoxContainer12" type="HBoxContainer" parent="TabContainer/Controls/Controls"]
@@ -402,7 +411,7 @@ custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 text = "p2_shoot
 "
-script = ExtResource("2_tg2nt")
+script = ExtResource("3_esqf1")
 action = "p2_shoot"
 
 [node name="HBoxContainer13" type="HBoxContainer" parent="TabContainer/Controls/Controls"]
@@ -424,7 +433,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_1wdqi")
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 text = "p2_shoot_small"
-script = ExtResource("2_tg2nt")
+script = ExtResource("3_esqf1")
 action = "p2_shoot_small"
 
 [node name="HBoxContainer14" type="HBoxContainer" parent="TabContainer/Controls/Controls"]
@@ -447,7 +456,7 @@ custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 text = "p2_shoot_big
 "
-script = ExtResource("2_tg2nt")
+script = ExtResource("3_esqf1")
 action = "p2_shoot_big"
 
 [node name="The End" type="HBoxContainer" parent="TabContainer/Controls/Controls"]
@@ -465,7 +474,7 @@ vertical_alignment = 1
 [node name="Display" type="ScrollContainer" parent="TabContainer"]
 visible = false
 layout_mode = 2
-theme = ExtResource("1_mlf24")
+theme = ExtResource("2_a6mdd")
 follow_focus = true
 metadata/_tab_index = 1
 
@@ -490,7 +499,7 @@ vertical_alignment = 1
 [node name="Audio" type="ScrollContainer" parent="TabContainer"]
 visible = false
 layout_mode = 2
-theme = ExtResource("1_mlf24")
+theme = ExtResource("2_a6mdd")
 follow_focus = true
 metadata/_tab_index = 2
 
@@ -532,8 +541,8 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 max_value = 10.0
-step = 0.5
-script = ExtResource("5_hkxlp")
+step = 0.25
+script = ExtResource("4_2vuxb")
 
 [node name="HSeparator3" type="HSeparator" parent="TabContainer/Audio/Controls/Music"]
 custom_minimum_size = Vector2(20, 0)
@@ -545,7 +554,7 @@ custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 focus_neighbor_top = NodePath("../../..")
 focus_neighbor_bottom = NodePath("../../SFX/SFXEdit")
-theme = ExtResource("1_mlf24")
+theme = ExtResource("2_a6mdd")
 max_value = 10.0
 step = 0.1
 alignment = 1
@@ -571,8 +580,8 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 max_value = 10.0
-step = 0.5
-script = ExtResource("5_hkxlp")
+step = 0.25
+script = ExtResource("4_2vuxb")
 
 [node name="HSeparator3" type="HSeparator" parent="TabContainer/Audio/Controls/SFX"]
 custom_minimum_size = Vector2(20, 0)
@@ -583,7 +592,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../../Master/MasterEdit")
-theme = ExtResource("1_mlf24")
+theme = ExtResource("2_a6mdd")
 max_value = 10.0
 step = 0.1
 alignment = 1
@@ -609,8 +618,8 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 max_value = 10.0
-step = 0.5
-script = ExtResource("5_hkxlp")
+step = 0.25
+script = ExtResource("4_2vuxb")
 
 [node name="HSeparator3" type="HSeparator" parent="TabContainer/Audio/Controls/Master"]
 custom_minimum_size = Vector2(20, 0)
@@ -621,7 +630,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../../../../../Back")
-theme = ExtResource("1_mlf24")
+theme = ExtResource("2_a6mdd")
 max_value = 10.0
 step = 0.1
 alignment = 1
@@ -630,7 +639,7 @@ select_all_on_focus = true
 [node name="Effects" type="ScrollContainer" parent="TabContainer"]
 visible = false
 layout_mode = 2
-theme = ExtResource("1_mlf24")
+theme = ExtResource("2_a6mdd")
 follow_focus = true
 metadata/_tab_index = 3
 
@@ -691,8 +700,8 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 max_value = 10.0
-step = 0.5
-script = ExtResource("5_hkxlp")
+step = 0.25
+script = ExtResource("4_2vuxb")
 
 [node name="HSeparator2" type="HSeparator" parent="TabContainer/Effects/Settings/Chroma"]
 custom_minimum_size = Vector2(20, 0)
@@ -702,7 +711,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
 [node name="Edit" type="SpinBox" parent="TabContainer/Effects/Settings/Chroma"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-theme = ExtResource("1_mlf24")
+theme = ExtResource("2_a6mdd")
 max_value = 10.0
 step = 0.1
 alignment = 1
@@ -727,8 +736,8 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 max_value = 10.0
-step = 0.5
-script = ExtResource("5_hkxlp")
+step = 0.25
+script = ExtResource("4_2vuxb")
 
 [node name="HSeparator2" type="HSeparator" parent="TabContainer/Effects/Settings/Camera"]
 custom_minimum_size = Vector2(20, 0)
@@ -749,6 +758,8 @@ alignment = 1
 
 [node name="Label" type="Label" parent="TabContainer/Effects/Settings/Glow"]
 modulate = Color(0, 31, 27, 1)
+self_modulate = Color(0.12549, 0.839216, 0.780392, 1)
+material = SubResource("ShaderMaterial_qxhae")
 custom_minimum_size = Vector2(400, 40)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
@@ -777,8 +788,8 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 max_value = 10.0
-step = 0.2
-script = ExtResource("5_hkxlp")
+step = 0.25
+script = ExtResource("4_2vuxb")
 
 [node name="HSeparator3" type="HSeparator" parent="TabContainer/Effects/Settings/Glow"]
 custom_minimum_size = Vector2(20, 0)
@@ -809,7 +820,7 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Back
 "
-script = ExtResource("3_h8iu6")
+script = ExtResource("6_4eoqf")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

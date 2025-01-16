@@ -12,7 +12,7 @@ config_version=5
 
 config/name="NeoShooter"
 config/description="Space shooter revamped.s"
-run/main_scene="res://levels/start_animation.tscn"
+run/main_scene="res://levels/scenes/start_animation.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 config/icon="res://assets/NeoShooterLogo.svg"

@@ -5,8 +5,8 @@ extends Control
 @onready var vic_screen: CanvasLayer = $VictoryScreen
 @onready var vic_screen_label: Label = $VictoryScreen/Transition/Label
 
-const  LEVEL_SELECT :  PackedScene = preload("res://levels/level_select.tscn")
-const MAIN_MENU :  PackedScene = preload("res://levels/main_menu.tscn")
+const  LEVEL_SELECT :  PackedScene = preload("res://levels/scenes/level_select.tscn")
+const MAIN_MENU :  PackedScene = preload("res://levels/scenes/main_menu.tscn")
 
 const MAIN_MENU_MUSIC : AudioStream = preload("res://assets/audio/music/hashir/main_menu.mp3")
 

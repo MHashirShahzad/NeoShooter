@@ -1,7 +1,7 @@
 extends Node2D
 
 const MAIN_MENU_MUSIC : AudioStream = preload("res://assets/audio/music/hashir/main_menu.mp3")
-const MAIN_MENU : PackedScene = preload("res://levels/main_menu.tscn")
+const MAIN_MENU : PackedScene = preload("res://levels/scenes/main_menu.tscn")
 
 @onready var homie_label: RichTextLabel = $BootUpScreen/HomieLabel
 @onready var yellow_label: RichTextLabel = $"BootUpScreen/Yellow Label"

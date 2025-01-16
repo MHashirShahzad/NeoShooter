@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://b6esgdmciuv7n"]
+[gd_scene load_steps=18 format=3 uid="uid://b6esgdmciuv7n"]
 
 [ext_resource type="Texture2D" uid="uid://b0xltc2iphdel" path="res://assets/NeoShooterLogo.svg" id="1_clxpc"]
 [ext_resource type="Script" path="res://levels/main_menu.gd" id="1_f6xqg"]
 [ext_resource type="Script" path="res://custom_stuff/tweened_button.gd" id="2_2ycbh"]
 [ext_resource type="Theme" uid="uid://dbukeuyrs33sq" path="res://custom_stuff/default_theme.tres" id="2_b7fev"]
-[ext_resource type="PackedScene" uid="uid://df7t4mmry7iih" path="res://levels/option_btn.tscn" id="5_l3fxr"]
+[ext_resource type="PackedScene" uid="uid://df7t4mmry7iih" path="res://levels/scenes/option_btn.tscn" id="5_l3fxr"]
+[ext_resource type="Shader" path="res://levels/glow.gdshader" id="6_71mhu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v23gp"]
 bg_color = Color(0.352941, 0.305882, 0.266667, 1)
@@ -27,6 +28,14 @@ corner_radius_bottom_left = 10
 corner_detail = 20
 shadow_size = 10
 shadow_offset = Vector2(10, 10)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hiiyd"]
+resource_local_to_scene = true
+shader = ExtResource("6_71mhu")
+shader_parameter/glow_color = Color(0.12549, 0.839216, 0.780392, 1)
+shader_parameter/glow_power = 2.0
+shader_parameter/glow_shift = 1.0
+shader_parameter/glow_radius = 1.0
 
 [sub_resource type="Animation" id="Animation_7fjac"]
 length = 0.001
@@ -509,6 +518,9 @@ offset_left = 724.0
 offset_top = -265.0
 offset_right = 1724.0
 offset_bottom = 324.0
+
+[node name="Label" parent="CanvasLayer/OptionBtn/TabContainer/Effects/Settings/Glow" index="0"]
+material = SubResource("ShaderMaterial_hiiyd")
 
 [node name="AniPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -1,6 +1,6 @@
 extends Node2D
 class_name LevelSelect
-const MAIN_MENU = preload("res://levels/main_menu.tscn")
+const MAIN_MENU = preload("res://levels/scenes/main_menu.tscn")
 
 @export var level_array : Array[LevelStruct] = []
 @export var music_array : Array[AudioStream] = [

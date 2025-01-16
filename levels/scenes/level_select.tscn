@@ -3,15 +3,15 @@
 [ext_resource type="Script" path="res://levels/level_select.gd" id="1_rk7ao"]
 [ext_resource type="Texture2D" uid="uid://cn4v3jncpfmej" path="res://levels/images/level_a.png" id="2_2iaos"]
 [ext_resource type="Script" path="res://custom_stuff/tweened_button.gd" id="2_7e4rf"]
-[ext_resource type="PackedScene" uid="uid://dqj5xod7n2hbu" path="res://levels/level_a.tscn" id="3_4vyuc"]
-[ext_resource type="PackedScene" uid="uid://ckwc2dcjfn1mq" path="res://levels/level_b.tscn" id="3_pv4rg"]
+[ext_resource type="PackedScene" uid="uid://dqj5xod7n2hbu" path="res://levels/scenes/level_a.tscn" id="3_4vyuc"]
+[ext_resource type="PackedScene" uid="uid://ckwc2dcjfn1mq" path="res://levels/scenes/level_b.tscn" id="3_pv4rg"]
 [ext_resource type="Texture2D" uid="uid://clal4bq2nv062" path="res://levels/images/level_b.png" id="4_71e5x"]
 [ext_resource type="Script" path="res://custom_stuff/custom_resources/level_struct.gd" id="4_thvsq"]
-[ext_resource type="PackedScene" uid="uid://d1v5k03sf3rhq" path="res://levels/level_c.tscn" id="7_0lr11"]
+[ext_resource type="PackedScene" uid="uid://d1v5k03sf3rhq" path="res://levels/scenes/level_c.tscn" id="7_0lr11"]
 [ext_resource type="Texture2D" uid="uid://dmoosw1vww87q" path="res://levels/images/level_c.png" id="7_k25oj"]
 [ext_resource type="Script" path="res://addons/TextureRectRounded/TextureRectRounded.gd" id="8_j3dk8"]
 [ext_resource type="Texture2D" uid="uid://myrnkb61w3i4" path="res://levels/images/level_d.png" id="9_48yfr"]
-[ext_resource type="PackedScene" uid="uid://8gpd8wpdb0gp" path="res://levels/level_d.tscn" id="9_h400u"]
+[ext_resource type="PackedScene" uid="uid://8gpd8wpdb0gp" path="res://levels/scenes/level_d.tscn" id="9_h400u"]
 [ext_resource type="Shader" path="res://player/colorflash.gdshader" id="12_ail4r"]
 [ext_resource type="Resource" uid="uid://bu6wkpkaqxcs3" path="res://player/resources/player2_inputs.tres" id="12_o5qkk"]
 [ext_resource type="Theme" uid="uid://dbukeuyrs33sq" path="res://custom_stuff/default_theme.tres" id="13_6gk1s"]
@@ -83,7 +83,7 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 corner_detail = 20
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mig31"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5oh0a"]
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -661,6 +661,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 focus_neighbor_left = NodePath("../PlayLevel")
+focus_neighbor_right = NodePath("../PlayLevel")
 shortcut = SubResource("Shortcut_3per2")
 text = "Back"
 script = ExtResource("2_7e4rf")
@@ -675,6 +676,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_plb2m")
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+focus_neighbor_left = NodePath("../BackLevel")
 focus_neighbor_right = NodePath("../BackLevel")
 text = "Play
 "
@@ -719,7 +721,7 @@ offset_right = 96.0
 offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_mig31")
+theme_override_styles/panel = SubResource("StyleBoxFlat_5oh0a")
 script = ExtResource("8_j3dk8")
 texture = ExtResource("4_71e5x")
 expand_mode = 2
@@ -731,6 +733,7 @@ alignment = 1
 [node name="PrevLevel" type="Button" parent="CanvasLayer/LevelSelect/LevelContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../../../BottomHBOX/BackLevel")
 theme = ExtResource("13_6gk1s")
 shortcut = SubResource("Shortcut_jpdh0")
 text = "<-"
@@ -745,6 +748,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_plb2m")
 [node name="RandomLevel" type="Button" parent="CanvasLayer/LevelSelect/LevelContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../../../BottomHBOX/PlayLevel")
 text = "Rand"
 script = ExtResource("2_7e4rf")
 description = "Pick a random level"
@@ -757,6 +761,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_plb2m")
 [node name="NextLevel" type="Button" parent="CanvasLayer/LevelSelect/LevelContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../../../BottomHBOX/PlayLevel")
 shortcut = SubResource("Shortcut_lpuwx")
 text = "->"
 script = ExtResource("2_7e4rf")
@@ -833,6 +838,7 @@ layout_mode = 2
 
 [node name="NormalBullet" type="Button" parent="CanvasLayer/LevelSelect/P2Container/Panel/VBoxContainer/HBoxContainer/VBoxContainer" node_paths=PackedStringArray("level_select")]
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../../../../../../BottomHBOX/PlayLevel")
 text = "[N]"
 script = ExtResource("13_ih6s1")
 level_select = NodePath("../../../../../../../..")
@@ -851,6 +857,7 @@ layout_mode = 2
 
 [node name="SmallBullet" type="Button" parent="CanvasLayer/LevelSelect/P2Container/Panel/VBoxContainer/HBoxContainer/VBoxContainer2" node_paths=PackedStringArray("level_select")]
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../../../../../../BottomHBOX/PlayLevel")
 text = "[S]"
 script = ExtResource("13_ih6s1")
 level_select = NodePath("../../../../../../../..")
@@ -870,6 +877,7 @@ layout_mode = 2
 [node name="BigBullet" type="Button" parent="CanvasLayer/LevelSelect/P2Container/Panel/VBoxContainer/HBoxContainer/VBoxContainer3" node_paths=PackedStringArray("level_select")]
 layout_mode = 2
 focus_neighbor_right = NodePath("../../../../../../BottomHBOX/PlayLevel")
+focus_neighbor_bottom = NodePath("../../../../../../BottomHBOX/PlayLevel")
 text = "[B]"
 script = ExtResource("13_ih6s1")
 level_select = NodePath("../../../../../../../..")
@@ -974,6 +982,7 @@ layout_mode = 2
 [node name="NormalBullet" type="Button" parent="CanvasLayer/LevelSelect/P1Container/Panel/VBoxContainer/HBoxContainer/VBoxContainer" node_paths=PackedStringArray("level_select")]
 layout_mode = 2
 focus_neighbor_left = NodePath("../../../../../../BottomHBOX/BackLevel")
+focus_neighbor_bottom = NodePath("../../../../../../BottomHBOX/BackLevel")
 text = "[N]"
 script = ExtResource("13_ih6s1")
 level_select = NodePath("../../../../../../../..")
@@ -991,6 +1000,7 @@ layout_mode = 2
 
 [node name="SmallBullet" type="Button" parent="CanvasLayer/LevelSelect/P1Container/Panel/VBoxContainer/HBoxContainer/VBoxContainer2" node_paths=PackedStringArray("level_select")]
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../../../../../../BottomHBOX/BackLevel")
 text = "[S]"
 script = ExtResource("13_ih6s1")
 level_select = NodePath("../../../../../../../..")
@@ -1008,6 +1018,7 @@ layout_mode = 2
 
 [node name="BigBullet" type="Button" parent="CanvasLayer/LevelSelect/P1Container/Panel/VBoxContainer/HBoxContainer/VBoxContainer3" node_paths=PackedStringArray("level_select")]
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../../../../../../BottomHBOX/BackLevel")
 text = "[B]"
 script = ExtResource("13_ih6s1")
 level_select = NodePath("../../../../../../../..")

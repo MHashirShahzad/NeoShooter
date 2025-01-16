@@ -62,11 +62,17 @@ func set_effects_label_values() -> void:
 	
 	# update_glow_label()
 	set_chroma_rect_value(chroma_edit.value)
+	set_glow_label_value(glow_edit.value)
 
 func set_chroma_rect_value(value : float):
 	chroma_rect.material.set("shader_parameter/chroma_strength", value)
 	GameManager.user_prefs.chroma_multiplier = value
 	GameManager.user_prefs.save()
+
+func set_glow_label_value(value : float) -> void:
+	var glow_label : Label = $TabContainer/Effects/Settings/Glow/Label
+	glow_label.material.set("shader_parameter/glow_power", value)
+	# print(glow_label.get("shader_parameter/glow_power"))
 
 func _on_chroma_edit_value_changed(value: float) -> void:
 	chroma_slider.value = value
@@ -80,7 +86,7 @@ func _on_cam_shake_edit_value_changed(value: float) -> void:
 func _on_glow_edit_value_changed(value: float) -> void:
 	GameManager.user_prefs.glow_intensity = value
 	glow_slider.value = value
-	# update_glow_label()
+	set_glow_label_value(value)
 	GameManager.user_prefs.save()
 
 func shake_ani() -> void:
@@ -103,7 +109,8 @@ func _on_glow_slider_value_changed(value: float) -> void:
 	GameManager.user_prefs.glow_intensity = value
 	glow_edit.value = GameManager.user_prefs.glow_intensity
 	glow_edit.get_line_edit().text = str(glow_edit.value)
-
+	set_glow_label_value(value)
+	
 # Audio <===========================================================================================>
 func set_audio_label_values() -> void:
 	
@@ -143,14 +150,7 @@ func _on_master_edit_value_changed(value: float) -> void:
 	GameManager.user_prefs.save()
 	
 	master_slider.value = value
-
-## DEPRECATED
-## @deprecated: Just dont use 
-func update_glow_label() -> void:
-	var glow_label :Label = $TabContainer/Effects/Settings/Glow/Label
-	var weight : float = GameManager.user_prefs.glow_intensity
-	glow_label.modulate = lerp(glow_label.modulate
-	, Color(0.125, 0.839, 0.78), weight)
+	
 
 func _on_music_slider_value_changed(value: float) -> void:
 	GameManager.user_prefs.music_volume = value
