@@ -45,9 +45,9 @@ func hit_effects(hitbox : HitBox) -> void:
 	display_hit_label(
 		# string rounded of to one decimal place :0:
 		str(snapped(hitbox.damage, 0.1)),
-		hitbox.global_position
+		# 20 offset 
+		hitbox.global_position + Vector2([-20,20].pick_random(), [-20,20].pick_random())
 	)
-	
 	hit_stop(hitbox.hit_stop)
 	camera_shake(hitbox.cam_shake_str)
 	hit_vfx(hitbox)
