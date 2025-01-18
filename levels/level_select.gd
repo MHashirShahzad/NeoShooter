@@ -28,11 +28,12 @@ var level_prefs : LevelSelectPreferences
 func _ready() -> void:
 	# whenever gui focus changes refresh tool tip text
 	get_viewport().gui_focus_changed.connect(update_tooltip_text)
-	
 	$CanvasLayer/LevelSelect/LevelContainer/HBoxContainer/RandomLevel.grab_focus()
 	level_prefs = LevelSelectPreferences.load_or_create()
 	refresh_image()
-	
+	self.process_mode = Node.PROCESS_MODE_DISABLED
+	await TransitionManager.transition_fully_finished
+	self.process_mode = Node.PROCESS_MODE_ALWAYS
 	
 func refresh_image() -> void:
 	# level_prefs.level_index = abs(level_prefs.level_index)
@@ -50,6 +51,7 @@ func refresh_image() -> void:
 	
 func _on_back_level_pressed() -> void:
 	TransitionManager.transition_scene_packed(MAIN_MENU)
+	$CanvasLayer/LevelSelect/BottomHBOX/BackLevel.disabled = true
 
 func _on_play_level_pressed() -> void:
 	var level : LevelStruct = level_array[level_prefs.level_index]

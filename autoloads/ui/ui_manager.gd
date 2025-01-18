@@ -10,7 +10,7 @@ const MAIN_MENU :  PackedScene = preload("res://levels/scenes/main_menu.tscn")
 
 const MAIN_MENU_MUSIC : AudioStream = preload("res://assets/audio/music/hashir/main_menu.mp3")
 
-var is_pause_disabled : bool = false
+var can_pause : bool = true
 var can_update_health : bool = false
 
 func _ready() -> void:
@@ -33,7 +33,7 @@ func update_health():
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("back"): 
 		if GameManager.p1 || GameManager.p2:
-			if !is_pause_disabled:
+			if can_pause:
 				pause()
 
 
@@ -69,13 +69,14 @@ func _on_resume_pressed() -> void:
 func _on_main_menu_btn_pressed() -> void:
 	pause()
 	can_update_health = false
+	can_pause = false
 	GameManager.match_end()
 	TransitionManager.transition_scene_packed(MAIN_MENU)
 	SFXManager.play_music(MAIN_MENU_MUSIC, -20)
 
 ## player is the dead player
 func show_death_screen(player: Player2D) -> void:
-	is_pause_disabled = true
+	can_pause = false
 	vic_screen.show()
 	$VictoryScreen/VicAniPlayer.play("transition")
 	$VictoryScreen/Transition/VBoxContainer/Restart.grab_focus()

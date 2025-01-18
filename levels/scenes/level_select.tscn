@@ -83,7 +83,7 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 corner_detail = 20
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u10dg"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8bvoj"]
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -721,7 +721,7 @@ offset_right = 96.0
 offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_u10dg")
+theme_override_styles/panel = SubResource("StyleBoxFlat_8bvoj")
 script = ExtResource("8_j3dk8")
 texture = ExtResource("4_71e5x")
 expand_mode = 2
@@ -1063,13 +1063,6 @@ screen_space_aa = 1
 position = Vector2(250, 250)
 rotation = 1.5708
 is_input_enabled = false
-speed = null
-friction = null
-acceleration = null
-tilt_strength_x = null
-tilt_strength_y = null
-tilt_speed = null
-max_bullet_count = null
 
 [node name="Polygon2D" parent="P1/Player1" index="0"]
 material = SubResource("ShaderMaterial_cpt27")
@@ -1107,14 +1100,7 @@ render_target_update_mode = 4
 position = Vector2(270, 256)
 rotation = -1.5708
 is_input_enabled = false
-speed = null
-friction = null
-acceleration = null
-tilt_strength_x = null
-tilt_strength_y = null
-tilt_speed = null
 input = ExtResource("12_o5qkk")
-max_bullet_count = null
 
 [node name="Polygon2D" parent="P2/Player2" index="0"]
 material = SubResource("ShaderMaterial_0qomo")

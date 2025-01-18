@@ -817,6 +817,40 @@ value = 0.8
 alignment = 1
 select_all_on_focus = true
 
+[node name="Hit Effect" type="HBoxContainer" parent="TabContainer/Effects/Settings"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Effects/Settings/Hit Effect"]
+custom_minimum_size = Vector2(400, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Hit Effect Label Size"
+vertical_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="TabContainer/Effects/Settings/Hit Effect"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
+
+[node name="LabelSlider" type="HSlider" parent="TabContainer/Effects/Settings/Hit Effect"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+value = 40.0
+script = ExtResource("4_2vuxb")
+
+[node name="HSeparator3" type="HSeparator" parent="TabContainer/Effects/Settings/Hit Effect"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
+
+[node name="Edit" type="SpinBox" parent="TabContainer/Effects/Settings/Hit Effect"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+value = 40.0
+alignment = 1
+select_all_on_focus = true
+
 [node name="Back" type="Button" parent="."]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 1
@@ -887,3 +921,5 @@ horizontal_alignment = 1
 [connection signal="value_changed" from="TabContainer/Effects/Settings/Camera/Edit" to="." method="_on_cam_shake_edit_value_changed"]
 [connection signal="value_changed" from="TabContainer/Effects/Settings/Glow/GlowSlider" to="." method="_on_glow_slider_value_changed"]
 [connection signal="value_changed" from="TabContainer/Effects/Settings/Glow/Edit" to="." method="_on_glow_edit_value_changed"]
+[connection signal="value_changed" from="TabContainer/Effects/Settings/Hit Effect/LabelSlider" to="." method="_on_label_slider_value_changed"]
+[connection signal="value_changed" from="TabContainer/Effects/Settings/Hit Effect/Edit" to="." method="_on_label_size_edit_value_changed"]

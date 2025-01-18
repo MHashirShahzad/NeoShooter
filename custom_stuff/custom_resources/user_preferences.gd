@@ -11,7 +11,7 @@ class_name UserPreferences
 @export var chroma_multiplier : float = 1
 @export var glow_intensity : float = .8
 @export var screen_shake_multiplier : float = 1
-
+@export var hit_effect_text_size : int = 40
 
 
 

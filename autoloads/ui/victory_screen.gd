@@ -15,7 +15,7 @@ func _on_restart_pressed() -> void:
 	
 	# faded out
 	await TransitionManager.transition_fully_finished
-	UIManager.is_pause_disabled = false
+	UIManager.can_pause = true
 
 
 func _on_back_to_level_select_pressed() -> void:

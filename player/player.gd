@@ -159,7 +159,7 @@ func die() -> void:
 			child.hide()
 			
 	# disable pause cuz it would cause issues
-	UIManager.is_pause_disabled = true
+	UIManager.can_pause = false
 	# set next frame -_-
 	UIManager.set_deferred("can_update_health", false)
 	

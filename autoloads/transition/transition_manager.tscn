@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dj748mkkhoyw5"]
+[gd_scene load_steps=8 format=3 uid="uid://dj748mkkhoyw5"]
 
 [ext_resource type="Script" path="res://autoloads/transition/transition_manager.gd" id="1_e51kp"]
 
@@ -11,9 +11,9 @@ tracks/0/path = NodePath("ColorRect:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.0005, 0, 0.0005, 0),
-"times": PackedFloat32Array(0)
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.0005, 0, 0.0005, 0, 0, -0.0005, 0, 0.0005, 0),
+"times": PackedFloat32Array(0, 0.001)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
@@ -22,9 +22,9 @@ tracks/1/path = NodePath("ColorRect:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.0005, 0, 0.0005, 0),
-"times": PackedFloat32Array(0)
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.0005, 0, 0.0005, 0, 1000, -0.0005, 0, 0.0005, 0),
+"times": PackedFloat32Array(0, 0.001)
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -45,10 +45,10 @@ tracks/3/path = NodePath("ColorRect:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.001),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Vector2(0, 0), Vector2(0, 1000)]
 }
 
 [sub_resource type="Animation" id="Animation_f1yma"]
@@ -65,6 +65,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(0.024, 0.024, 0.031, 1), Color(0.024, 0.024, 0.031, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_u2ynk"]
 resource_name = "fade_out1"
@@ -80,6 +92,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(0.024, 0.024, 0.031, 0), Color(0.024, 0.024, 0.031, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_td1qv"]
 resource_name = "fade_out2"
@@ -90,7 +114,7 @@ tracks/0/path = NodePath("ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.0666667),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(0.024, 0.024, 0.031, 1)]
@@ -103,21 +127,49 @@ tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(-2, -2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-14, 1083), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ux72h"]
+resource_name = "fade_in2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.133333),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.024, 0.024, 0.031, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -2000)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ka3xb"]
 _data = {
 "RESET": SubResource("Animation_b8kr7"),
 "fade_in1": SubResource("Animation_f1yma"),
+"fade_in2": SubResource("Animation_ux72h"),
 "fade_out1": SubResource("Animation_u2ynk"),
 "fade_out2": SubResource("Animation_td1qv")
 }
 
 [node name="TransitionManager" type="CanvasLayer"]
-layer = 6
+layer = 10
 script = ExtResource("1_e51kp")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

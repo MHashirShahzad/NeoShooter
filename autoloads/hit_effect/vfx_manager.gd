@@ -8,8 +8,11 @@ extends Node2D
 const DISTORTION : PackedScene = preload("res://vfx/player_die/distortion.tscn")
 const DIE_VFX : PackedScene = preload("res://vfx/player_die/die_vfx.tscn")
 
+
 # VFX SHOOT
 const BULLET_SHOOT : PackedScene = preload("res://vfx/bullet_shoot/bullet_shoot_vfx.tscn")
+
+var fira_code_font : Font =  load("res://assets/font/Fira_Code/FiraCode-VariableFont_wght.ttf")
 # =============================================================================================
 # NORMAL VARIABLES
 # =============================================================================================
@@ -167,10 +170,11 @@ func display_hit_label(text : String, pos:Vector2) -> void:
 	
 	label.label_settings = LabelSettings.new()
 	label.label_settings.font_color = hit_label_color
-	label.label_settings.font_size = 40
+	# normally 40
+	label.label_settings.font_size = GameManager.user_prefs.hit_effect_text_size
 	label.label_settings.outline_color = Color(0.024, 0.024, 0.031)
 	label.label_settings.outline_size = 10
-	label.label_settings.font = load("res://assets/font/Fira_Code/FiraCode-VariableFont_wght.ttf")
+	label.label_settings.font = fira_code_font
 	
 	$HitLabels.call_deferred("add_child", label)
 	await label.resized

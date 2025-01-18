@@ -27,7 +27,7 @@ func _input(event: InputEvent) -> void:
 
 func _on_play_button_pressed() -> void:
 	TransitionManager.transition_scene_packed(LEVEL_SELECT)
-
+	$CanvasLayer/MainBtn/VBOX/PlayButton.disabled = true
 
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
