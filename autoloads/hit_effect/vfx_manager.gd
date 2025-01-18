@@ -13,6 +13,8 @@ const BULLET_SHOOT : PackedScene = preload("res://vfx/bullet_shoot/bullet_shoot_
 # =============================================================================================
 # NORMAL VARIABLES
 # =============================================================================================
+@export var hit_label_color : Color = Color(1, 0.09, 0.176) 
+
 @onready var chroma_rect: ColorRect = $CanvasLayer/ChromaticAbberation
 @onready var ani_player: AnimationPlayer = $AnimationPlayer
 @onready var hitstop_timer: Timer = $HitStopTimer
@@ -28,6 +30,7 @@ var camera : SpaceShooterCamera
 ## death vfx
 func die_effects(player : Player2D) -> void:
 	hit_stop(3, 0.25)
+	display_hit_label("Dead", player.global_position)
 	# player_dead_shockwave(player)
 	camera_shake(200)
 	die_vfx(player)
@@ -36,10 +39,16 @@ func die_effects(player : Player2D) -> void:
 	
 ## Called by the player or the object via on_hit()
 func hit_effects(hitbox : HitBox) -> void:
+	display_hit_label(
+		# string rounded of to one decimal place :0:
+		str(snapped(hitbox.damage, 0.1)),
+		hitbox.global_position
+	)
+	
 	hit_stop(hitbox.hit_stop)
 	camera_shake(hitbox.cam_shake_str)
 	hit_vfx(hitbox)
-
+	
 # =============================================================================================
 # Independent Functions
 # =============================================================================================
@@ -148,3 +157,41 @@ func shoot_vfx(pos : Vector2) -> void:
 	
 	self.remove_child(particle_vfx)
 	particle_vfx.queue_free()
+
+func display_hit_label(text : String, pos:Vector2) -> void:
+	var label : Label = Label.new()
+	
+	label.global_position = pos
+	label.text = text
+	label.z_index = 5
+	
+	label.label_settings = LabelSettings.new()
+	label.label_settings.font_color = hit_label_color
+	label.label_settings.font_size = 40
+	label.label_settings.outline_color = Color(0.024, 0.024, 0.031)
+	label.label_settings.outline_size = 10
+	label.label_settings.font = load("res://assets/font/Fira_Code/FiraCode-VariableFont_wght.ttf")
+	
+	$HitLabels.call_deferred("add_child", label)
+	await label.resized
+	
+	label.pivot_offset = Vector2(label.size / 2)
+	
+	var tween : Tween = get_tree().create_tween()
+	tween.set_parallel(true)
+	
+	tween.tween_property(
+		label, "position:y", label.position.y - 24, 0.25
+	).set_ease(Tween.EASE_OUT)
+	
+	tween.tween_property(
+		label, "position:y", label.position.y, 0.5
+	).set_ease(Tween.EASE_IN).set_delay(0.25)
+	
+	tween.tween_property(
+		label, "scale", Vector2.ZERO, 0.25
+	).set_ease(Tween.EASE_IN).set_delay(0.5)
+	
+	await tween.finished 
+	tween.kill()
+	label.queue_free()

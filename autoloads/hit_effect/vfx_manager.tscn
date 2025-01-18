@@ -95,3 +95,5 @@ libraries = {
 
 [node name="HitStopTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="HitLabels" type="Node2D" parent="."]
