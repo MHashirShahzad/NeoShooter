@@ -27,13 +27,13 @@ func _ready() -> void:
 	
 func on_hit(dmg: float, hitbox : HitBox) -> void:
 	if is_unbreakable:
-		VFXManager.hit_effects(hitbox)
+		VFXManager.hit_effects(hitbox, 0)
 		return
 	#if player == hitbox.to_ignore:
 		#VFXManager.hit_effects(hitbox)
 		#return
 		
-	self.health -= dmg
+	self.health -= abs(dmg) #  might be -ve
 	var weight : float = pow(1 - (health / 200), 3) 
 	breakable_wall.color = lerp(breakable_wall.color, near_death_color, weight)
 	
@@ -41,7 +41,7 @@ func on_hit(dmg: float, hitbox : HitBox) -> void:
 		health = 0
 		die()
 	else: 
-		VFXManager.hit_effects(hitbox)
+		VFXManager.hit_effects(hitbox, abs(dmg))
 
 func die() -> void:
 	

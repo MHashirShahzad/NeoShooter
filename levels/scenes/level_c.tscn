@@ -349,6 +349,7 @@ script = ExtResource("7_7s84o")
 position = Vector2(420, 220)
 build_mode = 1
 polygon = PackedVector2Array(-665, -471, 2288, -503, 2284, 1457, -656, 1457)
+disabled = true
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_lq6k8")

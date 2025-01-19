@@ -1,0 +1,87 @@
+[gd_scene load_steps=7 format=3 uid="uid://dkvcgp66664ya"]
+
+[ext_resource type="PackedScene" uid="uid://cclo3pqf533bv" path="res://bullets/master_class/main_bullet.tscn" id="1_67csr"]
+[ext_resource type="Script" path="res://bullets/boomerang_bullet.gd" id="2_sv26f"]
+[ext_resource type="PackedScene" uid="uid://dkf6s4hubk7e4" path="res://vfx/bullet_hit/hit_small_vfx.tscn" id="3_o7acq"]
+[ext_resource type="PackedScene" uid="uid://cbtrogwycneft" path="res://vfx/trail_vfx.tscn" id="4_2kqdy"]
+[ext_resource type="Gradient" uid="uid://6bcketyqpt8s" path="res://vfx/hit_gradient.tres" id="5_mubtw"]
+
+[sub_resource type="Gradient" id="Gradient_cu7tv"]
+resource_local_to_scene = true
+offsets = PackedFloat32Array(0.173333, 0.633333, 0.973333, 0.993333, 1)
+colors = PackedColorArray(0.0392157, 0.545098, 0.972549, 1, 0.450578, 0.00227139, 0.992695, 1, 0.992157, 0.858824, 0.65098, 0, 0.980392, 0.623529, 0.054902, 1, 1, 1, 1, 0)
+
+[node name="Bullet" instance=ExtResource("1_67csr")]
+script = ExtResource("2_sv26f")
+rotation_speed = 10.0
+acceleration = 800.0
+speed = 1300.0
+description = "A boomerang bullet which reverses its direction after some time"
+label = "[B]"
+
+[node name="ProjHitBox" parent="." index="0"]
+screw_state = 0.15
+screw_state_str = 21.0
+chroma_str = 1.6
+cam_shake_str = 17.0
+vfx = ExtResource("3_o7acq")
+
+[node name="KillTimer" parent="." index="2"]
+wait_time = 10.0
+one_shot = false
+autostart = false
+
+[node name="MainBody" parent="." index="3"]
+rotation = 0.785398
+polygon = PackedVector2Array(-13, -13, 0, -4.24264, 13, -13, 4.24264, 0, 13, 13, 0, 4.24264, -13, 13, -4.24264, 0)
+
+[node name="Top" parent="." index="4"]
+position = Vector2(0, 4)
+polygon = PackedVector2Array(-3, -4, 0, -1, 3, -4, 0, -7)
+
+[node name="Bottom" parent="." index="5"]
+visible = false
+z_index = -1
+position = Vector2(0, 0)
+color = Color(0.0235294, 0.0235294, 0.0313726, 1)
+polygon = PackedVector2Array(-5, -5, 5, -5, 5, 5, -5, 5)
+
+[node name="Trails" parent="." index="6"]
+visible = false
+position = Vector2(0, 0)
+amount = 30
+scale_amount_max = 4.0
+color_ramp = SubResource("Gradient_cu7tv")
+
+[node name="Trails2" parent="." index="7" instance=ExtResource("4_2kqdy")]
+visible = false
+amount = 50
+emission_sphere_radius = 10.0
+particle_flag_align_y = true
+initial_velocity_min = 0.0
+initial_velocity_max = 1.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+color_ramp = ExtResource("5_mubtw")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="8"]
+position = Vector2(0, 1)
+scale = Vector2(1, 3.1)
+
+[node name="OldShape" type="Node2D" parent="." index="9"]
+visible = false
+
+[node name="MainBody2" type="Polygon2D" parent="OldShape" index="0"]
+position = Vector2(48, 0)
+color = Color(0.0392157, 0.545098, 0.972549, 1)
+polygon = PackedVector2Array(-13, -13, 13, -13, 13, 13, -13, 13)
+
+[node name="Top2" type="Polygon2D" parent="OldShape" index="1"]
+position = Vector2(48, 4)
+polygon = PackedVector2Array(-15, -4, 0, 11, 15, -4, 0, -19)
+
+[node name="Bottom2" type="Polygon2D" parent="OldShape" index="2"]
+z_index = 1
+position = Vector2(48, 0)
+color = Color(0.0235294, 0.0235294, 0.0313726, 1)
+polygon = PackedVector2Array(-5, -5, 5, -5, 5, 5, -5, 5)

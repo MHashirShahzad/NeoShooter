@@ -15,8 +15,6 @@ enum BULLET_TYPE{
 
 var bullet_prefs : PlayerBullets
 
-
-
 func _ready() -> void:
 	bullet_prefs = PlayerBullets.load_or_create()
 	self.pressed.connect(_on_pressed)
@@ -27,44 +25,53 @@ func _ready() -> void:
 
 
 func _on_pressed() -> void:
+	print("PRESSED BULLET BTRN")
 	SFXManager.play_FX(press, -8)
 	if is_p2:
 		bullet_prefs.p2_bullets = equip_bullet(bullet_prefs.p2_bullets)
 	else:
 		bullet_prefs.p1_bullets = equip_bullet(bullet_prefs.p1_bullets)
-	
 	# update tool text
 	level_select.update_tooltip_text(self)
 	bullet_prefs.save()
 
 func equip_bullet(equipped_bullets : EquippedBullets) -> EquippedBullets:
+	print_debug("EQUIPED BULLETS: ", equipped_bullets.small)
 	match bullet_type:
 		BULLET_TYPE.NORMAL:
 			equipped_bullets.normal = equip_normal_bullet(equipped_bullets.normal)
 		BULLET_TYPE.SMALL:
-			get_bullet_name(equipped_bullets.small.resource_path)
+			equipped_bullets.small = equip_small_bullet(equipped_bullets.small)
 		BULLET_TYPE.BIG:
-			get_bullet_name(equipped_bullets.big.resource_path)
+			return
+			#get_bullet_name(equipped_bullets.big.resource_path)
 	
 	return equipped_bullets
 
-func get_bullet_name(path : String) -> String:
-	path = path.replace("res://bullets/", "")
-	path = path.replace("_bullet.tscn", "")
-	return path
-
 func equip_normal_bullet(normal : PackedScene) -> PackedScene:
-	var name : String  = get_bullet_name(normal.resource_path)
 	
 	var bullet : PackedScene = load("res://bullets/normal_bullet.tscn")
 	
-	if name == "normal":
+	if normal.resource_path.contains("normal"):
 		bullet = load("res://bullets/missile_bullet.tscn")
-		update_variables(bullet.instantiate())
 	else:
 		bullet = load("res://bullets/normal_bullet.tscn")
-		update_variables(bullet.instantiate())
 		
+	update_variables(bullet.instantiate())
+	return bullet
+
+func equip_small_bullet(normal : PackedScene) -> PackedScene:
+	print_debug("small bullet ")
+	var bullet : PackedScene = load("res://bullets/small_bullet.tscn")
+	
+	if normal.resource_path.contains("small"):
+		bullet = load("res://bullets/boomerang_bullet.tscn")
+	elif normal.resource_path.contains("boomerang"):
+		bullet = load("res://bullets/homing_bullet.tscn")
+	else:
+		bullet = load("res://bullets/small_bullet.tscn")
+		
+	update_variables(bullet.instantiate())
 	return bullet
 
 func update_variables(bullet : Bullet2D) -> void:

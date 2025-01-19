@@ -41,10 +41,10 @@ func die_effects(player : Player2D) -> void:
 	UIManager.show_death_screen(player)
 	
 ## Called by the player or the object via on_hit()
-func hit_effects(hitbox : HitBox) -> void:
+func hit_effects(hitbox : HitBox, dealt_dmg : float) -> void:
 	display_hit_label(
 		# string rounded of to one decimal place :0:
-		str(snapped(hitbox.damage, 0.1)),
+		str(snapped(dealt_dmg, 0.1)),
 		# 20 offset 
 		hitbox.global_position + Vector2([-20,20].pick_random(), [-20,20].pick_random())
 	)

@@ -305,13 +305,14 @@ z_index = -2
 color = Color(0.258824, 0.141176, 0.2, 1)
 polygon = PackedVector2Array(950, 0, 1050, 0, 1050, 1050, 950, 1050)
 
-[node name="BulletKillBox" type="Area2D" parent="Level"]
+[node name="Disabled" type="Area2D" parent="Level"]
 script = ExtResource("8_ggkxk")
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Level/BulletKillBox"]
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Level/Disabled"]
 position = Vector2(420, 220)
 build_mode = 1
 polygon = PackedVector2Array(-665, -471, 1785, -448, 1766, 1141, -655, 1136)
+disabled = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 visible = false

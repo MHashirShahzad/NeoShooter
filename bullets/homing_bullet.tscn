@@ -1,0 +1,86 @@
+[gd_scene load_steps=8 format=3 uid="uid://cxp56bl02g6hj"]
+
+[ext_resource type="PackedScene" uid="uid://cclo3pqf533bv" path="res://bullets/master_class/main_bullet.tscn" id="1_lq3uv"]
+[ext_resource type="Script" path="res://bullets/homing_bullet.gd" id="2_63bj4"]
+[ext_resource type="PackedScene" uid="uid://dkf6s4hubk7e4" path="res://vfx/bullet_hit/hit_small_vfx.tscn" id="3_rv60n"]
+[ext_resource type="PackedScene" uid="uid://cbtrogwycneft" path="res://vfx/trail_vfx.tscn" id="4_ndvfw"]
+[ext_resource type="Gradient" uid="uid://6bcketyqpt8s" path="res://vfx/hit_gradient.tres" id="5_x6xpu"]
+
+[sub_resource type="Gradient" id="Gradient_cu7tv"]
+resource_local_to_scene = true
+offsets = PackedFloat32Array(0.173333, 0.633333, 0.973333, 0.993333, 1)
+colors = PackedColorArray(0.0392157, 0.545098, 0.972549, 1, 0.450578, 0.00227139, 0.992695, 1, 0.992157, 0.858824, 0.65098, 0, 0.980392, 0.623529, 0.054902, 1, 1, 1, 1, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qq70v"]
+size = Vector2(300, 300)
+
+[node name="Bullet" instance=ExtResource("1_lq3uv")]
+script = ExtResource("2_63bj4")
+inertia = 1.0
+rotation_speed = 10.0
+homing_duration = 0.5
+speed = 700.0
+description = "A bullet which chases the enemy if he is in a certain distance"
+label = "[H]"
+
+[node name="ProjHitBox" parent="." index="0"]
+damage = 9.0
+hit_stop = 0.05
+screw_state = 0.1
+screw_state_str = 13.0
+chroma_str = 1.3
+cam_shake_str = 12.0
+vfx = ExtResource("3_rv60n")
+
+[node name="KillTimer" parent="." index="2"]
+wait_time = 10.0
+one_shot = false
+autostart = false
+
+[node name="MainBody" parent="." index="3"]
+z_index = 1
+polygon = PackedVector2Array(-13, -13, 13, -13, 13, 13, -13, 13)
+
+[node name="Top" parent="." index="4"]
+z_index = 2
+position = Vector2(0, 4)
+color = Color(1, 0.988235, 0.25098, 1)
+polygon = PackedVector2Array(-15, -4, 0, 11, 15, -4, 0, -19)
+
+[node name="Bottom" parent="." index="5"]
+z_index = 2
+position = Vector2(0, 3)
+color = Color(0.0235294, 0.0235294, 0.0313726, 1)
+polygon = PackedVector2Array(-5, -6, 5, -6, 5, 0, -5, 0)
+
+[node name="Trails" parent="." index="6"]
+position = Vector2(0, 0)
+amount = 50
+scale_amount_max = 4.0
+color_ramp = SubResource("Gradient_cu7tv")
+
+[node name="Trails2" parent="." index="7" instance=ExtResource("4_ndvfw")]
+visible = false
+amount = 50
+emission_sphere_radius = 10.0
+particle_flag_align_y = true
+initial_velocity_min = 0.0
+initial_velocity_max = 1.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+color_ramp = ExtResource("5_x6xpu")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="8"]
+position = Vector2(0, -3)
+scale = Vector2(11.3, 13.85)
+
+[node name="HomingArea" type="Area2D" parent="." index="9"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HomingArea" index="0"]
+position = Vector2(-7.62939e-06, -172)
+rotation = 0.785398
+shape = SubResource("RectangleShape2D_qq70v")
+disabled = true
+
+[connection signal="body_entered" from="HomingArea" to="." method="_on_homing_area_body_entered"]
+[connection signal="body_exited" from="HomingArea" to="." method="_on_homing_area_body_exited"]

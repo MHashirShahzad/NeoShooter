@@ -37,7 +37,7 @@ func shoot_bullet_with_scene(player : Player2D, scene : PackedScene):
 	BulletManager.add_child(bullet)
 	bullet.global_position = player.bullet_spawn_location.global_position
 	bullet.direction = player.global_position.direction_to(bullet.global_position)
-
+	
 
 func get_bullet_type(type : BULLET_TYPE) -> Bullet2D:
 	var bullet : Bullet2D
@@ -68,6 +68,7 @@ func add_bullet_group(bullet : Bullet2D, player : Player2D):
 		bullet.add_to_group(GameManager.p2_bullet_id)
 
 func destroy_all_bullets() -> void:
+	print_debug("- Destroyed All Bullets -")
 	var nodes = get_tree().get_nodes_in_group("Bullet")
 	for node in nodes:
 		if node is Bullet2D:

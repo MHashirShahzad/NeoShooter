@@ -269,23 +269,9 @@ script = ExtResource("1_udpej")
 [node name="BothPlayers" parent="." instance=ExtResource("1_82ofg")]
 
 [node name="Player1" parent="BothPlayers" index="0"]
-is_input_enabled = null
-speed = null
-friction = null
-acceleration = null
-tilt_strength_x = null
-tilt_strength_y = null
-tilt_speed = null
 max_bullet_count = 9
 
 [node name="Player2" parent="BothPlayers" index="1"]
-is_input_enabled = null
-speed = null
-friction = null
-acceleration = null
-tilt_strength_x = null
-tilt_strength_y = null
-tilt_speed = null
 max_bullet_count = 9
 
 [node name="Polygon2D" parent="BothPlayers/Player2" index="0"]
@@ -366,6 +352,7 @@ script = ExtResource("5_xh7uj")
 position = Vector2(420, 220)
 build_mode = 1
 polygon = PackedVector2Array(-665, -471, 2428.81, -468.632, 2464.81, 1455.37, -656, 1457)
+disabled = true
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_k717n")

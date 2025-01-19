@@ -338,6 +338,7 @@ script = ExtResource("8_q81gk")
 position = Vector2(420, 220)
 build_mode = 1
 polygon = PackedVector2Array(-665, -471, 2288, -503, 2284, 1457, -656, 1457)
+disabled = true
 
 [node name="Player1Walls" type="Node" parent="."]
 
