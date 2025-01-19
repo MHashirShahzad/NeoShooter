@@ -13,6 +13,12 @@ func _ready():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func start_transition():
+	if animation_player.is_playing():
+		if animation_player.current_animation.contains("fade_out"):
+			return
+		else:
+			await animation_player.animation_finished
+			
 	color_rect.show()
 	animation_player.play(["fade_out1", "fade_out2"].pick_random())
 

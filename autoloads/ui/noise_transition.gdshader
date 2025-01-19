@@ -8,7 +8,7 @@ uniform vec4 color : source_color;
 
 void fragment(){
 	float adjustedFade = (fadeRange * 2.0 - 1.0) * 0.25;
-	
+
 	float noiseValue = (1.0 - (texture(noiseTexture, UV).r * texture(screenFadeTexture, SCREEN_UV).r )) - adjustedFade;
 	ALPHA = round(noiseValue);
 

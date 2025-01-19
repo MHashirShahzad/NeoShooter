@@ -51,7 +51,6 @@ func refresh_image() -> void:
 	
 func _on_back_level_pressed() -> void:
 	TransitionManager.transition_scene_packed(MAIN_MENU)
-	$CanvasLayer/LevelSelect/BottomHBOX/BackLevel.disabled = true
 
 func _on_play_level_pressed() -> void:
 	var level : LevelStruct = level_array[level_prefs.level_index]

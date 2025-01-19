@@ -36,14 +36,13 @@ func _on_pressed() -> void:
 	bullet_prefs.save()
 
 func equip_bullet(equipped_bullets : EquippedBullets) -> EquippedBullets:
-	print_debug("EQUIPED BULLETS: ", equipped_bullets.small)
 	match bullet_type:
 		BULLET_TYPE.NORMAL:
 			equipped_bullets.normal = equip_normal_bullet(equipped_bullets.normal)
 		BULLET_TYPE.SMALL:
 			equipped_bullets.small = equip_small_bullet(equipped_bullets.small)
 		BULLET_TYPE.BIG:
-			return
+			return equipped_bullets
 			#get_bullet_name(equipped_bullets.big.resource_path)
 	
 	return equipped_bullets
@@ -68,7 +67,7 @@ func equip_small_bullet(normal : PackedScene) -> PackedScene:
 		bullet = load("res://bullets/boomerang_bullet.tscn")
 	elif normal.resource_path.contains("boomerang"):
 		bullet = load("res://bullets/homing_bullet.tscn")
-	else:
+	elif normal.resource_path.contains("homing"):
 		bullet = load("res://bullets/small_bullet.tscn")
 		
 	update_variables(bullet.instantiate())
