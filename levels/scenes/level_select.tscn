@@ -83,7 +83,7 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 corner_detail = 20
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yb2q1"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b18ab"]
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -721,7 +721,7 @@ offset_right = 96.0
 offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_yb2q1")
+theme_override_styles/panel = SubResource("StyleBoxFlat_b18ab")
 script = ExtResource("8_j3dk8")
 texture = ExtResource("4_71e5x")
 expand_mode = 2

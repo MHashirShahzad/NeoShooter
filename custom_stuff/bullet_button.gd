@@ -76,6 +76,7 @@ func equip_small_bullet(normal : PackedScene) -> PackedScene:
 func update_variables(bullet : Bullet2D) -> void:
 	self.text = bullet.label
 	description = bullet.description
+	bullet.queue_free()
 
 func load_variables() -> void:
 	if is_p2:

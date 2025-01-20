@@ -31,9 +31,13 @@ func _ready() -> void:
 	$CanvasLayer/LevelSelect/LevelContainer/HBoxContainer/RandomLevel.grab_focus()
 	level_prefs = LevelSelectPreferences.load_or_create()
 	refresh_image()
-	self.process_mode = Node.PROCESS_MODE_DISABLED
-	await TransitionManager.transition_fully_finished
-	self.process_mode = Node.PROCESS_MODE_ALWAYS
+	
+	## disabled input dont use :C
+	## cuz i buffer the input when transition is being played
+	## this straight up disables it [Skill Issue]
+	#self.process_mode = Node.PROCESS_MODE_DISABLED
+	#await TransitionManager.transition_fully_finished
+	#self.process_mode = Node.PROCESS_MODE_ALWAYS
 	
 func refresh_image() -> void:
 	# level_prefs.level_index = abs(level_prefs.level_index)
