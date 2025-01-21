@@ -13,7 +13,7 @@ colors = PackedColorArray(0.0392157, 0.545098, 0.972549, 1, 0.450578, 0.00227139
 
 [node name="Bullet" instance=ExtResource("1_67csr")]
 script = ExtResource("2_sv26f")
-rotation_speed = 10.0
+rotation_speed = 8.0
 acceleration = 600.0
 speed = 1500.0
 description = "A boomerang bullet which reverses its direction after some time"
@@ -33,11 +33,11 @@ autostart = false
 
 [node name="MainBody" parent="." index="3"]
 rotation = 0.785398
-polygon = PackedVector2Array(-19.799, -19.799, 1.90735e-06, -11.3137, 19.799, -19.799, 11.3137, 1.90735e-06, 19.799, 19.799, -1.90735e-06, 11.3137, -19.799, 19.799, -11.3137, -1.90735e-06)
+polygon = PackedVector2Array(-11.3137, -11.3137, 9.53674e-07, -5.65685, 11.3137, -11.3137, 5.65685, 9.53674e-07, 11.3137, 11.3137, -9.53674e-07, 5.65685, -11.3137, 11.3137, -5.65685, -9.53674e-07)
 
 [node name="Top" parent="." index="4"]
 position = Vector2(0, 4)
-polygon = PackedVector2Array(-8, -4, 0, 4, 8, -4, 0, -12)
+polygon = PackedVector2Array(-5, -4, 0, 1, 5, -4, 0, -9)
 
 [node name="Bottom" parent="." index="5"]
 visible = false
@@ -47,6 +47,7 @@ color = Color(0.0235294, 0.0235294, 0.0313726, 1)
 polygon = PackedVector2Array(-5, -5, 5, -5, 5, 5, -5, 5)
 
 [node name="Trails" parent="." index="6"]
+visible = false
 position = Vector2(0, 0)
 amount = 50
 scale_amount_max = 4.0
