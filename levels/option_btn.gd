@@ -82,7 +82,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 		tab_bar.current_tab += 1
 	
-	
+
 # Effects <===========================================================================================>
 func shake_ani() -> void:
 	var shake_val : float = 1 * GameManager.user_prefs.screen_shake_multiplier
@@ -148,7 +148,6 @@ func _on_glow_edit_value_changed(value: float) -> void:
 	set_glow_label_value(value)
 	GameManager.user_prefs.save()
 	
-
 func _on_label_size_edit_value_changed(value: float) -> void:
 	GameManager.user_prefs.hit_effect_text_size = value
 	label_size_slider.value = value
@@ -174,6 +173,7 @@ func _on_label_slider_value_changed(value: float) -> void:
 	GameManager.user_prefs.hit_effect_text_size = value
 	label_size_edit.value = value
 	GameManager.user_prefs.save()
+
 # Audio <===========================================================================================>
 func set_audio_label_values() -> void:
 	

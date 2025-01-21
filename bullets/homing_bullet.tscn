@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cxp56bl02g6hj"]
+[gd_scene load_steps=7 format=3 uid="uid://cxp56bl02g6hj"]
 
 [ext_resource type="PackedScene" uid="uid://cclo3pqf533bv" path="res://bullets/master_class/main_bullet.tscn" id="1_lq3uv"]
 [ext_resource type="Script" path="res://bullets/homing_bullet.gd" id="2_63bj4"]
@@ -10,9 +10,6 @@
 resource_local_to_scene = true
 offsets = PackedFloat32Array(0.173333, 0.633333, 0.973333, 0.993333, 1)
 colors = PackedColorArray(0.0392157, 0.545098, 0.972549, 1, 0.450578, 0.00227139, 0.992695, 1, 0.992157, 0.858824, 0.65098, 0, 0.980392, 0.623529, 0.054902, 1, 1, 1, 1, 0)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qq70v"]
-size = Vector2(300, 300)
 
 [node name="Bullet" instance=ExtResource("1_lq3uv")]
 script = ExtResource("2_63bj4")
@@ -73,14 +70,3 @@ color_ramp = ExtResource("5_x6xpu")
 [node name="VisibleOnScreenNotifier2D" parent="." index="8"]
 position = Vector2(0, -3)
 scale = Vector2(11.3, 13.85)
-
-[node name="HomingArea" type="Area2D" parent="." index="9"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HomingArea" index="0"]
-position = Vector2(-7.62939e-06, -172)
-rotation = 0.785398
-shape = SubResource("RectangleShape2D_qq70v")
-disabled = true
-
-[connection signal="body_entered" from="HomingArea" to="." method="_on_homing_area_body_entered"]
-[connection signal="body_exited" from="HomingArea" to="." method="_on_homing_area_body_exited"]

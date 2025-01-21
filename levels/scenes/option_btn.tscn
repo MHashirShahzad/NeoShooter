@@ -107,9 +107,10 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_a6mdd")
 tab_alignment = 1
-current_tab = 0
+current_tab = 3
 
 [node name="Controls" type="ScrollContainer" parent="TabContainer"]
+visible = false
 layout_mode = 2
 theme = ExtResource("2_a6mdd")
 follow_focus = true
@@ -497,15 +498,15 @@ layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Player1" type="HBoxContainer" parent="TabContainer/Display/Controls"]
+[node name="Main" type="HBoxContainer" parent="TabContainer/Display/Controls"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="TabContainer/Display/Controls/Player1"]
+[node name="Label" type="Label" parent="TabContainer/Display/Controls/Main"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "----------------- More To Come -----------------"
+text = "--------- Display settings ---------"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -650,7 +651,6 @@ alignment = 1
 select_all_on_focus = true
 
 [node name="Effects" type="ScrollContainer" parent="TabContainer"]
-visible = false
 layout_mode = 2
 theme = ExtResource("2_a6mdd")
 follow_focus = true
