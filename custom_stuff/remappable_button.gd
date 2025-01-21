@@ -37,6 +37,7 @@ func _toggled(button_pressed):
 
 # Input
 func _unhandled_input(event):
+	
 	# pressable both keyboard and controller OWO
 	if "pressed" in event:
 		if event.pressed: 
@@ -46,6 +47,12 @@ func _unhandled_input(event):
 			action_remapped(action, event)
 			
 	if event is InputEventJoypadMotion:
+		InputMap.action_erase_events(action)
+		InputMap.action_add_event(action, event)
+		button_pressed = false
+		action_remapped(action, event)
+	
+	if event is InputEventMouseButton:
 		InputMap.action_erase_events(action)
 		InputMap.action_add_event(action, event)
 		button_pressed = false

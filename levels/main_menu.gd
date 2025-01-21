@@ -24,6 +24,15 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("back"):
 		if option.visible:
 			_on_back_pressed()
+	
+	# mouse motion
+	if !event is InputEventMouseMotion:
+		return
+		
+	var hovered_btn = get_viewport().gui_get_hovered_control()
+	
+	if hovered_btn is TweenedButton:
+		hovered_btn.grab_focus()
 
 func _on_play_button_pressed() -> void:
 	TransitionManager.transition_scene_packed(LEVEL_SELECT)

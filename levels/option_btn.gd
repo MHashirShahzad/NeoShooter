@@ -52,7 +52,8 @@ func set_correct_neighbors_remappable_buttons():
 				
 				if prev_button:
 					j.focus_neighbor_top = prev_button.get_path()
-					print("SELF: ",j.action, " Neighbor TOP : ", prev_button.action)
+					prev_button.focus_neighbor_bottom = j.get_path()
+					print_debug("- SELF: ",j.action, " Neighbor TOP : ", prev_button.action)
 				
 				prev_button = j
 				

@@ -32,13 +32,24 @@ func _ready() -> void:
 	level_prefs = LevelSelectPreferences.load_or_create()
 	refresh_image()
 	
-	## disabled input dont use :C
+	## (disables input) dont use :C
 	## cuz i buffer the input when transition is being played
 	## this straight up disables it [Skill Issue]
 	#self.process_mode = Node.PROCESS_MODE_DISABLED
 	#await TransitionManager.transition_fully_finished
 	#self.process_mode = Node.PROCESS_MODE_ALWAYS
+
+func _input(event: InputEvent) -> void:
 	
+	if !event is InputEventMouseMotion:
+		return
+		
+	var hovered_btn = get_viewport().gui_get_hovered_control()
+	
+	if hovered_btn is TweenedButton:
+		hovered_btn.grab_focus()
+
+
 func refresh_image() -> void:
 	# level_prefs.level_index = abs(level_prefs.level_index)
 	
@@ -112,6 +123,8 @@ func play_bg_music() -> void:
 
 ## updates the tooltip text
 func update_tooltip_text(focused_node : Control) -> void:
+	
+		
 	if !focused_node is TweenedButton:
 		return
 	
@@ -120,7 +133,6 @@ func update_tooltip_text(focused_node : Control) -> void:
 	if focused_node.description == "":
 		tooltip_label.text = ""
 		return
-	
 	tooltip_label.text = focused_node.description
 	tooltip_label.text = "- " + tooltip_label.text + " -"
 	

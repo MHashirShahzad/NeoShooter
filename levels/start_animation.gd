@@ -18,8 +18,9 @@ var current_state : STATES
 func _input(event: InputEvent) -> void:
 	if !event.is_pressed:
 		return
-
-	if ! (event is InputEventKey or event is InputEventJoypadButton):
+	
+	# make it accept keyboard controller and mouse keys
+	if ! (event is InputEventKey or event is InputEventJoypadButton or event is InputEventMouseButton):
 		return
 		
 	match current_state:
