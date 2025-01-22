@@ -521,7 +521,7 @@ alignment = 1
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 15
-text = "- Disabling vsync might cause errors -"
+text = "- Disabling vsync or fullscreen   might cause errors -"
 horizontal_alignment = 1
 vertical_alignment = 1
 
