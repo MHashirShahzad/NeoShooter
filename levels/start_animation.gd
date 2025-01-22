@@ -36,6 +36,8 @@ func _input(event: InputEvent) -> void:
 func _ready() -> void:
 	SFXManager.play_music(MAIN_MENU_MUSIC, -20, 0.5)
 	homie_spawn_ani()
+	
+
 	# await ani_player.animation_finished
 	
 func homie_spawn_ani():

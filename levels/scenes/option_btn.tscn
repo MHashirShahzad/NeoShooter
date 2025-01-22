@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://df7t4mmry7iih"]
+[gd_scene load_steps=19 format=3 uid="uid://df7t4mmry7iih"]
 
 [ext_resource type="Script" path="res://levels/option_btn.gd" id="1_u3d61"]
 [ext_resource type="Theme" uid="uid://dbukeuyrs33sq" path="res://custom_stuff/default_theme.tres" id="2_a6mdd"]
 [ext_resource type="Script" path="res://custom_stuff/remappable_button.gd" id="3_esqf1"]
 [ext_resource type="Script" path="res://custom_stuff/tweened_slider.gd" id="4_2vuxb"]
+[ext_resource type="Script" path="res://levels/scenes/display_settings.gd" id="4_w5fkt"]
 [ext_resource type="Shader" path="res://camera/chromatic_abberatiob.gdshader" id="5_41fe5"]
 [ext_resource type="Script" path="res://custom_stuff/tweened_button.gd" id="6_4eoqf"]
 [ext_resource type="Shader" path="res://levels/glow.gdshader" id="6_lsnb0"]
@@ -19,6 +20,8 @@ shadow_size = 10
 shadow_offset = Vector2(10, 10)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1wdqi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q4ixf"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3kxak"]
 
@@ -107,7 +110,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_a6mdd")
 tab_alignment = 1
-current_tab = 3
+current_tab = 1
 
 [node name="Controls" type="ScrollContainer" parent="TabContainer"]
 visible = false
@@ -486,10 +489,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Display" type="ScrollContainer" parent="TabContainer"]
-visible = false
 layout_mode = 2
 theme = ExtResource("2_a6mdd")
 follow_focus = true
+script = ExtResource("4_w5fkt")
 metadata/_tab_index = 1
 
 [node name="Controls" type="VBoxContainer" parent="TabContainer/Display"]
@@ -509,6 +512,55 @@ theme_override_font_sizes/font_size = 30
 text = "--------- Display settings ---------"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="FullScreen" type="HBoxContainer" parent="TabContainer/Display/Controls"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Display/Controls/FullScreen"]
+show_behind_parent = true
+custom_minimum_size = Vector2(400, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Fullscreen"
+
+[node name="HSeparator2" type="HSeparator" parent="TabContainer/Display/Controls/FullScreen"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_q4ixf")
+
+[node name="FullScreenBtn" type="Button" parent="TabContainer/Display/Controls/FullScreen"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+toggle_mode = true
+button_pressed = true
+text = "Enabled"
+script = ExtResource("6_4eoqf")
+
+[node name="Vsync" type="HBoxContainer" parent="TabContainer/Display/Controls"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Display/Controls/Vsync"]
+show_behind_parent = true
+custom_minimum_size = Vector2(400, 40)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Vsync"
+
+[node name="HSeparator2" type="HSeparator" parent="TabContainer/Display/Controls/Vsync"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_q4ixf")
+
+[node name="VsyncBtn" type="Button" parent="TabContainer/Display/Controls/Vsync"]
+custom_minimum_size = Vector2(200, 40)
+layout_mode = 2
+toggle_mode = true
+button_pressed = true
+text = "Enabled"
+script = ExtResource("6_4eoqf")
 
 [node name="Audio" type="ScrollContainer" parent="TabContainer"]
 visible = false
@@ -651,6 +703,7 @@ alignment = 1
 select_all_on_focus = true
 
 [node name="Effects" type="ScrollContainer" parent="TabContainer"]
+visible = false
 layout_mode = 2
 theme = ExtResource("2_a6mdd")
 follow_focus = true
@@ -909,6 +962,8 @@ text = "[Shift+Right][RB] to go to right Tab
 [MouseWheel] to scroll"
 horizontal_alignment = 1
 
+[connection signal="toggled" from="TabContainer/Display/Controls/FullScreen/FullScreenBtn" to="TabContainer/Display" method="_on_full_screen_btn_toggled"]
+[connection signal="toggled" from="TabContainer/Display/Controls/Vsync/VsyncBtn" to="TabContainer/Display" method="_on_vsync_btn_toggled"]
 [connection signal="value_changed" from="TabContainer/Audio/Controls/Music/MusicSlider" to="." method="_on_music_slider_value_changed"]
 [connection signal="value_changed" from="TabContainer/Audio/Controls/Music/MusicEdit" to="." method="_on_music_edit_value_changed"]
 [connection signal="value_changed" from="TabContainer/Audio/Controls/SFX/SFXSlider" to="." method="_on_sfx_slider_value_changed"]

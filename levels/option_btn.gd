@@ -1,6 +1,6 @@
 extends Panel
 
-# Variables <===========================================================================================>
+# Variables <===========================================================================================
 
 # EFFECTS -----------------------------------------------------------------------------------------
 # spinboxes
@@ -44,6 +44,7 @@ func _ready() -> void:
 func set_correct_neighbors_remappable_buttons():
 	var controls :VBoxContainer = $TabContainer/Controls/Controls
 	var prev_button : Remap_Button
+	print("---------- Remappable Buttons ----------")
 	
 	for i in controls.get_children():
 		for j in i.get_children():
@@ -53,9 +54,10 @@ func set_correct_neighbors_remappable_buttons():
 				if prev_button:
 					j.focus_neighbor_top = prev_button.get_path()
 					prev_button.focus_neighbor_bottom = j.get_path()
-					print_debug("- SELF: ",j.action, " Neighbor TOP : ", prev_button.action)
+					print("	- SELF: ",j.action, " Neighbor TOP : ", prev_button.action)
 				
 				prev_button = j
+	print("----------------------------------------")
 				
 func _unhandled_input(event: InputEvent) -> void:
 	if !self.visible:
@@ -82,6 +84,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 		tab_bar.current_tab += 1
 	
+
+
 
 # Effects <===========================================================================================>
 func shake_ani() -> void:

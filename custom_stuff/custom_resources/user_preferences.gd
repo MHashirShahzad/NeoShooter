@@ -30,8 +30,12 @@ class_name UserPreferences
 ## Resolution in (x, y).
 @export var resolution:Vector2i
 
-## Window mode "1" is WINDOWED and "3" is FULLSCREEN.
-@export var window_mode:int
+
+@export var window_mode : DisplayServer.WindowMode = DisplayServer.WindowMode.WINDOW_MODE_EXCLUSIVE_FULLSCREEN
+
+@export var vsync_mode : DisplayServer.VSyncMode = DisplayServer.VSyncMode.VSYNC_ENABLED
+
+
 ## Is borderless.
 @export var is_borderless:bool
 

@@ -1,19 +1,84 @@
-[gd_scene load_steps=3 format=3 uid="uid://cfwqgosyvdf7v"]
+[gd_scene load_steps=6 format=3 uid="uid://cfwqgosyvdf7v"]
 
 [ext_resource type="PackedScene" uid="uid://df7t4mmry7iih" path="res://levels/scenes/option_btn.tscn" id="1_v3vpu"]
 [ext_resource type="PackedScene" uid="uid://cwwadqi8vlbq0" path="res://custom_stuff/world_environment.tscn" id="2_a6b0l"]
+[ext_resource type="Shader" path="res://levels/glow.gdshader" id="3_u634w"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3kxak"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_txxd8"]
+resource_local_to_scene = true
+shader = ExtResource("3_u634w")
+shader_parameter/glow_color = Color(0.12549, 0.839216, 0.780392, 1)
+shader_parameter/glow_power = 2.0
+shader_parameter/glow_shift = 1.0
+shader_parameter/glow_radius = 1.0
 
 [node name="CanvasLayer" type="CanvasLayer"]
 layer = 2
 
 [node name="OptionBtn" parent="." instance=ExtResource("1_v3vpu")]
 
+[node name="TabContainer" parent="OptionBtn" index="0"]
+current_tab = 1
+
+[node name="Display" parent="OptionBtn/TabContainer" index="2"]
+visible = true
+
+[node name="HSeparator2" parent="OptionBtn/TabContainer/Audio/Controls/Music" index="1"]
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
+
+[node name="HSeparator3" parent="OptionBtn/TabContainer/Audio/Controls/Music" index="3"]
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
+
+[node name="HSeparator2" parent="OptionBtn/TabContainer/Audio/Controls/SFX" index="1"]
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
+
+[node name="HSeparator3" parent="OptionBtn/TabContainer/Audio/Controls/SFX" index="3"]
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
+
+[node name="HSeparator2" parent="OptionBtn/TabContainer/Audio/Controls/Master" index="1"]
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
+
+[node name="HSeparator3" parent="OptionBtn/TabContainer/Audio/Controls/Master" index="3"]
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
+
+[node name="Effects" parent="OptionBtn/TabContainer" index="4"]
+visible = false
+
+[node name="HSeparator" parent="OptionBtn/TabContainer/Effects/Settings/Chroma" index="1"]
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
+
+[node name="HSeparator2" parent="OptionBtn/TabContainer/Effects/Settings/Chroma" index="3"]
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
+
+[node name="HSeparator" parent="OptionBtn/TabContainer/Effects/Settings/Camera" index="1"]
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
+
+[node name="HSeparator2" parent="OptionBtn/TabContainer/Effects/Settings/Camera" index="3"]
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
+
 [node name="WorldEnvironment" parent="OptionBtn/TabContainer/Effects/Settings/Glow" index="0" instance=ExtResource("2_a6b0l")]
+
+[node name="Label" parent="OptionBtn/TabContainer/Effects/Settings/Glow" index="1"]
+material = SubResource("ShaderMaterial_txxd8")
 
 [node name="SubViewportContainer" parent="OptionBtn/TabContainer/Effects/Settings/Glow" index="2"]
 custom_minimum_size = Vector2(400, 50)
 
 [node name="SubViewport" parent="OptionBtn/TabContainer/Effects/Settings/Glow/SubViewportContainer" index="0"]
 size = Vector2i(400, 100)
+
+[node name="HSeparator2" parent="OptionBtn/TabContainer/Effects/Settings/Glow" index="3"]
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
+
+[node name="HSeparator3" parent="OptionBtn/TabContainer/Effects/Settings/Glow" index="5"]
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
+
+[node name="HSeparator2" parent="OptionBtn/TabContainer/Effects/Settings/Hit Effect" index="1"]
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
+
+[node name="HSeparator3" parent="OptionBtn/TabContainer/Effects/Settings/Hit Effect" index="3"]
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
 
 [editable path="OptionBtn"]
