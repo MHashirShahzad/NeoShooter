@@ -100,11 +100,13 @@ func _on_full_screen_btn_toggled(toggled_on: bool) -> void:
 		full_screen_btn.text = "Enabled"
 		GameManager.user_prefs.window_mode = DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN
 	else:
+		# already windowed
+		if GameManager.user_prefs.window_mode == DisplayServer.WINDOW_MODE_WINDOWED:
+			return
 		full_screen_btn.text = "Disabled"
 		GameManager.user_prefs.window_mode = DisplayServer.WINDOW_MODE_WINDOWED
 	GameManager.user_prefs.save()
 	DisplayServer.window_set_mode(GameManager.user_prefs.window_mode)
-
 
 func _on_vsync_btn_toggled(toggled_on: bool) -> void:
 	if toggled_on:

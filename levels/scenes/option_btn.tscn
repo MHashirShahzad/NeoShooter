@@ -110,10 +110,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_a6mdd")
 tab_alignment = 1
-current_tab = 1
+current_tab = 0
 
 [node name="Controls" type="ScrollContainer" parent="TabContainer"]
-visible = false
 layout_mode = 2
 theme = ExtResource("2_a6mdd")
 follow_focus = true
@@ -489,6 +488,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Display" type="ScrollContainer" parent="TabContainer"]
+visible = false
 layout_mode = 2
 theme = ExtResource("2_a6mdd")
 follow_focus = true
@@ -501,15 +501,27 @@ layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Main" type="HBoxContainer" parent="TabContainer/Display/Controls"]
+[node name="MainLabel" type="HBoxContainer" parent="TabContainer/Display/Controls"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="TabContainer/Display/Controls/Main"]
+[node name="Label" type="Label" parent="TabContainer/Display/Controls/MainLabel"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "--------- Display settings ---------"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="HBoxContainer" parent="TabContainer/Display/Controls"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="TabContainer/Display/Controls/Label2"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 15
+text = "- Disabling vsync might cause errors -"
 horizontal_alignment = 1
 vertical_alignment = 1
 
