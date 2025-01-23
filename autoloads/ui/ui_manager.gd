@@ -14,6 +14,7 @@ var can_pause : bool = true
 var can_update_health : bool = false
 
 func _ready() -> void:
+	$"BG(test_only)".hide()
 	pause_menu.hide()
 	vic_screen.hide()
 

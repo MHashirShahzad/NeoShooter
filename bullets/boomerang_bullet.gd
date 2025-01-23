@@ -10,6 +10,7 @@ func _process(delta: float) -> void:
 
 # override timer
 func _ready() -> void:
+	$Trail.gradient = trails_vfx.color_ramp
 	pass
 
 

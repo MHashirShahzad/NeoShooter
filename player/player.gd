@@ -132,6 +132,8 @@ func on_hit(dmg: float, hitbox : HitBox) -> void:
 		die()
 	else: 
 		VFXManager.hit_effects(hitbox, dmg)
+		# adjust music volume accr. to health
+		SFXManager.adjust_music_volume()
 	ani_manager.hit_ani()
 	
 func screw_state(duration : float, str: float, time_scale : float = 0.05) -> void:
@@ -166,6 +168,7 @@ func die() -> void:
 	# shockwave particles cam shake and slow mo
 	# also manages the victory screen 
 	VFXManager.die_effects(self)
+	
 	# shatter animation
 	body.is_player_dead = true
 	body.shatter()

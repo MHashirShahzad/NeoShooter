@@ -13,7 +13,7 @@ shader_parameter/inner_radius = 0.1
 shader_parameter/outer_radius = 1.0
 shader_parameter/vignette_strength = 1.0
 shader_parameter/dither_strength = 0.03
-shader_parameter/vignette_color = null
+shader_parameter/vignette_color = Color(0, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8oxbi"]
 shader = ExtResource("3_i1qqd")
@@ -278,6 +278,19 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_1782s")
 libraries = {
 "": SubResource("AnimationLibrary_qc7ym")
 }
+
+[node name="BG(test_only)" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -423.0
+offset_top = -438.0
+offset_right = 1601.0
+offset_bottom = 1405.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.162066, 0.162066, 0.162066, 1)
 
 [connection signal="pressed" from="Pause/Blur/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Pause/Blur/VBoxContainer/LevelSelectBtn" to="." method="_on_level_select_btn_pressed"]

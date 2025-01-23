@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dkvcgp66664ya"]
+[gd_scene load_steps=8 format=3 uid="uid://dkvcgp66664ya"]
 
 [ext_resource type="PackedScene" uid="uid://cclo3pqf533bv" path="res://bullets/master_class/main_bullet.tscn" id="1_67csr"]
 [ext_resource type="Script" path="res://bullets/boomerang_bullet.gd" id="2_sv26f"]
 [ext_resource type="PackedScene" uid="uid://dkf6s4hubk7e4" path="res://vfx/bullet_hit/hit_small_vfx.tscn" id="3_o7acq"]
 [ext_resource type="PackedScene" uid="uid://cbtrogwycneft" path="res://vfx/trail_vfx.tscn" id="4_2kqdy"]
 [ext_resource type="Gradient" uid="uid://6bcketyqpt8s" path="res://vfx/hit_gradient.tres" id="5_mubtw"]
+[ext_resource type="PackedScene" uid="uid://dsfc8ho4scve5" path="res://vfx/sprite_trail_vfx.tscn" id="6_qkp55"]
 
 [sub_resource type="Gradient" id="Gradient_cu7tv"]
 resource_local_to_scene = true
@@ -65,8 +66,8 @@ scale_amount_max = 4.0
 color_ramp = ExtResource("5_mubtw")
 
 [node name="VisibleOnScreenNotifier2D" parent="." index="8"]
-position = Vector2(0, 1)
-scale = Vector2(1, 3.1)
+position = Vector2(0, 2.5)
+scale = Vector2(3.5, 6.05)
 
 [node name="OldShape" type="Node2D" parent="." index="9"]
 visible = false
@@ -85,3 +86,6 @@ z_index = 1
 position = Vector2(48, 0)
 color = Color(0.0235294, 0.0235294, 0.0313726, 1)
 polygon = PackedVector2Array(-5, -5, 5, -5, 5, 5, -5, 5)
+
+[node name="Trail" parent="." index="10" instance=ExtResource("6_qkp55")]
+max_length = 5
