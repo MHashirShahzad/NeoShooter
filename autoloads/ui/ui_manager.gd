@@ -50,9 +50,7 @@ func pause() -> void:
 
 func _on_level_select_btn_pressed() -> void:
 	pause()
-	# delete references to p1 & p2
-	GameManager.p1 = null
-	GameManager.p2 = null
+	GameManager.match_end()
 	can_update_health = false
 	
 	TransitionManager.transition_scene_packed(LEVEL_SELECT)
@@ -66,6 +64,24 @@ func _on_level_select_btn_pressed() -> void:
 func _on_resume_pressed() -> void:
 	pause()
 
+
+func _on_restart_pressed() -> void:
+	pause() # unpause
+	
+	can_pause = false
+	GameManager.match_end()
+	
+	var current_level : String = get_tree().current_scene.scene_file_path
+	TransitionManager.transition_scene_file(current_level)
+	
+	SFXManager.play_random_bg_music()
+	# faded in
+	await  TransitionManager.transiton_finsihed
+	self.hide()
+	
+	# faded out
+	await TransitionManager.transition_fully_finished
+	can_pause = true
 
 func _on_main_menu_btn_pressed() -> void:
 	pause()

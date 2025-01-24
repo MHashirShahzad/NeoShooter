@@ -9,6 +9,7 @@ func _on_restart_pressed() -> void:
 	var current_level : String = get_tree().current_scene.scene_file_path
 	TransitionManager.transition_scene_file(current_level)
 	
+	SFXManager.play_random_bg_music()
 	# faded in
 	await  TransitionManager.transiton_finsihed
 	self.hide()

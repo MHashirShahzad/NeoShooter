@@ -6,10 +6,14 @@ var p2 : Player2D
 var world_env : WorldEnvironment
 var player_bullets : PlayerBullets
 
+# preferences
 var user_prefs : UserPreferences
+var level_prefs : LevelSelectPreferences
 
 func _ready() -> void:
 	user_prefs = UserPreferences.load_or_create()
+	level_prefs = LevelSelectPreferences.load_or_create()
+	
 	load_settings()
 	
 func _process(delta: float) -> void:

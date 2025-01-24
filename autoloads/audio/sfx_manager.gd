@@ -1,9 +1,25 @@
 extends Node2D
 
+@export var music_array : Array[AudioStream] = [
+	preload("res://assets/audio/music/hashir/a-video-game-248444.mp3"),
+	preload("res://assets/audio/music/hashir/fast-paced-boss-battle-230222.mp3"),
+	preload("res://assets/audio/music/hashir/game-music-teste-1-204326.mp3"),
+	preload("res://assets/audio/music/hashir/intense-electro-trailer-music-243987.mp3"),
+	preload("res://assets/audio/music/hashir/space-station-247790.mp3"),
+	preload("res://assets/audio/music/hashir/stranger-things-124008.mp3"),
+	preload("res://assets/audio/music/hashir/electric-horizons-239006.mp3"),
+	preload("res://assets/audio/music/hashir/galactic-overture-241181.mp3"),
+	# didnt like this one :C
+	# preload("res://assets/audio/music/hashir/let-the-games-begin-21858.mp3"),
+	preload("res://assets/audio/music/hashir/synth-city-80x27s-loop-167222.mp3"),
+	preload("res://assets/audio/music/hashir/to-the-death-159171.mp3")
+]
 
 const SHOOT : AudioStream = preload("res://assets/audio/shoot.ogg")
 const NO_AMMO : AudioStream = preload("res://assets/audio/no_ammo.ogg")
 const BULLET_REFILLED : AudioStream = preload("res://assets/audio/bullet_refilled3.ogg")
+
+
 
 @onready var music_player: AudioStreamPlayer = $MusicPlayer
 
@@ -73,9 +89,22 @@ func adjust_music_volume():
 		return
 	
 	print_debug("---- Music Speed Increased ----")
-	var music_speed : int = 1.2
-	
+
+	var music_speed : float = lerp(1.1, 1.0, lowest_health / 50)
+	print("- Music_Speed : ", music_speed," - health : ", (lowest_health / 50))
 	var tween := get_tree().create_tween()
 	tween.tween_property(music_player, "pitch_scale", music_speed, 1)
 	await tween.finished
 	tween.kill()
+
+func play_random_bg_music() -> void:
+	var music : AudioStream = music_array.pick_random()
+	var index : int = music_array.find(music)
+	
+	if index == GameManager.level_prefs.prev_music_index:
+		music = music_array.pick_random()
+		index = music_array.find(music)
+	
+	GameManager.level_prefs.prev_music_index = index
+	
+	SFXManager.play_music(music, -10)

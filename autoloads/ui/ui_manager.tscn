@@ -118,6 +118,19 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_u1v7n")
 
+[node name="BG(test_only)" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -423.0
+offset_top = -438.0
+offset_right = 1601.0
+offset_bottom = 1405.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.162066, 0.162066, 0.162066, 1)
+
 [node name="UILayer" type="CanvasLayer" parent="."]
 
 [node name="Vignette" type="ColorRect" parent="UILayer"]
@@ -135,7 +148,6 @@ text = "  "
 
 [node name="Pause" type="CanvasLayer" parent="."]
 layer = 5
-visible = false
 
 [node name="Blur" type="ColorRect" parent="Pause"]
 material = SubResource("ShaderMaterial_8oxbi")
@@ -165,6 +177,11 @@ theme_override_constants/separation = 20
 layout_mode = 2
 text = "Resume
 "
+script = ExtResource("4_as521")
+
+[node name="Restart" type="Button" parent="Pause/Blur/VBoxContainer"]
+layout_mode = 2
+text = "Restart"
 script = ExtResource("4_as521")
 
 [node name="LevelSelectBtn" type="Button" parent="Pause/Blur/VBoxContainer"]
@@ -279,20 +296,8 @@ libraries = {
 "": SubResource("AnimationLibrary_qc7ym")
 }
 
-[node name="BG(test_only)" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -423.0
-offset_top = -438.0
-offset_right = 1601.0
-offset_bottom = 1405.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.162066, 0.162066, 0.162066, 1)
-
 [connection signal="pressed" from="Pause/Blur/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Pause/Blur/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="Pause/Blur/VBoxContainer/LevelSelectBtn" to="." method="_on_level_select_btn_pressed"]
 [connection signal="pressed" from="Pause/Blur/VBoxContainer/MainMenuBtn" to="." method="_on_main_menu_btn_pressed"]
 [connection signal="pressed" from="VictoryScreen/Transition/VBoxContainer/Restart" to="VictoryScreen" method="_on_restart_pressed"]
