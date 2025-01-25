@@ -22,8 +22,6 @@ func _ready() -> void:
 	self.mouse_entered.connect(_on_hovered)
 	load_variables()
 
-
-
 func _on_pressed() -> void:
 	print("PRESSED BULLET BTRN")
 	SFXManager.play_FX(press, -8)
@@ -42,7 +40,7 @@ func equip_bullet(equipped_bullets : EquippedBullets) -> EquippedBullets:
 		BULLET_TYPE.SMALL:
 			equipped_bullets.small = equip_small_bullet(equipped_bullets.small)
 		BULLET_TYPE.BIG:
-			return equipped_bullets
+			equipped_bullets.big = equip_big_bullet(equipped_bullets.big)
 			#get_bullet_name(equipped_bullets.big.resource_path)
 	
 	return equipped_bullets
@@ -59,16 +57,28 @@ func equip_normal_bullet(normal : PackedScene) -> PackedScene:
 	update_variables(bullet.instantiate())
 	return bullet
 
-func equip_small_bullet(normal : PackedScene) -> PackedScene:
+func equip_small_bullet(small : PackedScene) -> PackedScene:
 	print_debug("small bullet ")
 	var bullet : PackedScene = load("res://bullets/small_bullet.tscn")
 	
-	if normal.resource_path.contains("small"):
+	if small.resource_path.contains("small"):
 		bullet = load("res://bullets/boomerang_bullet.tscn")
-	elif normal.resource_path.contains("boomerang"):
+	elif small.resource_path.contains("boomerang"):
 		bullet = load("res://bullets/homing_bullet.tscn")
-	elif normal.resource_path.contains("homing"):
+	elif small.resource_path.contains("homing"):
 		bullet = load("res://bullets/small_bullet.tscn")
+		
+	update_variables(bullet.instantiate())
+	return bullet
+
+func equip_big_bullet(big : PackedScene) -> PackedScene:
+	print_debug("Big bullet ")
+	var bullet : PackedScene = load("res://bullets/big_bullet.tscn")
+	
+	if big.resource_path.contains("big"):
+		bullet = load("res://bullets/scythe_bullet.tscn")
+	elif big.resource_path.contains("scythe"):
+		bullet = load("res://bullets/big_bullet.tscn")
 		
 	update_variables(bullet.instantiate())
 	return bullet

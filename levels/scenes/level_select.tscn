@@ -83,7 +83,7 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 corner_detail = 20
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t5vph"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3e27n"]
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
@@ -594,7 +594,7 @@ _data = {
 "shoot": SubResource("Animation_v2bk1")
 }
 
-[node name="Level-select" type="Node2D"]
+[node name="LevelSelect" type="Node2D"]
 script = ExtResource("1_rk7ao")
 level_array = Array[ExtResource("4_thvsq")]([SubResource("Resource_ykq1v"), SubResource("Resource_o1pq8"), SubResource("Resource_i0jky"), SubResource("Resource_od4f8")])
 
@@ -716,13 +716,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -96.0
+offset_left = -102.0
 offset_top = -64.0
-offset_right = 96.0
+offset_right = 103.0
 offset_bottom = 64.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_t5vph")
+theme_override_styles/panel = SubResource("StyleBoxFlat_3e27n")
 script = ExtResource("8_j3dk8")
 texture = ExtResource("4_71e5x")
 expand_mode = 2
@@ -733,6 +733,7 @@ alignment = 1
 
 [node name="PrevLevel" type="Button" parent="CanvasLayer/LevelSelect/LevelContainer/HBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 40)
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../../../BottomHBOX/BackLevel")
 theme = ExtResource("13_6gk1s")
@@ -749,6 +750,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_plb2m")
 
 [node name="RandomLevel" type="Button" parent="CanvasLayer/LevelSelect/LevelContainer/HBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 40)
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../../../BottomHBOX/PlayLevel")
 text = "Rand"
@@ -762,6 +764,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_plb2m")
 
 [node name="NextLevel" type="Button" parent="CanvasLayer/LevelSelect/LevelContainer/HBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(60, 40)
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../../../BottomHBOX/PlayLevel")
 shortcut = SubResource("Shortcut_lpuwx")
@@ -840,6 +843,7 @@ alignment = 1
 layout_mode = 2
 
 [node name="NormalBullet" type="Button" parent="CanvasLayer/LevelSelect/P2Container/Panel/VBoxContainer/HBoxContainer/VBoxContainer" node_paths=PackedStringArray("level_select")]
+custom_minimum_size = Vector2(60, 50)
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../../../../../../BottomHBOX/PlayLevel")
 text = "[N]"
@@ -859,6 +863,7 @@ horizontal_alignment = 1
 layout_mode = 2
 
 [node name="SmallBullet" type="Button" parent="CanvasLayer/LevelSelect/P2Container/Panel/VBoxContainer/HBoxContainer/VBoxContainer2" node_paths=PackedStringArray("level_select")]
+custom_minimum_size = Vector2(60, 50)
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../../../../../../BottomHBOX/PlayLevel")
 text = "[S]"
@@ -878,6 +883,7 @@ horizontal_alignment = 1
 layout_mode = 2
 
 [node name="BigBullet" type="Button" parent="CanvasLayer/LevelSelect/P2Container/Panel/VBoxContainer/HBoxContainer/VBoxContainer3" node_paths=PackedStringArray("level_select")]
+custom_minimum_size = Vector2(60, 50)
 layout_mode = 2
 focus_neighbor_right = NodePath("../../../../../../BottomHBOX/PlayLevel")
 focus_neighbor_bottom = NodePath("../../../../../../BottomHBOX/PlayLevel")
@@ -983,6 +989,7 @@ alignment = 1
 layout_mode = 2
 
 [node name="NormalBullet" type="Button" parent="CanvasLayer/LevelSelect/P1Container/Panel/VBoxContainer/HBoxContainer/VBoxContainer" node_paths=PackedStringArray("level_select")]
+custom_minimum_size = Vector2(60, 50)
 layout_mode = 2
 focus_neighbor_left = NodePath("../../../../../../BottomHBOX/BackLevel")
 focus_neighbor_bottom = NodePath("../../../../../../BottomHBOX/BackLevel")
@@ -1002,6 +1009,7 @@ horizontal_alignment = 1
 layout_mode = 2
 
 [node name="SmallBullet" type="Button" parent="CanvasLayer/LevelSelect/P1Container/Panel/VBoxContainer/HBoxContainer/VBoxContainer2" node_paths=PackedStringArray("level_select")]
+custom_minimum_size = Vector2(60, 50)
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../../../../../../BottomHBOX/BackLevel")
 text = "[S]"
@@ -1020,6 +1028,7 @@ horizontal_alignment = 1
 layout_mode = 2
 
 [node name="BigBullet" type="Button" parent="CanvasLayer/LevelSelect/P1Container/Panel/VBoxContainer/HBoxContainer/VBoxContainer3" node_paths=PackedStringArray("level_select")]
+custom_minimum_size = Vector2(60, 50)
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../../../../../../BottomHBOX/BackLevel")
 text = "[B]"

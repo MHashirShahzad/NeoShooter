@@ -19,8 +19,6 @@ func _ready() -> void:
 	self.mouse_entered.connect(_on_hovered)
 	self.focus_entered.connect(_on_hovered)
 	
-	self.mouse_exited.connect(_on_unhovered)
-	self.focus_exited.connect(_on_hovered)
 	
 	
 func _on_pressed() -> void:
@@ -36,11 +34,3 @@ func _on_hovered() -> void:
 	#tween.tween_property(self, "scale", Vector2(1.2, 1.2), .2)
 	#await  tween.finished
 	#tween.kill()
-
-func _on_unhovered() -> void:
-	return
-	
-	var tween : Tween = get_tree().create_tween()
-	tween.tween_property(self, "scale", Vector2(1, 1), .2)
-	await  tween.finished
-	tween.kill()

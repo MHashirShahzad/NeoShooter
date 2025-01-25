@@ -21,8 +21,6 @@ func _ready():
 	self.mouse_entered.connect(_on_hovered)
 	self.focus_entered.connect(_on_hovered)
 	
-	self.mouse_exited.connect(_on_unhovered)
-	self.focus_exited.connect(_on_hovered)
 
 # On clicked
 func _toggled(button_pressed):

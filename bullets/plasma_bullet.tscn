@@ -36,11 +36,11 @@ polygon = PackedVector2Array(-4, -6, 4, -6, 5, 0, -5, 0)
 
 [node name="Design" type="Polygon2D" parent="." index="6"]
 position = Vector2(-7, 6)
-polygon = PackedVector2Array(0, -8, 0, -6, 0, 0, -5, 1)
+polygon = PackedVector2Array(0, -10, 0, -6, 0, 0, -5, 1)
 
 [node name="Design2" type="Polygon2D" parent="." index="7"]
 position = Vector2(11, 6)
-polygon = PackedVector2Array(-4, -8, 1, 1, -4, 0)
+polygon = PackedVector2Array(-4, -10, 1, 1, -4, 0)
 
 [node name="Trails" parent="." index="8"]
 position = Vector2(0, 16)
