@@ -11,8 +11,10 @@ func _process(delta: float) -> void:
 
 # override timer
 func _ready() -> void:
+	# to ignore of sweet and sour spot
 	sour_spot_hit_box.to_ignore = hit_box.to_ignore
 	sweet_spot_hit_box.to_ignore = hit_box.to_ignore
+	
 	await $KillTimer.timeout
 	
 	if hit_box:

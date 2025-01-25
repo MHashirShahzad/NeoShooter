@@ -4,6 +4,7 @@ class_name Player2D
 # Exports
 
 @export var is_input_enabled : bool = true
+
 @export_group("Physics")
 @export var speed : int = 60000
 @export var friction : float = 0.2

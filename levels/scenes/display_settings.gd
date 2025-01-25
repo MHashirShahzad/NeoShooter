@@ -32,12 +32,14 @@ func _on_full_screen_btn_toggled(toggled_on: bool) -> void:
 	else:
 		print("not full screen")
 		# already windowed
-		## idk why i added this over here
-		#if GameManager.user_prefs.window_mode == DisplayServer.WINDOW_MODE_WINDOWED:
-			#return
+		# re-making it windowed reverts the current win-size to normal which isnt
+		# ideal, so we just dont do it again :L:
+		if GameManager.user_prefs.window_mode == DisplayServer.WINDOW_MODE_WINDOWED:
+			full_screen_btn.text = "Disabled"
+			return
+			
 		full_screen_btn.text = "Disabled"
 		GameManager.user_prefs.window_mode = DisplayServer.WINDOW_MODE_WINDOWED
-		full_screen_btn.text = "Disabled"
 	GameManager.user_prefs.save()
 	DisplayServer.window_set_mode(GameManager.user_prefs.window_mode)
 

@@ -22,17 +22,16 @@ scale = Vector2(3, 3)
 script = ExtResource("2_fh8gm")
 rotation_speed = 6.0
 speed = 850.0
-description = "A rotating bullet which has a sweeping motion and deals more damage at the edge"
+description = "A scythe bullet which has a rotating motion and deals more damage at the edge"
 label = "[S]"
 type = 2
 
 [node name="ProjHitBox" parent="." index="0"]
 position = Vector2(0, -4)
 damage = 20.0
-hit_stop = 0.3
-screw_state = 0.3
-screw_state_str = 100.0
-chroma_str = 5.0
+screw_state = 0.2
+screw_state_str = 60.0
+chroma_str = 4.0
 cam_shake_str = 16.0
 vfx = ExtResource("2_00n6e")
 

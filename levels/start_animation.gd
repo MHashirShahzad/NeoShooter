@@ -36,7 +36,7 @@ func _input(event: InputEvent) -> void:
 func _ready() -> void:
 	SFXManager.play_music(MAIN_MENU_MUSIC, -20, 0.5)
 	homie_spawn_ani()
-	
+	parse_command_line_args()
 
 	# await ani_player.animation_finished
 	
@@ -68,3 +68,40 @@ func yellow_despawn_ani():
 	await tween.finished
 	tween.kill()
 	TransitionManager.transition_scene_packed(MAIN_MENU)
+
+func parse_command_line_args():
+	var arguments : Dictionary = {}
+	
+	for argument in OS.get_cmdline_args():
+		if argument.contains("="):
+			var key_value = argument.split("=")
+			arguments[key_value[0].trim_prefix("--")] = key_value[1]
+		else:
+			# Options without an argument will be present in the dictionary,
+			# with the value set to an empty string.
+			arguments[argument.trim_prefix("--")] = ""
+	
+	## PURE BRAIN ROT COLORS
+	print_rich("[color=red]C[/color][color=blue]M[/color][color=green]D[/color] [color=yellow]L[/color][color=cyan]I[/color][color=magenta]N[/color][color=orange]E[/color] ARGS EXIST!!!!")
+	print_rich("[color=red] SYNTAX: --val1 --val2 [/color]")
+
+	print("==============================================")
+	
+	# EN
+	if arguments.keys().has("en") or arguments.keys().has("EN"):
+		print_rich("[color=green] https://discord.gg/eliteninjas [/color]")
+		
+	if arguments.keys().has("clara"):
+		print("meow ?")
+		Input.set_custom_mouse_cursor(load("res://assets/clara-cursor.png"))
+
+	if arguments.keys().has("royn"):
+		print("SKILL ISSUE")
+	
+	if arguments.keys().has("yellow"):
+		print("Peela Admi fr")
+	
+	if arguments.keys().has("1983"):
+		print("EVAN WAS INNOCENT!")
+	
+	print("==============================================")

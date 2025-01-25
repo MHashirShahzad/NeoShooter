@@ -17,7 +17,7 @@ inertia = 1.0
 rotation_speed = 10.0
 homing_duration = 0.5
 speed = 700.0
-description = "A bullet which chases the enemy if he is in a certain distance"
+description = "A homing bullet which chases the enemy for some time"
 label = "[H]"
 
 [node name="ProjHitBox" parent="." index="0"]

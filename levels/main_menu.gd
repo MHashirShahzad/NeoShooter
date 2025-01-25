@@ -10,7 +10,6 @@ class_name MainMenu
 @onready var game_name: Label = $CanvasLayer/Logo/HBOX/GameName
 @onready var ani_player: AnimationPlayer = $AniPlayer
 
-
 var LEVEL_SELECT = load("res://levels/scenes/level_select.tscn")
 
 func _ready() -> void:
@@ -24,6 +23,7 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("back"):
 		if option.visible:
 			_on_back_pressed()
+
 	
 	# mouse motion
 	if !event is InputEventMouseMotion:
@@ -40,10 +40,14 @@ func _on_play_button_pressed() -> void:
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
 
-
 func _on_options_button_pressed() -> void:
 	ani_player.play("main_to_option")
 	option_menu_grab_focus()
+	
+	
+	# focus on main_menu always when option btn pressed
+	var tab_bar : TabBar = $CanvasLayer/OptionBtn/TabContainer.get_tab_bar()
+	tab_bar.current_tab = 0
 
 func _on_back_pressed() -> void:
 	ani_player.play_backwards("main_to_option")

@@ -27,7 +27,16 @@ func _ready() -> void:
 	
 func on_hit(dmg: float, hitbox : HitBox) -> void:
 	if is_unbreakable:
-		VFXManager.hit_effects(hitbox, 0)
+		# VFXManager.hit_effects(hitbox, 0)
+		VFXManager.display_hit_label(
+			# string rounded of to one decimal place :0:
+			str(0),
+			# 20 offset 
+			hitbox.global_position + Vector2([-20,20].pick_random(), [-20,20].pick_random())
+		)
+		# VFXManager.hit_stop(hitbox.hit_stop)
+		VFXManager.camera_shake(hitbox.cam_shake_str)
+		VFXManager.hit_vfx(hitbox)
 		return
 	#if player == hitbox.to_ignore:
 		#VFXManager.hit_effects(hitbox)

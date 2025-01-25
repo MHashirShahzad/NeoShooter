@@ -1,5 +1,5 @@
 extends Panel
-
+class_name OptionMenu
 # Variables <===========================================================================================
 
 # EFFECTS -----------------------------------------------------------------------------------------
@@ -39,6 +39,7 @@ func _ready() -> void:
 	set_effects_label_values()
 	set_audio_label_values()
 	set_correct_neighbors_remappable_buttons()
+	
 
 ## I KNOW ITS BAD but i dont want to set focus mannually :C
 func set_correct_neighbors_remappable_buttons():

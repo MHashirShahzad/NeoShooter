@@ -271,6 +271,7 @@ grow_vertical = 2
 script = ExtResource("1_f6xqg")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 3
 
 [node name="BGGray" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15
@@ -406,9 +407,10 @@ text = "NeoShooter"
 [node name="Options Label" type="Label" parent="CanvasLayer"]
 anchors_preset = 10
 anchor_right = 1.0
-offset_left = -1265.0
-offset_right = -1265.0
-offset_bottom = 37.0
+offset_left = -1168.0
+offset_top = 3.0
+offset_right = -1168.0
+offset_bottom = 40.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 30
 text = "--------- Settings ---------"
