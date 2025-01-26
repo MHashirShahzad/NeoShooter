@@ -4,7 +4,7 @@
 [ext_resource type="Theme" uid="uid://dbukeuyrs33sq" path="res://custom_stuff/default_theme.tres" id="2_a6mdd"]
 [ext_resource type="Script" path="res://custom_stuff/remappable_button.gd" id="3_esqf1"]
 [ext_resource type="Script" path="res://custom_stuff/tweened_slider.gd" id="4_2vuxb"]
-[ext_resource type="Script" path="res://levels/scenes/display_settings.gd" id="4_w5fkt"]
+[ext_resource type="Script" path="res://levels/display_settings.gd" id="4_w5fkt"]
 [ext_resource type="Shader" path="res://camera/chromatic_abberatiob.gdshader" id="5_41fe5"]
 [ext_resource type="Script" path="res://custom_stuff/tweened_button.gd" id="6_4eoqf"]
 [ext_resource type="Shader" path="res://levels/glow.gdshader" id="6_lsnb0"]
