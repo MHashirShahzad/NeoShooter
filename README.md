@@ -22,8 +22,9 @@
 
 
 ## ⚙️ Requirements
-
-- Seriously IDK
+- A working computer 🥔.
+- Electricity ⚡.
+- Seriously IDK.
 
 ---
 
