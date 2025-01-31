@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cbpfd5v11pp36" path="res://vfx/bullet_hit/hit_big_vfx.tscn" id="5_12wca"]
 [ext_resource type="PackedScene" uid="uid://7xw0v4wq7ucy" path="res://vfx/bullet_hit/hit_normal_vfx.tscn" id="6_acdgh"]
 [ext_resource type="PackedScene" uid="uid://dkf6s4hubk7e4" path="res://vfx/bullet_hit/hit_small_vfx.tscn" id="7_nb1rt"]
-[ext_resource type="PackedScene" uid="uid://cwwadqi8vlbq0" path="res://custom_stuff/world_environment.tscn" id="8_73yne"]
+[ext_resource type="PackedScene" uid="uid://cwwadqi8vlbq0" path="res://custom-stuff/world_environment.tscn" id="8_73yne"]
 
 [sub_resource type="Animation" id="Animation_t757x"]
 length = 0.001

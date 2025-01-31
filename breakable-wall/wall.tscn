@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://mi7ywnppxaxb"]
 
 [ext_resource type="Script" path="res://player/body.gd" id="2_2qbrc"]
-[ext_resource type="Script" path="res://breakable_wall/breakable_wall.gd" id="2_thm7x"]
-[ext_resource type="Script" path="res://custom_stuff/hit_and_hurt_box/hurtbox.gd" id="3_ht51a"]
+[ext_resource type="Script" path="res://breakable-wall/breakable_wall.gd" id="2_thm7x"]
+[ext_resource type="Script" path="res://custom-stuff/hit_and_hurt_box/hurtbox.gd" id="3_ht51a"]
 
 [node name="Wall" type="CharacterBody2D"]
 script = ExtResource("2_thm7x")

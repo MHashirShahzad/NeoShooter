@@ -19,12 +19,12 @@ config/icon="res://assets/NeoShooterLogo.svg"
 
 [audio]
 
-buses/default_bus_layout="res://custom_stuff/default_bus_layout.tres"
+buses/default_bus_layout="res://custom-stuff/default_bus_layout.tres"
 
 [autoload]
 
 BulletManager="*res://autoloads/bullet_manager.gd"
-VFXManager="*res://autoloads/hit_effect/vfx_manager.tscn"
+VFXManager="*res://autoloads/hit-effect/vfx_manager.tscn"
 UIManager="*res://autoloads/ui/ui_manager.tscn"
 SFXManager="*res://autoloads/audio/sfx_manager.tscn"
 TransitionManager="*res://autoloads/transition/transition_manager.tscn"
@@ -48,7 +48,7 @@ StageHazard=""
 
 [gui]
 
-theme/custom="res://custom_stuff/default_theme.tres"
+theme/custom="res://custom-stuff/default_theme.tres"
 theme/custom_font="res://assets/font/Sono/Sono-VariableFont_MONO,wght.ttf"
 
 [input]

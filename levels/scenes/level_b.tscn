@@ -3,9 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://dclvmmffyl7cf" path="res://player/both_players.tscn" id="1_gildk"]
 [ext_resource type="Shader" path="res://player/colorflash.gdshader" id="4_vwoqp"]
 [ext_resource type="PackedScene" uid="uid://bwkwpcmkypaje" path="res://camera/camera.tscn" id="6_ol1wp"]
-[ext_resource type="PackedScene" uid="uid://cwwadqi8vlbq0" path="res://custom_stuff/world_environment.tscn" id="7_1wgqk"]
-[ext_resource type="Script" path="res://custom_stuff/hit_and_hurt_box/hurtbox.gd" id="8_q81gk"]
-[ext_resource type="PackedScene" uid="uid://mi7ywnppxaxb" path="res://breakable_wall/wall.tscn" id="9_1gurt"]
+[ext_resource type="PackedScene" uid="uid://cwwadqi8vlbq0" path="res://custom-stuff/world_environment.tscn" id="7_1wgqk"]
+[ext_resource type="Script" path="res://custom-stuff/hit_and_hurt_box/hurtbox.gd" id="8_q81gk"]
+[ext_resource type="PackedScene" uid="uid://mi7ywnppxaxb" path="res://breakable-wall/wall.tscn" id="9_1gurt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7eq61"]
 resource_local_to_scene = true

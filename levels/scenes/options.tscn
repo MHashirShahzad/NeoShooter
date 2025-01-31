@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cfwqgosyvdf7v"]
 
 [ext_resource type="PackedScene" uid="uid://df7t4mmry7iih" path="res://levels/scenes/option_btn.tscn" id="1_v3vpu"]
-[ext_resource type="PackedScene" uid="uid://cwwadqi8vlbq0" path="res://custom_stuff/world_environment.tscn" id="2_a6b0l"]
+[ext_resource type="PackedScene" uid="uid://cwwadqi8vlbq0" path="res://custom-stuff/world_environment.tscn" id="2_a6b0l"]
 [ext_resource type="Shader" path="res://levels/glow.gdshader" id="3_u634w"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3kxak"]

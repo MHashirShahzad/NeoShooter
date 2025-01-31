@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://cp616ryfjwdwj"]
 
-[ext_resource type="Script" path="res://autoloads/hit_effect/vfx_manager.gd" id="1_gvhkw"]
+[ext_resource type="Script" path="res://autoloads/hit-effect/vfx_manager.gd" id="1_gvhkw"]
 [ext_resource type="Shader" path="res://camera/chromatic_abberatiob.gdshader" id="2_o0rfe"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_08do4"]

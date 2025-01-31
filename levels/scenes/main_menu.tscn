@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://b0xltc2iphdel" path="res://assets/NeoShooterLogo.svg" id="1_clxpc"]
 [ext_resource type="Script" path="res://levels/main_menu.gd" id="1_f6xqg"]
-[ext_resource type="Script" path="res://custom_stuff/tweened_button.gd" id="2_2ycbh"]
-[ext_resource type="Theme" uid="uid://dbukeuyrs33sq" path="res://custom_stuff/default_theme.tres" id="2_b7fev"]
+[ext_resource type="Script" path="res://custom-stuff/tweened_button.gd" id="2_2ycbh"]
+[ext_resource type="Theme" uid="uid://dbukeuyrs33sq" path="res://custom-stuff/default_theme.tres" id="2_b7fev"]
 [ext_resource type="PackedScene" uid="uid://df7t4mmry7iih" path="res://levels/scenes/option_btn.tscn" id="5_l3fxr"]
 [ext_resource type="Shader" path="res://levels/glow.gdshader" id="6_71mhu"]
 

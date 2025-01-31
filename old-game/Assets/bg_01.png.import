@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ogmsh8j8lrkx"
-path="res://.godot/imported/spaceship_red.png-2dde03f1b27cf66fdd4ae503cc62a638.ctex"
+uid="uid://dttfbr0m8pxk5"
+path="res://.godot/imported/bg_01.png-00f8b5c25102b1c9b7f08eb5e62d51ce.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://old_game/Assets/spaceship_red.png"
-dest_files=["res://.godot/imported/spaceship_red.png-2dde03f1b27cf66fdd4ae503cc62a638.ctex"]
+source_file="res://old-game/Assets/bg_01.png"
+dest_files=["res://.godot/imported/bg_01.png-00f8b5c25102b1c9b7f08eb5e62d51ce.ctex"]
 
 [params]
 

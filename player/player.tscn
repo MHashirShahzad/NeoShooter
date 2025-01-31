@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_a7y8v"]
 [ext_resource type="Resource" uid="uid://d1rtgcv253tl5" path="res://player/resources/player1_inputs.tres" id="2_maebw"]
-[ext_resource type="Script" path="res://custom_stuff/hit_and_hurt_box/hurtbox.gd" id="4_gy0jc"]
+[ext_resource type="Script" path="res://custom-stuff/hit_and_hurt_box/hurtbox.gd" id="4_gy0jc"]
 [ext_resource type="Script" path="res://player/body.gd" id="4_pbvd6"]
 [ext_resource type="Shader" path="res://player/colorflash.gdshader" id="5_fy4w8"]
 [ext_resource type="PackedScene" uid="uid://cbtrogwycneft" path="res://vfx/trail_vfx.tscn" id="6_de123"]
@@ -19,6 +19,9 @@ shader_parameter/gold_flash = false
 shader_parameter/white_color = Color(1, 1, 1, 1)
 shader_parameter/red_color = Color(0.706, 0.125, 0.165, 1)
 shader_parameter/gold_color = Color(0.976, 0.639, 0.106, 1)
+shader_parameter/x_degrees = 0.0
+shader_parameter/y_degrees = 0.0
+shader_parameter/z_degrees = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y0nrd"]
 radius = 51.0

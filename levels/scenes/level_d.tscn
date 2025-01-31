@@ -4,9 +4,9 @@
 [ext_resource type="Script" path="res://levels/level_d.gd" id="1_udpej"]
 [ext_resource type="Shader" path="res://player/colorflash.gdshader" id="2_jmbqe"]
 [ext_resource type="PackedScene" uid="uid://bwkwpcmkypaje" path="res://camera/camera.tscn" id="3_p01ub"]
-[ext_resource type="PackedScene" uid="uid://cwwadqi8vlbq0" path="res://custom_stuff/world_environment.tscn" id="4_j7h21"]
-[ext_resource type="Script" path="res://custom_stuff/hit_and_hurt_box/hurtbox.gd" id="5_xh7uj"]
-[ext_resource type="PackedScene" uid="uid://c32oe6ngb7enl" path="res://breakable_wall/unbreakable_wall.tscn" id="6_xhg4n"]
+[ext_resource type="PackedScene" uid="uid://cwwadqi8vlbq0" path="res://custom-stuff/world_environment.tscn" id="4_j7h21"]
+[ext_resource type="Script" path="res://custom-stuff/hit_and_hurt_box/hurtbox.gd" id="5_xh7uj"]
+[ext_resource type="PackedScene" uid="uid://c32oe6ngb7enl" path="res://breakable-wall/unbreakable_wall.tscn" id="6_xhg4n"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7eq61"]
 resource_local_to_scene = true

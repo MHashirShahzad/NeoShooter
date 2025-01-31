@@ -198,7 +198,11 @@ func skew_char() -> void:
 		body.skew = -body.skew 
 		return
 	body.skew = wish_dir.y / 8
-
+	
+	# 3d rotation doesnt look as nice as skewing
+	
+	#body.material.set("shader_parameter/y_degrees", wish_dir.y * 40)
+	#body.material.set("shader_parameter/x_degrees", wish_dir.x * 30)
 
 ### DOESNT SEEM TO WORK SAMEE AS THE FUNC BEELOW IT
 func calculate_tilt(delta : float):

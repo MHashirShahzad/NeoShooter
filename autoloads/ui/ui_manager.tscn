@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://autoloads/ui/ui_manager.gd" id="1_u1v7n"]
 [ext_resource type="Shader" path="res://autoloads/ui/darkened_blur.gdshader" id="3_i1qqd"]
 [ext_resource type="Shader" path="res://autoloads/ui/vignette.gdshader" id="3_les54"]
-[ext_resource type="Script" path="res://custom_stuff/tweened_button.gd" id="4_as521"]
+[ext_resource type="Script" path="res://custom-stuff/tweened_button.gd" id="4_as521"]
 [ext_resource type="Shader" path="res://autoloads/ui/diamond_transtition.gdshader" id="5_3m8md"]
 [ext_resource type="Script" path="res://autoloads/ui/victory_screen.gd" id="5_4rf70"]
 

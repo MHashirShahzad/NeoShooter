@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cclo3pqf533bv"]
 
 [ext_resource type="Script" path="res://bullets/master_class/bullet.gd" id="1_gct0v"]
-[ext_resource type="Script" path="res://custom_stuff/hit_and_hurt_box/projectile_hitbox.gd" id="2_w16ho"]
+[ext_resource type="Script" path="res://custom-stuff/hit_and_hurt_box/projectile_hitbox.gd" id="2_w16ho"]
 [ext_resource type="PackedScene" uid="uid://cbtrogwycneft" path="res://vfx/trail_vfx.tscn" id="3_fqxdx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d5vtl"]

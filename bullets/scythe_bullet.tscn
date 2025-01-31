@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cclo3pqf533bv" path="res://bullets/master_class/main_bullet.tscn" id="1_k7743"]
 [ext_resource type="PackedScene" uid="uid://cbpfd5v11pp36" path="res://vfx/bullet_hit/hit_big_vfx.tscn" id="2_00n6e"]
 [ext_resource type="Script" path="res://bullets/scythe_bullet.gd" id="2_fh8gm"]
-[ext_resource type="Script" path="res://custom_stuff/hit_and_hurt_box/projectile_hitbox.gd" id="3_qe2mx"]
+[ext_resource type="Script" path="res://custom-stuff/hit_and_hurt_box/projectile_hitbox.gd" id="3_qe2mx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dwflc"]
 radius = 3.0

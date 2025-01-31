@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dkoyylw64k6j3"]
 
-[ext_resource type="Script" path="res://stage_hazards/plasma_shooter.gd" id="1_pxaqf"]
+[ext_resource type="Script" path="res://stage-hazards/plasma_shooter.gd" id="1_pxaqf"]
 [ext_resource type="Script" path="res://player/body.gd" id="2_a5n3u"]
 
 [sub_resource type="Animation" id="Animation_sjlwc"]
