@@ -51,4 +51,4 @@ Want to tweak the neon glow or gameplay? You can fork the project and modify the
    ```bash
    git clone https://github.com/MHashirShahzad/NeoShooter.git
    ```
-- **Requirements:** Godot-v4.2
+- **Requirements:** Godot-v4.3
