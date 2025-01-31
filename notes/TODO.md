@@ -27,7 +27,7 @@
 ---
 # Accessibility
 - [ ] Game's hit-stop is frame rate dependent right now, we will have to fix it.
-
+- [ ] Color blind help
 
 ---
 # Audio
@@ -41,3 +41,21 @@
 ---
 # Networking
 - [ ] **IDK how i will go about doing this, but i wont use steam network.**
+--- 
+# Bullets
+
+### 1. Big Bullet
+- [x] Scythe Bullet
+	Is fixed at pivot at handle and rotates, also deals more damage at the tip
+- [ ] Slasher bullet
+	They cover a huge area but deal little damage.
+- [ ] Bomb bullet
+	A bullet which explodes after a given team, dealing AOE damage.
+### 2. Small Bullet
+- [x] Boomerang Bullet
+	Goes forward and then returns back like a boomerang
+- [X] Homing Bullet
+	Heat-seek the player for a time, when it has fuel and runs out quickly
+### 3. Normal Bullet
+- [X] Missile Bullet
+	Starts slow and picks up speed, its damage increases with increase in speed
