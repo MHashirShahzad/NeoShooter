@@ -9,8 +9,8 @@ class_name Player2D
 @export var speed : int = 60000
 @export var friction : float = 0.2
 @export var acceleration : float = 0.4
-@export var tilt_strength_x: float = 0.1  # Tilt intensity for X-axis
-@export var tilt_strength_y: float = 0.1  # Tilt intensity for Y-axis
+@export var tilt_strength_x: float = 0.1  
+@export var tilt_strength_y: float = 0.1  
 @export var tilt_speed: float = 10.0  # Speed of the tilt adjustment
 
 
@@ -60,6 +60,7 @@ func move(delta : float) -> void:
 	wish_dir = Input.get_vector(input.left, input.right, input.up, input.down)
 	
 	skew_char()
+	# calculate_tilt(delta)
 	direction = (Vector2(wish_dir.x, wish_dir.y)).normalized()
 	
 	if direction:
@@ -197,3 +198,34 @@ func skew_char() -> void:
 		body.skew = -body.skew 
 		return
 	body.skew = wish_dir.y / 8
+
+
+### DOESNT SEEM TO WORK SAMEE AS THE FUNC BEELOW IT
+func calculate_tilt(delta : float):
+	# Smoothly interpolate tilt values
+	tilt_x = lerp(tilt_x, -wish_dir.y * tilt_strength_x, tilt_speed * delta)
+	tilt_y = lerp(tilt_y, wish_dir.x * tilt_strength_y, tilt_speed * delta)
+
+	# Create a custom Transform2D matrix for tilting
+	var base_transform = get_transform()  # Preserve existing rotation/scale/position
+	var tilt = Transform2D(
+		Vector2(1, tilt_y),  # Modify the X-axis for Y-axis tilt
+		Vector2(tilt_x, 1),  # Modify the Y-axis for X-axis tilt
+		base_transform.origin  # Preserve the translation (position)
+	)
+
+	# Apply the tilt while maintaining base rotation
+	set_transform(base_transform * tilt)
+
+
+
+### BY GOD I DONT KNOW WHAT THIS DOES, BUT DONT U DARE TOUCH IT
+### I AM TELLING U
+func compose_transform(translation: Vector2, rot: float, skew_y: float, size: Vector2) -> Transform2D:
+	var t := Transform2D()
+	t[0][0] = cos(rot + skew_y) * size.x
+	t[0][1] = sin(rot + skew_y) * size.x
+	t[1][0] = -sin(rot) * size.y
+	t[1][1] = cos(rot) * size.y
+	t[2] = translation
+	return t

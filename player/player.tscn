@@ -237,7 +237,6 @@ _data = {
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_a7y8v")
-near_death_color = Color(0.45098, 0.0901961, 0.176471, 1)
 input = ExtResource("2_maebw")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
