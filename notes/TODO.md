@@ -27,11 +27,17 @@
 ---
 # Accessibility
 - [ ] Game's hit-stop is frame rate dependent right now, we will have to fix it.
-- [ ] Color blind help
+- [ ] Color blind settings
+	Although i tried my best to make it possible to use shapes to signify different objects
 
 ---
 # Audio
+*"@YellowDude ye ap ka kam hai"*
 - [ ] Multiple layered audio, for intense situations or when the player is near death.
+- [ ] Shoot sounds
+- [ ] Hit sounds
+- [ ] Ability recharge sounds
+- [ ] Bullets recharge sounds
 
 ---
 # Effects
