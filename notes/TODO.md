@@ -14,7 +14,7 @@
 # Levels
 - [ ] Asteroid level
 	Asteroids appear and move in a rand fixed direction, after recieving enough damage they explode, asteroids would be rare
-	![[asteroid-level.png]]
+	![[notes/asteroid-level.png]]
 - [ ] Flasher level (koi aur nam tajweez karo)
 	A bullet shooting machine rotates around the orbits of the map and shoots bullets
 	![[flasher-level.png]]
