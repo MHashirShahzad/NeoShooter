@@ -1,4 +1,4 @@
-[![View TODO](https://img.shields.io/badge/View-TODO-blue)](../notes/TODO.md)
+[![View TODO](https://img.shields.io/badge/View-TODO-blue)](/notes/TODO.md)
 # NeoShooter 🚀🎮
 
 **NeoShooter** is a fast-paced, 2-player space shooter game with an abstract, neon-inspired aesthetic. Challenge your friends to an intense battle in a vibrant, glowing battlefield where reflexes and strategy decide the winner!
