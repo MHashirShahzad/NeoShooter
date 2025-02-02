@@ -1,5 +1,7 @@
 *This is a brief list of things we have to do, or later we will do*
 
+# Political Ideology
+- Enforce Communism on a custom country
 
 # Abilities
 *Might be added later!*
@@ -87,3 +89,9 @@
 ### 3. Normal Bullet
 - [X] Missile Bullet
 	Starts slow and picks up speed, its damage increases with increase in speed
+
+# UI
+- [ ] HUD
+- [ ] Rayyan says ui sucks, i agreee time to fix it :C
+- [X] Working UI
+- [ ] A neonish good looking ui, with health and bullet 
