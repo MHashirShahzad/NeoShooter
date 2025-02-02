@@ -5,7 +5,7 @@
 *Might be added later!*
 
 - [ ] Invincibility 
-When player is invincible he is RGB and he changes his colors
+- When player is invincible he is RGB and he changes his colors
 
 - [ ] Dash
 	Dashing in a fixed direction based on input to dodge bullets
