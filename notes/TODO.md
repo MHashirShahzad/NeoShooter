@@ -1,6 +1,6 @@
 *This is a brief list of things we have to do, or later we will do*
 
----
+
 # Abilities
 *Might be added later!*
 
@@ -10,27 +10,48 @@
 - [ ] Dash
 - Dashing in a fixed direction based on input to dodge bullets
 
----
+	
 # Levels
-- [ ] Asteroid level
-- Asteroids appear and move in a rand fixed direction, after recieving enough damage they explode, asteroids would be rare
-	![[notes/asteroid-level.png]]
-- [ ] Flasher level (koi aur nam tajweez karo)
-- A bullet shooting machine rotates around the orbits of the map and shoots bullets
-	![[flasher-level.png]]
-- [ ] Draconic level
-- A dragon-ish thingy appears on a random green point and shoots laser in a straight line
-	![[draconic-level.png]]
-- [ ] Tutorial level
-- Telling controls and how and when to use different types of bullets
 
----
+- [ ] Asteroid Level  
+  - Asteroids appear and move in a fixed random direction. After receiving enough damage, they explode. Asteroids will be rare.
+  <details>
+	<summary>Example Image</summary>
+
+	![Asteroid Level Image](asteroid-level.png)
+   
+  </details>
+  
+
+- [ ] Flasher Level (Suggest a better name!)  
+  - A bullet-shooting machine rotates around the orbits of the map and shoots bullets.  
+  <details>
+	<summary>Example Image</summary>
+
+	![Flasher Level Image](flasher-level.png)
+   
+  </details>
+
+- [ ] Draconic Level  
+  - A dragon-like entity appears on a random green point and shoots a laser in a straight line.  
+   <details>
+	<summary>Example Image</summary>
+
+	![Draconic Level Image](draconic-level.png)
+   
+  </details>
+
+- [ ] Tutorial Level  
+  - Explains controls and when to use different types of bullets.
+
+
+
 # Accessibility
 - [ ] Game's hit-stop is frame rate dependent right now, we will have to fix it.
 - [ ] Color blind settings
 - Although i tried my best to make it possible to use shapes to signify different objects
 
----
+
 # Audio
 *"@YellowDude ye ap ka kam hai"*
 - [ ] Multiple layered audio, for intense situations or when the player is near death.
@@ -39,15 +60,16 @@
 - [ ] Ability recharge sounds
 - [ ] Bullets recharge sounds
 
----
+
 # Effects
 - [ ] Multiple Transition Screens
 - [ ] Player spawn animation
 
----
+
 # Networking
 - [ ] **IDK how i will go about doing this, but i wont use steam network.**
---- 
+
+
 # Bullets
 
 ### 1. Big Bullet
