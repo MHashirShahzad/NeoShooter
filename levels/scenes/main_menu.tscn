@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://b6esgdmciuv7n"]
+[gd_scene load_steps=17 format=3 uid="uid://b6esgdmciuv7n"]
 
 [ext_resource type="Texture2D" uid="uid://b0xltc2iphdel" path="res://assets/NeoShooterLogo.svg" id="1_clxpc"]
 [ext_resource type="Script" path="res://levels/main_menu.gd" id="1_f6xqg"]
@@ -30,14 +30,6 @@ shadow_size = 10
 shadow_offset = Vector2(10, 10)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hiiyd"]
-resource_local_to_scene = true
-shader = ExtResource("6_71mhu")
-shader_parameter/glow_color = Color(0.12549, 0.839216, 0.780392, 1)
-shader_parameter/glow_power = 2.0
-shader_parameter/glow_shift = 1.0
-shader_parameter/glow_radius = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vihq8"]
 resource_local_to_scene = true
 shader = ExtResource("6_71mhu")
 shader_parameter/glow_color = Color(0.12549, 0.839216, 0.780392, 1)
@@ -478,9 +470,6 @@ offset_bottom = 324.0
 
 [node name="Label" parent="CanvasLayer/OptionBtn/TabContainer/Effects/Settings/Glow" index="0"]
 material = SubResource("ShaderMaterial_hiiyd")
-
-[node name="Label" parent="CanvasLayer/OptionBtn/TabContainer/Effects/Settings/Hit Effect" index="0"]
-material = SubResource("ShaderMaterial_vihq8")
 
 [node name="AniPlayer" type="AnimationPlayer" parent="."]
 libraries = {

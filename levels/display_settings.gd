@@ -1,4 +1,6 @@
 extends Control
+class_name DisplaySettings
+
 
 @onready var full_screen_btn: TweenedButton = %FullScreenBtn
 @onready var vsync_btn: TweenedButton = $Controls/Vsync/VsyncBtn
@@ -22,7 +24,6 @@ func match_display_settings():
 			vsync_btn.button_pressed = true
 		_:
 			vsync_btn.button_pressed = false
-
 
 func _on_full_screen_btn_toggled(toggled_on: bool) -> void:
 	if toggled_on:

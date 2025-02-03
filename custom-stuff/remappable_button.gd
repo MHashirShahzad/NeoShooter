@@ -4,6 +4,8 @@ class_name Remap_Button
 # Variables <=====================================================================================>
 @export var action : String
 
+# should get default event
+@onready var default_event : InputEvent = InputMap.action_get_events(action)[0]
 # Actual Code <=====================================================================================>
 
 # When created
@@ -16,11 +18,18 @@ func _ready():
 	set_process_unhandled_input(false)
 	load_user_input()
 	update_key_text()
+	# default_event = InputMap.action_get_events(action)[0]
+	
 	self.pressed.connect(_on_pressed)
 	
 	self.mouse_entered.connect(_on_hovered)
 	self.focus_entered.connect(_on_hovered)
-	
+
+## Returns to default settings
+func reset_to_default() -> void:
+	InputMap.action_erase_events(action)
+	InputMap.action_add_event(action, default_event)
+	update_key_text()
 
 # On clicked
 func _toggled(button_pressed):

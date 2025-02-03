@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://df7t4mmry7iih"]
+[gd_scene load_steps=21 format=3 uid="uid://df7t4mmry7iih"]
 
 [ext_resource type="Script" path="res://levels/option_btn.gd" id="1_u3d61"]
 [ext_resource type="Theme" uid="uid://dbukeuyrs33sq" path="res://custom-stuff/default_theme.tres" id="2_a6mdd"]
@@ -7,7 +7,9 @@
 [ext_resource type="Script" path="res://levels/display_settings.gd" id="4_w5fkt"]
 [ext_resource type="Shader" path="res://camera/chromatic_abberatiob.gdshader" id="5_41fe5"]
 [ext_resource type="Script" path="res://custom-stuff/tweened_button.gd" id="6_4eoqf"]
+[ext_resource type="Script" path="res://levels/scenes/audio_settings.gd" id="6_j1jkp"]
 [ext_resource type="Shader" path="res://levels/glow.gdshader" id="6_lsnb0"]
+[ext_resource type="Script" path="res://levels/scenes/effects_settings.gd" id="8_1dwf1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lxtfj"]
 bg_color = Color(0.141176, 0.133333, 0.203922, 1)
@@ -579,19 +581,20 @@ visible = false
 layout_mode = 2
 theme = ExtResource("2_a6mdd")
 follow_focus = true
+script = ExtResource("6_j1jkp")
 metadata/_tab_index = 2
 
-[node name="Controls" type="VBoxContainer" parent="TabContainer/Audio"]
+[node name="Settings" type="VBoxContainer" parent="TabContainer/Audio"]
 custom_minimum_size = Vector2(1000, 0)
 layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="MainLabel" type="HBoxContainer" parent="TabContainer/Audio/Controls"]
+[node name="MainLabel" type="HBoxContainer" parent="TabContainer/Audio/Settings"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="TabContainer/Audio/Controls/MainLabel"]
+[node name="Label" type="Label" parent="TabContainer/Audio/Settings/MainLabel"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
@@ -599,35 +602,35 @@ text = "--------- Sound settings ---------"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Music" type="HBoxContainer" parent="TabContainer/Audio/Controls"]
+[node name="Music" type="HBoxContainer" parent="TabContainer/Audio/Settings"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="TabContainer/Audio/Controls/Music"]
+[node name="Label" type="Label" parent="TabContainer/Audio/Settings/Music"]
 show_behind_parent = true
 custom_minimum_size = Vector2(400, 40)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Music Volume"
 
-[node name="HSeparator2" type="HSeparator" parent="TabContainer/Audio/Controls/Music"]
+[node name="HSeparator2" type="HSeparator" parent="TabContainer/Audio/Settings/Music"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
 
-[node name="MusicSlider" type="HSlider" parent="TabContainer/Audio/Controls/Music"]
+[node name="MusicSlider" type="HSlider" parent="TabContainer/Audio/Settings/Music"]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 max_value = 10.0
 step = 0.25
 script = ExtResource("4_2vuxb")
 
-[node name="HSeparator3" type="HSeparator" parent="TabContainer/Audio/Controls/Music"]
+[node name="HSeparator3" type="HSeparator" parent="TabContainer/Audio/Settings/Music"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
 
-[node name="MusicEdit" type="SpinBox" parent="TabContainer/Audio/Controls/Music"]
+[node name="MusicEdit" type="SpinBox" parent="TabContainer/Audio/Settings/Music"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 focus_neighbor_top = NodePath("../../..")
@@ -638,35 +641,35 @@ step = 0.1
 alignment = 1
 select_all_on_focus = true
 
-[node name="SFX" type="HBoxContainer" parent="TabContainer/Audio/Controls"]
+[node name="SFX" type="HBoxContainer" parent="TabContainer/Audio/Settings"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="TabContainer/Audio/Controls/SFX"]
+[node name="Label" type="Label" parent="TabContainer/Audio/Settings/SFX"]
 show_behind_parent = true
 custom_minimum_size = Vector2(400, 40)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Sound Effects Volume"
 
-[node name="HSeparator2" type="HSeparator" parent="TabContainer/Audio/Controls/SFX"]
+[node name="HSeparator2" type="HSeparator" parent="TabContainer/Audio/Settings/SFX"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
 
-[node name="SFXSlider" type="HSlider" parent="TabContainer/Audio/Controls/SFX"]
+[node name="SFXSlider" type="HSlider" parent="TabContainer/Audio/Settings/SFX"]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 max_value = 10.0
 step = 0.25
 script = ExtResource("4_2vuxb")
 
-[node name="HSeparator3" type="HSeparator" parent="TabContainer/Audio/Controls/SFX"]
+[node name="HSeparator3" type="HSeparator" parent="TabContainer/Audio/Settings/SFX"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
 
-[node name="SFXEdit" type="SpinBox" parent="TabContainer/Audio/Controls/SFX"]
+[node name="SFXEdit" type="SpinBox" parent="TabContainer/Audio/Settings/SFX"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../../Master/MasterEdit")
@@ -676,35 +679,35 @@ step = 0.1
 alignment = 1
 select_all_on_focus = true
 
-[node name="Master" type="HBoxContainer" parent="TabContainer/Audio/Controls"]
+[node name="Master" type="HBoxContainer" parent="TabContainer/Audio/Settings"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="TabContainer/Audio/Controls/Master"]
+[node name="Label" type="Label" parent="TabContainer/Audio/Settings/Master"]
 show_behind_parent = true
 custom_minimum_size = Vector2(400, 40)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Master Volume"
 
-[node name="HSeparator2" type="HSeparator" parent="TabContainer/Audio/Controls/Master"]
+[node name="HSeparator2" type="HSeparator" parent="TabContainer/Audio/Settings/Master"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
 
-[node name="MasterSlider" type="HSlider" parent="TabContainer/Audio/Controls/Master"]
+[node name="MasterSlider" type="HSlider" parent="TabContainer/Audio/Settings/Master"]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 max_value = 10.0
 step = 0.25
 script = ExtResource("4_2vuxb")
 
-[node name="HSeparator3" type="HSeparator" parent="TabContainer/Audio/Controls/Master"]
+[node name="HSeparator3" type="HSeparator" parent="TabContainer/Audio/Settings/Master"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
 
-[node name="MasterEdit" type="SpinBox" parent="TabContainer/Audio/Controls/Master"]
+[node name="MasterEdit" type="SpinBox" parent="TabContainer/Audio/Settings/Master"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../../../../../Back")
@@ -719,6 +722,7 @@ visible = false
 layout_mode = 2
 theme = ExtResource("2_a6mdd")
 follow_focus = true
+script = ExtResource("8_1dwf1")
 metadata/_tab_index = 3
 
 [node name="Settings" type="VBoxContainer" parent="TabContainer/Effects"]
@@ -882,34 +886,34 @@ value = 0.8
 alignment = 1
 select_all_on_focus = true
 
-[node name="Hit Effect" type="HBoxContainer" parent="TabContainer/Effects/Settings"]
+[node name="HitEffect" type="HBoxContainer" parent="TabContainer/Effects/Settings"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="TabContainer/Effects/Settings/Hit Effect"]
+[node name="Label" type="Label" parent="TabContainer/Effects/Settings/HitEffect"]
 custom_minimum_size = Vector2(400, 40)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Hit Effect Label Size"
 vertical_alignment = 1
 
-[node name="HSeparator2" type="HSeparator" parent="TabContainer/Effects/Settings/Hit Effect"]
+[node name="HSeparator2" type="HSeparator" parent="TabContainer/Effects/Settings/HitEffect"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
 
-[node name="LabelSlider" type="HSlider" parent="TabContainer/Effects/Settings/Hit Effect"]
+[node name="LabelSlider" type="HSlider" parent="TabContainer/Effects/Settings/HitEffect"]
 custom_minimum_size = Vector2(200, 40)
 layout_mode = 2
 value = 40.0
 script = ExtResource("4_2vuxb")
 
-[node name="HSeparator3" type="HSeparator" parent="TabContainer/Effects/Settings/Hit Effect"]
+[node name="HSeparator3" type="HSeparator" parent="TabContainer/Effects/Settings/HitEffect"]
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_3kxak")
 
-[node name="Edit" type="SpinBox" parent="TabContainer/Effects/Settings/Hit Effect"]
+[node name="Edit" type="SpinBox" parent="TabContainer/Effects/Settings/HitEffect"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 value = 40.0
@@ -932,6 +936,21 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Back
 "
+script = ExtResource("6_4eoqf")
+
+[node name="Reset" type="Button" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = -48.0
+offset_right = 210.0
+offset_bottom = -11.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.705882, 0.12549, 0.164706, 1)
+text = "Reset"
 script = ExtResource("6_4eoqf")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -976,17 +995,4 @@ horizontal_alignment = 1
 
 [connection signal="toggled" from="TabContainer/Display/Controls/FullScreen/FullScreenBtn" to="TabContainer/Display" method="_on_full_screen_btn_toggled"]
 [connection signal="toggled" from="TabContainer/Display/Controls/Vsync/VsyncBtn" to="TabContainer/Display" method="_on_vsync_btn_toggled"]
-[connection signal="value_changed" from="TabContainer/Audio/Controls/Music/MusicSlider" to="." method="_on_music_slider_value_changed"]
-[connection signal="value_changed" from="TabContainer/Audio/Controls/Music/MusicEdit" to="." method="_on_music_edit_value_changed"]
-[connection signal="value_changed" from="TabContainer/Audio/Controls/SFX/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
-[connection signal="value_changed" from="TabContainer/Audio/Controls/SFX/SFXEdit" to="." method="_on_sfx_edit_value_changed"]
-[connection signal="value_changed" from="TabContainer/Audio/Controls/Master/MasterSlider" to="." method="_on_master_slider_value_changed"]
-[connection signal="value_changed" from="TabContainer/Audio/Controls/Master/MasterEdit" to="." method="_on_master_edit_value_changed"]
-[connection signal="value_changed" from="TabContainer/Effects/Settings/Chroma/ChromaticAbberationSlider" to="." method="_on_chromatic_abberation_slider_value_changed"]
-[connection signal="value_changed" from="TabContainer/Effects/Settings/Chroma/Edit" to="." method="_on_chroma_edit_value_changed"]
-[connection signal="value_changed" from="TabContainer/Effects/Settings/Camera/CameraShakeSlider" to="." method="_on_camera_shake_slider_value_changed"]
-[connection signal="value_changed" from="TabContainer/Effects/Settings/Camera/Edit" to="." method="_on_cam_shake_edit_value_changed"]
-[connection signal="value_changed" from="TabContainer/Effects/Settings/Glow/GlowSlider" to="." method="_on_glow_slider_value_changed"]
-[connection signal="value_changed" from="TabContainer/Effects/Settings/Glow/Edit" to="." method="_on_glow_edit_value_changed"]
-[connection signal="value_changed" from="TabContainer/Effects/Settings/Hit Effect/LabelSlider" to="." method="_on_label_slider_value_changed"]
-[connection signal="value_changed" from="TabContainer/Effects/Settings/Hit Effect/Edit" to="." method="_on_label_size_edit_value_changed"]
+[connection signal="pressed" from="Reset" to="." method="_on_reset_pressed"]

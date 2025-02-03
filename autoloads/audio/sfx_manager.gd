@@ -90,7 +90,8 @@ func adjust_music_volume():
 	
 	print_debug("---- Music Speed Increased ----")
 
-	var music_speed : float = lerp(1.1, 1.0, lowest_health / 50)
+	var music_speed : float = lerp(1.06, 1.0, lowest_health / 50)
+	
 	print("- Music_Speed : ", music_speed," - health : ", (lowest_health / 50))
 	var tween := get_tree().create_tween()
 	tween.tween_property(music_player, "pitch_scale", music_speed, 1)

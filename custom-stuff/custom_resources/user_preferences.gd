@@ -43,10 +43,21 @@ class_name UserPreferences
 
 # Saves as file
 func save() -> void:
-	ResourceSaver.save(self, "user://user_prefs.tres")
+	ResourceSaver.save(self, "user://user-prefs.tres")
+
+## Deletes the previous save file and creates a new one
+## this new save wont have default values for controls as the default controls
+## are stored in each btn separately
+static func create_new_save() -> UserPreferences:
+	## SLOW AS FISH LINE
+	# OS.move_to_trash("user://user-prefs.tres") # causes severe lag
+	## This is way faster if i want to delete 
+	DirAccess.remove_absolute("user://user-prefs.tres")
+	return UserPreferences.new()
+
 # Loads or creates
 static func load_or_create() -> UserPreferences:
-	var res: UserPreferences = load("user://user_prefs.tres") as UserPreferences
+	var res: UserPreferences = load("user://user-prefs.tres") as UserPreferences
 	if !res:
 		res = UserPreferences.new()
 	return res
