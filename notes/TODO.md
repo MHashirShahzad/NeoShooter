@@ -1,8 +1,5 @@
 *This is a brief list of things we have to do, or later we will do*
 
-# Political Ideology
-- Enforce Communism on a custom country
-
 # Abilities
 *Might be added later!*
 
@@ -52,6 +49,8 @@
 - [ ] Game's hit-stop is frame rate dependent right now, we will have to fix it.
 - [ ] Color blind settings
 - Although i tried my best to make it possible to use shapes to signify different objects
+- [ ] Outline Settings
+- To make the objects easier to focus, maybe implement this.
 
 
 # Audio

@@ -17,6 +17,7 @@ func _ready() -> void:
 	
 
 ## I KNOW ITS BAD but i dont want to set focus mannually :C
+## also appends them to an array and sets their custom-minimum-size cuz i need that
 func set_correct_neighbors_remappable_buttons():
 	var controls : VBoxContainer = $TabContainer/Controls/Controls
 	var prev_button : Remap_Button
@@ -63,8 +64,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 		tab_bar.current_tab += 1
 	
-
-
 func _on_reset_pressed() -> void:
 	GameManager.user_prefs = UserPreferences.create_new_save()
 	GameManager.user_prefs.save()
