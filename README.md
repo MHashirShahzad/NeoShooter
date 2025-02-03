@@ -1,4 +1,6 @@
 [![View TODO](https://img.shields.io/badge/View-TODO-blue)](/notes/TODO.md) [![MIT License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+[![Assets Used](https://img.shields.io/badge/Assets-Used-red)](/notes/assets-license.md)
+
 
 # NeoShooter 🚀🎮
 
