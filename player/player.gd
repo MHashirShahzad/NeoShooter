@@ -9,10 +9,14 @@ class_name Player2D
 @export var speed : int = 60000
 @export var friction : float = 0.2
 @export var acceleration : float = 0.4
+## DEPRECATED
 @export var tilt_strength_x: float = 0.1  
-@export var tilt_strength_y: float = 0.1  
+## DEPRECATED
+@export var tilt_strength_y: float = 0.1 
+## DEPRECATED 
 @export var tilt_speed: float = 10.0  # Speed of the tilt adjustment
-
+## rotation speed of sway/skew during movement
+@export var rotation_speed : float = 40
 
 @export_group("Input")
 @export var input : CustomInput
@@ -37,8 +41,14 @@ var direction : Vector2
 var wish_dir : Vector2
 var health : float = 100
 var spawned_bullets : int = 0
+
+## DEPRECATED
 var tilt_x: float = 0.0
 var tilt_y: float = 0.0
+## SAME AS THE ABOVE ONES used for sway/skew
+var rotation_x : float = 0.0
+var rotation_y : float = 0.0
+
 var is_dead : bool = false
 var equipped_bullets : EquippedBullets = null
 # =============================================================================================
@@ -55,11 +65,11 @@ func move(delta : float) -> void:
 		# lerp velocity to 0 still even if input is disabled :C
 		velocity = velocity.lerp(Vector2.ZERO, friction)
 		wish_dir = Vector2(0, 0)
-		skew_char() # skews to default when wish dir is 0 0
+		skew_char(delta) # skews to default when wish dir is 0 0
 		return
 	wish_dir = Input.get_vector(input.left, input.right, input.up, input.down)
 	
-	skew_char()
+	skew_char(delta)
 	# calculate_tilt(delta)
 	direction = (Vector2(wish_dir.x, wish_dir.y)).normalized()
 	
@@ -192,19 +202,28 @@ func bullets_refilled() -> void:
 		20
 	)
 
-func skew_char() -> void:
-	if is_equal_approx(self.rotation_degrees, -90):
-		body.skew = wish_dir.y / 8
-		body.skew = -body.skew 
-		return
-	body.skew = wish_dir.y / 8
+## SWAY
+func skew_char(delta: float) -> void:
+	## old code
+	#if is_equal_approx(self.rotation_degrees, -90):
+		#body.skew = wish_dir.y / 8
+		#body.skew = -body.skew 
+		#return
+	#body.skew = wish_dir.y / 8
 	
 	# 3d rotation doesnt look as nice as skewing
-	
-	#body.material.set("shader_parameter/y_degrees", wish_dir.y * 40)
-	#body.material.set("shader_parameter/x_degrees", wish_dir.x * 30)
+	rotation_x = lerp(rotation_x, wish_dir.x * 20, rotation_speed * delta)
+	rotation_y = lerp(rotation_y, wish_dir.y * 30, rotation_speed * delta)
+	print_debug("\n - SPEED: ",rotation_speed,
+	 " X: ", rotation_x,
+	 " Y: ", rotation_y
+	)
+	#rotation_x = 
+	body.material.set("shader_parameter/y_degrees", rotation_y)
+	body.material.set("shader_parameter/x_degrees", rotation_x)
 
 ### DOESNT SEEM TO WORK SAMEE AS THE FUNC BEELOW IT
+## also dont use it use `skew_char(delta)`
 func calculate_tilt(delta : float):
 	# Smoothly interpolate tilt values
 	tilt_x = lerp(tilt_x, -wish_dir.y * tilt_strength_x, tilt_speed * delta)
@@ -220,7 +239,6 @@ func calculate_tilt(delta : float):
 
 	# Apply the tilt while maintaining base rotation
 	set_transform(base_transform * tilt)
-
 
 
 ### BY GOD I DONT KNOW WHAT THIS DOES, BUT DONT U DARE TOUCH IT
