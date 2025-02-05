@@ -21,7 +21,7 @@ func start_transition():
 			await animation_player.animation_finished
 			
 	color_rect.show()
-	animation_player.play(["fade_out1", "fade_out2", "fade_out_saw"].pick_random())
+	animation_player.play(["fade_out1", "fade_out2", "fade_out_saw", "fade_out_diagonal"].pick_random())
 
 func start_half_transition():
 	animation_player.play("fade_in1")
@@ -48,21 +48,21 @@ func transition_scene_file(scene_path : String) -> void:
 ## DONT CALL PLAYS THE FADE IN ANIMATION FOR THE FADE OUT ANIMATION
 func play_fade_in_animation(anim_name : String):
 	transiton_finsihed.emit()
-	anim_name = anim_name.replace("fade_out", "")
-	
+	anim_name = anim_name.replace("fade_out", "fade_in")
 	print_debug(anim_name)
 	
-	match anim_name:
-		"1":
-			animation_player.play("fade_in1")
-		"2":
-			animation_player.play("fade_in2")
-		
-		# except numbers will have an _ before them
-		# i know bad code
-		"_pixel":
-			animation_player.play("fade_in_pixel")
-		"_hex":
-			animation_player.play("fade_in_hex")
-		"_saw":
-			animation_player.play("fade_in_saw")
+	animation_player.play(anim_name)
+	#match anim_name:
+		#"1":
+			#animation_player.play("fade_in1")
+		#"2":
+			#animation_player.play("fade_in2")
+		#
+		## except numbers will have an _ before them
+		## i know bad code
+		#"_pixel":
+			#animation_player.play("fade_in_pixel")
+		#"_hex":
+			#animation_player.play("fade_in_hex")
+		#"_saw":
+			#animation_player.play("fade_in_saw")
