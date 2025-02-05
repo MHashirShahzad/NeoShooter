@@ -114,3 +114,15 @@
 - [ ] Show casee different bullets
 - [ ] Try to get views and github-stars :C
 - [ ] Music should be synced with effects, for maximum coolness.
+
+**Progression:**
+1. A single bullet is in focus, and it is traveling slowely, the camera zooms out a little and shows a spaceship.
+2. The spaceship dodges the bullet and the camera suddenly zooms out, revealing the entire stage.
+3. Camera fades out.
+4. Revealing the level-select screen. (Feels wierd tho)
+5. Showcase swappable bullets
+6. With the player at a constant position, swap levels at an increasing speeed.
+7. Increasing gameplay intensitiy
+8. Showcase abillities.
+9. In the ending show the draconic enemy charging the laser.
+10. Suddenly End the trailer.
