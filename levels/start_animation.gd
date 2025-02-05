@@ -83,7 +83,7 @@ func parse_command_line_args():
 
 	## PURE BRAIN ROT COLORS
 	print_rich("[color=red]C[/color][color=blue]M[/color][color=green]D[/color] [color=yellow]L[/color][color=cyan]I[/color][color=magenta]N[/color][color=orange]E[/color] ARGS EXIST!!!!")
-	print_rich("[color=red] SYNTAX: --val1 --val2 [/color]")
+	print_rich("[color=red] [b]SYNTAX:[/b] [i]--val1 --val2[/i] [/color]")
 
 	print("==============================================")
 
@@ -97,13 +97,16 @@ func parse_command_line_args():
 
 	if arguments.keys().has("royn"):
 		print("SKILL ISSUE")
+		UIManager.death_quotes.append("Zamn, that was even worse than Royn.")
 
-## add rich here @HASHIR
+	## add rich here @HASHIR
 	if arguments.keys().has("loe"):
-		print("is earth lost or are we lost on earth")
-
+		print_rich("[center][i][b]###########################################[/b][/i][/center]")
+		print_rich("[center][i][b]#  Is earth lost or are we lost on earth  #[/b][/i][/center]")
+		print_rich("[center][i][b]###########################################[/b][/i][/center]")
+		
 	if arguments.keys().has("pentagram"):
-			print(":skull:💀")
+			print(":skull: 💀")
 
 
 	if arguments.keys().has("yellow"):
