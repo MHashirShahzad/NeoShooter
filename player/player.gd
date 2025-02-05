@@ -214,10 +214,10 @@ func skew_char(delta: float) -> void:
 	# 3d rotation doesnt look as nice as skewing
 	rotation_x = lerp(rotation_x, wish_dir.x * 20, rotation_speed * delta)
 	rotation_y = lerp(rotation_y, wish_dir.y * 30, rotation_speed * delta)
-	print_debug("\n - SPEED: ",rotation_speed,
-	 " X: ", rotation_x,
-	 " Y: ", rotation_y
-	)
+	#print_debug("\n - SPEED: ",rotation_speed,
+	 #" X: ", rotation_x,
+	 #" Y: ", rotation_y
+	#)
 	#rotation_x = 
 	body.material.set("shader_parameter/y_degrees", rotation_y)
 	body.material.set("shader_parameter/x_degrees", rotation_x)

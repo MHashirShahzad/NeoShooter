@@ -5,7 +5,7 @@ class_name BoomerangBullet2D
 @export var acceleration : float = 1000
 
 func _process(delta: float) -> void:
-	rotation += delta * rotation_speed
+	rotation += delta * rotation_speed * abs(speed / 1000)
 	speed -= delta * acceleration
 
 # override timer

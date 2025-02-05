@@ -47,7 +47,7 @@ func transition_scene_file(scene_path : String) -> void:
 
 ## DONT CALL PLAYS THE FADE IN ANIMATION FOR THE FADE OUT ANIMATION
 func play_fade_in_animation(anim_name : String):
-	transiton_finsihed.emit()
+	transiton_finsihed.emit()	
 	anim_name = anim_name.replace("fade_out", "fade_in")
 	print_debug(anim_name)
 	

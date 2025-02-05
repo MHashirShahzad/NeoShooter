@@ -1,11 +1,23 @@
 extends Control
 
-@onready var label: Label = $UILayer/Label
-@onready var pause_menu : CanvasLayer = $Pause
-@onready var vic_screen: CanvasLayer = $VictoryScreen
-@onready var vic_screen_label: Label = $VictoryScreen/Transition/Label
 
-const  LEVEL_SELECT :  PackedScene = preload("res://levels/scenes/level_select.tscn")
+@export var death_quotes : Array[String] = [
+	"Maybe, Try being better.", "GitGud Loser",
+	"The game lagged fr fr.", "Go yell at Hashir, he is the reason for this.",
+	"Skill Issue.", "sudo rm -rf ./Linux.x86_64 might solve all of your problems",
+	"Try: Alt + F4 or Ctrl + Q", "He is cheating"
+]
+
+
+@onready var ui_layer : CanvasLayer = $UILayer
+@onready var label : Label = $UILayer/Label
+@onready var pause_menu : CanvasLayer = $Pause
+
+@onready var vic_screen : CanvasLayer = $VictoryScreen
+@onready var vic_screen_label : Label = $VictoryScreen/Transition/Label
+@onready var death_quote_label : Label = $VictoryScreen/Transition/DeathQuoteLabel
+
+const LEVEL_SELECT :  PackedScene = preload("res://levels/scenes/level_select.tscn")
 const MAIN_MENU :  PackedScene = preload("res://levels/scenes/main_menu.tscn")
 
 const MAIN_MENU_MUSIC : AudioStream = preload("res://assets/audio/music/hashir/main_menu.mp3")
@@ -95,6 +107,7 @@ func _on_main_menu_btn_pressed() -> void:
 func show_death_screen(player: Player2D) -> void:
 	can_pause = false
 	vic_screen.show()
+	show_random_death_quote()
 	$VictoryScreen/VicAniPlayer.play("transition")
 	$VictoryScreen/Transition/VBoxContainer/Restart.grab_focus()
 	if player == GameManager.p1:
@@ -104,3 +117,6 @@ func show_death_screen(player: Player2D) -> void:
 	elif player == GameManager.p2:
 		vic_screen_label.text = "--------- Player 1 Wins ---------"
 		vic_screen_label.set("theme_override_colors/font_color", GameManager.p1.body.color)
+
+func show_random_death_quote() -> void:
+	death_quote_label.text = death_quotes.pick_random()
