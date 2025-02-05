@@ -80,21 +80,37 @@
 ### 1. Big Bullet
 - [x] Scythe Bullet
 - Is fixed at pivot at handle and rotates, also deals more damage at the tip
+  
 - [ ] Slasher bullet
 - They cover a huge area but deal little damage.
+  
 - [ ] Bomb bullet
 - A bullet which explodes after a given team, dealing AOE damage.
+
+
 ### 2. Small Bullet
 - [x] Boomerang Bullet
 - Goes forward and then returns back like a boomerang
+  
 - [X] Homing Bullet
 - Heat-seek the player for a time, when it has fuel and runs out quickly
+  
 ### 3. Normal Bullet
 - [X] Missile Bullet
-	Starts slow and picks up speed, its damage increases with increase in speed
-
+- Starts slow and picks up speed, its damage increases with increase in speed
+  
+- [ ] Dual Bullet
+- Shoots a bullet, which breaks into two bullets.
+- One goes diagonally up and the other goes diagonally down.
+      
 # UI
 - [ ] HUD
 - [ ] Rayyan says ui sucks, i agreee time to fix it :C
 - [X] Working UI
 - [ ] A neonish good looking ui, with health and bullet 
+
+# Trailer
+- [ ] Show case different levels
+- [ ] Show casee different bullets
+- [ ] Try to get views and github-stars :C
+- [ ] Music should be synced with effects, for maximum coolness.
