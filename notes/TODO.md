@@ -9,6 +9,10 @@
 - [ ] Dash
 - Dashing in a fixed direction based on input to dodge bullets
 
+- [ ] Parry
+- Parrying causes the bullet to reverse its direction and color, it increases the speed and damage by 1.5x
+- After parrying the bullet cant hit you, you become to_ignore.
+
 
 # Levels
 
