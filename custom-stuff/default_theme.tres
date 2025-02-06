@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=30 format=3 uid="uid://dbukeuyrs33sq"]
+[gd_resource type="Theme" load_steps=32 format=3 uid="uid://dbukeuyrs33sq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vqkbl"]
 bg_color = Color(0.0235294, 0.0235294, 0.0313726, 1)
@@ -183,6 +183,22 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y0ldo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_no20k"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.45098, 0.0901961, 0.176471, 1)
+skew = Vector2(0.2, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.0235294, 0.0235294, 0.0313726, 1)
+corner_detail = 6
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q2tey"]
 
 [sub_resource type="ImageTexture" id="ImageTexture_ebknd"]
@@ -294,6 +310,9 @@ LineEdit/styles/focus = SubResource("StyleBoxFlat_e17ed")
 LineEdit/styles/normal = SubResource("StyleBoxFlat_i4hsy")
 PopupMenu/styles/hover = SubResource("StyleBoxFlat_alerg")
 PopupMenu/styles/panel = SubResource("StyleBoxFlat_6rmwr")
+ProgressBar/colors/font_color = Color(0.705882, 0.12549, 0.164706, 1)
+ProgressBar/styles/background = SubResource("StyleBoxEmpty_y0ldo")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_no20k")
 ScrollContainer/styles/panel = SubResource("StyleBoxEmpty_q2tey")
 SpinBox/icons/updown = SubResource("ImageTexture_ebknd")
 TabContainer/colors/font_hovered_color = Color(0.737255, 0.290196, 0.607843, 1)

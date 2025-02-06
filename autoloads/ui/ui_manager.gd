@@ -5,12 +5,13 @@ extends Control
 	"Maybe, Try being better.", "GitGud Loser",
 	"The game lagged fr fr.", "Go yell at Hashir, he is the reason for this.",
 	"Skill Issue.", "sudo rm -rf ./Linux.x86_64 might solve all of your problems",
-	"Try: Alt + F4 or Ctrl + Q", "He is cheating"
+	"Try: Alt + F4 or Ctrl + Q", "He is cheating",
+	"You lifeless BRAT!"
 ]
 
+@onready var player1_hud: PlayerHud = $UILayer/Player1Hud
 
 @onready var ui_layer : CanvasLayer = $UILayer
-@onready var label : Label = $UILayer/Label
 @onready var pause_menu : CanvasLayer = $Pause
 
 @onready var vic_screen : CanvasLayer = $VictoryScreen
@@ -30,18 +31,15 @@ func _ready() -> void:
 	pause_menu.hide()
 	vic_screen.hide()
 
-func _process(delta: float) -> void:
-	update_health()
 	
 func update_health():
 	if get_tree().paused:
 		return
 	if !can_update_health:
 		return
-	
 	var p1_health : float =  GameManager.p1.health
 	var p2_health : float = GameManager.p2.health
-	label.text = "P1: " + str(p1_health) + " P2: " + str(p2_health)
+	player1_hud.update_health_bar(p1_health)
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("back"): 

@@ -36,7 +36,7 @@ window/stretch/mode="canvas_items"
 
 [editor]
 
-run/main_run_args="--loe"
+run/main_run_args="--loe --pentagram"
 
 [editor_plugins]
 

@@ -1,0 +1,97 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3h2cnb5vivfu"]
+
+[ext_resource type="Script" path="res://autoloads/ui/player-hud/player_hud.gd" id="1_0dt5t"]
+[ext_resource type="Theme" uid="uid://dbukeuyrs33sq" path="res://custom-stuff/default_theme.tres" id="2_dssmf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pltnd"]
+draw_center = false
+skew = Vector2(0.2, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2d5b8"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.0784314, 0.0627451, 0.0745098, 1)
+skew = Vector2(0.2, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.0235294, 0.0235294, 0.0313726, 1)
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rvmsk"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(1, 1, 1, 1)
+skew = Vector2(0.2, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.0235294, 0.0235294, 0.0313726, 1)
+corner_detail = 6
+
+[node name="PlayerHud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0dt5t")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 24.0
+offset_right = 185.0
+offset_bottom = 74.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_pltnd")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(190, 0)
+layout_mode = 2
+offset_right = 180.0
+offset_bottom = 20.0
+text = "- Player 1 -"
+horizontal_alignment = 1
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(100, 8)
+layout_mode = 2
+offset_left = 81.0
+offset_top = 31.0
+offset_right = 181.0
+offset_bottom = 39.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_dssmf")
+value = 60.0
+show_percentage = false
+
+[node name="DamageBar" type="ProgressBar" parent="HealthBar"]
+show_behind_parent = true
+custom_minimum_size = Vector2(100, 8)
+layout_mode = 2
+offset_right = 100.0
+offset_bottom = 8.0
+theme = ExtResource("2_dssmf")
+theme_override_styles/background = SubResource("StyleBoxFlat_2d5b8")
+theme_override_styles/fill = SubResource("StyleBoxFlat_rvmsk")
+value = 80.0
+show_percentage = false

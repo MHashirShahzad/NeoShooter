@@ -55,7 +55,6 @@ var equipped_bullets : EquippedBullets = null
 # Code
 
 
-
 func _physics_process(delta: float) -> void:
 	move(delta)
 	move_and_slide()
@@ -141,8 +140,10 @@ func on_hit(dmg: float, hitbox : HitBox) -> void:
 	# death vfx are handled in die()
 	if health <= 0:
 		health = 0
+		UIManager.update_health()
 		die()
 	else: 
+		UIManager.update_health()
 		VFXManager.hit_effects(hitbox, dmg)
 		# adjust music volume accr. to health
 		SFXManager.adjust_music_volume()

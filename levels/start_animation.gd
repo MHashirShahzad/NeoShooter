@@ -30,8 +30,7 @@ func _input(event: InputEvent) -> void:
 			yellow_despawn_ani()
 		_:
 			return
-
-
+	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SFXManager.play_music(MAIN_MENU_MUSIC, -20, 0.5)

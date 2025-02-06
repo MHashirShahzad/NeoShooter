@@ -9,6 +9,7 @@ func _ready() -> void:
 	UIManager.can_update_health = true
 	UIManager.can_pause = true
 	UIManager.ui_layer.show()
+	UIManager.update_health()
 	
 	# loads the bullets from file and assigns them to players 
 	GameManager.assign_bullets_to_players()

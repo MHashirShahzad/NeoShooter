@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://bo2pfa1syoew"]
+[gd_scene load_steps=15 format=3 uid="uid://bo2pfa1syoew"]
 
 [ext_resource type="Script" path="res://autoloads/ui/ui_manager.gd" id="1_u1v7n"]
 [ext_resource type="Shader" path="res://autoloads/ui/darkened_blur.gdshader" id="3_i1qqd"]
+[ext_resource type="PackedScene" uid="uid://d3h2cnb5vivfu" path="res://autoloads/ui/player-hud/player_hud.tscn" id="3_kal77"]
 [ext_resource type="Shader" path="res://autoloads/ui/vignette.gdshader" id="3_les54"]
 [ext_resource type="Script" path="res://custom-stuff/tweened_button.gd" id="4_as521"]
 [ext_resource type="Shader" path="res://autoloads/ui/diamond_transtition.gdshader" id="5_3m8md"]
@@ -141,9 +142,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="UILayer"]
-offset_right = 38.0
-offset_bottom = 23.0
+[node name="Player1Hud" parent="UILayer" instance=ExtResource("3_kal77")]
+offset_left = 47.0
+offset_top = 30.0
+offset_right = 47.0
+offset_bottom = 30.0
+player_name = "Player 3"
 
 [node name="Pause" type="CanvasLayer" parent="."]
 layer = 5
@@ -222,6 +226,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_1782s")
 
 [node name="VictoryScreen" type="CanvasLayer" parent="."]
 layer = 5
+visible = false
 script = ExtResource("5_4rf70")
 
 [node name="Transition" type="ColorRect" parent="VictoryScreen"]
