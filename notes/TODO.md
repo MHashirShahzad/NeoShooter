@@ -102,7 +102,7 @@
 - [ ] Dual Bullet
 - Shoots a bullet, which breaks into two bullets.
 - One goes diagonally up and the other goes diagonally down.
-      
+
 # UI
 - [ ] HUD
 - [ ] Rayyan says ui sucks, i agreee time to fix it :C
