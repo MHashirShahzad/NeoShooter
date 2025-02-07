@@ -21,6 +21,7 @@ description = "A boomerang bullet which reverses its direction after some time"
 label = "[B]"
 
 [node name="ProjHitBox" parent="." index="0"]
+hit_stop = 0.14
 screw_state = 0.15
 screw_state_str = 21.0
 chroma_str = 1.6

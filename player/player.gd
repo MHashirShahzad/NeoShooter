@@ -49,7 +49,14 @@ var health : float = 100:
 var spawned_bullets : int = 0:
 	# update UI for every spawned_bullet change
 	set(value):
+		
+		if value > spawned_bullets:
+			hud.bullet_shoot_ani()
+		else:
+			hud.bullet_refill_ani()
+			
 		spawned_bullets = value
+		
 		if hud:
 			hud.update_bullet_label(max_bullet_count - spawned_bullets)
 

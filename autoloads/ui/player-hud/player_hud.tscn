@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://d3h2cnb5vivfu"]
+[gd_scene load_steps=17 format=3 uid="uid://d3h2cnb5vivfu"]
 
 [ext_resource type="Script" path="res://autoloads/ui/player-hud/player_hud.gd" id="1_0dt5t"]
 [ext_resource type="Theme" uid="uid://dbukeuyrs33sq" path="res://custom-stuff/default_theme.tres" id="2_dssmf"]
 [ext_resource type="FontFile" uid="uid://bwy7qbhgwllym" path="res://assets/font/JetBrains_Mono/static/JetBrainsMono-BoldItalic.ttf" id="2_iax1f"]
 [ext_resource type="FontFile" uid="uid://dtocnf3xtqoev" path="res://assets/font/JetBrains_Mono/static/JetBrainsMono-LightItalic.ttf" id="3_5nnrn"]
 [ext_resource type="PackedScene" uid="uid://wxsjb6hejeqm" path="res://vfx/ui/ui_shoot_vfx.tscn" id="5_v06ou"]
+[ext_resource type="Texture2D" uid="uid://bfx7hm1yc80jr" path="res://autoloads/ui/ui-shoot-effect-sprite.png" id="6_3mlac"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pltnd"]
 resource_local_to_scene = true
@@ -178,6 +179,120 @@ _data = {
 "hit": SubResource("Animation_uuyb6")
 }
 
+[sub_resource type="Animation" id="Animation_w1yko"]
+resource_name = "recharge"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BG:theme_override_styles/panel:border_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.1, 0.166667, 0.2),
+"transitions": PackedFloat32Array(1, 0.840896, 1, 0.840896, 1),
+"update": 0,
+"values": [Color(0.8, 0.8, 0.8, 1), Color(1, 0.988235, 0.25098, 1), Color(0.8, 0.8, 0.8, 1), Color(1, 0.988235, 0.25098, 1), Color(0.8, 0.8, 0.8, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ys5mw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BG:theme_override_styles/panel:border_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.8, 0.8, 0.8, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BG/BulletLabel:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BG/BulletLabel:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(50, 12)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Ui-shoot-effect-sprite:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0kk6g"]
+resource_name = "deplete"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BG/BulletLabel:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.1, 0.166667, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0.988235, 0.25098, 1), Color(1, 1, 1, 1), Color(1, 0.988235, 0.25098, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BG/BulletLabel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.133333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(50, 12), Vector2(42, 12), Vector2(50, 12)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Ui-shoot-effect-sprite:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8pg36"]
+_data = {
+"RESET": SubResource("Animation_ys5mw"),
+"deplete": SubResource("Animation_0kk6g"),
+"recharge": SubResource("Animation_w1yko")
+}
+
 [node name="PlayerHud" type="Control"]
 layout_mode = 3
 anchor_right = 0.165
@@ -205,9 +320,9 @@ scroll_active = false
 [node name="BG" type="Panel" parent="."]
 custom_minimum_size = Vector2(180, 50)
 layout_mode = 0
-offset_left = 1.0
+offset_left = 5.0
 offset_top = 24.0
-offset_right = 181.0
+offset_right = 185.0
 offset_bottom = 74.0
 pivot_offset = Vector2(90, 25)
 theme_override_styles/panel = SubResource("StyleBoxFlat_pltnd")
@@ -251,11 +366,23 @@ text = "[center]Bullets: 6[/center]"
 fit_content = true
 scroll_active = false
 
-[node name="AniPlayer" type="AnimationPlayer" parent="."]
+[node name="HitAniPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_m2ei3")
 }
 
 [node name="SmallCPU" parent="." instance=ExtResource("5_v06ou")]
-visible = false
 position = Vector2(177, 43)
+
+[node name="BulletAniPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8pg36")
+}
+
+[node name="Ui-shoot-effect-sprite" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+z_index = -1
+position = Vector2(192, 51)
+rotation = 0.207694
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_3mlac")

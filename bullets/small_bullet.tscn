@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://curif1tjd6wv4"]
+[gd_scene load_steps=6 format=3 uid="uid://curif1tjd6wv4"]
 
 [ext_resource type="PackedScene" uid="uid://cclo3pqf533bv" path="res://bullets/master_class/main_bullet.tscn" id="1_83854"]
 [ext_resource type="PackedScene" uid="uid://cbtrogwycneft" path="res://vfx/trail_vfx.tscn" id="2_msfcr"]
 [ext_resource type="Script" path="res://bullets/small_bullet.gd" id="2_nu7qu"]
-[ext_resource type="Gradient" uid="uid://6bcketyqpt8s" path="res://vfx/hit_gradient.tres" id="3_31mnn"]
 [ext_resource type="PackedScene" uid="uid://dkf6s4hubk7e4" path="res://vfx/bullet_hit/hit_small_vfx.tscn" id="3_esndt"]
 
 [sub_resource type="Gradient" id="Gradient_cu7tv"]
@@ -58,4 +57,3 @@ initial_velocity_min = 0.0
 initial_velocity_max = 1.0
 scale_amount_min = 2.0
 scale_amount_max = 4.0
-color_ramp = ExtResource("3_31mnn")
