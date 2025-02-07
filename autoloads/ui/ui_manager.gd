@@ -10,6 +10,7 @@ extends Control
 ]
 
 @onready var player1_hud: PlayerHud = $UILayer/Player1Hud
+@onready var player2_hud: PlayerHud = $UILayer/Player2Hud
 
 @onready var ui_layer : CanvasLayer = $UILayer
 @onready var pause_menu : CanvasLayer = $Pause
@@ -24,7 +25,7 @@ const MAIN_MENU :  PackedScene = preload("res://levels/scenes/main_menu.tscn")
 const MAIN_MENU_MUSIC : AudioStream = preload("res://assets/audio/music/hashir/main_menu.mp3")
 
 var can_pause : bool = true
-var can_update_health : bool = false
+
 
 func _ready() -> void:
 	$"BG(test_only)".hide()
@@ -32,14 +33,6 @@ func _ready() -> void:
 	vic_screen.hide()
 
 	
-func update_health():
-	if get_tree().paused:
-		return
-	if !can_update_health:
-		return
-	var p1_health : float =  GameManager.p1.health
-	var p2_health : float = GameManager.p2.health
-	player1_hud.update_health_bar(p1_health)
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("back"): 
@@ -61,14 +54,13 @@ func pause() -> void:
 func _on_level_select_btn_pressed() -> void:
 	pause()
 	GameManager.match_end()
-	can_update_health = false
 	
 	TransitionManager.transition_scene_packed(LEVEL_SELECT)
 	SFXManager.play_music(MAIN_MENU_MUSIC, -20)
 	
 	#await  TransitionManager.transition_fully_finished
 	#var control : MainMenu = get_tree().get_first_node_in_group("MainMenu")
-	#control._on_play_button_pressed()
+	#control._on_play_etton_pressed()
 
 
 func _on_resume_pressed() -> void:
@@ -95,7 +87,6 @@ func _on_restart_pressed() -> void:
 
 func _on_main_menu_btn_pressed() -> void:
 	pause()
-	can_update_health = false
 	can_pause = false
 	GameManager.match_end()
 	TransitionManager.transition_scene_packed(MAIN_MENU)

@@ -67,3 +67,7 @@ https://pixabay.com/sound-effects/click-buttons-ui-menu-sounds-effects-button-13
 btn_hover or ClickButtons7 by skyscraper_seven
 ![[../assets/audio/effects/btn_hover.mp3|btn_hover.mp3]]
 https://pixabay.com/sound-effects/click-buttons-ui-menu-sounds-effects-button-7-203601/
+
+# Scripts
+`custom-stuff/hover_shake_2d.gd` is taken from 
+https://github.com/SlushyGames/HoverShake2D

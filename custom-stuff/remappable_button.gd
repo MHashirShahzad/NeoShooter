@@ -15,6 +15,7 @@ func _init():
 
 # On ready
 func _ready():
+	self.pivot_offset = Vector2(self.size / 2)
 	set_process_unhandled_input(false)
 	load_user_input()
 	update_key_text()
@@ -24,7 +25,10 @@ func _ready():
 	
 	self.mouse_entered.connect(_on_hovered)
 	self.focus_entered.connect(_on_hovered)
-
+	
+	self.mouse_exited.connect(_on_unhovered)
+	self.focus_exited.connect(_on_unhovered)
+	
 ## Returns to default settings
 func reset_to_default() -> void:
 	InputMap.action_erase_events(action)

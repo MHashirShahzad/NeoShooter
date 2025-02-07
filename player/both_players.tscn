@@ -15,6 +15,9 @@ shader_parameter/gold_flash = false
 shader_parameter/white_color = Color(1, 1, 1, 1)
 shader_parameter/red_color = Color(0.706, 0.125, 0.165, 1)
 shader_parameter/gold_color = Color(0.976, 0.639, 0.106, 1)
+shader_parameter/x_degrees = 0.0
+shader_parameter/y_degrees = 0.0
+shader_parameter/z_degrees = 0.0
 
 [sub_resource type="Animation" id="Animation_toxoe"]
 length = 0.001

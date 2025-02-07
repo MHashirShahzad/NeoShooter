@@ -5,11 +5,16 @@ func _ready() -> void:
 	GameManager.p2 = $Player2
 	GameManager.p1 = $Player1
 	
+	GameManager.p1.hud = UIManager.player1_hud
+	GameManager.p2.hud = UIManager.player2_hud
+	
+	# set health to 100 to initiate the set function
+	# which updatees the UI
+	GameManager.p1.health = 100
+	GameManager.p2.health = 100
 	# Ui manager stuff :C
-	UIManager.can_update_health = true
 	UIManager.can_pause = true
 	UIManager.ui_layer.show()
-	UIManager.update_health()
 	
 	# loads the bullets from file and assigns them to players 
 	GameManager.assign_bullets_to_players()

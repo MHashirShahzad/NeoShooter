@@ -143,11 +143,23 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Player1Hud" parent="UILayer" instance=ExtResource("3_kal77")]
-offset_left = 47.0
-offset_top = 30.0
-offset_right = 47.0
-offset_bottom = 30.0
-player_name = "Player 3"
+anchor_right = 0.167
+anchor_bottom = 0.117
+offset_left = 1.0
+offset_right = -0.384018
+offset_bottom = 0.183998
+
+[node name="Player2Hud" parent="UILayer" instance=ExtResource("3_kal77")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+offset_left = -929.0
+offset_right = -929.0
+offset_bottom = 0.184021
+grow_horizontal = 0
+grow_vertical = 1
+player_name = "Player 2"
 
 [node name="Pause" type="CanvasLayer" parent="."]
 layer = 5

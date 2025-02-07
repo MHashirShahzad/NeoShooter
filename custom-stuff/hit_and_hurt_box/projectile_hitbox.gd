@@ -30,7 +30,6 @@ func destroy():
 		return
 		
 	owner.spawned_bullets -= 1
-	
 	# play the bullet refill ani
 	if owner.spawned_bullets <= 0:
 		owner.bullets_refilled()

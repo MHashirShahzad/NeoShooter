@@ -1,9 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://d3h2cnb5vivfu"]
+[gd_scene load_steps=12 format=3 uid="uid://d3h2cnb5vivfu"]
 
 [ext_resource type="Script" path="res://autoloads/ui/player-hud/player_hud.gd" id="1_0dt5t"]
 [ext_resource type="Theme" uid="uid://dbukeuyrs33sq" path="res://custom-stuff/default_theme.tres" id="2_dssmf"]
+[ext_resource type="FontFile" uid="uid://bwy7qbhgwllym" path="res://assets/font/JetBrains_Mono/static/JetBrainsMono-BoldItalic.ttf" id="2_iax1f"]
+[ext_resource type="FontFile" uid="uid://dtocnf3xtqoev" path="res://assets/font/JetBrains_Mono/static/JetBrainsMono-LightItalic.ttf" id="3_5nnrn"]
+[ext_resource type="PackedScene" uid="uid://wxsjb6hejeqm" path="res://vfx/ui/ui_shoot_vfx.tscn" id="5_v06ou"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pltnd"]
+resource_local_to_scene = true
 draw_center = false
 skew = Vector2(0.2, 0)
 border_width_left = 2
@@ -40,53 +44,190 @@ border_width_bottom = 1
 border_color = Color(0.0235294, 0.0235294, 0.0313726, 1)
 corner_detail = 6
 
+[sub_resource type="Animation" id="Animation_ybjd5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BG:theme_override_styles/panel:border_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.8, 0.8, 0.8, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BG:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(5, 24)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerNameLabel:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(15, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BG/HealthBar:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3, 26)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BG/BulletLabel:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(50, 12)]
+}
+
+[sub_resource type="Animation" id="Animation_uuyb6"]
+resource_name = "hit"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BG:theme_override_styles/panel:border_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.8, 0.8, 0.8, 1), Color(0.45098, 0.0901961, 0.176471, 1), Color(0.8, 0.8, 0.8, 1), Color(0.45098, 0.0901961, 0.176471, 1), Color(0.8, 0.8, 0.8, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BG:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.166667, 0.266667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 24), Vector2(4, 22), Vector2(4, 28), Vector2(7, 26), Vector2(5, 24)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerNameLabel:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.166667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(15, 1), Vector2(10, 2), Vector2(15, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BG/HealthBar:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(3, 26), Vector2(4, 23), Vector2(3, 26)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("BG/BulletLabel:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.233333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(50, 12), Vector2(51.5, 8), Vector2(48, 9.33333), Vector2(50, 12)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m2ei3"]
+resource_local_to_scene = true
+_data = {
+"RESET": SubResource("Animation_ybjd5"),
+"hit": SubResource("Animation_uuyb6")
+}
+
 [node name="PlayerHud" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
+anchor_right = 0.165
+anchor_bottom = 0.114
+offset_right = -0.0800018
+offset_bottom = 0.127998
 grow_vertical = 2
+pivot_offset = Vector2(95, 36)
+size_flags_horizontal = 0
 script = ExtResource("1_0dt5t")
 
-[node name="Panel" type="Panel" parent="."]
-layout_mode = 0
-offset_left = 5.0
-offset_top = 24.0
-offset_right = 185.0
-offset_bottom = 74.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_pltnd")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
-layout_mode = 0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="."]
+[node name="PlayerNameLabel" type="RichTextLabel" parent="."]
 custom_minimum_size = Vector2(190, 0)
 layout_mode = 2
-offset_right = 180.0
-offset_bottom = 20.0
-text = "- Player 1 -"
-horizontal_alignment = 1
+offset_left = 15.0
+offset_top = 1.0
+offset_right = 205.0
+offset_bottom = 23.0
+theme_override_fonts/normal_font = ExtResource("2_iax1f")
+bbcode_enabled = true
+text = "Player 1"
+fit_content = true
+scroll_active = false
 
-[node name="HealthBar" type="ProgressBar" parent="."]
-custom_minimum_size = Vector2(100, 8)
-layout_mode = 2
-offset_left = 81.0
-offset_top = 31.0
+[node name="BG" type="Panel" parent="."]
+custom_minimum_size = Vector2(180, 50)
+layout_mode = 0
+offset_left = 1.0
+offset_top = 24.0
 offset_right = 181.0
-offset_bottom = 39.0
+offset_bottom = 74.0
+pivot_offset = Vector2(90, 25)
+theme_override_styles/panel = SubResource("StyleBoxFlat_pltnd")
+
+[node name="HealthBar" type="ProgressBar" parent="BG"]
+custom_minimum_size = Vector2(170, 20)
+layout_mode = 2
+offset_left = 3.0
+offset_top = 26.0
+offset_right = 173.0
+offset_bottom = 46.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("2_dssmf")
 value = 60.0
 show_percentage = false
 
-[node name="DamageBar" type="ProgressBar" parent="HealthBar"]
+[node name="DamageBar" type="ProgressBar" parent="BG/HealthBar"]
 show_behind_parent = true
-custom_minimum_size = Vector2(100, 8)
+custom_minimum_size = Vector2(170, 20)
 layout_mode = 2
 offset_right = 100.0
 offset_bottom = 8.0
@@ -95,3 +236,26 @@ theme_override_styles/background = SubResource("StyleBoxFlat_2d5b8")
 theme_override_styles/fill = SubResource("StyleBoxFlat_rvmsk")
 value = 80.0
 show_percentage = false
+
+[node name="BulletLabel" type="RichTextLabel" parent="BG"]
+custom_minimum_size = Vector2(190, 0)
+layout_mode = 2
+offset_left = 50.0
+offset_top = 12.0
+offset_right = 240.0
+offset_bottom = 26.0
+theme_override_fonts/normal_font = ExtResource("3_5nnrn")
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "[center]Bullets: 6[/center]"
+fit_content = true
+scroll_active = false
+
+[node name="AniPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_m2ei3")
+}
+
+[node name="SmallCPU" parent="." instance=ExtResource("5_v06ou")]
+visible = false
+position = Vector2(177, 43)

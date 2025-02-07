@@ -16,10 +16,17 @@ enum BULLET_TYPE{
 var bullet_prefs : PlayerBullets
 
 func _ready() -> void:
+	self.pivot_offset = Vector2(self.size / 2)
+	
 	bullet_prefs = PlayerBullets.load_or_create()
 	self.pressed.connect(_on_pressed)
-	# self.focus_entered.connect(_on_hovered)
+	
+	self.focus_entered.connect(_on_hovered)
 	self.mouse_entered.connect(_on_hovered)
+	
+	self.mouse_exited.connect(_on_unhovered)
+	self.focus_exited.connect(_on_unhovered)
+	
 	load_variables()
 
 func _on_pressed() -> void:

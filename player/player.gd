@@ -39,8 +39,25 @@ class_name Player2D
 # variables
 var direction : Vector2
 var wish_dir : Vector2
-var health : float = 100
-var spawned_bullets : int = 0
+var health : float = 100:
+	# update UI for every health changee
+	set(value):
+		health = value
+		if hud:
+			hud.update_health_bar(health)
+			
+var spawned_bullets : int = 0:
+	# update UI for every spawned_bullet change
+	set(value):
+		spawned_bullets = value
+		if hud:
+			hud.update_bullet_label(max_bullet_count - spawned_bullets)
+
+## when hud assigned update its color
+var hud : PlayerHud:
+	set(value):
+		hud = value
+		hud.update_color(self)
 
 ## DEPRECATED
 var tilt_x: float = 0.0
@@ -109,30 +126,31 @@ func shoot_with_scene(bullet_scene : PackedScene) -> void:
 	BulletManager.shoot_bullet_with_scene(self, bullet_scene)
 	spawned_bullets += 1
 	
+
 	# Effect
 	ani_manager.shoot_ani()
 	VFXManager.shoot_vfx(bullet_pos)
 	SFXManager.play_FX_2D(SFXManager.SHOOT, bullet_pos, 10)
 	
 
-## deprecated dont use
-## @deprecated: Use shoot_with_scene instead
-func shoot(type : BulletManager.BULLET_TYPE) -> void:
-	var bullet_pos : Vector2 = bullet_spawn_location.global_position
-	# low ammo
-	if spawned_bullets >= max_bullet_count:
-		ani_manager.low_ammo_ani()
-		SFXManager.play_FX_2D(SFXManager.NO_AMMO, bullet_pos, 10)
-		return
-	
-	
-	BulletManager.shoot_bullet(self, type)
-	spawned_bullets += 1
-	
-	# Effect
-	ani_manager.shoot_ani()
-	VFXManager.shoot_vfx(bullet_pos)
-	SFXManager.play_FX_2D(SFXManager.SHOOT, bullet_pos, 10)
+### DEPRECATED dont use
+### @deprecated: Use shoot_with_scene instead
+#func shoot(type : BulletManager.BULLET_TYPE) -> void:
+	#var bullet_pos : Vector2 = bullet_spawn_location.global_position
+	## low ammo
+	#if spawned_bullets >= max_bullet_count:
+		#ani_manager.low_ammo_ani()
+		#SFXManager.play_FX_2D(SFXManager.NO_AMMO, bullet_pos, 10)
+		#return
+	#
+	#
+	#BulletManager.shoot_bullet(self, type)
+	#spawned_bullets += 1
+#
+	## Effect
+	#ani_manager.shoot_ani()
+	#VFXManager.shoot_vfx(bullet_pos)
+	#SFXManager.play_FX_2D(SFXManager.SHOOT, bullet_pos, 10)
 	
 func on_hit(dmg: float, hitbox : HitBox) -> void:
 	# rounds of damage
@@ -140,10 +158,8 @@ func on_hit(dmg: float, hitbox : HitBox) -> void:
 	# death vfx are handled in die()
 	if health <= 0:
 		health = 0
-		UIManager.update_health()
 		die()
 	else: 
-		UIManager.update_health()
 		VFXManager.hit_effects(hitbox, dmg)
 		# adjust music volume accr. to health
 		SFXManager.adjust_music_volume()
@@ -176,7 +192,7 @@ func die() -> void:
 	# disable pause cuz it would cause issues
 	UIManager.can_pause = false
 	# set next frame -_-
-	UIManager.set_deferred("can_update_health", false)
+
 	
 	# shockwave particles cam shake and slow mo
 	# also manages the victory screen 
