@@ -22,8 +22,12 @@ func _process(delta: float) -> void:
 	
 func assign_bullets_to_players() -> void:
 	player_bullets = PlayerBullets.load_or_create()
-	p1.equipped_bullets = player_bullets.p1_bullets
-	p2.equipped_bullets = player_bullets.p2_bullets
+	
+	if p1:
+		p1.equipped_bullets = player_bullets.p1_bullets
+		
+	if p2:
+		p2.equipped_bullets = player_bullets.p2_bullets
 
 func match_end() -> void:
 	if !p1:
