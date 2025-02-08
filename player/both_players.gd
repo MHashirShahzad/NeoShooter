@@ -15,6 +15,7 @@ func _ready() -> void:
 	# Ui manager stuff :C
 	UIManager.can_pause = true
 	UIManager.ui_layer.show()
+	# UIManager.set_hud_positions()
 	
 	# loads the bullets from file and assigns them to players 
 	GameManager.assign_bullets_to_players()

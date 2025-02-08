@@ -9,8 +9,8 @@ extends Control
 	"You lifeless BRAT!"
 ]
 
-@onready var player1_hud: PlayerHud = $UILayer/Player1Hud
-@onready var player2_hud: PlayerHud = $UILayer/Player2Hud
+@onready var player1_hud: PlayerHud = $UILayer/HudContainer/Player1Hud
+@onready var player2_hud: PlayerHud = $UILayer/HudContainer/Player2Hud
 
 @onready var ui_layer : CanvasLayer = $UILayer
 @onready var pause_menu : CanvasLayer = $Pause
@@ -29,17 +29,15 @@ var can_pause : bool = true
 
 func _ready() -> void:
 	$"BG(test_only)".hide()
+	ui_layer.hide()
 	pause_menu.hide()
 	vic_screen.hide()
-
-	
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("back"): 
 		if GameManager.p1 || GameManager.p2:
 			if can_pause:
 				pause()
-
 
 func pause() -> void:
 	if get_tree().paused:
@@ -49,7 +47,6 @@ func pause() -> void:
 		get_tree().paused = true
 		pause_menu.show()
 		$Pause/Blur/VBoxContainer/Resume.grab_focus()
-
 
 func _on_level_select_btn_pressed() -> void:
 	pause()
@@ -62,10 +59,8 @@ func _on_level_select_btn_pressed() -> void:
 	#var control : MainMenu = get_tree().get_first_node_in_group("MainMenu")
 	#control._on_play_etton_pressed()
 
-
 func _on_resume_pressed() -> void:
 	pause()
-
 
 func _on_restart_pressed() -> void:
 	pause() # unpause
@@ -92,6 +87,7 @@ func _on_main_menu_btn_pressed() -> void:
 	TransitionManager.transition_scene_packed(MAIN_MENU)
 	SFXManager.play_music(MAIN_MENU_MUSIC, -20)
 
+## AKA VICTORY SCREEN
 ## player is the dead player
 func show_death_screen(player: Player2D) -> void:
 	can_pause = false
@@ -108,4 +104,18 @@ func show_death_screen(player: Player2D) -> void:
 		vic_screen_label.set("theme_override_colors/font_color", GameManager.p1.body.color)
 
 func show_random_death_quote() -> void:
-	death_quote_label.text = death_quotes.pick_random()
+	death_quote_label.text =  death_quotes.pick_random()
+
+
+func adjust_vignette() -> void:
+	if !(GameManager.p1 or GameManager.p2):
+		return
+	
+	var lowest_health : float
+	if GameManager.p1.health < GameManager.p2.health:
+		lowest_health = GameManager.p1.health
+	else:
+		lowest_health = GameManager.p2.health
+	
+	if lowest_health < 30:
+		$UILayer/VignetteAniPlayer.play("vignette_flash")

@@ -55,6 +55,8 @@
 - Although i tried my best to make it possible to use shapes to signify different objects
 - [ ] Outline Settings
 - To make the objects easier to focus, maybe implement this.
+- [ ] Vignette Flash Togglee
+- Vignette flashes when near death, add a toggle for it.
 
 
 # Audio
@@ -104,25 +106,28 @@
 - One goes diagonally up and the other goes diagonally down.
 
 # UI
-- [ ] HUD
-- [ ] Rayyan says ui sucks, i agreee time to fix it :C
+- [x] HUD
+- Maybe add ability charge-meter later 
+- [ ] Rayyan says ui sucks, i agree time to fix it :C
 - [X] Working UI
-- [ ] A neonish good looking ui, with health and bullet 
+- [x] A neonish good looking ui, with health and bullet 
+- Somewhat done :C
 
 # Trailer
 - [ ] Show case different levels
-- [ ] Show casee different bullets
-- [ ] Try to get views and github-stars :C
+- [ ] Show case different bullets
+- [ ] Try to get views and GitHub-stars :C
 - [ ] Music should be synced with effects, for maximum coolness.
 
 **Progression:**
-1. A single bullet is in focus, and it is traveling slowely, the camera zooms out a little and shows a spaceship.
+1. A single bullet is in focus, and it is traveling slowly, the camera zooms out a little and shows a spaceship.
 2. The spaceship dodges the bullet and the camera suddenly zooms out, revealing the entire stage.
 3. Camera fades out.
-4. Revealing the level-select screen. (Feels wierd tho)
-5. Showcase swappable bullets
-6. With the player at a constant position, swap levels at an increasing speeed.
-7. Increasing gameplay intensitiy
-8. Showcase abillities.
-9. In the ending show the draconic enemy charging the laser.
+4. Revealing the level-select screen. (Feels weird tho)
+5. Showcase swap-able bullets
+6. With the player at a constant position, swap levels at an increasing speed.
+7. Increasing game-play intensity
+8. Showcase abilities.
+9. In the ending show the DRACONIC enemy charging the laser.
 10. Suddenly End the trailer.
+- Showcase different colored bullets.

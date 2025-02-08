@@ -54,3 +54,4 @@ func _on_vsync_btn_toggled(toggled_on: bool) -> void:
 		
 	GameManager.user_prefs.save()
 	DisplayServer.window_set_vsync_mode(GameManager.user_prefs.vsync_mode)
+	

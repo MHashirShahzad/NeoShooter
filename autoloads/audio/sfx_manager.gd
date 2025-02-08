@@ -85,14 +85,12 @@ func adjust_music_volume():
 	else:
 		lowest_health = GameManager.p2.health
 	
-	if lowest_health > 50:
-		return
-	
+
 	print_debug("---- Music Speed Increased ----")
 
-	var music_speed : float = lerp(1.06, 1.0, lowest_health / 50)
+	var music_speed : float = lerp(1.06, 1.0, lowest_health / 100)
 	
-	print("- Music_Speed : ", music_speed," - health : ", (lowest_health / 50))
+	print("- Music_Speed : ", music_speed," - health : ", (lowest_health / 100))
 	var tween := get_tree().create_tween()
 	tween.tween_property(music_player, "pitch_scale", music_speed, 1)
 	await tween.finished

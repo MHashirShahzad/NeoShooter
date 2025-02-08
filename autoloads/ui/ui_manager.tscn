@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bo2pfa1syoew"]
+[gd_scene load_steps=18 format=3 uid="uid://bo2pfa1syoew"]
 
 [ext_resource type="Script" path="res://autoloads/ui/ui_manager.gd" id="1_u1v7n"]
 [ext_resource type="Shader" path="res://autoloads/ui/darkened_blur.gdshader" id="3_i1qqd"]
@@ -15,6 +15,68 @@ shader_parameter/outer_radius = 1.0
 shader_parameter/vignette_strength = 1.0
 shader_parameter/dither_strength = 0.03
 shader_parameter/vignette_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_oxe1n"]
+resource_name = "vignette_flash"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Vignette:material:shader_parameter/inner_radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.611306),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [0.1, 0.06, 0.1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Vignette:material:shader_parameter/vignette_strength")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [1.0, 1.03, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_kdhf4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Vignette:material:shader_parameter/inner_radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Vignette:material:shader_parameter/vignette_strength")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_073c1"]
+_data = {
+"RESET": SubResource("Animation_kdhf4"),
+"vignette_flash": SubResource("Animation_oxe1n")
+}
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8oxbi"]
 shader = ExtResource("3_i1qqd")
@@ -142,24 +204,68 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Player1Hud" parent="UILayer" instance=ExtResource("3_kal77")]
-anchor_right = 0.167
-anchor_bottom = 0.117
-offset_left = 1.0
-offset_right = -0.384018
-offset_bottom = 0.183998
-
-[node name="Player2Hud" parent="UILayer" instance=ExtResource("3_kal77")]
-anchors_preset = 1
-anchor_left = 1.0
+[node name="HudContainer" type="Control" parent="UILayer"]
+layout_mode = 3
+anchors_preset = 10
 anchor_right = 1.0
+offset_bottom = 74.0
+grow_horizontal = 2
+
+[node name="Player1Hud" parent="UILayer/HudContainer" instance=ExtResource("3_kal77")]
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = -929.0
-offset_right = -929.0
-offset_bottom = 0.184021
-grow_horizontal = 0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_vertical = 1
+
+[node name="Player2Hud" parent="UILayer/HudContainer" instance=ExtResource("3_kal77")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_left = -264.25
+offset_right = -264.25
+offset_bottom = 0.0
+grow_horizontal = 2
 grow_vertical = 1
 player_name = "Player 2"
+
+[node name="Player3Hud" parent="UILayer/HudContainer" instance=ExtResource("3_kal77")]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_left = 47.5
+offset_right = 47.5
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 1
+player_name = "Player 3"
+
+[node name="Player4Hud" parent="UILayer/HudContainer" instance=ExtResource("3_kal77")]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_left = 359.25
+offset_top = 1.0
+offset_right = 359.25
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 1
+player_name = "Player 4"
+
+[node name="VignetteAniPlayer" type="AnimationPlayer" parent="UILayer"]
+libraries = {
+"": SubResource("AnimationLibrary_073c1")
+}
 
 [node name="Pause" type="CanvasLayer" parent="."]
 layer = 5

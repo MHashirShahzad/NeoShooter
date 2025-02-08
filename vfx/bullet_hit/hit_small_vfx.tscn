@@ -1,10 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://dkf6s4hubk7e4"]
 
-[ext_resource type="Gradient" uid="uid://6bcketyqpt8s" path="res://vfx/hit_gradient.tres" id="1_salqp"]
-
 [sub_resource type="Curve" id="Curve_8k2ls"]
 _data = [Vector2(0, 0.747253), 0.0, 1.34865, 0, 0, Vector2(0.195556, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_c7hei"]
+offsets = PackedFloat32Array(0, 0.508251, 0.993333)
+colors = PackedColorArray(0.0392157, 0.545098, 0.972549, 1, 0.450578, 0.00227139, 0.992695, 1, 0.737255, 0.290196, 0.607843, 1)
 
 [node name="SmallCPU" type="CPUParticles2D"]
 texture_filter = 1
@@ -24,4 +26,4 @@ angle_max = 90.0
 scale_amount_min = 5.0
 scale_amount_max = 10.0
 scale_amount_curve = SubResource("Curve_8k2ls")
-color_ramp = ExtResource("1_salqp")
+color_ramp = SubResource("Gradient_c7hei")

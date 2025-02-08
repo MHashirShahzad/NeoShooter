@@ -1,9 +1,9 @@
 shader_type canvas_item;
 
-uniform float inner_radius = 0.1;
-uniform float outer_radius = 1;
-uniform float vignette_strength = 1.0;
-uniform float dither_strength = 0.03;
+uniform float inner_radius : hint_range(0.0, 1.0, 0.01) = 0.1;
+uniform float outer_radius : hint_range(0.0, 1.0, 0.01) = 1;
+uniform float vignette_strength : hint_range(0.0, 2.0, 0.01) = 1.0;
+uniform float dither_strength : hint_range(0.0, 1.0, 0.01) = 0.03;
 uniform vec4 vignette_color: source_color;
 
 

@@ -170,6 +170,7 @@ func on_hit(dmg: float, hitbox : HitBox) -> void:
 		VFXManager.hit_effects(hitbox, dmg)
 		# adjust music volume accr. to health
 		SFXManager.adjust_music_volume()
+		UIManager.adjust_vignette()
 	ani_manager.hit_ani()
 	
 func screw_state(duration : float, str: float, time_scale : float = 0.05) -> void:
