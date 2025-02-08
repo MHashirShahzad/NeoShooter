@@ -1,0 +1,17 @@
+[remap]
+
+importer="com.timothyqiu.gdfxr.importer"
+type="AudioStreamWAV"
+uid="uid://caq8fjlsmnv00"
+path="res://.godot/imported/normal_shoot.sfxr-e98d54bf51f20063f306b1cdf35fe5b2.sample"
+
+[deps]
+
+source_file="res://assets/audio/effects/yellow_dude/shoot/normal_shoot.sfxr"
+dest_files=["res://.godot/imported/normal_shoot.sfxr-e98d54bf51f20063f306b1cdf35fe5b2.sample"]
+
+[params]
+
+loop=false
+bit_depth=0
+sample_rate=0

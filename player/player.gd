@@ -76,7 +76,6 @@ func bullet_input() -> void:
 	if equipped_bullets == null:
 		return
 	
-	
 	if Input.is_action_just_pressed(input.shoot):
 		shoot_with_scene(equipped_bullets.normal)
 		#shoot(BulletManager.BULLET_TYPE.NORMAL)

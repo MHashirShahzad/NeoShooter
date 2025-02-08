@@ -15,11 +15,10 @@ extends Node2D
 	preload("res://assets/audio/music/hashir/to-the-death-159171.mp3")
 ]
 
-const SHOOT : AudioStream = preload("res://assets/audio/shoot.ogg")
+#const NORMAL_SHOT : AudioStream = preload("res://assets/audio/effects/yellow_dude/shoot/normal_shoot.sfxr")
+const SHOOT : AudioStream = preload("res://assets/audio/effects/yellow_dude/shoot/normal_shoot.sfxr")
 const NO_AMMO : AudioStream = preload("res://assets/audio/no_ammo.ogg")
 const BULLET_REFILLED : AudioStream = preload("res://assets/audio/bullet_refilled3.ogg")
-
-
 
 @onready var music_player: AudioStreamPlayer = $MusicPlayer
 
