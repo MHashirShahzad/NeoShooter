@@ -1,5 +1,7 @@
 [![View TODO](https://img.shields.io/badge/View-TODO-blue)](/notes/TODO.md) [![MIT License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 [![Assets Used](https://img.shields.io/badge/Assets-Used-red)](/notes/assets-license.md) [![Code of Conduct](https://img.shields.io/badge/Code%20of%20Conduct-Guidelines-orange)](CODE_OF_CONDUCT.md)
+[![Download on Itch.io](https://img.shields.io/badge/Download_on-Itch.io-FA5C5C?logo=itch.io&logoColor=white)](https://fadingsunstudios.itch.io/neoshooter)
+
 
 
 
