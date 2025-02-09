@@ -1,0 +1,117 @@
+[gd_scene load_steps=8 format=3 uid="uid://bll54ra7hekih"]
+
+[ext_resource type="Script" path="res://levels/level_tutorial.gd" id="1_piflo"]
+[ext_resource type="PackedScene" uid="uid://dth2xkw87mtwm" path="res://player/player.tscn" id="2_mt3wv"]
+[ext_resource type="PackedScene" uid="uid://bwkwpcmkypaje" path="res://camera/camera.tscn" id="3_c0xdb"]
+[ext_resource type="PackedScene" uid="uid://cwwadqi8vlbq0" path="res://custom-stuff/world_environment.tscn" id="4_sw2vw"]
+[ext_resource type="Script" path="res://custom-stuff/hit_and_hurt_box/hurtbox.gd" id="5_br330"]
+[ext_resource type="Shader" path="res://levels/glitch.gdshader" id="6_pmcee"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nsh80"]
+shader = ExtResource("6_pmcee")
+shader_parameter/shake_power = 0.0
+shader_parameter/shake_rate = 0.2
+shader_parameter/shake_speed = 5.0
+shader_parameter/shake_block_size = 30.5
+shader_parameter/shake_color_rate = 0.0
+
+[node name="Tutorial" type="Node2D"]
+script = ExtResource("1_piflo")
+
+[node name="Player1" parent="." instance=ExtResource("2_mt3wv")]
+position = Vector2(360, 333)
+rotation = 1.5708
+
+[node name="Camera2D" parent="." instance=ExtResource("3_c0xdb")]
+position = Vector2(1000, 500)
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("4_sw2vw")]
+
+[node name="Level" type="Node2D" parent="."]
+
+[node name="Collision Borders" type="StaticBody2D" parent="Level"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level/Collision Borders"]
+build_mode = 1
+polygon = PackedVector2Array(0, 0, 2000, 0, 2000, 1000, 0, 1000)
+
+[node name="Collision Center" type="StaticBody2D" parent="Level"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level/Collision Center"]
+polygon = PackedVector2Array(950, 0, 1050, 0, 1050, 1000, 950, 1000)
+
+[node name="BORDER" type="Polygon2D" parent="Level"]
+z_index = -1
+color = Color(0.0256738, 0.289727, 0.26722, 1)
+invert_enabled = true
+polygon = PackedVector2Array(0, 0, 2000, 0, 2000, 1000, 0, 1000)
+
+[node name="BORDER2" type="Polygon2D" parent="Level"]
+z_index = -1
+color = Color(0.189283, 0.146819, 1.08294e-07, 1)
+invert_enabled = true
+invert_border = 502.9
+polygon = PackedVector2Array(-100, -100, 2100, -100, 2100, 1100, -100, 1100)
+
+[node name="BG" type="Polygon2D" parent="Level"]
+z_index = -4
+color = Color(0.141176, 0.321569, 0.231373, 1)
+polygon = PackedVector2Array(0, 0, 2000, 0, 2000, 1000, 0, 1000)
+
+[node name="CenterBar" type="Polygon2D" parent="Level"]
+z_index = -2
+color = Color(0.0705882, 0.12549, 0.12549, 1)
+polygon = PackedVector2Array(950, 0, 1050, 0, 1050, 1050, 950, 1050)
+
+[node name="Disabled" type="Area2D" parent="Level"]
+script = ExtResource("5_br330")
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Level/Disabled"]
+position = Vector2(420, 220)
+build_mode = 1
+polygon = PackedVector2Array(-665, -471, 1785, -448, 1766, 1141, -655, 1136)
+disabled = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Label" type="RichTextLabel" parent="CanvasLayer"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(400, 100)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -180.5
+offset_right = 200.0
+offset_bottom = 180.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(1, 0.988235, 0.25098, 1)
+theme_override_colors/font_shadow_color = Color(0.0235294, 0.0235294, 0.0313726, 1)
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/shadow_offset_x = 5
+theme_override_font_sizes/bold_italics_font_size = 300
+theme_override_font_sizes/italics_font_size = 300
+theme_override_font_sizes/mono_font_size = 300
+theme_override_font_sizes/normal_font_size = 300
+theme_override_font_sizes/bold_font_size = 300
+bbcode_enabled = true
+text = "[center][i]GO[/i][/center]"
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_nsh80")
+custom_minimum_size = Vector2(200, 300)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2

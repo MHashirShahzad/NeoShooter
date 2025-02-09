@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b86x5fpex1cpl"
-path="res://.godot/imported/NeoShooter Logo.png-2c84260aa3132894d91c90098ca2cfa5.ctex"
+uid="uid://b6x7eqwew1ysi"
+path="res://.godot/imported/NeoShooterLogo.png-006c8dfa02f4d01c2ca0d6cf71c0d5a6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/NeoShooter Logo.png"
-dest_files=["res://.godot/imported/NeoShooter Logo.png-2c84260aa3132894d91c90098ca2cfa5.ctex"]
+source_file="res://assets/NeoShooterLogo.png"
+dest_files=["res://.godot/imported/NeoShooterLogo.png-006c8dfa02f4d01c2ca0d6cf71c0d5a6.ctex"]
 
 [params]
 

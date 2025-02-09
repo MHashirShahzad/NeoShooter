@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csyjb5qdn4qej"
-path="res://.godot/imported/triangle.svg-54e5389622d65332e915a66ce271f289.ctex"
+uid="uid://biyyce4kuta8r"
+path="res://.godot/imported/triangle128x128.svg-ccd4544cc5020bd692bd64df127cf956.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/vfx_assets/triangle.svg"
-dest_files=["res://.godot/imported/triangle.svg-54e5389622d65332e915a66ce271f289.ctex"]
+source_file="res://assets/vfx-assets/triangle128x128.svg"
+dest_files=["res://.godot/imported/triangle128x128.svg-ccd4544cc5020bd692bd64df127cf956.ctex"]
 
 [params]
 

@@ -436,8 +436,9 @@ theme_override_constants/separation = 20
 alignment = 1
 
 [node name="TutorialButton" type="Button" parent="CanvasLayer/MainBtn/VBOX"]
-visible = false
 layout_mode = 2
+focus_neighbor_top = NodePath("../QuitButton")
+focus_neighbor_bottom = NodePath("../PlayButton")
 theme = ExtResource("2_b7fev")
 text = "Tutorial"
 script = ExtResource("2_2ycbh")
@@ -482,7 +483,7 @@ libraries = {
 }
 autoplay = "loop"
 
-[connection signal="pressed" from="CanvasLayer/MainBtn/VBOX/TutorialButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainBtn/VBOX/TutorialButton" to="." method="_on_tutorial_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainBtn/VBOX/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainBtn/VBOX/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainBtn/VBOX/QuitButton" to="." method="_on_quit_button_pressed"]

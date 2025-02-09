@@ -11,6 +11,7 @@ class_name MainMenu
 @onready var ani_player: AnimationPlayer = $AniPlayer
 
 var LEVEL_SELECT = load("res://levels/scenes/level_select.tscn")
+var TUTORIAL_LEVEL = load("res://levels/scenes/level_tutorial.tscn")
 
 func _ready() -> void:
 	main_menu_grab_focus()
@@ -65,3 +66,7 @@ func option_menu_grab_focus() -> void:
 	if option.visible:
 		return
 	$CanvasLayer/OptionBtn/TabContainer/Controls/Controls/HBoxContainer3/Remap_Button.grab_focus()
+
+
+func _on_tutorial_button_pressed() -> void:
+	TransitionManager.transition_scene_packed(TUTORIAL_LEVEL)
