@@ -21,6 +21,15 @@ script = ExtResource("1_piflo")
 [node name="Player1" parent="." instance=ExtResource("2_mt3wv")]
 position = Vector2(360, 333)
 rotation = 1.5708
+is_input_enabled = null
+speed = null
+friction = null
+acceleration = null
+tilt_strength_x = null
+tilt_strength_y = null
+tilt_speed = null
+rotation_speed = null
+max_bullet_count = null
 
 [node name="Camera2D" parent="." instance=ExtResource("3_c0xdb")]
 position = Vector2(1000, 500)

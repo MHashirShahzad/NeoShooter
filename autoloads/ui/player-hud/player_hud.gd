@@ -20,6 +20,7 @@ func _ready() -> void:
 	player_label.text = "%s" % player_name
 	
 
+
 func update_color(player: Player2D) -> void:
 	player_label.self_modulate = player.body.color
 

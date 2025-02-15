@@ -12,6 +12,9 @@ func _ready() -> void:
 	# which updatees the UI
 	GameManager.p1.health = 100
 	GameManager.p2.health = 100
+	
+	GameManager.p1.spawned_bullets = 0
+	GameManager.p2.spawned_bullets = 0
 	# Ui manager stuff :C
 	UIManager.can_pause = true
 	UIManager.ui_layer.show()

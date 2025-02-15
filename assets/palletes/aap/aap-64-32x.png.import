@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dw1eyb810s748"
-path="res://.godot/imported/berry-nebula-32x.png-8476ff2648c6c6f1106831f9fa310218.ctex"
+uid="uid://c8hslm4uf06a0"
+path="res://.godot/imported/aap-64-32x.png-07188e09de4289a0c8c6a23a3b0c06b0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player/palletes/berry_nebula/berry-nebula-32x.png"
-dest_files=["res://.godot/imported/berry-nebula-32x.png-8476ff2648c6c6f1106831f9fa310218.ctex"]
+source_file="res://assets/palletes/aap/aap-64-32x.png"
+dest_files=["res://.godot/imported/aap-64-32x.png-07188e09de4289a0c8c6a23a3b0c06b0.ctex"]
 
 [params]
 

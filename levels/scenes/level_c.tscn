@@ -18,6 +18,9 @@ shader_parameter/gold_flash = false
 shader_parameter/white_color = Color(1, 1, 1, 1)
 shader_parameter/red_color = Color(0.706, 0.125, 0.165, 1)
 shader_parameter/gold_color = Color(0.976, 0.639, 0.106, 1)
+shader_parameter/x_degrees = 0.0
+shader_parameter/y_degrees = 0.0
+shader_parameter/z_degrees = 0.0
 
 [sub_resource type="Animation" id="Animation_toxoe"]
 length = 0.001
@@ -271,10 +274,26 @@ script = ExtResource("1_kpn56")
 
 [node name="Player1" parent="BothPlayers" index="0"]
 position = Vector2(340, 753)
+is_input_enabled = null
+speed = null
+friction = null
+acceleration = null
+tilt_strength_x = null
+tilt_strength_y = null
+tilt_speed = null
+rotation_speed = null
 max_bullet_count = 7
 
 [node name="Player2" parent="BothPlayers" index="1"]
 position = Vector2(2200, 750)
+is_input_enabled = null
+speed = null
+friction = null
+acceleration = null
+tilt_strength_x = null
+tilt_strength_y = null
+tilt_speed = null
+rotation_speed = null
 max_bullet_count = 7
 
 [node name="Polygon2D" parent="BothPlayers/Player2" index="0"]
