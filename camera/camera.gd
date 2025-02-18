@@ -6,6 +6,7 @@ class_name SpaceShooterCamera
 @export var rand_str : float = 30
 @export var fade_out : float = 5
 
+
 var rng = RandomNumberGenerator.new()
 var shake_str : float = 0
 

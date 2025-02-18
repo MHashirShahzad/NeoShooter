@@ -436,6 +436,7 @@ theme_override_constants/separation = 20
 alignment = 1
 
 [node name="TutorialButton" type="Button" parent="CanvasLayer/MainBtn/VBOX"]
+visible = false
 layout_mode = 2
 focus_neighbor_top = NodePath("../QuitButton")
 focus_neighbor_bottom = NodePath("../PlayButton")
@@ -445,6 +446,7 @@ script = ExtResource("2_2ycbh")
 
 [node name="PlayButton" type="Button" parent="CanvasLayer/MainBtn/VBOX"]
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../QuitButton")
 theme = ExtResource("2_b7fev")
 text = "Play Local"
 script = ExtResource("2_2ycbh")

@@ -309,7 +309,8 @@ libraries = {
 }
 
 [node name="Camera2D" parent="." instance=ExtResource("6_ol1wp")]
-position = Vector2(1250, 750)
+physics_interpolation_mode = 0
+position = Vector2(1250, 735)
 zoom = Vector2(0.4, 0.4)
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("7_1wgqk")]

@@ -262,7 +262,7 @@ _data = {
 
 [sub_resource type="Curve2D" id="Curve2D_k717n"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1000, 300, 0, 0, 0, 0, 1700, 300, 0, 0, 0, 0, 1700, 1200, 0, 0, 0, 0, 1000, 1200, 0, 0, 0, 0, 1000, 300)
+"points": PackedVector2Array(0, 0, 0, 0, 1250, 300, 0, 0, 0, 0, 1950, 300, 0, 0, 0, 0, 1950, 1200, 0, 0, 0, 0, 1250, 1200, 0, 0, 0, 0, 1250, 300)
 }
 point_count = 5
 
@@ -317,8 +317,8 @@ libraries = {
 }
 
 [node name="Camera2D" parent="." instance=ExtResource("3_p01ub")]
-position = Vector2(1350, 750)
-zoom = Vector2(0.4, 0.4)
+position = Vector2(1600, 750)
+zoom = Vector2(0.32, 0.32)
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("4_j7h21")]
 
@@ -328,41 +328,41 @@ zoom = Vector2(0.4, 0.4)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level/Collision Borders"]
 build_mode = 1
-polygon = PackedVector2Array(0, 0, 2700, 0, 2700, 1500, 0, 1500)
+polygon = PackedVector2Array(0, 0, 3200, 0, 3200, 1500, 0, 1500)
 
 [node name="Collision Center" type="StaticBody2D" parent="Level"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level/Collision Center"]
-polygon = PackedVector2Array(1300, 0, 1400, 0, 1400, 1500, 1300, 1500)
+polygon = PackedVector2Array(1550, 0, 1700, 0, 1700, 1500, 1550, 1500)
 
 [node name="BORDER" type="Polygon2D" parent="Level"]
 z_index = -1
 color = Color(0.0705882, 0.12549, 0.12549, 1)
 invert_enabled = true
-polygon = PackedVector2Array(0, 0, 2700, 0, 2700, 1500, 0, 1500)
+polygon = PackedVector2Array(0, 0, 3200, 0, 3200, 1500, 0, 1500)
 
 [node name="BORDER2" type="Polygon2D" parent="Level"]
 z_index = -1
 color = Color(0.0705882, 0.12549, 0.12549, 1)
 invert_enabled = true
 invert_border = 502.9
-polygon = PackedVector2Array(-100, -100, 2700, -100, 2700, 1600, -100, 1600)
+polygon = PackedVector2Array(-100, -100, 3200, -100, 3200, 1600, -100, 1600)
 
 [node name="BG" type="Polygon2D" parent="Level"]
 z_index = -4
 color = Color(0.25098, 0.2, 0.32549, 1)
-polygon = PackedVector2Array(0, 0, 2700, 0, 2700, 1500, 0, 1500)
+polygon = PackedVector2Array(0, 0, 3200, 0, 3200, 1500, 0, 1500)
 
 [node name="BG2" type="Polygon2D" parent="Level"]
 visible = false
 z_index = -4
 color = Color(0.141176, 0.133333, 0.203922, 1)
-polygon = PackedVector2Array(1350, 0, 2700, 750, 1350, 1500, 0, 750)
+polygon = PackedVector2Array(1350, 0, 3200, 750, 1350, 1500, 0, 750)
 
 [node name="CenterBar" type="Polygon2D" parent="Level"]
 z_index = -2
 color = Color(0.45098, 0.0901961, 0.176471, 1)
-polygon = PackedVector2Array(1300, 0, 1400, 0, 1400, 1500, 1300, 1500)
+polygon = PackedVector2Array(1550, 0, 1700, 0, 1700, 1500, 1550, 1500)
 
 [node name="BulletKillBox" type="Area2D" parent="Level"]
 script = ExtResource("5_xh7uj")
@@ -377,7 +377,7 @@ disabled = true
 curve = SubResource("Curve2D_k717n")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(1000, 300)
+position = Vector2(1250, 300)
 rotation = -1.5708
 progress = 3200.0
 rotates = false
@@ -389,7 +389,7 @@ z_index = 5
 curve = SubResource("Curve2D_k717n")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
-position = Vector2(1700, 1200)
+position = Vector2(1950, 1200)
 rotation = -1.5708
 progress = 1600.0
 rotates = false

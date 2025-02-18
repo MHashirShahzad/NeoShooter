@@ -263,7 +263,7 @@ _data = {
 
 [sub_resource type="Curve2D" id="Curve2D_lq6k8"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1200, 100, 0, 0, 0, 0, 1300, 100, 0, 0, 0, 0, 1300, 1400, 0, 0, 0, 0, 1200, 1400, 0, 0, 0, 0, 1200, 100)
+"points": PackedVector2Array(0, 0, 0, 0, 1450, 100, 0, 0, 0, 0, 1550, 100, 0, 0, 0, 0, 1550, 1400, 0, 0, 0, 0, 1450, 1400, 0, 0, 0, 0, 1450, 100)
 }
 point_count = 5
 
@@ -285,7 +285,7 @@ rotation_speed = null
 max_bullet_count = 7
 
 [node name="Player2" parent="BothPlayers" index="1"]
-position = Vector2(2200, 750)
+position = Vector2(2460, 750)
 is_input_enabled = null
 speed = null
 friction = null
@@ -320,8 +320,8 @@ libraries = {
 }
 
 [node name="Camera2D" parent="." instance=ExtResource("5_8hd6s")]
-position = Vector2(1250, 750)
-zoom = Vector2(0.4, 0.4)
+position = Vector2(1500, 750)
+zoom = Vector2(0.32, 0.32)
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("6_e06h8")]
 
@@ -331,35 +331,35 @@ zoom = Vector2(0.4, 0.4)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level/Collision Borders"]
 build_mode = 1
-polygon = PackedVector2Array(0, 0, 2500, 0, 2500, 1500, 0, 1500)
+polygon = PackedVector2Array(0, 0, 3000, 0, 3000, 1500, 0, 1500)
 
 [node name="Collision Center" type="StaticBody2D" parent="Level"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Level/Collision Center"]
-polygon = PackedVector2Array(1150, 0, 1350, 0, 1350, 1500, 1150, 1500)
+polygon = PackedVector2Array(1400, 0, 1600, 0, 1600, 1500, 1400, 1500)
 
 [node name="BORDER" type="Polygon2D" parent="Level"]
 z_index = -1
 color = Color(0.443137, 0.254902, 0.231373, 1)
 invert_enabled = true
-polygon = PackedVector2Array(0, 0, 2500, 0, 2500, 1500, 0, 1500)
+polygon = PackedVector2Array(0, 0, 3000, 0, 3000, 1500, 0, 1500)
 
 [node name="BORDER2" type="Polygon2D" parent="Level"]
 z_index = -1
 color = Color(0.733333, 0.458824, 0.278431, 1)
 invert_enabled = true
 invert_border = 502.9
-polygon = PackedVector2Array(-100, -100, 2600, -100, 2600, 1600, -100, 1600)
+polygon = PackedVector2Array(-100, -100, 3100, -100, 3100, 1600, -100, 1600)
 
 [node name="BG" type="Polygon2D" parent="Level"]
 z_index = -4
 color = Color(0.196078, 0.168627, 0.156863, 1)
-polygon = PackedVector2Array(0, 0, 2500, 0, 2500, 1500, 0, 1500)
+polygon = PackedVector2Array(0, 0, 3000, 0, 3000, 1500, 0, 1500)
 
 [node name="CenterBar" type="Polygon2D" parent="Level"]
 z_index = -2
 color = Color(0.231373, 0.0901961, 0.145098, 1)
-polygon = PackedVector2Array(1150, 0, 1350, 0, 1350, 1500, 1150, 1500)
+polygon = PackedVector2Array(1400, 0, 1600, 0, 1600, 1500, 1400, 1500)
 
 [node name="BulletKillBox" type="Area2D" parent="Level"]
 script = ExtResource("7_7s84o")
@@ -367,14 +367,14 @@ script = ExtResource("7_7s84o")
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Level/BulletKillBox"]
 position = Vector2(420, 220)
 build_mode = 1
-polygon = PackedVector2Array(-665, -471, 2288, -503, 2284, 1457, -656, 1457)
+polygon = PackedVector2Array(-739, -492, 3562, -510, 3203, 1515, -847, 1573)
 disabled = true
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_lq6k8")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(1200, 100.001)
+position = Vector2(1450, 100.001)
 rotation = -1.5708
 progress = 2800.0
 rotates = false
@@ -391,7 +391,7 @@ player = NodePath("../../BothPlayers/Player1")
 [node name="Player2Walls" type="Node" parent="."]
 
 [node name="Wall2" parent="Player2Walls" node_paths=PackedStringArray("player") instance=ExtResource("8_repht")]
-position = Vector2(1900, 750)
+position = Vector2(2250, 750)
 health = 250.0
 player = NodePath("../../BothPlayers/Player2")
 

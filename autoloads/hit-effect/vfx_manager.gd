@@ -73,7 +73,6 @@ func player_dead_shockwave(player : Player2D) -> void:
 	self.add_child(sprite)
 	sprite.scale = Vector2(100, 100)
 	sprite.z_index = 3
-	
 	#  get_viewport().get_camera_2d().unproject
 	# player.get_viewport_transform() * player.global_position
 	#var screen_coords = player.get_viewport_transform() * player.global_position
