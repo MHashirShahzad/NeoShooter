@@ -131,3 +131,6 @@
 9. In the ending show the DRACONIC enemy charging the laser.
 10. Suddenly End the trailer.
 - Showcase different colored bullets.
+
+# Suggestions
+- Adeel: Too much screenshake after player death.
