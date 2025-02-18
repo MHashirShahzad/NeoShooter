@@ -134,3 +134,4 @@
 
 # Suggestions
 - Adeel: Too much screenshake after player death.
+- Adeel: Weapon equip UI is confusing.
